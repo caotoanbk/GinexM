@@ -5,16 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>GinexM</title>
 
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
 
     <!-- Styles -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
-
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-datetimepicker.min.css" type="text/css" rel='stylesheet'>
+    <link type="text/css" href="/css/jquery-confirm.min.css" rel="stylesheet"> 
+    <link type="text/css" href="/css/buttons.bootstrap.min.css" rel="stylesheet"> 
+    <link type="text/css" href="/css/responsive.bootstrap.min.css" rel="stylesheet"> 
     <style>
         body {
             font-family: 'Lato';
@@ -40,7 +43,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
+                   GinexM 
                 </a>
             </div>
 
@@ -73,10 +76,22 @@
     </nav>
 
     @yield('content')
-
     <!-- JavaScripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery-confirm.min.js"></script>
+    <script src="/js/moment-with-locales.min.js"></script>
+    <script src="/js/jquery.dataTables.min.js"></script>
+    <script src="/js/datatables.bootstrap.js"></script>
+    <script src="/js/dataTables.buttons.min.js"></script>
+    <script src="/js/buttons.bootstrap.min.js"></script>
+    <script src="/js/jszip.min.js"></script>
+    <script src="/js/buttons.html5.min.js"></script>
+	<script src="/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="/js/jquery.validate.min.js"></script>
+	<script src='/js/autoNumeric-min.js'></script>
+	<script src='/js/dataTables.responsive.min.js'></script>
+	<script src='/js/responsive.bootstrap.min.js'></script>
+	@yield('javascript')
 </body>
 </html>
