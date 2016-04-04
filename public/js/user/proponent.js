@@ -21,6 +21,16 @@ $(function() {
 	$('#myModal').on('show.bs.modal', function(e) {
 		var $modal = $(this);
 		$('#bill').val('');
+		$('#checkbct').prop('checked', false);
+		$('#input-hidden').addClass('hidden');
+		$('#checkbct').click(function(){
+			if($(this).prop('checked') == false){
+				$('#input-hidden').addClass('hidden');
+			} else {
+				$('#input-hidden').removeClass('hidden');
+			}
+
+		});
 
 		//jquery validation
 		var validator = $('#content').validate({
