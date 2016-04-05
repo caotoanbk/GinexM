@@ -28,4 +28,8 @@ class User extends Authenticatable
 	{
 		return $this->hasMany('App\Yclhang', 'user_id');
 	}
+	public function dntung()
+	{
+		return $this->hasMany('App\Dntung', 'user_id');
+	}
 }

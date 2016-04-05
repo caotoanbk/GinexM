@@ -20,3 +20,4 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 Route::get('/yclhang/data', 'DatatablesController@yclhangData');
 Route::get('/make-goods', 'ProponentController@storeYclhang');
+Route::get('/test/', 'DatatablesController@test');
