@@ -13,11 +13,23 @@ $(function() {
 		"dom": 'Bfrtip',
 		"buttons": [
 			{
+				text: 'Yeu cau lam hang',
+				className: 'btn',	
+				action: function (e, dt, node, config){
+					$('#myModal').modal('show');
+				}
+			},
+			{
 				extend: 'excel',
 				title: 'title',
-				className: 'btn btn-default',
+				className: 'btn',
 				text: 'Export excel file',
-			}
+			},
+			{
+				extend: 'print',
+				text: 'Print',
+			},	
+
 		],
 		"columns": [
 			{data: 'created_at', name: 'created_at'},
@@ -83,6 +95,9 @@ $(function() {
 				},
 				tghung: {
 					required: true,
+				},
+				bke: {
+					required: true,
 				}
 			},
 			messages: {
@@ -107,36 +122,10 @@ $(function() {
 				tghung: {
 					required: '<div class="text-danger"><em><small>Ban chua chon thoi gian hoan ung</small></em></div>'
 				},
+				bke: {
+					required: '<div class="text-danger"><em><small>Ban chua chon file</small></em></div>'
+				}
 			},
-			submitHandler: function(form){
-				// get the form data 
-				var formData = {
-					'bill': $('input[name=bill]').val(),
-					'slc20': $('input[name=slc20]').val(),
-					'slc40': $('input[name=slc40]').val(),
-					'lcont': $('select[name=lcont]').val(),
-					'khang': $('select[name=khang]').val(),
-					'ttien': $('input[name=ttien]').val(),
-					'tghung': $('input[name=tghung]').val(),
-				};
-				console.log(formData);
-				$.ajax({
-					type: 'get',
-					url: '/make-goods',
-					data: formData,
-					encode: true,
-					success: function(data){
-						$('#myModal').modal('hide');
-						$table.ajax.reload();
-						$('#message').trigger('click');
-					},
-					error: function(data){
-						$('#myModal').modal('hide');
-						alert('Error!');
-					}
-				});
-				event.preventDefault();
-			}
 		});
 		validator.resetForm();
 	});

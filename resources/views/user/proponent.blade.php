@@ -1,4 +1,3 @@
-<button data-target='#myModal' data-toggle='modal' class='btn btn-primary'>Yeu cau lam hang</button>
 @include('partials.modal.yclhang')
 <div id='message'>&nbsp;</div>
 <section class='panel panel-primary'>

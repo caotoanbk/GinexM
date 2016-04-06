@@ -13,14 +13,26 @@ class DatatablesController extends Controller
 {
 	public function yclhangData()
 	{
-		$now = Carbon::now();
-		$currentYear= $now->year;
-		$currentMonth = $now->month;
-		$yclhangs = Dntung::select(['created_at', 'bill', 'slc20','slc40', 'khang', 'ttien', 'lcont', 'tghung'])->where('created_at', '>=', Carbon::now()->startOfMonth());
+		$yclhangs = Dntung::select(['id', 'created_at', 'bill', 'slc20','slc40', 'khang', 'ttien', 'lcont', 'tghung'])->where('created_at', '>=', Carbon::now()->startOfMonth());
 		return Datatables::of($yclhangs)->addColumn('bke', function($yclhang){
-			return '<a href="/robots.txt" class="btn btn-xs btn-primary">File</a>';	
+			$my = date("Y/m");
+			return '<a href="/de_nghi_tam_ung/'.$my.'/'.$yclhang->id.'.xlsx'.'". class="btn btn-xs btn-primary">Tai File</a>';	
 		})->addColumn('status', function($yclhang){
-			return '<small class="text-danger"><em>Chua duoc kiem tra</em></small>';	
+			$check=$yclhang->check;
+			$approve=$yclhang->approve;
+			$lamhang=$yclhang->lamhang;
+			if($check){
+				if($approve){
+					if($lamhang){
+						return 'da lam hang';	
+					}else{
+						return'<small class="text-danger"><em>Duoc phep lam hang</em></small><button>Da hoan thanh</button>';   	
+					}
+				}else{
+					return '<small class="text-danger"><em>Chua duoc duyet</em></small>'; 
+				}
+			}else{
+				return '<small class="text-danger"><em>Chua duoc kiem tra</em></small>';	}
 		})->make(true);
 	}
 	public function test()

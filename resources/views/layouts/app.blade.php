@@ -87,6 +87,7 @@
     <script src="/js/buttons.bootstrap.min.js"></script>
     <script src="/js/jszip.min.js"></script>
     <script src="/js/buttons.html5.min.js"></script>
+    <script src="/js/buttons.print.min.js"></script>
 	<script src="/js/bootstrap-datetimepicker.min.js"></script>
 	<script src="/js/jquery.validate.min.js"></script>
 	<script src='/js/autoNumeric-min.js'></script>

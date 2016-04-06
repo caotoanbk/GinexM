@@ -44,7 +44,7 @@
 </div>
 <div class='form-group'>
 	{!! Form::label('bke', 'Ban ke chi tiet', array('class' => 'col-md-3 control-label')) !!}
-	<div class='col-md-8'>{!! Form::file('bke') !!}</div>
+	<div class='col-md-8'>{!! Form::file('bke',null) !!}</div>
 </div>
 
 <div class="form-group"><div class="col-md-8 col-md-offset-3">

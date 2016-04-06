@@ -11,19 +11,17 @@ use App\Dntung;
 
 class ProponentController extends Controller
 {
-	public function storeYclhang(Request $request)
+	public function storeYclhang(YclhangRequest $request)
 	{
-		if(!$request->ajax())
-			return redirect('/');
-		if(!$request->input('bill'))
-			abort(403);
+		$my=date("Y/m");
 		$input=$request->all();
 		$input['ttien']=str_replace('.','', $input['ttien']);
-		$yc = \Auth::user()->dntung()->create($input)->save();
-		if($yc){
-			return 'success';
-		}
-		abort(403);
+		$input['user_id']=\Auth::user()->id;	
+		$yc= new Dntung($input);
+		$yc->save();
+		$fileName = $yc->id.'.'.$request->file('bke')->getClientOriginalExtension();
+		$request->file('bke')->move(base_path().'/public/de_nghi_tam_ung/'.$my.'/', $fileName);
+		return redirect('/home');
 
 	}
 }
