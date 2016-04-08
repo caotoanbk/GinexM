@@ -34,25 +34,37 @@ $(function() {
 		"columns": [
 			{data: 'created_at', name: 'created_at'},
 			{data: 'bill', name: 'bill'},
+			{data: 'reason', name: 'reason'},
 			{data: 'ttien', name: 'ttien', render: $.fn.dataTable.render.number(',','.',0,'') },
-			{data: 'khang', name: 'khang'},
-			{data: 'slc20', name: 'slc20'},
-			{data: 'slc40', name: 'slc40'},
-			{data: 'lcont', name: 'lcont'},
+			{data: 'khang', name: 'khang', className: 'none' },
+			{data: 'slc20', name: 'slc20', className: 'none'},
+			{data: 'slc40', name: 'slc40', className: 'none'},
+			{data: 'lcont', name: 'lcont', className: 'none'},
 			{data: 'tghung', name: 'tghung'},
 			{data: 'bke', name: 'bke', searchable: false, orderable: false},
 			{data: 'status', name: 'status', searchable: false, orderable: false},
+			{data: 'cuoc', name: 'cuoc', render: $.fn.dataTable.render.number(',','.',0,''), className: "none"  },
+			{data: 'nang', name: 'nang', render: $.fn.dataTable.render.number(',','.',0,''), className: "none" },
+			{data: 'ha', name: 'ha', render: $.fn.dataTable.render.number(',','.',0,''), className: "none" },
+			{data: 'hquan', name: 'hquan', render: $.fn.dataTable.render.number(',','.',0,''), className: "none"},
+			{data: 'psinh', name: 'psinh', render: $.fn.dataTable.render.number(',','.',0,''), className: "none"},
 		]
 	});
 
 	$('#myModal').on('show.bs.modal', function(e) {
 		var $modal = $(this);
 		$('#bill').val('');
+		$('input[name=reason]').val('');
 		$('input[name=slc20]').val('');
 		$('input[name=slc40]').val('');
 		$('select[name=lcont]').val('');
 		$('select[name=khang]').val('');
 		$('input[name=ttien]').val('');
+		$('input[name=cuoc]').val('');
+		$('input[name=nang]').val('');
+		$('input[name=ha]').val('');
+		$('input[name=hquan]').val('');
+		$('input[name=psinh]').val('');
 		$('#checkbct').prop('checked', false);
 		$('#input-hidden').addClass('hidden');
 		$('#checkbct').click(function(){
@@ -71,10 +83,47 @@ $(function() {
 			pSign: 's',
 			aPad: false,	
 		});
-
+		$('input[name=cuoc]').autoNumeric('init', {
+			aSep:'.',
+			aDec: ',',
+			aSign: ' VND',
+			pSign: 's',
+			aPad: false,	
+		});
+		$('input[name=nang]').autoNumeric('init', {
+			aSep:'.',
+			aDec: ',',
+			aSign: ' VND',
+			pSign: 's',
+			aPad: false,	
+		});
+		$('input[name=ha]').autoNumeric('init', {
+			aSep:'.',
+			aDec: ',',
+			aSign: ' VND',
+			pSign: 's',
+			aPad: false,	
+		});
+		$('input[name=hquan]').autoNumeric('init', {
+			aSep:'.',
+			aDec: ',',
+			aSign: ' VND',
+			pSign: 's',
+			aPad: false,	
+		});
+		$('input[name=psinh]').autoNumeric('init', {
+			aSep:'.',
+			aDec: ',',
+			aSign: ' VND',
+			pSign: 's',
+			aPad: false,	
+		});
 		//jquery validation
 		var validator = $('#content').validate({
 			rules: {
+				reason: {
+					required: true,
+				},
 				bill: {
 					required: true,
 				},
@@ -101,6 +150,9 @@ $(function() {
 				}
 			},
 			messages: {
+				reason: {
+					required: '<div class="text-danger"><em><small>Ban chua nhap ly do tam ung</small></em></div>'
+				},
 				bill: {
 					required: '<div class="text-danger"><em><small>Ban chua nhap so chung tu</small></em></div>'
 				},

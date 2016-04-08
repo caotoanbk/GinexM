@@ -16,6 +16,11 @@ class ProponentController extends Controller
 		$my=date("Y/m");
 		$input=$request->all();
 		$input['ttien']=str_replace('.','', $input['ttien']);
+		$input['cuoc']=str_replace('.','', $input['cuoc']);
+		$input['nang']=str_replace('.','', $input['nang']);
+		$input['ha']=str_replace('.', '', $input['ha']);
+		$input['hquan']=str_replace('.', '', $input['hquan']);
+		$input['psinh']=str_replace('.', '', $input['psinh']);
 		$input['user_id']=\Auth::user()->id;	
 		$yc= new Dntung($input);
 		$yc->save();

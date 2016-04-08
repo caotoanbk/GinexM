@@ -18,6 +18,7 @@
     <link type="text/css" href="/css/jquery-confirm.min.css" rel="stylesheet"> 
     <link type="text/css" href="/css/buttons.bootstrap.min.css" rel="stylesheet"> 
     <link type="text/css" href="/css/responsive.bootstrap.min.css" rel="stylesheet"> 
+	<link type="text/css" href="/css/mycss.css" rel='stylesheet'>
     <style>
         body {
             font-family: 'Lato';

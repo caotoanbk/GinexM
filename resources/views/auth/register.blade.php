@@ -37,6 +37,16 @@
                                 @endif
                             </div>
                         </div>
+						<div class="form-group">
+							<label class="col-md-4 control-label">Type</label>
+							<div class="col-md-6">
+								<select name="type" class="form-control">
+									<option value=0>Doi logistics</option>
+									<option value=1>Thu ky</option>
+									<option value=2>Giam doc</option>
+								</select>
+							</div>
+						</div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Password</label>

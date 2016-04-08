@@ -7,7 +7,7 @@ use Carbon\Carbon;
 
 class Dntung extends Model
 {
-	protected $fillable=['user_id', 'bill', 'slc20', 'slc40', 'lcont', 'khang', 'ttien', 'tghung'];
+	protected $fillable=['user_id', 'reason', 'bill', 'slc20', 'slc40', 'lcont', 'khang', 'ttien', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh'];
 
 	protected $dates=['created_at', 'updated_at', 'tghung'];
 

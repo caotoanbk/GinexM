@@ -24,11 +24,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-		$identify=\Auth::user()->email;
-		if ($identify == 'tony.cao@ginex.com.vn') {
+		$identify=\Auth::user()->type;
+		if ($identify == 0) {
 			return view('proponent_home');
+		}else if ($identify == 1){
+			return view('secrectary_home');
+		}else if ($identify == 2){
+			return view('director_home');
 		}
-		return 'Hello world';
-		
+
+		return 'Nguoi dung khong hop le';
     }
 }

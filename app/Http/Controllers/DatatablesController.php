@@ -13,7 +13,7 @@ class DatatablesController extends Controller
 {
 	public function yclhangData()
 	{
-		$yclhangs = Dntung::select(['id', 'created_at', 'bill', 'slc20','slc40', 'khang', 'ttien', 'lcont', 'tghung'])->where('created_at', '>=', Carbon::now()->startOfMonth());
+		$yclhangs = Dntung::select(['id', 'created_at', 'reason', 'bill', 'slc20','slc40', 'khang', 'ttien', 'lcont', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh'])->where('created_at', '>=', Carbon::now()->startOfMonth());
 		return Datatables::of($yclhangs)->addColumn('bke', function($yclhang){
 			$my = date("Y/m");
 			return '<a href="/de_nghi_tam_ung/'.$my.'/'.$yclhang->id.'.xlsx'.'". class="btn btn-xs btn-primary">Tai File</a>';	

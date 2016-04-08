@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddCheckApproveLamhangDoneToDntungsTable extends Migration
+class AddPhiChiTietToDntungsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class AddCheckApproveLamhangDoneToDntungsTable extends Migration
     public function up()
     {
         Schema::table('dntungs', function (Blueprint $table) {
-			$table->string('filename');
-			$table->boolean('check')->default(false);
-			$table->boolean('approve')->default(false);
-			$table->boolean('lamhang')->default(false);
-			$table->boolean('done')->default(false);
+			$table->string('reason');
+			$table->integer('cuoc');
+			$table->integer('nang');
+			$table->integer('ha');
+			$table->integer('hquan');
+			$table->integer('psinh');
         });
     }
 
@@ -29,12 +30,12 @@ class AddCheckApproveLamhangDoneToDntungsTable extends Migration
     public function down()
     {
         Schema::table('dntungs', function (Blueprint $table) {
-			$table->dropColumn('filename');
-			$table->dropColumn('check');
-			$table->dropColumn('approve');
-			$table->dropColumn('lamhang');
-			$table->dropColumn('done');
-			
+			$table->dropColumn('reason');
+			$table->dropColumn('cuoc');
+			$table->dropColumn('nang');
+			$table->dropColumn('ha');
+			$table->dropColumn('hquan');
+			$table->dropColumn('psinh');
         });
     }
 }
