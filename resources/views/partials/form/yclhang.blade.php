@@ -9,7 +9,7 @@
 	</div>
 </div>
 <div id='input-hidden' class='hidden'>
-<div class='form-group'><div class="col-md-8 col-md-offset-3"><h4>De Nghi Tam Ung</h4></div></div>
+<div class='form-group'><div class="col-md-8 col-md-offset-3"><h4>DE NGHI TAM UNG</h4></div></div>
 <div class='form-group required'>
 {!! Form::label('reason', 'Ly do tam ung', ['class' => 'col-md-3 control-label']) !!}
 <div class='col-md-8'>

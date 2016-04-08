@@ -35,15 +35,17 @@ class DatatablesController extends Controller
 				return '<small class="text-danger"><em>Chua duoc kiem tra</em></small>';	}
 		})->make(true);
 	}
-	public function test()
-	{
-		$test=Dntung::select(['created_at'])->first();
-		dd($test);
-		
-		$now = Carbon::now();
-		$currentYear= $now->year;
-		$currentMonth = $now->month;
-		dd($currentMonth);
+	public function secrectaryData(Request $request)
+	 {
+		 if(!$request->ajax())
+			 return redirect('/');
 
-	}
+		$yclhangs = Dntung::select(['id', 'created_at', 'reason', 'bill', 'slc20','slc40', 'khang', 'ttien', 'lcont', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'check'])->where('created_at', '>=', Carbon::now()->startOfMonth())->where('check', '=', false);
+		return Datatables::of($yclhangs)->addColumn('bke', function($yclhang){
+			$my = date("Y/m");
+			return '<a href="/de_nghi_tam_ung/'.$my.'/'.$yclhang->id.'.xlsx'.'". class="btn btn-xs btn-default">Tai File</a>';	
+		})->addColumn('status', function($yclhang){
+			return '<a href="/bieumau/phieuchi/'.$yclhang->id.'" id="test" class="btn btn-xs btn-primary">In phieu chi</a>';
+		})->make(true);
+	 }
 }

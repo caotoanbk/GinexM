@@ -21,4 +21,5 @@ Route::get('/home', 'HomeController@index');
 Route::get('/yclhang/data', 'DatatablesController@yclhangData');
 Route::post('/make-goods', 'ProponentController@storeYclhang');
 Route::get('/test/', 'DatatablesController@test');
-Route::get('/bieumau/phieuchi', 'BieumauController@phieuchi');
+Route::get('/bieumau/phieuchi/{id}', 'BieumauController@phieuchi');
+Route::get('/secrectary/data', 'DatatablesController@secrectaryData');
