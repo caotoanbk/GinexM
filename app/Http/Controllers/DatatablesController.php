@@ -13,7 +13,7 @@ class DatatablesController extends Controller
 {
 	public function yclhangData()
 	{
-		$yclhangs = Dntung::select(['id', 'created_at', 'reason', 'bill', 'slc20','slc40', 'khang', 'ttien', 'lcont', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh'])->where('created_at', '>=', Carbon::now()->startOfMonth());
+		$yclhangs = Dntung::select(['id', 'created_at', 'reason', 'bill', 'slc20','slc40', 'khang', 'ttien', 'lcont', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'check'])->where('created_at', '>=', Carbon::now()->startOfMonth());
 		return Datatables::of($yclhangs)->addColumn('bke', function($yclhang){
 			$my = date("Y/m");
 			return '<a href="/de_nghi_tam_ung/'.$my.'/'.$yclhang->id.'.xlsx'.'". class="btn btn-xs btn-primary">Tai File</a>';	
@@ -22,15 +22,7 @@ class DatatablesController extends Controller
 			$approve=$yclhang->approve;
 			$lamhang=$yclhang->lamhang;
 			if($check){
-				if($approve){
-					if($lamhang){
-						return 'da lam hang';	
-					}else{
-						return'<small class="text-danger"><em>Duoc phep lam hang</em></small><button>Da hoan thanh</button>';   	
-					}
-				}else{
-					return '<small class="text-danger"><em>Chua duoc duyet</em></small>'; 
-				}
+				return '<small class="text-danger"><em>Da duoc kiem tra</em></small>';
 			}else{
 				return '<small class="text-danger"><em>Chua duoc kiem tra</em></small>';	}
 		})->make(true);
@@ -40,7 +32,7 @@ class DatatablesController extends Controller
 		 if(!$request->ajax())
 			 return redirect('/');
 
-		$yclhangs = Dntung::select(['id', 'created_at', 'reason', 'bill', 'slc20','slc40', 'khang', 'ttien', 'lcont', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'check'])->where('created_at', '>=', Carbon::now()->startOfMonth())->where('check', '=', false);
+		$yclhangs = Dntung::select(['id', 'created_at', 'reason', 'bill', 'slc20','slc40', 'khang', 'ttien', 'lcont', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'check'])->where('created_at', '>=', Carbon::now()->startOfMonth());
 		return Datatables::of($yclhangs)->addColumn('bke', function($yclhang){
 			$my = date("Y/m");
 			return '<a href="/de_nghi_tam_ung/'.$my.'/'.$yclhang->id.'.xlsx'.'". class="btn btn-xs btn-default">Tai File</a>';	
