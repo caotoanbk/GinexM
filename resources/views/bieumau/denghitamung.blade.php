@@ -224,24 +224,25 @@
     .gwd-span-isul {
       font-style: normal;
     }
-    table {
+    table.dntu {
       position: absolute;
       border-collapse: collapse;
       width: 730px;
       left: 28px;
       top: 508px;
     }
-    table, th, td {
+    table.dntu, table.dntu th, table.dntu td {
       font-size: 14px;
       border: 1px solid black;
     }
     .gwd-p-14fo {
       position: absolute;
       font-family: 'Times New Roman';
+
       color: rgb(0, 0, 0);
       transform-style: preserve-3d;
       left: 28px;
-      top: 574px;
+      top: 770px;
       width: 730px;
       height: 21px;
       transform-origin: 136px 10.5px 0px;
@@ -257,7 +258,7 @@
       text-align: center;
       font-size: 14px;
       left: 61px;
-      top: 670px;
+      top: 920px;
     }
     .gwd-p-sgpd {
       position: absolute;
@@ -268,7 +269,7 @@
       color: rgb(0, 0, 0);
       font-size: 14px;
       left: 327px;
-      top: 670px;
+      top: 920px;
     }
     .gwd-p-kbzk {
       position: absolute;
@@ -279,7 +280,7 @@
       color: rgb(0, 0, 0);
       font-size: 14px;
       left: 568px;
-      top: 670px;
+      top: 920px;
     }
   </style>
 </head>
@@ -288,21 +289,79 @@
   <p class="gwd-p-1fzi"><span class="gwd-span-bv79 gwd-span-15jv">Đơn vị</span>:....................
     <br class=""><span class="gwd-span-vube">Địa chỉ</span>:....................</p>
   <p class="gwd-p-1s2v">GIẤY ĐỀ NGHỊ TẠM ỨNG
-    <br class=""><span class="gwd-span-1wvp">Ngày........tháng.........năm ............</span>
+    <br class=""><span class="gwd-span-1wvp">Ngày  {{date('d')}}  tháng {{date('m')}} năm {{date('Y')}}</span>
     <br class="">
   </p>
   <p class="gwd-p-a9b6"><span class="gwd-span-1oih">Mẫu số: 03 - TT</span>
     <br class="">(Ban hành theo thông tư số 200/2014/TT-BTC ngày 22/12/2014 của BTC)</p>
-  <p class="gwd-p-15jr">Tên tôi là:.........................................................................................................................................................................................
-    <br class="">Địa chỉ:.............................................................................................................................................................................................
-    <br class="">Đề nghị tạm ứng số tiển:.........................(Viết bằng chữ):.......................................................................................................
-    <br class="">Lý do tạm ứng:................................................................................................................................................................................&nbsp;
+  <p class="gwd-p-15jr">Tên tôi là:&nbsp;&nbsp;&nbsp;{{\Auth::user()->name}}.
+    <br class="">Địa chỉ:&nbsp;&nbsp;&nbsp;Doi logistics.
+	<br class="">Đề nghị tạm ứng số tiển:&nbsp;
+<?php 
+$t_tien = 0;
+foreach($dntung as $item){
+	$t_tien += $item->ttien;
+}
+echo number_format($t_tien, 0, '.', ','); ?>
+ đ&nbsp;(Viết bằng chữ):&nbsp;&nbsp;
+<?php 
+	$number_to_word = ['không', 'một', 'hai', 'ba', 'bốn', 'năm', 'sáu', 'bảy', 'tám', 'chín'];
+	$str_number = str_split($t_tien);
+	$count = strlen($t_tien);
+	$ttien ='';
+			//hang trieu
+				$htrieu = $count-6;
+				for ($i = 0; $i <$count-6; $i++) {
+				if($htrieu ==3){
+					$ttien.=($number_to_word[$str_number[$i]] . " trăm");
+					if($str_number[$i+1] == 0)
+					{
+						$ttien.=" linh";
+						$ttien.=' '.$number_to_word[$str_number[$i+2]]. ' triệu';
+						break;
+					}
+					if($str_number[$i+1] == 1)
+					{
+						$ttien.=" muoi";
+						$ttien.=' '.$number_to_word[$str_number[$i+2]]. ' triệu';
+						break;
+					}
+
+				}	
+				if($htrieu ==2){
+					$ttien.=' '.($number_to_word[$str_number[$i]]. " mươi");
+				}	
+				if($htrieu ==1){
+					$ttien.=' '.($number_to_word[$str_number[$i]].' triệu');
+				}
+				$htrieu--;
+			};
+				if($t_tien%1000000 == 0){
+					$ttien.=' đồng chẵn.';
+				}else{
+					//hang tram ngan
+					if($count-6>=0)
+						$ttien.=' '.$number_to_word[$str_number[$count-6]].' trăm';
+					//hang chuc ngan
+					if($count-5>=0){
+						if($str_number[$count-5] == 0){
+							$ttien.=' linh';
+						}else{
+							$ttien.=' '.$number_to_word[$str_number[$count-5]].' mươi';
+						}
+					}
+					//hang nghin
+					if($count-4>=0){
+						$ttien.=' '.$number_to_word[$str_number[$count-4]].' nghìn đồng.';
+					}
+				}
+?>{{ $ttien }}
     <br class="">
     <br class="">
   </p>
-  <p class="gwd-p-bt0t"><span class="gwd-span-1tks gwd-span-5b27 gwd-span-2hk2 gwd-span-isul">Họ tên người nhận tiền</span><span class="gwd-span-ugkh">:</span><span class="gwd-span-1nn6">....................................................................................................................................................................<br class=""><span class="gwd-span-zd2p"><span class="gwd-span-rgkl"><span class="gwd-span-te0w">Lý do chi</span>:</span>
-    <span class="gwd-span-o7dq">........................................................................................................................................................................................</span>
-    <br class=""><span class="gwd-span-1xxr"><span class="gwd-span-ppe9"><span class="gwd-span-3e2h">Số tiền</span>:</span><span class="gwd-span-jl7y">..............................................(Viết bằng chữ)......................................................................................................................
+  <p class="gwd-p-bt0t"><span class="gwd-span-1tks gwd-span-5b27 gwd-span-2hk2 gwd-span-isul">Họ tên người nhận tiền</span><span class="gwd-span-ugkh">:</span><span class="gwd-span-1nn6">&nbsp;&nbsp;&nbsp;{{\Auth::user()->name}}&nbsp;&nbsp;&nbsp;<br class=""><span class="gwd-span-zd2p"><span class="gwd-span-rgkl"><span class="gwd-span-te0w">Lý do chi</span>:</span>
+    <span class="gwd-span-o7dq">&nbsp;&nbsp;&nbsp;{{$dntung->first()->reason}}</span>
+    <br class=""><span class="gwd-span-1xxr"><span class="gwd-span-ppe9"><span class="gwd-span-3e2h">Số tiền</span>:</span><span class="gwd-span-jl7y">&nbsp;&nbsp;&nbsp;{{number_format($t_tien, 0, '.', ',')}} đ&nbsp;(Viết bằng chữ):&nbsp;&nbsp;&nbsp;{{$ttien}}
     <br class=""></span></span><span class="gwd-span-oisu">Kèm theo: .........................Chứng từ gốc:................................................................................................................................<br></span>
     <br class="">
     <br class="">
@@ -311,14 +370,14 @@
     </span>
   </p>
   <p class="gwd-p-1a6e">PHIẾU CHI
-    <br><span class="gwd-span-ixpg">Ngày........tháng.........năm ............</span>
+    <br><span class="gwd-span-ixpg">Ngày {{date('d')}} tháng {{date('m')}} năm {{date('Y')}}</span>
     <br class="">
     <br class="">
   </p>
-  <p class="gwd-p-12ww"><span class="gwd-span-uq6q">TẠM ỨNG TIỀN LÀM HÀNG NGÀY &nbsp;</span>
+  <p class="gwd-p-12ww"><span class="gwd-span-uq6q">TẠM ỨNG TIỀN LÀM HÀNG NGÀY &nbsp;{{date('d/m/Y')}}</span>
     <br class="">
   </p>
-  <table style="">
+  <table style="" class='dntu'>
     <tbody style="">
       <tr>
         <th colspan="2">Số chứng từ</th>
@@ -337,13 +396,34 @@
         <th>20"</th>
         <th>40"</th>
       </tr>
+		@foreach($dntung as $item)
+		<tr>
+			<td>{{$item->bill}}</td>
+			<td>&nbsp;</td>
+			<td>{{$item->slc20}}</td>
+			<td>{{$item->slc40}}</td>
+			<td>{{$item->lcont}}</td>
+			<td>{{number_format($item->cuoc, 0, '.', ',')}}</td>
+			<td>{{number_format($item->nang, 0, '.', ',')}}</td>
+			<td>{{number_format($item->ha, 0, '.', ',')}}</td>
+			<td>{{number_format($item->hquan, 0, '.', ',')}}</td>
+			<td>{{number_format($item->psinh, 0, '.', ',')}}</td>
+			<td>{{number_format($item->ttien, 0, '.', ',')}}</td>
+		</tr>
+		@endforeach
       <tr>
         <th colspan="10">Tổng số tiền xin tạm ứng thực tế</th>
-        <th>&nbsp;</th>
+        <th>{{number_format($t_tien, 0, '.', ',')}}</th>
       </tr>
     </tbody>
   </table>
-  <p class="gwd-p-14fo">Kế hoạch tiền cược cont Bill ............................ sẽ được thanh toán vào ngày ................................</p>
+  <table class="gwd-p-14fo">
+	@foreach($dntung as $item)
+	<tr>
+	 <td> Kế hoạch tiền cược cont Bill {{$item->bill}} sẽ được thanh toán vào ngày {{$item->tghung}}</td>
+  </tr>
+	@endforeach
+  </table>
   <p class="gwd-p-zixo">Giám đốc
     <br class="">(Ký, họ tên)</p>
   <p class="gwd-p-sgpd">Phụ trách bộ phận

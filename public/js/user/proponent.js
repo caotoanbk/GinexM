@@ -29,6 +29,13 @@ $(function() {
 				extend: 'print',
 				text: 'Print',
 			},	
+			{
+				text: 'In mau de nghi tam ung',
+				className: 'btn',
+				action: function(e, dt, node, config){
+					window.location.href = '/bieumau/denghitamung';		
+				}
+			}
 
 		],
 		"columns": [
