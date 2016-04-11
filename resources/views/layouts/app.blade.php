@@ -18,6 +18,7 @@
     <link type="text/css" href="/css/jquery-confirm.min.css" rel="stylesheet"> 
     <link type="text/css" href="/css/buttons.bootstrap.min.css" rel="stylesheet"> 
     <link type="text/css" href="/css/responsive.bootstrap.min.css" rel="stylesheet"> 
+	<link type="text/css" href="/css/select.dataTables.min.css" rel="stylesheet">
 	<link type="text/css" href="/css/mycss.css" rel='stylesheet'>
     <style>
         body {
@@ -94,6 +95,7 @@
 	<script src='/js/autoNumeric-min.js'></script>
 	<script src='/js/dataTables.responsive.min.js'></script>
 	<script src='/js/responsive.bootstrap.min.js'></script>
+	<script src='/js/dataTables.select.min.js'></script>
 	@yield('javascript')
 </body>
 </html>

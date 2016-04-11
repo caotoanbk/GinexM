@@ -13,11 +13,22 @@ $(function() {
 				target: 1
 			}
 		},
-		"columnDefs": [ {
-			className: 'control',
-			orderable: false,
-			targets: 1
-		}],
+        "select": {
+            style:    'os',
+            selector: 'td:first-child'
+        },
+		"columnDefs": [ 
+			{
+				className: 'control',
+				orderable: false,
+				targets: 1
+			},
+			{
+				orderable: false,
+				className: 'select-checkbox',
+				targets:   0
+			}
+		],
 		"serverSide": true,
 		"ajax": '/yclhang/data',
 		"dom": 'Bfrtip',

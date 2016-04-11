@@ -16,8 +16,9 @@ class BieumauController extends Controller
 		$dntung->save();
 		return view('bieumau.phieuchi', compact('dntung'));
 	}
-	public function denghitamung()
+	public function denghitamung(Request $request)
 	{
+		dd($request->all());
 		$today = \Carbon\Carbon::today();
 		$dntung = Dntung::where('created_at','>=',$today)->get();
 		if(!is_null($dntung)){
