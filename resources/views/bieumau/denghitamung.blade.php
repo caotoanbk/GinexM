@@ -322,7 +322,7 @@ echo number_format($t_tien, 0, '.', ','); ?>
 					}
 					if($str_number[$i+1] == 1)
 					{
-						$ttien.=" muoi";
+						$ttien.=" mười";
 						$ttien.=' '.$number_to_word[$str_number[$i+2]]. ' triệu';
 						break;
 					}
@@ -332,7 +332,12 @@ echo number_format($t_tien, 0, '.', ','); ?>
 					$ttien.=' '.($number_to_word[$str_number[$i]]. " mươi");
 				}	
 				if($htrieu ==1){
-					$ttien.=' '.($number_to_word[$str_number[$i]].' triệu');
+					if($str_number[$i] == 0){
+						$ttien .=' ';
+					}
+					else{
+						$ttien.=' '.($number_to_word[$str_number[$i]].' triệu');
+					}
 				}
 				$htrieu--;
 			};
@@ -352,7 +357,11 @@ echo number_format($t_tien, 0, '.', ','); ?>
 					}
 					//hang nghin
 					if($count-4>=0){
-						$ttien.=' '.$number_to_word[$str_number[$count-4]].' nghìn đồng.';
+						if($str_number[$count-4] == 0){
+							$ttien.=' nghìn đồng.';
+						}else{
+							$ttien.=' '.$number_to_word[$str_number[$count-4]].' nghìn đồng.';
+						}
 					}
 				}
 ?>{{ $ttien }}

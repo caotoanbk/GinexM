@@ -25,7 +25,8 @@ class DatatablesController extends Controller
 				return '<small class="text-danger"><em>Da duoc kiem tra</em></small>';
 			}else{
 				return '<small class="text-danger"><em>Chua duoc kiem tra</em></small>';	}
-		})->make(true);
+
+		})->addColumn('check', function($yclhang){return '<input type="checkbox">';})->addColumn('responsive', function($yclhang){return '';})->make(true);
 	}
 	public function secrectaryData(Request $request)
 	 {

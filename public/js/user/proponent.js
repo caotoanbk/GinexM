@@ -7,7 +7,17 @@ $(function() {
 	});
 	var $table = $('#tung').DataTable({
 		"processing": true,
-		"responsive": true,
+		"responsive": {
+			details: {
+				type: 'column',
+				target: 1
+			}
+		},
+		"columnDefs": [ {
+			className: 'control',
+			orderable: false,
+			targets: 1
+		}],
 		"serverSide": true,
 		"ajax": '/yclhang/data',
 		"dom": 'Bfrtip',
@@ -39,6 +49,8 @@ $(function() {
 
 		],
 		"columns": [
+			{data: 'check', name: 'check', searchable: false, orderable: false, className: 'dt-center'},
+			{data: 'responsive', name: 'responsive'},
 			{data: 'created_at', name: 'created_at'},
 			{data: 'bill', name: 'bill'},
 			{data: 'reason', name: 'reason'},
@@ -55,7 +67,8 @@ $(function() {
 			{data: 'ha', name: 'ha', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none" },
 			{data: 'hquan', name: 'hquan', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none"},
 			{data: 'psinh', name: 'psinh', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none"},
-		]
+		],
+		"order": [[2, 'desc']]
 	});
 
 	$('#myModal').on('show.bs.modal', function(e) {

@@ -7,6 +7,8 @@
 	<div class='panel-body'>
 		<table id='tung' class='table table-bordered table-striped table-condensed table-hover nowrap dt-responsive' cellspacing='0' width='100%'>
 			<thead>
+				<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name=""/></th>
+				<th>&nbsp;</th>
 				<th>Ngay de nghi</th>
 				<th>So booking/bl</th>
 				<th>Ly do tam ung</th>
