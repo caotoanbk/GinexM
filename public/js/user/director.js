@@ -1,15 +1,28 @@
 $(function() {
-	$('#message').confirm({
-		title: '',
-		content: 'Gui yeu cau lam hang thanh cong!',
-		autoClose: 'confirm|3000',
-		backgroundDismiss: true,
-	});
 	var $table = $('#tung').DataTable({
 		"processing": true,
-		"responsive": true,
+		"responsive": false ,
+        "select": {
+            style:    'os',
+			selector: 'td:first-child'
+        },
+		"responsive": {
+			details: {
+				type: 'column',
+				target: 1
+			}
+		},
+		"columnDefs": [{
+			orderable: false, 
+			className: 'select-checkbox',
+			targets:0 
+		},{
+			className: 'control',
+			orderable: false,
+			targets:1 
+		}],
 		"serverSide": true,
-		"ajax": '/secrectary/data',
+		"ajax": '/director/data',
 		"dom": 'Bfrtip',
 		"buttons": [
 			{
@@ -22,9 +35,17 @@ $(function() {
 				extend: 'print',
 				text: 'Print',
 			},	
+			{
+				text: 'Select none',
+				action: function(e, dt, node, config) {
+					dt.rows().deselect();
+				}
+			}	
 
 		],
 		"columns": [
+			{data: 'resp', name: 'resp', searchable: false, orderable: false},
+			{data: 'check', name: 'check'},
 			{data: 'created_at', name: 'created_at'},
 			{data: 'bill', name: 'bill'},
 			{data: 'reason', name: 'reason'},
@@ -41,6 +62,7 @@ $(function() {
 			{data: 'ha', name: 'ha', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none" },
 			{data: 'hquan', name: 'hquan', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none"},
 			{data: 'psinh', name: 'psinh', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none"},
-		]
+		],
+		"order": [[2, 'desc']]
 	});
 });
