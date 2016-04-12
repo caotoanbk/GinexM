@@ -18,13 +18,24 @@ class BieumauController extends Controller
 	}
 	public function denghitamung(Request $request)
 	{
-		dd($request->all());
-		$today = \Carbon\Carbon::today();
-		$dntung = Dntung::where('created_at','>=',$today)->get();
-		if(!is_null($dntung)){
-			return view('bieumau.denghitamung', compact('dntung'));
+		$arr = $request->get('arr') ? json_decode($request->get('arr')) : array();
+		if(count($arr) == 0){
+			$today = \Carbon\Carbon::today();
+			$dntung = Dntung::where('created_at','>=',$today)->get();
+			if(!is_null($dntung)){
+				return view('bieumau.denghitamung', compact('dntung'));
+				//return "Khong co de nghi tam ung nao hom nay";
+			}else{
+				return 'Khong co de nghi tam ung nao.';
+			}
 		}else{
-			return 'Khong co de nghi tam ung nao.';
+			$dntung = Dntung::find($arr);
+			if(!is_null($dntung)){
+				return view('bieumau.denghitamung', compact('dntung'));
+				//return "Khong co de nghi tam ung nao hom nay";
+			}else{
+				return 'Khong co de nghi tam ung nao.';
+			}
 		}
 
 	}

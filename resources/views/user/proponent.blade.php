@@ -5,10 +5,10 @@
 		<h4>DE NGHI TAM UNG THANG {{ date("m/Y")}}</h4>
 	</div>
 	<div class='panel-body'>
-		<table id='tung' class='table table-bordered table-condensed nowrap dt-responsive' cellspacing='0' width='100%'>
+		<table id='tung' class='table table-bordered table-condensed nowrap' cellspacing='0' width='100%'>
 			<thead>
-				<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name=""/></th>
-				<th>&nbsp;</th>
+				<th></th>
+				<th></th>
 				<th>Ngay de nghi</th>
 				<th>So booking/bl</th>
 				<th>Ly do tam ung</th>

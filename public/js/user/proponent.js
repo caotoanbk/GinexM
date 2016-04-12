@@ -7,28 +7,26 @@ $(function() {
 	});
 	var $table = $('#tung').DataTable({
 		"processing": true,
+		"responsive": false ,
+        "select": {
+            style:    'os',
+			selector: 'td:first-child'
+        },
 		"responsive": {
 			details: {
 				type: 'column',
 				target: 1
 			}
 		},
-        "select": {
-            style:    'os',
-            selector: 'td:first-child'
-        },
-		"columnDefs": [ 
-			{
-				className: 'control',
-				orderable: false,
-				targets: 1
-			},
-			{
-				orderable: false,
-				className: 'select-checkbox',
-				targets:   0
-			}
-		],
+		"columnDefs": [{
+			orderable: false, 
+			className: 'select-checkbox',
+			targets:0 
+		},{
+			className: 'control',
+			orderable: false,
+			targets:1 
+		}],
 		"serverSide": true,
 		"ajax": '/yclhang/data',
 		"dom": 'Bfrtip',
@@ -54,14 +52,25 @@ $(function() {
 				text: 'In mau de nghi tam ung',
 				className: 'btn',
 				action: function(e, dt, node, config){
-					window.location.href = '/bieumau/denghitamung';		
+					var selectedRows = dt.rows( {selected: true}).toArray();
+					var ids=[];
+					selectedRows[0].forEach(function(item){
+						ids.push(dt.rows(item).data().toArray()[0].id);
+					});
+					window.location.href = '/bieumau/denghitamung?arr=' + JSON.stringify(ids);		
 				}
-			}
+			},
+			{
+				text: 'Select none',
+				action: function(e, dt, node, config) {
+					dt.rows().deselect();
+				}
+			}	
 
 		],
 		"columns": [
-			{data: 'check', name: 'check', searchable: false, orderable: false, className: 'dt-center'},
-			{data: 'responsive', name: 'responsive'},
+			{data: 'resp', name: 'resp', searchable: false, orderable: false},
+			{data: 'check', name: 'check'},
 			{data: 'created_at', name: 'created_at'},
 			{data: 'bill', name: 'bill'},
 			{data: 'reason', name: 'reason'},
