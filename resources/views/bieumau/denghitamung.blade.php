@@ -329,11 +329,15 @@ echo number_format($t_tien, 0, '.', ','); ?>
 
 				}	
 				if($htrieu ==2){
-					$ttien.=' '.($number_to_word[$str_number[$i]]. " mươi");
+					if($str_number[$i] == 1){
+						$ttien.=' mười';
+					}else{
+						$ttien.=' '.($number_to_word[$str_number[$i]]. " mươi");
+					}
 				}	
 				if($htrieu ==1){
 					if($str_number[$i] == 0){
-						$ttien .=' ';
+						$ttien .=' triệu';
 					}
 					else{
 						$ttien.=' '.($number_to_word[$str_number[$i]].' triệu');

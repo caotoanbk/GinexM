@@ -80,7 +80,7 @@ $(function() {
 			{data: 'slc40', name: 'slc40', className: 'none'},
 			{data: 'lcont', name: 'lcont', className: 'none'},
 			{data: 'tghung', name: 'tghung'},
-			{data: 'bke', name: 'bke', searchable: false, orderable: false},
+			{data: 'bke', name: 'bke', searchable: false, orderable: false, className: 'none'},
 			{data: 'status', name: 'status', searchable: false, orderable: false},
 			{data: 'cuoc', name: 'cuoc', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none"  },
 			{data: 'nang', name: 'nang', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none" },
@@ -88,7 +88,7 @@ $(function() {
 			{data: 'hquan', name: 'hquan', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none"},
 			{data: 'psinh', name: 'psinh', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none"},
 		],
-		"order": [[2, 'desc']]
+		"order": [[2, 'desc'], [7, 'desc']]
 	});
 
 	$('#myModal').on('show.bs.modal', function(e) {

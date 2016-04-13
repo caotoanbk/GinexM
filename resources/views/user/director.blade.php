@@ -5,8 +5,6 @@
 	<div class='panel-body'>
 		<table id='tung' class='table table-bordered table-condensed nowrap' cellspacing='0' width='100%'>
 			<thead>
-				<th></th>
-				<th></th>
 				<th>Ngay de nghi</th>
 				<th>So booking/bl</th>
 				<th>Ly do tam ung</th>
