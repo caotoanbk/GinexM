@@ -22,7 +22,7 @@ class BieumauController extends Controller
 		if(count($arr) == 0){
 			$today = \Carbon\Carbon::today();
 			$dntung = Dntung::where('created_at','>=',$today)->get();
-			if(!is_null($dntung)){
+			if(count($dntung)>0){
 				return view('bieumau.denghitamung', compact('dntung'));
 				//return "Khong co de nghi tam ung nao hom nay";
 			}else{

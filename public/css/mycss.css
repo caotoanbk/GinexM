@@ -5,3 +5,12 @@
 th.dt-center, td.dt-center {
   text-align: center;
 }
+@media screen and (min-width: 768px) {
+  .modal-lg{
+      width:900px;
+  }
+
+  .modal-sm{
+      width:300px;
+  }
+}

@@ -81,14 +81,14 @@ $(function() {
 			{data: 'lcont', name: 'lcont', className: 'none'},
 			{data: 'tghung', name: 'tghung'},
 			{data: 'bke', name: 'bke', searchable: false, orderable: false, className: 'none'},
-			{data: 'status', name: 'status', searchable: false, orderable: false},
+			{data: 'status', name: 'status',searchable: false, orderable: false},
 			{data: 'cuoc', name: 'cuoc', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none"  },
 			{data: 'nang', name: 'nang', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none" },
 			{data: 'ha', name: 'ha', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none" },
 			{data: 'hquan', name: 'hquan', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none"},
 			{data: 'psinh', name: 'psinh', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none"},
 		],
-		"order": [[2, 'desc'], [7, 'desc']]
+		"order": [[2, 'desc'], [7, 'asc']]
 	});
 
 	$('#myModal').on('show.bs.modal', function(e) {
@@ -220,5 +220,22 @@ $(function() {
 			},
 		});
 		validator.resetForm();
+	});
+	$('#myModal1').on('hidden.bs.modal', function(e){
+		$('input[name=stclai]').val('');
+		var trs = $('#qttu tbody tr').toArray();
+		trs.forEach(function(entry){
+			entry.remove();
+		});
+
+	});
+	$('#them').click(function(e){
+		e.preventDefault();
+		$('tbody#qtoan').append('<tr class="input_fields_wrap"><td class="col-md-5"><input type="text" name="ldo[]" class="form-control"/></td> <td class="col-md-2"><input type="text" name="stien[]" class="form-control"/></td> <td class="col-md-2"><input type="text" name="hdon[]" class="form-control"/></td><td class="col-md-2"><input type="date" name="nchi[]" class="form-control"/></td><td class="text-center col-md-1"><a href="#" id="remove_item" class="text-danger">&times;</a></td></tr>');
+	});
+	$('#qttu').on('click', 'a#remove_item', function(e){
+		e.preventDefault();
+		$(this).parent('td').parent('tr').remove();
+		console.log('Hello world');
 	});
 });
