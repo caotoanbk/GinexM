@@ -1,10 +1,4 @@
 $(function() {
-	$('#message').confirm({
-		title: '',
-		content: 'Gui yeu cau lam hang thanh cong!',
-		autoClose: 'confirm|3000',
-		backgroundDismiss: true,
-	});
 	var $table = $('#tung').DataTable({
 		"processing": true,
 		"responsive": false ,
@@ -32,7 +26,7 @@ $(function() {
 		"dom": 'Bfrtip',
 		"buttons": [
 			{
-				text: 'Yeu cau lam hang',
+				text: 'Làm hàng',
 				className: 'btn',	
 				action: function (e, dt, node, config){
 					$('#myModal').modal('show');
@@ -49,7 +43,7 @@ $(function() {
 				text: 'Print',
 			},	
 			{
-				text: 'In mau de nghi tam ung',
+				text: 'In mẫu đề nghị tạm ứng',
 				className: 'btn',
 				action: function(e, dt, node, config){
 					var selectedRows = dt.rows( {selected: true}).toArray();
@@ -191,31 +185,31 @@ $(function() {
 			},
 			messages: {
 				reason: {
-					required: '<div class="text-danger"><em><small>Ban chua nhap ly do tam ung</small></em></div>'
+					required: '<div class="text-danger"><em><small>Bạn chưa nhập lý do tạm ứng</small></em></div>'
 				},
 				bill: {
-					required: '<div class="text-danger"><em><small>Ban chua nhap so chung tu</small></em></div>'
+					required: '<div class="text-danger"><em><small>Bạn chưa nhập số chứng từ</small></em></div>'
 				},
 				slc20: {
-					required: '<div class="text-danger"><em><small>Ban chua nhap so luong cont 20</small></em></div>'
+					required: '<div class="text-danger"><em><small>Bạn chưa nhập số lượng cont 20</small></em></div>'
 				},
 				slc40: {
-					required: '<div class="text-danger"><em><small>Ban chua nhap so luong cont 40</small></em></div>'
+					required: '<div class="text-danger"><em><small>Bạn chưa nhập số lượng cont 40</small></em></div>'
 				},
 				lcont: {
-					required: '<div class="text-danger"><em><small>Ban chua chon loai cont</small></em></div>'
+					required: '<div class="text-danger"><em><small>Bạn chưa chọn loại cont</small></em></div>'
 				},
 				khang: {
-					required: '<div class="text-danger"><em><small>Ban chua chon kieu hang</small></em></div>'
+					required: '<div class="text-danger"><em><small>Bạn chưa chọn kiểu hàng</small></em></div>'
 				},
 				ttien: {
-					required: '<div class="text-danger"><em><small>Ban chua nhap so tien</small></em></div>'
+					required: '<div class="text-danger"><em><small>Bạn chưa nhập số tiền</small></em></div>'
 				},
 				tghung: {
-					required: '<div class="text-danger"><em><small>Ban chua chon thoi gian hoan ung</small></em></div>'
+					required: '<div class="text-danger"><em><small>Bạn chưa nhập thời gian hoàn ứng</small></em></div>'
 				},
 				bke: {
-					required: '<div class="text-danger"><em><small>Ban chua chon file</small></em></div>'
+					required: '<div class="text-danger"><em><small>Bạn chưa chọn file</small></em></div>'
 				}
 			},
 		});
@@ -231,11 +225,65 @@ $(function() {
 	});
 	$('#them').click(function(e){
 		e.preventDefault();
-		$('tbody#qtoan').append('<tr class="input_fields_wrap"><td class="col-md-5"><input type="text" name="ldo[]" class="form-control"/></td> <td class="col-md-2"><input type="text" name="stien[]" class="form-control"/></td> <td class="col-md-2"><input type="text" name="hdon[]" class="form-control"/></td><td class="col-md-2"><input type="date" name="nchi[]" class="form-control"/></td><td class="text-center col-md-1"><a href="#" id="remove_item" class="text-danger">&times;</a></td></tr>');
+		$('tbody#qtoan').append('<tr class="input_fields_wrap"><td class="col-md-5"><input type="text" name="ldo[]" class="form-control"/></td> <td class="col-md-3"><input type="text" name="stien[]" class="form-control"/></td> <td class="col-md-2"><input type="text" name="hdon[]" class="form-control"/></td><td class="col-md-2"><input type="date" name="nchi[]" class="form-control"/></td><td class="text-center col-md-1"><a href="#" id="remove_item" class="text-danger">&times;</a></td></tr>');
+
+		$('input[name="stien[]"]').autoNumeric('init', {
+			aSep:'.',
+			aDec: ',',
+			aSign: ' VND',
+			pSign: 's',
+			aPad: false,	
+		});
 	});
 	$('#qttu').on('click', 'a#remove_item', function(e){
 		e.preventDefault();
 		$(this).parent('td').parent('tr').remove();
-		console.log('Hello world');
+	});
+	$('#myModal1').on('show.bs.modal', function(e){
+		id = $(e.relatedTarget).data('id'); 
+		$('input[name="stclai"]').autoNumeric('init', {
+			aSep:'.',
+			aDec: ',',
+			aSign: ' VND',
+			pSign: 's',
+			aPad: false,	
+		});
+		//jquery validation
+		var validator = $('#content1').validate({
+			rules: {
+				stclai: {
+					required: true,
+				},
+			},
+			messages: {
+				stclai: {
+					required: '<div class="text-danger"><em><small>Bạn chưa nhập số tiền</small></em></div>'
+				},
+			},
+			submitHandler: function(form, event){
+				event.preventDefault();
+				data = $(form).serialize();
+				$.ajax({
+					traditional: true,
+					url: '/quyet-toan/'+id,
+					method: 'post',
+					data: data,
+					success: function(data){
+						$.alert({
+							title: '',
+							content: 'Gửi thông tin quyết toán thành công',
+							autoClose: 'confirm|3000',
+							backgroundDismiss: true,
+						});
+						$('#myModal1').modal('hide');
+
+					},
+					error: function(data){
+						console.log('error');
+					}
+				});
+			}
+		});
+		validator.resetForm();
 	});
 });

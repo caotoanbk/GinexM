@@ -26,3 +26,4 @@ Route::get('/bieumau/denghitamung', 'BieumauController@denghitamung');
 Route::get('/secrectary/data', 'DatatablesController@secrectaryData');
 Route::get('/director/data', 'DatatablesController@directorData');
 Route::get('/director/duyet', 'DirectorController@duyet');
+Route::post('/quyet-toan/{id}', 'ProponentController@qtoan');

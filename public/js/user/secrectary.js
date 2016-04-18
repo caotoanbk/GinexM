@@ -1,10 +1,4 @@
 $(function() {
-	$('#message').confirm({
-		title: '',
-		content: 'Gui yeu cau lam hang thanh cong!',
-		autoClose: 'confirm|3000',
-		backgroundDismiss: true,
-	});
 	var $table = $('#tung').DataTable({
 		"processing": true,
 		"responsive": true,

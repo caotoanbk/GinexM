@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Requests\YclhangRequest;
 use App\Yclhang;
 use App\Dntung;
+use App\Quyettoan;
 
 class ProponentController extends Controller
 {
@@ -28,5 +29,23 @@ class ProponentController extends Controller
 		$request->file('bke')->move(base_path().'/public/de_nghi_tam_ung/'.$my.'/', $fileName);
 		return redirect('/home');
 
+	}
+
+	public function qtoan($id, Request $request)
+	{
+		$stclai = $request->get('stclai');
+		$ldo = $request->input('ldo');
+		$stien = $request->input('stien');
+		$hdon = $request->input('hdon');
+		$nchi = $request->input('nchi');
+		for ($i = 0; $i < count($ldo); $i++) {
+			$qtoan = new Quyettoan;
+			$qtoan->dntung_id = $id;
+			$qtoan->ldo = $ldo[$i];
+			$qtoan->stien = $stien[$i];
+			$qtoan->hdon = $hdon[$i];
+			$qtoan->nchi = $nchi[$i];
+			$qtoan->save();
+		}
 	}
 }

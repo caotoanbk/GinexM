@@ -1,27 +1,27 @@
 <div id='message' class='hidden'>&nbsp;</div>
 <section class='panel panel-primary'>
 	<div class='panel-heading text-center'>
-		<h4>DE NGHI TAM UNG THANG {{ date("m/Y")}}</h4>
+		<h4>ĐỀ NGHỊ TẠM ỨNG THÁNG {{ date("m/Y")}}</h4>
 	</div>
 	<div class='panel-body'>
 		<table id='tung' class='table table-bordered table-striped table-condensed table-hover nowrap dt-responsive' cellspacing='0' width='100%'>
 			<thead>
-				<th>Ngay de nghi</th>
-				<th>So booking/bl</th>
-				<th>Ly do tam ung</th>
-				<th>So tien</th>
-				<th>Xuat/Nhap</th>
+				<th>Ngày đề nghị</th>
+				<th>Số booking/bl</th>
+				<th>Lý do tạm ứng</th>
+				<th>Số tiền</th>
+				<th>Xuất/Nhập</th>
 				<th>Cont 20</th>
 				<th>Cont 40</th>
-				<th>Loai cont</th>
-				<th>Thoi gian hoan ung</th>
-				<th>Ban ke</th>
-				<th>Tinh trang</th>
-				<th>Cuoc</th>
-				<th>Nang</th>
-				<th>Ha</th>
-				<th>Ky HQ giam sat</th>
-				<th>Phat sinh(neu co)</th>
+				<th>Loại cont</th>
+				<th>Thời gian hoàn ứng</th>
+				<th>Bản kê</th>
+				<th>Tình trạng</th>
+				<th>Cược</th>
+				<th>Nâng</th>
+				<th>Hạ</th>
+				<th>Ký HQ giám sát</th>
+				<th>Phát sinh (nếu có)</th>
 			</thead>
 		</table>
 	</div>

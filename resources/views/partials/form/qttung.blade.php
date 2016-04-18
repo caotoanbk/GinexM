@@ -1,4 +1,4 @@
-{!! Form::open(array('url' => '/make-goods', 'method' => 'post', 'class' => 'form-horizontal', 'files' => true, 'name' => 'content', 'id' => 'content')) !!}
+{!! Form::open(array('url' => '/quyet-toan', 'method' => 'post', 'class' => 'form-horizontal', 'files' => true, 'name' => 'content', 'id' => 'content1')) !!}
 <div class="form-group required">
 	{!! Form::label('stclai', 'So tien', array('class' => 'col-md-4 control-label')) !!}
 	<div class='col-md-4'>{!! Form::text('stclai', null, array('class' => 'form-control', 'id' => 'stclai'))!!}</div>

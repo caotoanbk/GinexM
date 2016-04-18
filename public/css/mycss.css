@@ -14,3 +14,6 @@ th.dt-center, td.dt-center {
       width:300px;
   }
 }
+a#qhan {
+  color: red !important;
+}

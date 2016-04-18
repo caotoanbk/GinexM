@@ -25,12 +25,16 @@ class DatatablesController extends Controller
 				return '<small class="text-success"><em>Da hoan thanh</em></small>';
 			}
 			if($approve){
-				return '<small class="text-info"><em><a data-toggle="modal" data-target="#myModal1">Chua quyet toan</a></em></small>';
+				if(Carbon::now()->gt(Carbon::createFromFormat('d/m/Y', $yclhang->tghung))){
+					return '<small class="text-danger"><em><a id="qhan" data-toggle="modal" data-target="#myModal1" href="#" data-id="'.$yclhang->id.'">Qua han quyet toan</a></em></small>';
+				} else {
+					return '<small class="text-primary"><em><a data-toggle="modal" data-target="#myModal1" href="#" data-id="'.$yclhang->id.'">Chua quyet toan</a></em></small>';
+				}
 			}
 			if($check){
-				return '<small class="text-danger"><em>Chua duyet</em></small>';
+				return '<small class="text-warning"><em>Chua duyet</em></small>';
 			}
-			return '<small class="text-warning"><em>Chua viet phieu chi</em></small>';	
+			return '<small class="text-muted"><em>Chua viet phieu chi</em></small>';	
 
 		})->addColumn('check', function($yclhang){return '';})->addColumn('resp', function($yclhang){return '';})->make(true);
 	}
