@@ -23,4 +23,8 @@ class Dntung extends Model
 	{
 		return Carbon::parse($date)->format('d/m/Y');
 	}
+	public function qtoans()
+	{
+		return $this->hasMany('App\Quyettoan', 'dntung_id');
+	}
 }

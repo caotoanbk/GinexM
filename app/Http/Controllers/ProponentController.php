@@ -42,10 +42,17 @@ class ProponentController extends Controller
 			$qtoan = new Quyettoan;
 			$qtoan->dntung_id = $id;
 			$qtoan->ldo = $ldo[$i];
+			$qtoan->stclai = $stclai;
 			$qtoan->stien = $stien[$i];
 			$qtoan->hdon = $hdon[$i];
 			$qtoan->nchi = $nchi[$i];
 			$qtoan->save();
 		}
+	}
+	public function qtoanData($id)
+	{
+		$dntu = Dntung::findOrFail($id);
+		$qtoans = $dntu->qtoans->toArray();
+		return $qtoans;
 	}
 }

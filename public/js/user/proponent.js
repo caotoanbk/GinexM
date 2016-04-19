@@ -248,6 +248,23 @@ $(function() {
 			pSign: 's',
 			aPad: false,	
 		});
+		$.ajax({
+			url: '/qt-tam-ung/'+id,
+			method: 'get',
+			success: function(data){
+				console.log(data);
+				if(data.length > 0){
+					$('input[name="stclai"]').val(data[0].stclai);
+					data.forEach(function(item){
+					$('tbody#qtoan').append('<tr class="input_fields_wrap"><td class="col-md-5">'+item.ldo+'</td> <td class="col-md-3" id="stien">'+item.stien+'</td> <td class="col-md-2">'+item.hdon+'</td><td class="col-md-2">'+item.nchi+'</td><td class="text-center col-md-1"><a href="#" id="remove_item" class="text-danger">&times;</a></td></tr>');
+					});
+				}
+			},
+			error: function(data){
+				console.log('Error');
+			}
+
+		});
 		//jquery validation
 		var validator = $('#content1').validate({
 			rules: {
