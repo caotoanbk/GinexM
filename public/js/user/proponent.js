@@ -1,4 +1,5 @@
 $(function() {
+	var sttu, stdchi;
 	var $table = $('#tung').DataTable({
 		"processing": true,
 		"responsive": false ,
@@ -216,7 +217,6 @@ $(function() {
 		validator.resetForm();
 	});
 	$('#myModal1').on('hidden.bs.modal', function(e){
-		$('input[name=stclai]').val('');
 		var trs = $('#qttu tbody tr').toArray();
 		trs.forEach(function(entry){
 			entry.remove();
@@ -226,7 +226,7 @@ $(function() {
 	$('#them').click(function(e){
 		e.preventDefault();
 		$('tbody#qtoan').append('<tr class="input_fields_wrap"><td class="col-md-5"><input type="text" name="ldo[]" class="form-control"/></td> <td class="col-md-3"><input type="text" name="stien[]" class="form-control"/></td> <td class="col-md-2"><input type="text" name="hdon[]" class="form-control"/></td><td class="col-md-2"><input type="date" name="nchi[]" class="form-control"/></td><td class="text-center col-md-1"><a href="#" id="remove_item" class="text-danger">&times;</a></td></tr>');
-
+		
 		$('input[name="stien[]"]').autoNumeric('init', {
 			aSep:'.',
 			aDec: ',',
@@ -234,12 +234,18 @@ $(function() {
 			pSign: 's',
 			aPad: false,	
 		});
-	});
-	$('#qttu').on('click', 'a#remove_item', function(e){
-		e.preventDefault();
-		$(this).parent('td').parent('tr').remove();
+		$('input[name="stien[]"]').on('change', function(e){
+			var arr = $('input[name="stien[]"]').toArray();
+			var stclai = sttu;
+			arr.forEach(function(item){
+				stclai = stclai - parseInt($(item).val().replace(/\./g, ''), 10);	
+			});
+			var value1 = stclai.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+			$('span#stclai').text(value1+" đ");
+		});
 	});
 	$('#myModal1').on('show.bs.modal', function(e){
+		stdchi=0;
 		id = $(e.relatedTarget).data('id'); 
 		$('input[name="stclai"]').autoNumeric('init', {
 			aSep:'.',
@@ -248,15 +254,22 @@ $(function() {
 			pSign: 's',
 			aPad: false,	
 		});
+		$('#qttu').on('click', 'a#remove_item', function(e){
+			e.preventDefault();
+			$(this).parent('td').parent('tr').remove();
+		});
 		$.ajax({
 			url: '/qt-tam-ung/'+id,
 			method: 'get',
 			success: function(data){
-				console.log(data);
-				if(data.length > 0){
-					$('input[name="stclai"]').val(data[0].stclai);
-					data.forEach(function(item){
-					$('tbody#qtoan').append('<tr class="input_fields_wrap"><td class="col-md-5">'+item.ldo+'</td> <td class="col-md-3" id="stien">'+item.stien+'</td> <td class="col-md-2">'+item.hdon+'</td><td class="col-md-2">'+item.nchi+'</td><td class="text-center col-md-1"><a href="#" id="remove_item" class="text-danger">&times;</a></td></tr>');
+				sttu = data['dntung'].ttien;
+				$('span#ldtu').text(data['dntung'].reason);
+				var value = (data['dntung'].ttien).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+				$('span#sttu').text(value+' đ');
+				$('span#ntu').text(data['dntung'].created_at);
+				if(data['qtoan'].length > 0){
+					data['qtoan'].forEach(function(item){
+					$('tbody#qtoan').append('<tr class="input_fields_wrap"><td class="col-md-5">'+item.ldo+'</td> <td class="col-md-3" id="stien">'+item.stien+'</td> <td class="col-md-2">'+item.hdon+'</td><td class="col-md-2">'+item.nchi+'</td><td class="text-center col-md-1"><a href="#" id="remove_item_ajax" data-id = "'+item.id+'" class="text-danger">&times;</a></td></tr>');
 					});
 				}
 			},
@@ -267,16 +280,6 @@ $(function() {
 		});
 		//jquery validation
 		var validator = $('#content1').validate({
-			rules: {
-				stclai: {
-					required: true,
-				},
-			},
-			messages: {
-				stclai: {
-					required: '<div class="text-danger"><em><small>Bạn chưa nhập số tiền</small></em></div>'
-				},
-			},
 			submitHandler: function(form, event){
 				event.preventDefault();
 				data = $(form).serialize();
@@ -302,5 +305,20 @@ $(function() {
 			}
 		});
 		validator.resetForm();
+		$('#qttu').on('click', 'a#remove_item_ajax', function(e){
+			e.preventDefault();
+			$tempt = $(this);
+			qtid = $(this).data('id');
+			$.ajax({
+				url: '/delete-quyet-toan/'+id+'/'+qtid,
+				method: 'get',
+				success: function(data){
+					$tempt.parent('td').parent('tr').remove();
+				},
+				error: function(data){
+					console.log('Error');
+				}
+			});
+		});
 	});
 });

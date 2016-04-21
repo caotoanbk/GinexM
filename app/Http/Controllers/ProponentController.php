@@ -33,7 +33,7 @@ class ProponentController extends Controller
 
 	public function qtoan($id, Request $request)
 	{
-		$stclai = $request->get('stclai');
+		$stclai = 0;
 		$ldo = $request->input('ldo');
 		$stien = $request->input('stien');
 		$hdon = $request->input('hdon');
@@ -53,6 +53,13 @@ class ProponentController extends Controller
 	{
 		$dntu = Dntung::findOrFail($id);
 		$qtoans = $dntu->qtoans->toArray();
-		return $qtoans;
+
+		return ['qtoan' => $qtoans, 'dntung' => $dntu];
+	}
+	public function deleteQtoan($tuid, $qtid)
+	{
+		$dntung = Dntung::findOrFail($tuid);	
+		$qtoan = $dntung->qtoans->find($qtid);
+		$qtoan->delete();
 	}
 }

@@ -28,3 +28,4 @@ Route::get('/director/data', 'DatatablesController@directorData');
 Route::get('/director/duyet', 'DirectorController@duyet');
 Route::post('/quyet-toan/{id}', 'ProponentController@qtoan');
 Route::get('/qt-tam-ung/{id}', 'ProponentController@qtoanData');
+Route::get('/delete-quyet-toan/{tuid}/{qtid}', 'ProponentController@deleteQtoan');
