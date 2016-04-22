@@ -1,5 +1,5 @@
 $(function() {
-	var sttu, stdchi;
+	var sttu, stclai, stclaitemp;
 	var $table = $('#tung').DataTable({
 		"processing": true,
 		"responsive": false ,
@@ -236,42 +236,50 @@ $(function() {
 		});
 		$('input[name="stien[]"]').on('change', function(e){
 			var arr = $('input[name="stien[]"]').toArray();
-			var stclai = sttu;
-			arr.forEach(function(item){
-				stclai = stclai - parseInt($(item).val().replace(/\./g, ''), 10);	
-			});
-			var value1 = stclai.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+			stclaitemp = stclai;
+			if(typeof arr !== 'undefined' && arr.length>0){
+				arr.forEach(function(item){
+					if($(item).val()){
+						stclaitemp = stclaitemp - parseInt($(item).val().replace(/\./g, ''), 10);	
+					}
+				});
+			}
+			var value1 = stclaitemp.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
 			$('span#stclai').text(value1+" đ");
 		});
 	});
 	$('#myModal1').on('show.bs.modal', function(e){
-		stdchi=0;
 		id = $(e.relatedTarget).data('id'); 
-		$('input[name="stclai"]').autoNumeric('init', {
-			aSep:'.',
-			aDec: ',',
-			aSign: ' VND',
-			pSign: 's',
-			aPad: false,	
-		});
 		$('#qttu').on('click', 'a#remove_item', function(e){
 			e.preventDefault();
+			if($('input[name="stien[]"]').toArray().length == 1){
+
+				var value1 = stclai.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+				$('span#stclai').text(value1+" đ");
+			}
 			$(this).parent('td').parent('tr').remove();
+			$('input[name="stien[]"]').trigger('change');
 		});
 		$.ajax({
 			url: '/qt-tam-ung/'+id,
 			method: 'get',
 			success: function(data){
 				sttu = data['dntung'].ttien;
+				
+				stclai=sttu;
 				$('span#ldtu').text(data['dntung'].reason);
 				var value = (data['dntung'].ttien).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
 				$('span#sttu').text(value+' đ');
 				$('span#ntu').text(data['dntung'].created_at);
 				if(data['qtoan'].length > 0){
 					data['qtoan'].forEach(function(item){
-					$('tbody#qtoan').append('<tr class="input_fields_wrap"><td class="col-md-5">'+item.ldo+'</td> <td class="col-md-3" id="stien">'+item.stien+'</td> <td class="col-md-2">'+item.hdon+'</td><td class="col-md-2">'+item.nchi+'</td><td class="text-center col-md-1"><a href="#" id="remove_item_ajax" data-id = "'+item.id+'" class="text-danger">&times;</a></td></tr>');
+						var value1 = item.stien.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+					stclai=stclai -item.stien;	
+					$('tbody#qtoan').append('<tr class="input_fields_wrap"><td class="col-md-5">'+item.ldo+'</td> <td class="col-md-3" id="stien">'+value1+' đ</td> <td class="col-md-2">'+item.hdon+'</td><td class="col-md-2">'+item.nchi+'</td><td class="text-center col-md-1"><a href="#" id="remove_item_ajax" data-id = "'+item.id+'" class="text-danger">&times;</a></td></tr>');
 					});
 				}
+				var span_stclai = stclai.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+				$('span#stclai').text(span_stclai+' đ');
 			},
 			error: function(data){
 				console.log('Error');
@@ -308,11 +316,16 @@ $(function() {
 		$('#qttu').on('click', 'a#remove_item_ajax', function(e){
 			e.preventDefault();
 			$tempt = $(this);
+			var chi = $(this).parent('td').parent('tr').find('td#stien').html();
+			chi = chi.replace(/\D/g,'').replace(',', '', chi);
 			qtid = $(this).data('id');
 			$.ajax({
 				url: '/delete-quyet-toan/'+id+'/'+qtid,
 				method: 'get',
 				success: function(data){
+					stclai += parseInt(chi);
+					var span_stclai = stclai.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+					$('span#stclai').text(span_stclai +' đ');
 					$tempt.parent('td').parent('tr').remove();
 				},
 				error: function(data){

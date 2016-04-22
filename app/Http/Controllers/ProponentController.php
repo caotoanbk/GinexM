@@ -43,7 +43,7 @@ class ProponentController extends Controller
 			$qtoan->dntung_id = $id;
 			$qtoan->ldo = $ldo[$i];
 			$qtoan->stclai = $stclai;
-			$qtoan->stien = $stien[$i];
+			$qtoan->stien = str_replace('.','',$stien[$i]);
 			$qtoan->hdon = $hdon[$i];
 			$qtoan->nchi = $nchi[$i];
 			$qtoan->save();
