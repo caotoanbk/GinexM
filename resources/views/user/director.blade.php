@@ -1,3 +1,4 @@
+@include('partials.modal.director_qttung')
 <section class='panel panel-primary'>
 	<div class='panel-heading text-center'>
 <h4>ĐỀ NGHỊ TẠM ỨNG THÁNG {{ date("m/Y")}}</h4>

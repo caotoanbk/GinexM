@@ -21,4 +21,8 @@ class DirectorController extends Controller
 			return 'Success';
 		}
 	}
+	public function hoanthanh()
+	{
+		return 'success';
+	}
 }

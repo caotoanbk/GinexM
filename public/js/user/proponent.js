@@ -156,33 +156,15 @@ $(function() {
 		//jquery validation
 		var validator = $('#content').validate({
 			rules: {
-				reason: {
-					required: true,
-				},
-				bill: {
-					required: true,
-				},
-				slc20: {
-					required: true,
-				},
-				slc40: {
-					required: true,
-				},
-				lcont: {
-					required: true,
-				},
-				khang: {
-					required: true,
-				},
-				ttien: {
-					required: true,
-				},
-				tghung: {
-					required: true,
-				},
-				bke: {
-					required: true,
-				}
+				reason: { required: true, },
+				bill: { required: true, },
+				slc20: { required: true, },
+				slc40: { required: true, },
+				lcont: { required: true, },
+				khang: { required: true, },
+				ttien: { required: true, },
+				tghung: { required: true, },
+				bke: { required: true, }
 			},
 			messages: {
 				reason: {
@@ -225,7 +207,7 @@ $(function() {
 	});
 	$('#them').click(function(e){
 		e.preventDefault();
-		$('tbody#qtoan').append('<tr class="input_fields_wrap"><td class="col-md-5"><input type="text" name="ldo[]" class="form-control"/></td> <td class="col-md-3"><input type="text" name="stien[]" class="form-control"/></td> <td class="col-md-2"><input type="text" name="hdon[]" class="form-control"/></td><td class="col-md-2"><input type="date" name="nchi[]" class="form-control"/></td><td class="text-center col-md-1"><a href="#" id="remove_item" class="text-danger">&times;</a></td></tr>');
+		$('tbody#qtoan').append('<tr class="input_fields_wrap"><td class="col-md-5"><input type="text" name="ldo[]" class="form-control"/></td> <td class="col-md-2"><input type="text" name="stien[]" class="form-control"/></td> <td class="col-md-2"><input type="text" name="hdon[]" class="form-control"/></td><td class="col-md-2"><select name="ccho[]" class="form-control"><option value="ginex">Ginex</option><option value="custom">Khach hang</option></select></td><td class="col-md-2"><input type="date" name="nchi[]" class="form-control"/></td><td class="text-center col-md-1"><a href="#" id="remove_item" class="text-danger">&times;</a></td></tr>');
 		
 		$('input[name="stien[]"]').autoNumeric('init', {
 			aSep:'.',
@@ -275,7 +257,7 @@ $(function() {
 					data['qtoan'].forEach(function(item){
 						var value1 = item.stien.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
 					stclai=stclai -item.stien;	
-					$('tbody#qtoan').append('<tr class="input_fields_wrap"><td class="col-md-5">'+item.ldo+'</td> <td class="col-md-3" id="stien">'+value1+' đ</td> <td class="col-md-2">'+item.hdon+'</td><td class="col-md-2">'+item.nchi+'</td><td class="text-center col-md-1"><a href="#" id="remove_item_ajax" data-id = "'+item.id+'" class="text-danger">&times;</a></td></tr>');
+					$('tbody#qtoan').append('<tr class="input_fields_wrap"><td class="col-md-5">'+item.ldo+'</td> <td class="col-md-2" id="stien">'+value1+' đ</td> <td class="col-md-2">'+item.hdon+'</td><td class="col-md-2"><select name="ccho[]" class="form-control"><option value="ginex">Ginex</option><option value="custom">Khach hang</option></select></td><td class="col-md-2">'+item.nchi+'</td><td class="text-center col-md-1"><a href="#" id="remove_item_ajax" data-id = "'+item.id+'" class="text-danger">&times;</a></td></tr>');
 					});
 				}
 				var span_stclai = stclai.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
@@ -310,7 +292,7 @@ $(function() {
 						console.log('error');
 					}
 				});
-			}
+			},
 		});
 		validator.resetForm();
 		$('#qttu').on('click', 'a#remove_item_ajax', function(e){

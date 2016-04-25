@@ -1,4 +1,7 @@
 $(function() {
+	function myFormatCurrency (money) {
+		return	money.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+' đ';
+	}
 	var $table = $('#tung').DataTable({
 		"processing": true,
 		"responsive": false ,
@@ -61,4 +64,68 @@ $(function() {
 			}
 		});
 	});
+	$('#myModal1').on('hidden.bs.modal', function(e){
+		$('#myModal1 #chapnhan').prop('disabled', false);
+		var trs = $('#qttu tbody tr').toArray();
+		trs.forEach(function(entry){
+			entry.remove();
+		});
+
+	});
+	$('#myModal1').on('show.bs.modal', function(e){
+		var id = $(e.relatedTarget).data('id');
+		$.ajax({
+			url: '/qt-tam-ung/'+id,
+			method: 'get',
+			success: function(data){
+				sttu = data['dntung'].ttien;
+				
+				stclai=sttu;
+				$('span#ldtu').text(data['dntung'].reason);
+				var value = (data['dntung'].ttien).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+				$('span#sttu').text(value+' đ');
+				$('span#ntu').text(data['dntung'].created_at);
+				if(data['qtoan'].length > 0){
+					var stchdon=0
+					data['qtoan'].forEach(function(item){
+					var value1 = item.stien.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+					if(item.hdon){
+						stchdon += item.stien;
+					}
+					stclai=stclai -item.stien;	
+					$('tbody#qtoan').append('<tr class="input_fields_wrap"><td class="col-md-5">'+item.ldo+'</td> <td class="col-md-3" id="stien">'+value1+' đ</td> <td class="col-md-2">'+item.hdon+'</td><td class="col-md-2">'+item.nchi+'</td></tr>');
+					});
+					$('tbody#qtoan').append('<tr class="text-center"><td colspan="4"><em>Tong so tien da chi:&nbsp; <strong>'+myFormatCurrency(sttu-stclai)+' </strong></em></td></tr>');
+					$('tbody#qtoan').append('<tr class="text-center"><td colspan="4"><em>So tien co hoa don:&nbsp; <strong>'+myFormatCurrency(stchdon)+' </strong></em>&nbsp;&nbsp;&nbsp;<em>So tien khong hoa don:&nbsp; <strong>'+myFormatCurrency(sttu-stclai-stchdon)+' </strong></em></td></tr>');
+					$('tbody#qtoan').append('<tr class="text-center"><td colspan="4"><em>So tien chi ho khach hang:&nbsp; <strong>'+myFormatCurrency(1000)+' </strong></em></td></tr>');
+				}else{
+					$('tbody#qtoan').append('<tr class="text-center"><td colspan="4"><em>Chua co thong tin ve cac khoan chi</em></td></tr>');
+					$('#myModal1 #chapnhan').prop('disabled', true);
+				}
+				var span_stclai = stclai.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+				$('span#stclai').text(span_stclai+' đ');
+			},
+			error: function(data){
+				console.log('Error');
+			}
+		});
+		$('#myModal1 #chapnhan').on('click', function(e){
+			e.preventDefault();
+			$.ajax({
+				url: '/hoan-thanh/'+id,
+				type: 'get',
+				success: function(data){
+					$('#myModal1').modal('hide');
+				},
+				error: function(data){
+					alert('Error');
+				}
+			});
+		});
+	});
+
+
+
+
+
 });
