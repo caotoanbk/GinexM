@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Dntung;
 
 class DirectorController extends Controller
 {
@@ -21,8 +22,10 @@ class DirectorController extends Controller
 			return 'Success';
 		}
 	}
-	public function hoanthanh()
+	public function hoanthanh($id)
 	{
-		return 'success';
+		$dntu = Dntung::findOrFail($id);
+		$dntu->done=true;
+		$dntu->save();
 	}
 }

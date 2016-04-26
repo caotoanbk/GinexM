@@ -27,6 +27,7 @@ class ProponentController extends Controller
 		$yc->save();
 		$fileName = $yc->id.'.'.$request->file('bke')->getClientOriginalExtension();
 		$request->file('bke')->move(base_path().'/public/de_nghi_tam_ung/'.$my.'/', $fileName);
+		\Session::flash('flash_message', 'Dang thong tin yeu cau lam hang thanh cong');
 		return redirect('/home');
 
 	}
@@ -38,11 +39,13 @@ class ProponentController extends Controller
 		$stien = $request->input('stien');
 		$hdon = $request->input('hdon');
 		$nchi = $request->input('nchi');
+		$ccho = $request->input('ccho');
 		for ($i = 0; $i < count($ldo); $i++) {
 			$qtoan = new Quyettoan;
 			$qtoan->dntung_id = $id;
 			$qtoan->ldo = $ldo[$i];
 			$qtoan->stclai = $stclai;
+			$qtoan->chicho = $ccho[$i];
 			$qtoan->stien = str_replace('.','',$stien[$i]);
 			$qtoan->hdon = $hdon[$i];
 			$qtoan->nchi = $nchi[$i];

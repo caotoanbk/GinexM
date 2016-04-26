@@ -4,8 +4,10 @@
 		<h4>ĐỀ NGHỊ TẠM ỨNG THÁNG {{ date("m/Y")}}</h4>
 	</div>
 	<div class='panel-body'>
-		<table id='tung' class='table table-bordered table-striped table-condensed table-hover nowrap dt-responsive' cellspacing='0' width='100%'>
+		<table id='tung' class='table table-bordered table-condensed nowrap dt-responsive' cellspacing='0' width='100%'>
 			<thead>
+				<th></th>
+				<th></th>
 				<th>Ngày đề nghị</th>
 				<th>Số booking/bl</th>
 				<th>Lý do tạm ứng</th>

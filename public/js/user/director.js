@@ -52,7 +52,8 @@ $(function() {
 		],
 		"order": [[0, 'desc']]
 	});
-	$('#tung').on('click', 'button.duyet', function(e){
+	$('#tung').on('click', 'a.duyet', function(e){
+		e.preventDefault();
 		var id = $(this).data('id');
 		$.ajax({
 			url: '/director/duyet?id='+id,
@@ -86,20 +87,24 @@ $(function() {
 				$('span#sttu').text(value+' đ');
 				$('span#ntu').text(data['dntung'].created_at);
 				if(data['qtoan'].length > 0){
-					var stchdon=0
+					var stchdon=0;
+					var stccho_ginex = 0;
 					data['qtoan'].forEach(function(item){
 					var value1 = item.stien.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
 					if(item.hdon){
 						stchdon += item.stien;
 					}
+					if(item.chicho == 'Ginex'){
+						stccho_ginex += item.stien;
+					}
 					stclai=stclai -item.stien;	
-					$('tbody#qtoan').append('<tr class="input_fields_wrap"><td class="col-md-5">'+item.ldo+'</td> <td class="col-md-3" id="stien">'+value1+' đ</td> <td class="col-md-2">'+item.hdon+'</td><td class="col-md-2">'+item.nchi+'</td></tr>');
+					$('tbody#qtoan').append('<tr class="input_fields_wrap"><td class="col-md-4">'+item.ldo+'</td> <td class="col-md-2" id="stien">'+value1+' đ</td> <td class="col-md-2">'+item.hdon+'</td><td class="col-md-2">'+item.chicho+'</td><td class="col-md-2">'+item.nchi+'</td></tr>');
 					});
-					$('tbody#qtoan').append('<tr class="text-center"><td colspan="4"><em>Tong so tien da chi:&nbsp; <strong>'+myFormatCurrency(sttu-stclai)+' </strong></em></td></tr>');
-					$('tbody#qtoan').append('<tr class="text-center"><td colspan="4"><em>So tien co hoa don:&nbsp; <strong>'+myFormatCurrency(stchdon)+' </strong></em>&nbsp;&nbsp;&nbsp;<em>So tien khong hoa don:&nbsp; <strong>'+myFormatCurrency(sttu-stclai-stchdon)+' </strong></em></td></tr>');
-					$('tbody#qtoan').append('<tr class="text-center"><td colspan="4"><em>So tien chi ho khach hang:&nbsp; <strong>'+myFormatCurrency(1000)+' </strong></em></td></tr>');
+					$('tbody#qtoan').append('<tr class="text-center"><td colspan="5"><em>Tong so tien da chi:&nbsp; <strong>'+myFormatCurrency(sttu-stclai)+' </strong></em></td></tr>');
+					$('tbody#qtoan').append('<tr class="text-center"><td colspan="5"><em>So tien co hoa don:&nbsp; <strong>'+myFormatCurrency(stchdon)+' </strong></em>&nbsp;&nbsp;&nbsp;<em>So tien khong hoa don:&nbsp; <strong>'+myFormatCurrency(sttu-stclai-stchdon)+' </strong></em></td></tr>');
+					$('tbody#qtoan').append('<tr class="text-center"><td colspan="5"><em>So tien chi cho Ginex:&nbsp; <strong>'+myFormatCurrency(stccho_ginex)+' </strong></em>&nbsp;&nbsp;&nbsp;<em>So tien chi ho khach hang:&nbsp; <strong>'+myFormatCurrency(sttu-stclai-stccho_ginex)+' </strong></em></td></tr>');
 				}else{
-					$('tbody#qtoan').append('<tr class="text-center"><td colspan="4"><em>Chua co thong tin ve cac khoan chi</em></td></tr>');
+					$('tbody#qtoan').append('<tr class="text-center"><td colspan="5"><em>Chua co thong tin ve cac khoan chi</em></td></tr>');
 					$('#myModal1 #chapnhan').prop('disabled', true);
 				}
 				var span_stclai = stclai.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
@@ -109,13 +114,19 @@ $(function() {
 				console.log('Error');
 			}
 		});
-		$('#myModal1 #chapnhan').on('click', function(e){
+		$('#myModal1 #chapnhan').off('click').on('click', function(e){
 			e.preventDefault();
 			$.ajax({
 				url: '/hoan-thanh/'+id,
 				type: 'get',
 				success: function(data){
 					$('#myModal1').modal('hide');
+					$.alert({
+						title: 'Chap nhan quyet toan thanh cong',
+						autoClose: 'confirm|3000',
+						backgroundDismiss: true,
+					});
+					$table.ajax.reload();
 				},
 				error: function(data){
 					alert('Error');

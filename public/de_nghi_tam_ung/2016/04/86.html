@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>phieu chi</title>
+  <title>Phiếu thu</title>
   <meta name="generator" content="Google Web Designer 1.5.4.0113">
   <style type="text/css" id="gwd-text-style">
     p {
@@ -95,10 +95,10 @@
       text-align: left;
       transform-origin: 92.5px -123.5px 0px;
       transform-style: preserve-3d;
-      left: 28px;
-      top: 115px;
       width: 710px;
       height: 102px;
+      left: 28px;
+      top: 115px;
     }
     .gwd-p-3qv7 {
       position: absolute;
@@ -132,7 +132,7 @@
       text-align: center;
       color: rgb(0, 0, 0);
       font-size: 14px;
-      left: 363px;
+      left: 631px;
       top: 258px;
     }
     .gwd-p-x9yo {
@@ -158,8 +158,8 @@
       height: 40px;
       transform-origin: -463px 27.5px 0px;
       font-size: 14px;
-      left: 633px;
-      top: 258px;
+      left: 360px;
+      top: 259px;
     }
     .gwd-p-72v6 {
       position: absolute;
@@ -266,79 +266,25 @@
 <body style="">
   <p class="gwd-p-1fzi"><span class="gwd-span-bv79">Đơn vị</span>:....................
     <br class=""><span class="gwd-span-vube">Địa chỉ</span>:....................</p>
-  <p class="gwd-p-1s2v">PHIẾU CHI
-    <br class=""><span class="gwd-span-xyzw">Ngày {{ date('d') }} tháng {{ date('m') }} năm {{ date('Y') }}</span>
+  <p class="gwd-p-1s2v">PHIẾU THU&nbsp;
+    <br class=""><span class="gwd-span-xyzw">Ngày........tháng.........năm ............</span>
     <br class="">
   </p>
   <p class="gwd-p-hunf">Quyển số:...........
     <br class="">Số:......................
     <br class="">NỢ:.....................
     <br class="">CÓ:.....................</p>
-  <p class="gwd-p-a9b6"><span class="gwd-span-1oih">Mẫu số: 02 - TT</span>
+  <p class="gwd-p-a9b6"><span class="gwd-span-1oih">Mẫu số: 01 - TT</span>
     <br class="">(Ban hành theo thông tư số 200/2014/TT-BTC ngày 22/12/2014 của BTC)</p>
-  <p class="gwd-p-15jr"><span class="gwd-span-14gy">Họ và tên người nhận tiền</span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ \Auth::user()->name }}
-    <br class=""><span class="gwd-span-tngb">Địa chỉ</span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTCP đầu tư Ginex
-	<br class=""><span class="gwd-span-1xdw">Lý do chi:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php $tong = 0;?>@foreach ($dntungs as $dntung)<?php $tong+=$dntung->ttien?> {{ $dntung->reason }} ({{ number_format($dntung->ttien, 0, '.', ',') }} đ) @endforeach
-	<br class=""><span class="gwd-span-2e8j">Số tiền</span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ number_format($tong, 0, '.', ',') }} đ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="gwd-span-10x2">(Viết bằng chữ)</span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<?php 
-	$number_to_word = ['không', 'một', 'hai', 'ba', 'bốn', 'năm', 'sáu', 'bảy', 'tám', 'chín'];
-	$str_number = str_split($tong);
-	$count = strlen($tong);
-	$ttien ='';
-			//hang trieu
-				$htrieu = $count-6;
-				for ($i = 0; $i <$count-6; $i++) {
-				if($htrieu ==3){
-					$ttien.=($number_to_word[$str_number[$i]] . " trăm");
-					if($str_number[$i+1] == 0)
-					{
-						$ttien.=" linh";
-						$ttien.=' '.$number_to_word[$str_number[$i]]. ' triệu';
-						break;
-					}
-
-				}	
-				if($htrieu ==2){
-					$ttien.=' '.($number_to_word[$str_number[$i]]. " mươi");
-				}	
-				if($htrieu ==1){
-					$ttien.=' '.($number_to_word[$str_number[$i]].' triệu');
-				}
-				$htrieu--;
-			};
-				if($dntung->ttien%1000000 == 0){
-					$ttien.=' đồng chẵn.';
-				}else{
-					//hang tram ngan
-					if($count-6>=0)
-						$ttien.=' '.$number_to_word[$str_number[$count-6]].' trăm';
-					//hang chuc ngan
-					if($count-5>=0){
-						if($str_number[$count-5] == 0){
-							if($str_number[$count-4] > 0){
-								$ttien.=' linh';
-							}
-
-
-						}else{
-							$ttien.=' '.$number_to_word[$str_number[$count-5]].' mươi';
-						}
-					}
-					//hang nghin
-					if($count-4>=0){
-						if($str_number[$count-4] == 0){
-							$ttien .=' nghìn đồng.';
-						}else{
-						$ttien.=' '.$number_to_word[$str_number[$count-4]].' nghìn đồng.';}
-					}
-				}
-?>{{ $ttien }}
-    <br
-	class="">..........................................................................................................................................................................................................
-      <br class=""><span class="gwd-span-1txp">Kèm theo</span>:............................<span class="gwd-span-1hb8">Chứng từ gốc</span>:...................................................................................................................................
-      &nbsp; &nbsp;
-      <br class="">
-      <br class="">
+  <p class="gwd-p-15jr"><span class="gwd-span-14gy">Họ và tên người nộp tiền</span>:..........................................................................................................................................................
+    <br class=""><span class="gwd-span-tngb">Địa chỉ</span>: &nbsp; &nbsp; CTCP đầu tư Ginex
+    <br class=""><span class="gwd-span-1xdw">Lý do nộp:</span> .......................................................................................................................................................................................
+    <br class=""><span class="gwd-span-2e8j">Số tiền</span>: ..................................................<span class="gwd-span-10x2">(Viết bằng chữ)</span>:...........................................................................................................
+    <br class="">..........................................................................................................................................................................................................
+    <br class=""><span class="gwd-span-1txp">Kèm theo</span>:............................<span class="gwd-span-1hb8">Chứng từ gốc</span>:...................................................................................................................................
+    &nbsp; &nbsp;
+    <br class="">
+    <br class="">
   </p>
   <p class="gwd-p-3qv7"><span class="gwd-span-10yd">Giám đốc</span>
     <br class="">(Ký, họ tên, đóng dấu)</p>
@@ -348,18 +294,17 @@
     <br class="">(Ký, họ tên)</p>
   <p class="gwd-p-x9yo"><span class="gwd-span-txo0">Người lập phiếu</span>
     <br class="">(Ký, họ tên)</p>
-  <p class="gwd-p-1i5d"><span class="gwd-span-cod3">Người nhận tiền</span>
+  <p class="gwd-p-1i5d" style=""><span class="gwd-span-cod3">Người nhận tiền</span>
     <br class="">(Ký, họ tên)</p>
-  <p class="gwd-p-72v6">Ngày {{ date('d') }} tháng {{ date('m') }} năm {{ date('Y') }}</p>
+  <p class="gwd-p-72v6">Ngày.......tháng.....năm ........</p>
   <p class="gwd-p-bt0t"><span class="gwd-span-1tks gwd-span-5b27">Đã nhận đủ số tiền (viết bằng chữ):</span><span class="gwd-span-1nn6">..........................................................................................................................................<br class=""><span class="gwd-span-zd2p">+ <span class="gwd-span-rgkl">Tỷ giá ngoại tệ (vàng, tiền tệ):</span></span>...............................................................................................................................................
     <br><span class="gwd-span-1vd3">+ </span><span class="gwd-span-1xxr"><span class="gwd-span-ppe9">Số tiền quy đổi: </span>.......................................................................................................................................................................
-    <br
-    class="">
-      </span><span class="gwd-span-rhvw">(Liên gửi ra ngoài phải đóng dấu)</span>
-      <br class="">
-      <br class="">
-      <br class="">
-      </span>
+    <br class="">
+    </span><span class="gwd-span-rhvw">(Liên gửi ra ngoài phải đóng dấu)</span>
+    <br class="">
+    <br class="">
+    <br class="">
+    </span>
   </p>
 </body>
 

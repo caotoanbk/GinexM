@@ -23,6 +23,8 @@ Route::post('/make-goods', 'ProponentController@storeYclhang');
 Route::get('/test/', 'DatatablesController@test');
 Route::get('/bieumau/phieuchi/{id}', 'BieumauController@phieuchi');
 Route::get('/bieumau/denghitamung', 'BieumauController@denghitamung');
+Route::get('/bieumau/phieuchi', 'BieumauController@phieuchi');
+Route::get('/bieumau/phieuthu', 'BieumauController@phieuthu');
 Route::get('/secrectary/data', 'DatatablesController@secrectaryData');
 Route::get('/director/data', 'DatatablesController@directorData');
 Route::get('/director/duyet', 'DirectorController@duyet');

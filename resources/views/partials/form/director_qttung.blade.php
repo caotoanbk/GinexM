@@ -11,6 +11,7 @@
 		<th>Lý do chi</th>
 		<th>Số tiền</th>
 		<th>Hóa đơn</th>
+		<th>Chi cho</th>
 		<th>Ngày chi</th>
 	</tr>
 </thead>

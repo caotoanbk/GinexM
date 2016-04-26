@@ -9,12 +9,53 @@ use App\Dntung;
 
 class BieumauController extends Controller
 {
-	public function phieuchi($id)
+	public function phieuchi(Request $request)
 	{
-		$dntung=Dntung::findOrFail($id);
-		$dntung->check=true;
-		$dntung->save();
-		return view('bieumau.phieuchi', compact('dntung'));
+		$arr = $request->get('arr') ? json_decode($request->get('arr')) : array();
+		if(count($arr) == 0){
+			$today = \Carbon\Carbon::today();
+			$dntungs = Dntung::where('created_at','>=',$today)->get();
+			if(count($dntungs)>0){
+				foreach ($dntungs as $dntung){
+					$dntung->check =true;
+					$dntung->save();
+				};
+				return view('bieumau.phieuchi', compact('dntungs'));
+			}else{
+				return 'Khong co de nghi tam ung nao.';
+			}
+		}else{
+			$dntungs = Dntung::findOrFail($arr);
+			if(!is_null($dntungs)){
+				foreach ($dntungs as $dntung){
+					$dntung->check =true;
+					$dntung->save();
+				};
+				return view('bieumau.phieuchi', compact('dntungs'));
+			}else{
+				return 'Khong co de nghi tam ung nao.';
+			}
+		}
+	}
+	public function phieuthu(Request $request)
+	{
+		$arr = $request->get('arr') ? json_decode($request->get('arr')) : array();
+		if(count($arr) == 0){
+			$today = \Carbon\Carbon::today();
+			$dntungs = Dntung::where('created_at','>=',$today)->get();
+			if(count($dntungs)>0){
+				return view('bieumau.phieuthu', compact('dntungs'));
+			}else{
+				return 'Khong co de nghi tam ung nao.';
+			}
+		}else{
+			$dntungs = Dntung::findOrFail($arr);
+			if(!is_null($dntungs)){
+				return view('bieumau.phieuthu', compact('dntungs'));
+			}else{
+				return 'Khong co de nghi tam ung nao.';
+			}
+		}
 	}
 	public function denghitamung(Request $request)
 	{
