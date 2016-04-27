@@ -80,4 +80,14 @@ class BieumauController extends Controller
 		}
 
 	}
+	public function checkdone(Request $request)
+	{
+		$arr = $request->get('arr') ? json_decode($request->get('arr')) : array();
+		$dntungs = Dntung::find($arr);
+		foreach($dntungs as $dntung){
+			if($dntung->done == false)
+				return 'not-done';
+		}
+		return 'ok';
+	}
 }

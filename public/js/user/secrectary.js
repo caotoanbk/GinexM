@@ -45,7 +45,25 @@ $(function() {
 					selectedRows[0].forEach(function(item){
 						ids.push(dt.rows(item).data().toArray()[0].id);
 					});
-					window.location.href = '/bieumau/phieuthu?arr=' + JSON.stringify(ids);
+					$.ajax({
+						url: '/check-done?arr=' + JSON.stringify(ids),
+						method: 'get',
+						success: function(data){
+							if(data == 'ok'){
+
+								window.location.href = '/bieumau/phieuthu?arr=' + JSON.stringify(ids);
+							}else{
+								$.alert({
+									title: '',
+									content: 'Ban da lua chon 1 de nghi tam ung chua hoan thanh',
+									backgroundDismiss: true,
+								});
+							}
+						},
+						error: function(data){
+							alert('Error');
+						}
+					});
 				}
 			},
 			{

@@ -267,7 +267,7 @@
   <p class="gwd-p-1fzi"><span class="gwd-span-bv79">Đơn vị</span>:....................
     <br class=""><span class="gwd-span-vube">Địa chỉ</span>:....................</p>
   <p class="gwd-p-1s2v">PHIẾU THU&nbsp;
-    <br class=""><span class="gwd-span-xyzw">Ngày........tháng.........năm ............</span>
+    <br class=""><span class="gwd-span-xyzw">Ngày {{date('d')}} tháng {{date('m')}} năm {{date('Y')}}</span>
     <br class="">
   </p>
   <p class="gwd-p-hunf">Quyển số:...........
@@ -276,10 +276,22 @@
     <br class="">CÓ:.....................</p>
   <p class="gwd-p-a9b6"><span class="gwd-span-1oih">Mẫu số: 01 - TT</span>
     <br class="">(Ban hành theo thông tư số 200/2014/TT-BTC ngày 22/12/2014 của BTC)</p>
-  <p class="gwd-p-15jr"><span class="gwd-span-14gy">Họ và tên người nộp tiền</span>:..........................................................................................................................................................
-    <br class=""><span class="gwd-span-tngb">Địa chỉ</span>: &nbsp; &nbsp; CTCP đầu tư Ginex
-    <br class=""><span class="gwd-span-1xdw">Lý do nộp:</span> .......................................................................................................................................................................................
-    <br class=""><span class="gwd-span-2e8j">Số tiền</span>: ..................................................<span class="gwd-span-10x2">(Viết bằng chữ)</span>:...........................................................................................................
+	<p class="gwd-p-15jr"><span class="gwd-span-14gy">Họ và tên người nộp tiền</span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$dntungs->first()->user->name}}
+    <br class=""><span class="gwd-span-tngb">Địa chỉ</span>: &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; CTCP đầu tư Ginex
+	<br class=""><span class="gwd-span-1xdw">Lý do nộp:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php foreach($dntungs as $dntung){ echo $dntung->reason;} ?>
+	<br class=""><span class="gwd-span-2e8j">Số tiền</span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<?php 
+$tong =0;
+$sttu =0;
+foreach($dntungs as $dntung){
+	$sttu+=$dntung->ttien;
+	$qtoans = $dntung->qtoans;
+	foreach($qtoans as $qtoan){
+		$tong += $qtoan->stien;
+	}
+}
+?>{{($sttu-$tong)}}
+<span class="gwd-span-10x2">(Viết bằng chữ)</span>:...........................................................................................................
     <br class="">..........................................................................................................................................................................................................
     <br class=""><span class="gwd-span-1txp">Kèm theo</span>:............................<span class="gwd-span-1hb8">Chứng từ gốc</span>:...................................................................................................................................
     &nbsp; &nbsp;
