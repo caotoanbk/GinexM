@@ -47,6 +47,36 @@ $(function() {
 				}
 			},
 			{
+				text: 'In giay thanh toan tam ung',
+				className: 'btn',
+				action: function(e, dt, node, config){
+					var selectedRows = dt.rows( {selected: true}).toArray();
+					var ids = [];
+					selectedRows[0].forEach(function(item){
+						ids.push(dt.rows(item).data().toArray()[0].id);
+					});
+					$.ajax({
+						url: '/check-done?arr=' + JSON.stringify(ids),
+						method: 'get',
+						success: function(data){
+							if(data == 'ok'){
+
+								window.location.href = '/bieumau/thanhtoantamung?arr=' + JSON.stringify(ids);
+							}else{
+								$.alert({
+									title: '',
+									content: 'Ban da lua chon 1 de nghi tam ung chua hoan thanh',
+									backgroundDismiss: true,
+								});
+							}
+						},
+						error: function(data){
+							alert('Error');
+						}
+					});
+				}
+				},
+			{
 				text: 'Select none',
 				action: function(e, dt, node, config) {
 					dt.rows().deselect();

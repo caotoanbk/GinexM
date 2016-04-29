@@ -150,7 +150,7 @@
       text-align: center;
       font-size: 14px;
       left: 34px;
-      top: 536px;
+      top: 800px;
     }
     .gwd-p-sgpd {
       position: absolute;
@@ -161,7 +161,7 @@
       color: rgb(0, 0, 0);
       font-size: 14px;
       left: 402px;
-      top: 536px;
+      top: 800px;
     }
     .gwd-p-kbzk {
       position: absolute;
@@ -172,7 +172,7 @@
       color: rgb(0, 0, 0);
       font-size: 14px;
       left: 572px;
-      top: 536px;
+      top: 800px;
     }
     .gwd-span-1fke {
       font-size: xx-large;
@@ -191,89 +191,113 @@
       height: 43px;
       transform-origin: -112.5px 21.5px 0px;
       left: 214px;
-      top: 536px;
+      top: 800px;
     }
+	.text-center {
+		text-align: center;
+	}
   </style>
 </head>
 
 <body style="">
   <p class="gwd-p-1fzi"><span class="gwd-span-bv79 gwd-span-15jv">Đơn vị</span>:....................
     <br class=""><span class="gwd-span-vube">Địa chỉ</span>:....................</p>
-  <p class="gwd-p-1s2v"><span class="gwd-span-1cnq">GIAY THANH TOAN TIEN TAM UNG</span>
-    <br class=""><span class="gwd-span-1wvp">Ngày........tháng.........năm ............</span>
+  <p class="gwd-p-1s2v"><span class="gwd-span-1cnq">GIẤY THANH TOÁN TIỀN TẠM ỨNG</span>
+    <br class=""><span class="gwd-span-1wvp">Ngày {{date('d')}} tháng {{date('m')}} năm {{date('Y')}}</span>
     <br class="">
   </p>
   <p class="gwd-p-a9b6" style=""><span class="gwd-span-1oih">Mẫu số: 04 - TT</span>
     <br class="">(Ban hành theo thông tư số 200/2014/TT-BTC ngày 22/12/2014 của BTC)</p>
-  <p class="gwd-p-15jr">- Ho va ten nguoi thanh toan:.........................................................................................................................................................
-    <br class="">- Bo phan (hoac dịa chỉ):....................................................................................................................................................
-    <br class="">- So tien tam ung duoc thanh toan theo bang duoi day:&nbsp;
+  <p class="gwd-p-15jr">- Họ tên người thanh toán: <em>{{\Auth::user()->name}}</em>
+    <br class="">- Bộ phận (hoặc địa chỉ): <em>Doi logistics</em>
+    <br class="">- So tiền tạm ứng được thanh toán theo bảng dưới đây:&nbsp;
     <br class="">
     <br class="">
   </p>
   <table style="">
     <tbody>
       <tr>
-        <td>Dien giai</td>
-        <td>So tien</td>
+        <td>Diễn giải</td>
+        <td>Số tiền(VND)</td>
       </tr>
       <tr>
         <td>A</td>
         <td>1</td>
       </tr>
       <tr>
-        <td>I - So tien tam ung</td>
-        <td>.....................</td>
+        <td>I - Số tiền tạm ứng</td>
+		<td style="text-indent: 1em;"> 
+<?php
+	$tong = 0;
+	$stt =1;
+	foreach($dntungs as $dntung){$tong += ($dntung->ttien);};
+	echo number_format($tong, 0, '.', ',');
+?></td>
       </tr>
       <tr>
-        <td>So tam ung cac ky truoc chua het</td>
-        <td>.................................</td>
+        <td>Số tạm ứng các kỳ trước chưa hết</td>
+        <td></td>
       </tr>
       <tr>
-        <td>So tam ung ky nay</td>
-        <td>........................</td>
+        <td>Số tạm ứng kì này</td>
+        <td></td>
       </tr>
+		@foreach($dntungs as $dntung)
       <tr>
-        <td style="text-indent: 2em;">1. Phieu chi so ......... ngay ......</td>
-        <td>.....................</td>
+        <td style="text-indent: 2em;">{{$stt++}}. Phiếu chi số ......... ngày {{date_format(date_create($dntung->updated_at), 'd/m/Y')}}</td>
+        <td style="text-indent: 1em;">{{number_format($dntung->ttien, 0, '.', ',')}}</td>
       </tr>
+		@endforeach
+		<?php 
+			$stdchi =0;
+		foreach($dntungs as $dntung){
+			$qtoans = $dntung->qtoans;
+			foreach($qtoans as $qtoan){
+				$stdchi += $qtoan->stien;
+			}
+		}
+		?>
       <tr>
-        <td>II - So tien da chi</td>
-        <td>....................</td>
+        <td>II - Số tiền đã chi</td>
+        <td style="text-indent: 1em;">{{number_format($stdchi, 0, '.', ',')}}</td>
       </tr>
+		@foreach($dntungs as $dntung)
+		@foreach($dntung->qtoans as $qtoan)
       <tr>
-        <td style="text-indent: 2em;">2. Chung tu so ........ ngay .......</td>
-        <td>.....................</td>
+        <td style="text-indent: 2em;">{{$stt++}}. {{$qtoan->ldo}}</td>
+        <td style="text-indent: 1em;">{{number_format($qtoan->stien, 0, '.', ',')}}</td>
+      </tr>
+		@endforeach
+		@endforeach
+      <tr>
+        <td>&nbsp;</td>
+        <td></td>
       </tr>
       <tr>
         <td>&nbsp;</td>
-        <td>..............</td>
+        <td></td>
       </tr>
       <tr>
-        <td>&nbsp;</td>
-        <td>..............</td>
+        <td>III - Chênh lệch</td>
+        <td></td>
       </tr>
       <tr>
-        <td>III - Chenh lech</td>
-        <td>....................</td>
+        <td style="text-indent: 2em;">{{$stt++}}. Số tạm ứng chi không hết (I - II)</td>
+		<td style="text-indent: 1em;"><?php if($tong>$stdchi) echo number_format(($tong-$stdchi), 0, '.', ','); ?></td>
       </tr>
       <tr>
-        <td style="text-indent: 2em;">3. So tam ung chi khong het (I - II)</td>
-        <td>............................</td>
-      </tr>
-      <tr>
-        <td style="text-indent: 2em;">4. Chi qua so tam ung (II - I)</td>
-        <td>............................</td>
+        <td style="text-indent: 2em;">{{$stt++}}. Chi quá số tạm ứng (II - I)</td>
+		<td style="text-indent: 1em;"><?php if($tong<=$stdchi) echo number_format(($stdchi-$tong), 0, '.', ','); ?></td>
       </tr>
     </tbody>
   </table>
   <p class="gwd-p-zixo">Giám đốc
     <br class="">(Ký, họ tên)</p>
-  <p class="gwd-p-17tv">Ke toan truong
-    <br>(Ky, ho ten)</p>
-  <p class="gwd-p-sgpd">Ke toan thanh toan
+  <p class="gwd-p-17tv">Kế toán trưởng
+    <br>(Ký, họ tên)</p>
+  <p class="gwd-p-sgpd">Kế toán thanh toán
     <br class="">(Ký, họ tên)</p>
-  <p class="gwd-p-kbzk">Người đề nghị thanh toan&nbsp;
+  <p class="gwd-p-kbzk">Người đề nghị thanh toán&nbsp;
     <br class="">(Ký, họ tên)</p>
 </body>
 

@@ -80,6 +80,17 @@ class BieumauController extends Controller
 		}
 
 	}
+	public function thanhtoantamung(Request $request)
+	{
+		$arr = $request->get('arr') ? json_decode($request->get('arr')) : array();
+		$dntungs = Dntung::findOrFail($arr);
+		if(!is_null($dntungs)){
+			return view('bieumau.thanhtoantamung', compact('dntungs'));
+			//return "Khong co de nghi tam ung nao hom nay";
+		}else{
+			return 'Khong co de nghi tam ung nao.';
+		}
+	}
 	public function checkdone(Request $request)
 	{
 		$arr = $request->get('arr') ? json_decode($request->get('arr')) : array();

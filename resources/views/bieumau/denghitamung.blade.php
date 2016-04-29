@@ -354,9 +354,15 @@ echo number_format($t_tien, 0, '.', ','); ?>
 					//hang chuc ngan
 					if($count-5>=0){
 						if($str_number[$count-5] == 0){
-							$ttien.=' linh';
+							if($str_number[$count-4] != 0){
+								$ttien.=' linh';
+							}
 						}else{
-							$ttien.=' '.$number_to_word[$str_number[$count-5]].' mươi';
+							if($str_number[$count-5] == 1){
+								$ttien.=' mươi';
+							}else{
+								$ttien.=' '.$number_to_word[$str_number[$count-5]].' mươi';
+							}
 						}
 					}
 					//hang nghin

@@ -278,7 +278,7 @@
     <br class="">(Ban hành theo thông tư số 200/2014/TT-BTC ngày 22/12/2014 của BTC)</p>
 	<p class="gwd-p-15jr"><span class="gwd-span-14gy">Họ và tên người nộp tiền</span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$dntungs->first()->user->name}}
     <br class=""><span class="gwd-span-tngb">Địa chỉ</span>: &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; CTCP đầu tư Ginex
-	<br class=""><span class="gwd-span-1xdw">Lý do nộp:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php foreach($dntungs as $dntung){ echo $dntung->reason;} ?>
+	<br class=""><span class="gwd-span-1xdw">Lý do nộp:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php foreach($dntungs as $dntung){ echo $dntung->reason; echo ', ';} ?>
 	<br class=""><span class="gwd-span-2e8j">Số tiền</span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <?php 
 $tong =0;
@@ -290,8 +290,65 @@ foreach($dntungs as $dntung){
 		$tong += $qtoan->stien;
 	}
 }
-?>{{($sttu-$tong)}}
-<span class="gwd-span-10x2">(Viết bằng chữ)</span>:...........................................................................................................
+?>{{ number_format(($sttu-$tong), 0, '.', ',')}} đ
+<span class="gwd-span-10x2">(Viết bằng chữ)</span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<?php 
+	$number_to_word = ['không', 'một', 'hai', 'ba', 'bốn', 'năm', 'sáu', 'bảy', 'tám', 'chín'];
+	$str_number = str_split($sttu-$tong);
+	$count = strlen($sttu-$tong);
+	$ttien ='';
+			//hang trieu
+				$htrieu = $count-6;
+				for ($i = 0; $i <$count-6; $i++) {
+				if($htrieu ==3){
+					$ttien.=($number_to_word[$str_number[$i]] . " trăm");
+					if($str_number[$i+1] == 0)
+					{
+						$ttien.=" linh";
+						$ttien.=' '.$number_to_word[$str_number[$i]]. ' triệu';
+						break;
+					}
+
+				}	
+				if($htrieu ==2){
+					$ttien.=' '.($number_to_word[$str_number[$i]]. " mươi");
+				}	
+				if($htrieu ==1){
+					$ttien.=' '.($number_to_word[$str_number[$i]].' triệu');
+				}
+				$htrieu--;
+			};
+				if(($sttu-$tong)%1000000 == 0){
+					$ttien.=' đồng chẵn.';
+				}else{
+					//hang tram ngan
+					if($count-6>=0)
+						$ttien.=' '.$number_to_word[$str_number[$count-6]].' trăm';
+					//hang chuc ngan
+					if($count-5>=0){
+						if($str_number[$count-5] == 0){
+							if($str_number[$count-4] > 0){
+								$ttien.=' linh';
+							}
+
+
+						}else{
+							if($str_number[$count-5] == 1){
+								$ttien.=' mươi';
+							}else{
+								$ttien.=' '.$number_to_word[$str_number[$count-5]].' mươi';
+							}
+						}
+					}
+					//hang nghin
+					if($count-4>=0){
+						if($str_number[$count-4] == 0){
+							$ttien .=' nghìn đồng.';
+						}else{
+						$ttien.=' '.$number_to_word[$str_number[$count-4]].' nghìn đồng.';}
+					}
+				}
+?>{{ $ttien }}
     <br class="">..........................................................................................................................................................................................................
     <br class=""><span class="gwd-span-1txp">Kèm theo</span>:............................<span class="gwd-span-1hb8">Chứng từ gốc</span>:...................................................................................................................................
     &nbsp; &nbsp;

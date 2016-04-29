@@ -299,10 +299,14 @@
 
 				}	
 				if($htrieu ==2){
-					$ttien.=' '.($number_to_word[$str_number[$i]]. " mươi");
+					if($number_to_word[$str_number[$i]]==1){
+						$ttien.=' mươi';
+					}else{
+						$ttien.=' '.($number_to_word[$str_number[$i]]. " mươi");
+					}
 				}	
 				if($htrieu ==1){
-					$ttien.=' '.($number_to_word[$str_number[$i]].' triệu');
+						$ttien.=' '.($number_to_word[$str_number[$i]].' triệu');
 				}
 				$htrieu--;
 			};
@@ -321,7 +325,11 @@
 
 
 						}else{
-							$ttien.=' '.$number_to_word[$str_number[$count-5]].' mươi';
+							if($str_number[$count-5] == 1){
+								$ttien.=' mươi';
+							}else{
+								$ttien.=' '.$number_to_word[$str_number[$count-5]].' mươi';
+							}
 						}
 					}
 					//hang nghin
