@@ -26,9 +26,9 @@ class DatatablesController extends Controller
 			}
 			if($approve){
 				if(Carbon::now()->gt(Carbon::createFromFormat('d/m/Y', $yclhang->tghung))){
-					return '<small class="text-danger"><em><a id="qhan" data-toggle="modal" data-target="#myModal1" href="#" data-id="'.$yclhang->id.'">Qúa hạn quyết toán</a></em></small>';
+					return '<small class="text-danger"><em><a id="qhan" href="/quyet-toan-lam-hang/'.$yclhang->id.'">Qúa hạn quyết toán</a></em></small>';
 				} else {
-					return '<small class="text-primary"><em><a data-toggle="modal" data-target="#myModal1" href="#" data-id="'.$yclhang->id.'">Chưa quyết toán</a></em></small>';
+					return '<small class="text-primary"><em><a href="/quyet-toan-lam-hang/'.$yclhang->id.'">Chưa quyết toán</a></em></small>';
 				}
 			}
 			if($check){

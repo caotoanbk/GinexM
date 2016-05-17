@@ -34,3 +34,5 @@ Route::get('/qt-tam-ung/{id}', 'ProponentController@qtoanData');
 Route::get('/delete-quyet-toan/{tuid}/{qtid}', 'ProponentController@deleteQtoan');
 Route::get('/hoan-thanh/{id}', 'DirectorController@hoanthanh');
 Route::get('/check-done', 'BieumauController@checkdone');
+Route::get('/test', 'TestController@test');
+Route::get('/quyet-toan-lam-hang/{id}', 'ProponentController@qtlhang');

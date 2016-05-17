@@ -6,7 +6,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title text-center" id="myModalLabel">QUYẾT TOÁN TẠM ỨNG</h4>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" style="width: 200%; overflow: auto;">
 			@include('partials.form.qttung')	
       </div>
     </div>

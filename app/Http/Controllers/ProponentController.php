@@ -65,4 +65,8 @@ class ProponentController extends Controller
 		$qtoan = $dntung->qtoans->find($qtid);
 		$qtoan->delete();
 	}
+	public function qtlhang($id)
+	{
+		return view('user.proponent_qtoan');
+	}
 }

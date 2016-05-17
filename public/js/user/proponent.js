@@ -228,7 +228,7 @@ $(function() {
 	});
 	$('#them').click(function(e){
 		e.preventDefault();
-		$('tbody#qtoan').append('<tr class="input_fields_wrap"><td class="col-md-5"><input type="text" name="ldo[]" class="form-control"/></td> <td class="col-md-2"><input type="text" name="stien[]" class="form-control"/></td> <td class="col-md-2"><input type="text" name="hdon[]" class="form-control"/></td><td class="col-md-2"><select name="ccho[]" class="form-control"><option value="Ginex">Ginex</option><option value="Custom">Khach hang</option></select></td><td class="col-md-2"><input type="date" name="nchi[]" class="form-control"/></td><td class="text-center col-md-1"><a href="#" id="remove_item" class="text-danger">&times;</a></td></tr>');
+		$('tbody#qtoan').append('<tr class="input_fields_wrap"><td><input type="text" name="ldo[]" /></td> <td"><input type="text" name="stien[]" class="form-control"/></td> <td><input type="text" name="hdon[]" class="form-control"/></td><td><select name="ccho[]" class="form-control"><option value="Ginex">Ginex</option><option value="Custom">Khach hang</option></select></td><td><input type="date" name="nchi[]" class="form-control"/></td><td class="text-center"><a href="#" id="remove_item" class="text-danger">&times;</a></td><td><input type="text" class="form-control" size="20"></td><td>One</td><td><input type="text" class="form-control" size="20"></td><td><input type="text" class="form-control" size="20"></td><td><input type="text" class="form-control" size="20"></td><td><input type="text" class="form-control" size="20"></td><td><input type="text" class="form-control" size="20"></td></tr>');
 		
 		$('input[name="stien[]"]').autoNumeric('init', {
 			aSep:'.',
