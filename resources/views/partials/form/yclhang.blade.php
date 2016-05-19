@@ -68,10 +68,6 @@
 	{!! Form::label('tghung','Hoàn ứng', array('class' => 'col-md-3 control-label')) !!}
 	<div class='col-md-8'>{!! Form::date('tghung', \Carbon\Carbon::now(), array('class' => 'form-control'))!!}</div>
 </div>
-<div class='form-group required'>
-	{!! Form::label('bke', 'Bản kê', array('class' => 'col-md-3 control-label')) !!}
-	<div class='col-md-8'>{!! Form::file('bke',null) !!}</div>
-</div>
 
 <div class="form-group"><div class="col-md-8 col-md-offset-3">
 		<button type="submit" class="btn btn-primary" id='dntung'>Đề Nghị Tạm Ứng</button> </div> </div>

@@ -96,7 +96,6 @@ $(function() {
 			{data: 'slc40', name: 'slc40', className: 'none'},
 			{data: 'lcont', name: 'lcont', className: 'none'},
 			{data: 'tghung', name: 'tghung'},
-			{data: 'bke', name: 'bke', searchable: false, orderable: false, className: 'none'},
 			{data: 'status', name: 'status',searchable: false, orderable: false},
 			{data: 'cuoc', name: 'cuoc', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none"  },
 			{data: 'nang', name: 'nang', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none" },
@@ -185,7 +184,6 @@ $(function() {
 				khang: { required: true, },
 				ttien: { required: true, },
 				tghung: { required: true, },
-				bke: { required: true, }
 			},
 			messages: {
 				reason: {
@@ -212,9 +210,6 @@ $(function() {
 				tghung: {
 					required: '<div class="text-danger"><em><small>Bạn chưa nhập thời gian hoàn ứng</small></em></div>'
 				},
-				bke: {
-					required: '<div class="text-danger"><em><small>Bạn chưa chọn file</small></em></div>'
-				}
 			},
 		});
 		validator.resetForm();

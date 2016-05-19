@@ -19,7 +19,7 @@
 		<th>Cuoc gui</th>
 		<th>Cuoc mua</th>
 		<th>Gia von chua VAT</th>
-		<th>Cuoc ban chua VAT</th>
+		<th>Cuoc bán chưa VAT</th>
 	</tr>
 </thead>
 <tbody id='qtoan_cont'>

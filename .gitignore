@@ -2,3 +2,6 @@ Homestead.yaml
 Homestead.json
 *.swp
 *.php~
+*.js~
+/public/de_nghi_tam_ung
+*.*~
