@@ -9,6 +9,7 @@ use App\Http\Requests\YclhangRequest;
 use App\Yclhang;
 use App\Dntung;
 use App\Quyettoan;
+use App\QTCont;
 
 class ProponentController extends Controller
 {
@@ -25,8 +26,6 @@ class ProponentController extends Controller
 		$input['user_id']=\Auth::user()->id;	
 		$yc= new Dntung($input);
 		$yc->save();
-		$fileName = $yc->id.'.'.$request->file('bke')->getClientOriginalExtension();
-		$request->file('bke')->move(base_path().'/public/de_nghi_tam_ung/'.$my.'/', $fileName);
 		\Session::flash('flash_message', 'Dang thong tin yeu cau lam hang thanh cong');
 		return redirect('/home');
 
@@ -52,6 +51,62 @@ class ProponentController extends Controller
 			$qtoan->save();
 		}
 	}
+
+	public function qtcont($id, Request $request)
+	{
+		$nchay = $request->input('nchay');
+		$bsxe = $request->input('bsxe');
+		$lxe = $request->input('lxe');
+		$scont = $request->input('scont');
+		$ccont = $request->input('ccont');
+		$lcont = $request->input('lcont');
+		$nxe = $request->input('nxe');
+		$pnha = $request->input('pnha');
+		$khquan = $request->input('khquan');
+		$cxe = $request->input('cxe');
+		$cgui = $request->input('cgui');
+		$cmua = $request->input('cmua');
+		$gvcVAT = $request->input('gvcVAT');
+		$cbcVAT = $request->input('cbcVAT');
+		for ($i = 0; $i < count($nchay); $i++) {
+			$qtcont = new QTCont;
+			$qtcont->dntung_id = $id;
+			$qtcont->nxchay = $nchay[$i];
+			$qtcont->bsxe = $bsxe[$i];
+			$qtcont->lxe = $lxe[$i];
+			$qtcont->scont = $scont[$i];
+			$qtcont->ccont = $ccont[$i];
+			$qtcont->lcont = $lcont[$i];
+			$qtcont->nxe = $nxe[$i];
+			$qtcont->pnha = $pnha[$i];
+			$qtcont->khquan = $khquan[$i];
+			$qtcont->cxe = $cxe[$i];
+			$qtcont->cgui = $cgui[$i];
+			$qtcont->cmua = $cmua[$i];
+			$qtcont->gvcVAT = $gvcVAT[$i];
+			$qtcont->cbcVAT = $cbcVAT[$i];
+			$qtcont->save();
+		}
+		//chi phi phat sinh
+		$ldo = $request->input('ldo');
+		$stien = $request->input('stien');
+		$hdon = $request->input('hdon');
+		$nchi = $request->input('nchi');
+		$nphanh = $request->input('nphanh');
+		$ccho = $request->input('ccho');
+		for ($i = 0; $i < count($ldo); $i++) {
+			$qtoan = new Quyettoan;
+			$qtoan->dntung_id = $id;
+			$qtoan->ldo = $ldo[$i];
+			$qtoan->chicho = $ccho[$i];
+			$qtoan->stien = $stien[$i];
+			$qtoan->hdon = $hdon[$i];
+			$qtoan->nphanh = $nphanh[$i];
+			$qtoan->nchi = $nchi[$i];
+			$qtoan->save();
+		}
+		return redirect('home');
+	}
 	public function qtoanData($id)
 	{
 		$dntu = Dntung::findOrFail($id);
@@ -65,8 +120,17 @@ class ProponentController extends Controller
 		$qtoan = $dntung->qtoans->find($qtid);
 		$qtoan->delete();
 	}
+	public function deleteQtoancont($tuid, $qtcid)
+	{
+		$dntung = Dntung::findOrFail($tuid);
+		$qtcont = $dntung->qtconts->find($qtcid);
+		$qtcont->delete();
+	}
 	public function qtlhang($id)
 	{
-		return view('user.proponent_qtoan');
+		$dntung = Dntung::findOrFail($id);
+		$qtconts = $dntung->qtconts()->get()->toArray();
+		$qtpsinh = $dntung->qtoans()->get()->toArray();
+		return view('user.proponent_qtoan', compact('dntung', 'qtconts', 'qtpsinh'));
 	}
 }

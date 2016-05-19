@@ -27,4 +27,8 @@ class Dntung extends Model
 	{
 		return $this->hasMany('App\Quyettoan', 'dntung_id');
 	}
+	public function qtconts()
+	{
+		return $this->hasMany('App\QTCont', 'dntung_id');
+	}
 }
