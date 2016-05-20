@@ -52,7 +52,22 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
+					@if(Auth::check())
+						@if(Auth::user()->type == 0)
+                    <li><a href="{{ url('/proponent/de-nghi-tam-ung') }}">Đề nghị tạm ứng</a></li>
+                    <li><a href="{{ url('/proponent/tam-ung-chua-quyet-toan') }}">Tạm ứng chưa quyết toán</a></li>
+                    <li><a href="{{ url('/proponent/tam-ung-da-hoan-thanh') }}">Tạm ứng đã hoàn thành</a></li>
+						@endif
+						@if(Auth::user()->type == 1)
+                    <li><a href="{{ url('/home') }}">Tạm ứng chưa hoàn thành</a></li>
+                    <li><a href="{{ url('/home') }}">Tạm ứng đã hoàn thành</a></li>
+						@endif
+						@if(Auth::user()->type == 2)
+                    <li><a href="{{ url('/home') }}">Tạm ứng chưa duyệt</a></li>
+                    <li><a href="{{ url('/home') }}">Tạm ứng chưa quyết toán</a></li>
+                    <li><a href="{{ url('/home') }}">Tạm ứng đã hoàn thành</a></li>
+						@endif
+					@endif
                 </ul>
 
                 <!-- Right Side Of Navbar -->

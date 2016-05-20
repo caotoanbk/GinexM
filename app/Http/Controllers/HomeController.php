@@ -32,7 +32,10 @@ class HomeController extends Controller
 		}else if ($identify == 2){
 			return view('director_home');
 		}
-
 		return 'Nguoi dung khong hop le';
     }
+	public function dntung()
+	{
+		return view('user.proponent_dntung_index');
+	}
 }

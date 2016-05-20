@@ -9,7 +9,7 @@ function format($value){
 <h4 class="modal-title text-info" id="myModalLabel">QUYẾT TOÁN TẠM ỨNG</h4>
 <div><strong>Lý do tạm ứng &nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='ldtu' style="padding-left: 1.5em;">{{$dntung->reason}}</span></em></div>
 <div><strong>Số booking &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='ldtu' style="padding-left: 1.5em;">{{$dntung->bill}}</span></em></div>
-<div><strong>Số tiền tạm ứng &nbsp;:</strong> <em><span id='sttu' style='padding-left: 1.5em;'>{{format($dntung->ttien)}}</span></em></div>
+<div><strong>Số tiền tạm ứng &nbsp;:</strong> <em><span id='sttu' style='padding-left: 1.5em;'>{{$dntung->ttien}}</span></em></div>
 <div><strong>Ngày tạm ứng &nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='ntu' style='padding-left: 1.5em;'>{{$dntung->created_at}}</span></em></div>
 <div><strong>Số tiền còn lại &nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='stclai' style='padding-left: 1.5em;'></span></em></div>
 </div>
@@ -21,7 +21,6 @@ function format($value){
 <table class='table table-bordered' id="qttu_cont">
 <thead>
 	<tr>
-		<th>Xóa</th>
 		<th>Ngày</th>
 		<th>Biển số xe</th>
 		<th>Loại xe</th>
@@ -42,7 +41,6 @@ function format($value){
 @if($qtconts)
 @foreach($qtconts as $qtcont)
 <tr>
-	<td class="text-danger text-center"><a href="#" id="remove_item_ajax" data-id="{{$qtcont['id']}}" class="text-danger">&times;</a></td>
 	<td>{{$qtcont['nxchay']}}</td>
 	<td>{{$qtcont['bsxe']}}</td>
 	<td>{{$qtcont['lxe']}}</td>
@@ -63,7 +61,6 @@ function format($value){
 </tbody>
 </table>
 </div>
-<button id='them_cont' class="btn btn-warning btn-xs">Thêm</button>
 <div>&nbsp;</div>
 
 <div><h4>CƯỚC PHÁT SINH</h4></div>
@@ -72,7 +69,6 @@ function format($value){
 <table class='table table-bordered' id="qttu_ps" >
 <thead>
 	<tr>
-		<th class="text-center">Xóa</th>
 		<th>Lý do chi</th>
 		<th>Số tiền</th>
 		<th>Hóa đơn</th>
@@ -85,7 +81,6 @@ function format($value){
 @if($qtpsinh)
 @foreach($qtpsinh as $qtps)
 <tr>
-	<td class="text-danger text-center"><a href="#" id="remove_item_ajax" data-id="{{$qtps['id']}}" class="text-danger">&times;</a></td>
 	<td>{{$qtps['ldo']}}</td>
 	<td>{{format($qtps['stien'])}}</td>
 	<td>{{$qtps['hdon']}}</td>
@@ -98,12 +93,11 @@ function format($value){
 </tbody>
 </table>
 </div>
-<button id='them_psinh' class="btn btn-warning btn-xs">Thêm</button>
 <div>&nbsp;</div>
-<div><button id='them' class="btn btn-primary">Quyết toán</button></div>
+<div><button id='cnhan' class="btn btn-primary">Chấp nhận</button></div>
 {!! Form::close() !!}
 </div>
 @endsection
 @section('javascript')
-<script type='text/javascript' src='/js/user/proponent_qtoan.js'></script>
+<script type='text/javascript' src='/js/user/director_qtoan.js'></script>
 @endsection

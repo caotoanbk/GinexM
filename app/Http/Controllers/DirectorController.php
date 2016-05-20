@@ -27,5 +27,13 @@ class DirectorController extends Controller
 		$dntu = Dntung::findOrFail($id);
 		$dntu->done=true;
 		$dntu->save();
+		redirect('home');
+	}
+	public function qtlhang($id)
+	{
+		$dntung = Dntung::findOrFail($id);
+		$qtconts = $dntung->qtconts()->get()->toArray();
+		$qtpsinh = $dntung->qtoans()->get()->toArray();
+		return view('user.director_qtoan', compact('dntung', 'qtconts', 'qtpsinh'));
 	}
 }

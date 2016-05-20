@@ -13,9 +13,24 @@ use App\QTCont;
 
 class ProponentController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+	public function dntung_index()
+	{
+		return view('user.proponent.dntung_home');
+	}
+	public function tucqtoan_index(){
+		return view('user.proponent.tucqtoan_home');
+	} 
+	public function tudhthanh_index()
+	{
+		return view('user.proponent.tudhthanh_home');
+	}
 	public function storeYclhang(YclhangRequest $request)
 	{
-		$my=date("Y/m");
 		$input=$request->all();
 		$input['ttien']=str_replace('.','', $input['ttien']);
 		$input['cuoc']=str_replace('.','', $input['cuoc']);
@@ -27,7 +42,7 @@ class ProponentController extends Controller
 		$yc= new Dntung($input);
 		$yc->save();
 		\Session::flash('flash_message', 'Dang thong tin yeu cau lam hang thanh cong');
-		return redirect('/home');
+		return redirect('/proponent/de-nghi-tam-ung');
 
 	}
 
@@ -52,6 +67,10 @@ class ProponentController extends Controller
 		}
 	}
 
+	public function convert($value)
+	{
+		return str_replace('.', '', $value);
+	}
 	public function qtcont($id, Request $request)
 	{
 		$nchay = $request->input('nchay');
@@ -78,13 +97,13 @@ class ProponentController extends Controller
 			$qtcont->ccont = $ccont[$i];
 			$qtcont->lcont = $lcont[$i];
 			$qtcont->nxe = $nxe[$i];
-			$qtcont->pnha = $pnha[$i];
-			$qtcont->khquan = $khquan[$i];
-			$qtcont->cxe = $cxe[$i];
-			$qtcont->cgui = $cgui[$i];
-			$qtcont->cmua = $cmua[$i];
-			$qtcont->gvcVAT = $gvcVAT[$i];
-			$qtcont->cbcVAT = $cbcVAT[$i];
+			$qtcont->pnha = $this->convert($pnha[$i]);
+			$qtcont->khquan = $this->convert($khquan[$i]);
+			$qtcont->cxe = $this->convert($cxe[$i]);
+			$qtcont->cgui = $this->convert($cgui[$i]);
+			$qtcont->cmua = $this->convert($cmua[$i]);
+			$qtcont->gvcVAT = $this->convert($gvcVAT[$i]);
+			$qtcont->cbcVAT = $this->convert($cbcVAT[$i]);
 			$qtcont->save();
 		}
 		//chi phi phat sinh
@@ -99,7 +118,7 @@ class ProponentController extends Controller
 			$qtoan->dntung_id = $id;
 			$qtoan->ldo = $ldo[$i];
 			$qtoan->chicho = $ccho[$i];
-			$qtoan->stien = $stien[$i];
+			$qtoan->stien = $this->convert($stien[$i]);
 			$qtoan->hdon = $hdon[$i];
 			$qtoan->nphanh = $nphanh[$i];
 			$qtoan->nchi = $nchi[$i];

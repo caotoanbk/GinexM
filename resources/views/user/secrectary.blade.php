@@ -1,4 +1,3 @@
-@include('partials.modal.secrectary_qttung')
 <div id='message' class='hidden'>&nbsp;</div>
 <section class='panel panel-primary'>
 	<div class='panel-heading text-center'>

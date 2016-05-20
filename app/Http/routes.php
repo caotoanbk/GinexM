@@ -18,7 +18,13 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/proponent/de-nghi-tam-ung', 'ProponentController@dntung_index');
+Route::get('/proponent/tam-ung-chua-quyet-toan', 'ProponentController@tucqtoan_index');
+Route::get('/proponent/tam-ung-da-hoan-thanh', 'ProponentController@tudhthanh_index');
 Route::get('/yclhang/data', 'DatatablesController@yclhangData');
+Route::get('/proponent/dntung/data', 'DatatablesController@dntung_home');
+Route::get('/proponent/tucqtoan/data', 'DatatablesController@tucqtoan_home');
+Route::get('/proponent/tudhthanh/data', 'DatatablesController@tudhthanh_home');
 Route::post('/make-goods', 'ProponentController@storeYclhang');
 Route::get('/test/', 'DatatablesController@test');
 Route::get('/bieumau/phieuchi/{id}', 'BieumauController@phieuchi');
@@ -33,7 +39,9 @@ Route::post('/quyet-toan/{id}', 'ProponentController@qtcont');
 Route::get('/qt-tam-ung/{id}', 'ProponentController@qtoanData');
 Route::get('/delete-quyet-toan-phat-sinh/{tuid}/{qtid}', 'ProponentController@deleteQtoan');
 Route::get('/delete-quyet-toan-cont/{tuid}/{qtcid}', 'ProponentController@deleteQtoancont');
-Route::get('/hoan-thanh/{id}', 'DirectorController@hoanthanh');
+Route::post('/hoan-thanh/{id}', 'DirectorController@hoanthanh');
 Route::get('/check-done', 'BieumauController@checkdone');
 Route::get('/test', 'TestController@test');
 Route::get('/quyet-toan-lam-hang/{id}', 'ProponentController@qtlhang');
+Route::get('/quyet-toan-lam-hang-secrectary/{id}', 'SecrectaryController@qtlhang');
+Route::get('/quyet-toan-lam-hang-director/{id}', 'DirectorController@qtlhang');
