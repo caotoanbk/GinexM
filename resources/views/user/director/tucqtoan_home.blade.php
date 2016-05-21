@@ -9,5 +9,5 @@
 </div>
 @endsection
 @section('javascript')
-<script type='text/javascript' src='/js/user/director.js'></script>
+<script type='text/javascript' src='/js/user/director/tucqtoan_home.js'></script>
 @endsection

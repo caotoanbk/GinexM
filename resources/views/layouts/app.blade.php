@@ -59,13 +59,13 @@
                     <li><a href="{{ url('/proponent/tam-ung-da-hoan-thanh') }}">Tạm ứng đã hoàn thành</a></li>
 						@endif
 						@if(Auth::user()->type == 1)
-                    <li><a href="{{ url('/home') }}">Tạm ứng chưa hoàn thành</a></li>
-                    <li><a href="{{ url('/home') }}">Tạm ứng đã hoàn thành</a></li>
+                    <li><a href="{{ url('/secrectary/tam-ung-chua-hoan-thanh') }}">Tạm ứng chưa hoàn thành</a></li>
+                    <li><a href="{{ url('/secrectary/tam-ung-da-hoan-thanh') }}">Tạm ứng đã hoàn thành</a></li>
 						@endif
 						@if(Auth::user()->type == 2)
-                    <li><a href="{{ url('/home') }}">Tạm ứng chưa duyệt</a></li>
-                    <li><a href="{{ url('/home') }}">Tạm ứng chưa quyết toán</a></li>
-                    <li><a href="{{ url('/home') }}">Tạm ứng đã hoàn thành</a></li>
+                    <li><a href="{{ url('/director/tam-ung-chua-duyet') }}">Tạm ứng chưa duyệt</a></li>
+                    <li><a href="{{ url('/director/tam-ung-chua-quyet-toan') }}">Tạm ứng chưa quyết toán</a></li>
+                    <li><a href="{{ url('/director/tam-ung-da-hoan-thanh') }}">Tạm ứng đã hoàn thành</a></li>
 						@endif
 					@endif
                 </ul>

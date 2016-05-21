@@ -14,7 +14,6 @@
 				<th>Cont 40</th>
 				<th>Loại cont</th>
 				<th>Thời gian hoàn ứng</th>
-				<th>Bản kệ</th>
 				<th>Tình trạng</th>
 				<th>Cươc</th>
 				<th>Nâng</th>
