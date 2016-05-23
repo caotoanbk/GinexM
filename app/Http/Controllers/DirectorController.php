@@ -31,7 +31,19 @@ class DirectorController extends Controller
 		$dntu = Dntung::findOrFail($id);
 		$dntu->done=true;
 		$dntu->save();
-		redirect('home');
+		redirect('/');
+	}
+	public function tongketthang()
+	{
+		return view('user.director.tongket'); 
+	}
+	public function xulytongket(Request $request)
+	{
+		$my = $request->input('month_tket');
+		$arr = explode('-', $my);
+		$month = intval($arr[1]);
+		$year = intval($arr[0]);
+		return view('user.director.tongket_tamung', compact('month', 'year'));
 	}
 	public function qtlhang($id)
 	{

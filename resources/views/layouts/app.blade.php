@@ -66,6 +66,7 @@
                     <li><a href="{{ url('/director/tam-ung-chua-duyet') }}">Tạm ứng chưa duyệt</a></li>
                     <li><a href="{{ url('/director/tam-ung-chua-quyet-toan') }}">Tạm ứng chưa quyết toán</a></li>
                     <li><a href="{{ url('/director/tam-ung-da-hoan-thanh') }}">Tạm ứng đã hoàn thành</a></li>
+					<li><a href="{{url('/director/tong-ket-tam-ung-thang')}}">Tổng kết tạm ứng tháng</a></li>
 						@endif
 					@endif
                 </ul>

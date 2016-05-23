@@ -20,6 +20,8 @@ Route::get('/director/tam-ung-da-hoan-thanh', 'DirectorController@direc_tudhthan
 Route::get('/director/tucduyet/data', 'DatatablesController@direc_tucduyet_home');
 Route::get('/director/tucqtoan/data', 'DatatablesController@direc_tucqtoan_home');
 Route::get('/director/tudhthanh/data', 'DatatablesController@direc_tudhthanh_home');
+Route::get('/director/tong-ket-tam-ung-thang', 'DirectorController@tongketthang');
+Route::post('/process/tongket', 'DirectorController@xulytongket');
 Route::post('/make-goods', 'ProponentController@storeYclhang');
 Route::get('/bieumau/phieuchi/{id}', 'BieumauController@phieuchi');
 Route::get('/bieumau/denghitamung', 'BieumauController@denghitamung');

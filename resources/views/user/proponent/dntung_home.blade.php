@@ -6,7 +6,7 @@
 	@endif
     <div class="row">
         <div class="col-md-12">
-			@include('user.proponent')
+			@include('user.proponent', ['title' => 'ĐỀ NGHỊ TẠM ỨNG'])
         </div>
     </div>
 </div>

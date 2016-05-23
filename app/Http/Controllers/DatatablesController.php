@@ -13,7 +13,7 @@ class DatatablesController extends Controller
 {
 	public function dntung_home()
 	{
-		$yclhangs = Dntung::select(['id', 'created_at', 'reason', 'bill', 'slc20','slc40', 'khang', 'ttien', 'lcont', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'check', 'approve', 'done'])->where('approve', false)->where('user_id', \Auth::user()->id)->where('created_at', '>=', Carbon::now()->startOfMonth());
+		$yclhangs = Dntung::select(['id', 'created_at', 'reason', 'bill', 'slc20','slc40', 'khang', 'ttien', 'lcont', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'check', 'approve', 'done'])->where('approve', false)->where('user_id', \Auth::user()->id);
 		return Datatables::of($yclhangs)->addColumn('bke', function($yclhang){
 			$my = date("Y/m");
 			return '<a href="/de_nghi_tam_ung/'.$my.'/'.$yclhang->id.'.xlsx'.'". class="btn btn-xs btn-primary">Tải File</a>';	
@@ -28,7 +28,7 @@ class DatatablesController extends Controller
 	}
 	public function tucqtoan_home()
 	{
-		$yclhangs = Dntung::select(['id', 'created_at', 'reason', 'bill', 'slc20','slc40', 'khang', 'ttien', 'lcont', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'check', 'approve', 'done'])->where('user_id', \Auth::user()->id)->where('approve', true)->where('done', false)->where('created_at', '>=', Carbon::now()->startOfMonth());
+		$yclhangs = Dntung::select(['id', 'created_at', 'reason', 'bill', 'slc20','slc40', 'khang', 'ttien', 'lcont', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'check', 'approve', 'done'])->where('user_id', \Auth::user()->id)->where('approve', true)->where('done', false);
 		return Datatables::of($yclhangs)->addColumn('bke', function($yclhang){
 			$my = date("Y/m");
 			return '<a href="/de_nghi_tam_ung/'.$my.'/'.$yclhang->id.'.xlsx'.'". class="btn btn-xs btn-primary">Tải File</a>';	
@@ -42,7 +42,7 @@ class DatatablesController extends Controller
 	}
 	public function tudhthanh_home()
 	{
-		$yclhangs = Dntung::select(['id', 'created_at', 'reason', 'bill', 'slc20','slc40', 'khang', 'ttien', 'lcont', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'check', 'approve', 'done'])->where('user_id', \Auth::user()->id)->where('done', true)->where('created_at', '>=', Carbon::now()->startOfMonth());
+		$yclhangs = Dntung::select(['id', 'created_at', 'reason', 'bill', 'slc20','slc40', 'khang', 'ttien', 'lcont', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'check', 'approve', 'done'])->where('user_id', \Auth::user()->id)->where('done', true);
 		return Datatables::of($yclhangs)->addColumn('bke', function($yclhang){
 			$my = date("Y/m");
 			return '<a href="/de_nghi_tam_ung/'.$my.'/'.$yclhang->id.'.xlsx'.'". class="btn btn-xs btn-primary">Tải File</a>';	
@@ -52,7 +52,7 @@ class DatatablesController extends Controller
 	}
 	public function sec_tuchthanh_home()
 	{
-		$yclhangs = Dntung::select(['id', 'created_at', 'reason', 'bill', 'slc20','slc40', 'khang', 'ttien', 'lcont', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'check', 'approve', 'done'])->where('done', false)->where('created_at', '>=', Carbon::now()->startOfMonth());
+		$yclhangs = Dntung::select(['id', 'created_at', 'reason', 'bill', 'slc20','slc40', 'khang', 'ttien', 'lcont', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'check', 'approve', 'done'])->where('done', false);
 		return Datatables::of($yclhangs)->addColumn('status', function($yclhang){
 			$check=$yclhang->check;
 			$approve=$yclhang->approve;
@@ -72,7 +72,7 @@ class DatatablesController extends Controller
 	}
 	public function sec_tudhthanh_home()
 	{
-		$yclhangs = Dntung::select(['id', 'created_at', 'reason', 'bill', 'slc20','slc40', 'khang', 'ttien', 'lcont', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'check', 'approve', 'done'])->where('done', true)->where('created_at', '>=', Carbon::now()->startOfMonth());
+		$yclhangs = Dntung::select(['id', 'created_at', 'reason', 'bill', 'slc20','slc40', 'khang', 'ttien', 'lcont', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'check', 'approve', 'done'])->where('done', true);
 		return Datatables::of($yclhangs)->addColumn('bke', function($yclhang){
 			$my = date("Y/m");
 			return '<a href="/de_nghi_tam_ung/'.$my.'/'.$yclhang->id.'.xlsx'.'". class="btn btn-xs btn-default">Tải File</a>';	
@@ -83,14 +83,14 @@ class DatatablesController extends Controller
 	}
 	public function direc_tucduyet_home()
 	{
-		$yclhangs = Dntung::select(['id', 'created_at', 'reason', 'bill', 'slc20','slc40', 'khang', 'ttien', 'lcont', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'check', 'approve', 'done'])->where('created_at', '>=', Carbon::now()->startOfMonth())->where('check', '=', true)->where('approve', false);
+		$yclhangs = Dntung::select(['id', 'created_at', 'reason', 'bill', 'slc20','slc40', 'khang', 'ttien', 'lcont', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'check', 'approve', 'done'])->where('check', '=', true)->where('approve', false);
 		return Datatables::of($yclhangs)->addColumn('status', function($yclhang){
 			return '<a href="#" class="duyet" data-id="'.$yclhang->id.'"><em><small>Duyệt</small></em></a>';
 		})->addColumn('check', function($yclhang){return '';})->addColumn('resp', function($yclhang){return '';})->make(true);
 	}
 	public function direc_tucqtoan_home()
 	{
-		$yclhangs = Dntung::select(['id', 'created_at', 'reason', 'bill', 'slc20','slc40', 'khang', 'ttien', 'lcont', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'check', 'approve', 'done'])->where('created_at', '>=', Carbon::now()->startOfMonth())->where('approve', '=', true)->where('done', false);
+		$yclhangs = Dntung::select(['id', 'created_at', 'reason', 'bill', 'slc20','slc40', 'khang', 'ttien', 'lcont', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'check', 'approve', 'done'])->where('approve', '=', true)->where('done', false);
 		return Datatables::of($yclhangs)->addColumn('bke', function($yclhang){
 			$my = date("Y/m");
 			return '<a href="/de_nghi_tam_ung/'.$my.'/'.$yclhang->id.'.xlsx'.'". class="btn btn-xs btn-primary">Tai File</a>';	
