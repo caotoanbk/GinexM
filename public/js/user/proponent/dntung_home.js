@@ -47,12 +47,40 @@ $(function() {
 				}
 			},
 			{
+				text: 'Xóa',
+				action: function(e, dt, node, config) {
+					var selectedRows = dt.rows( {selected: true}).toArray();
+				    var count = dt.rows( { selected: true } ).count();
+					if(count>0){
+					var r = confirm('Bạn muốn xóa đề nghị tạm ứng này?');
+					if(r == true){
+					var id = dt.rows(selectedRows[0][0]).data().toArray()[0].id;
+					window.location.href = '/tam-ung/xoa/'+id;
+					}
+					}else{
+						alert('Bạn chưa chọn đề nghị tạm ứng nào');
+					}
+				}
+			},
+			{
+				text: 'Sửa',
+				action: function(e ,dt, node, config) {
+					var selectedRows = dt.rows( {selected: true}).toArray();
+				    var count = dt.rows( { selected: true } ).count();
+					if(count){
+						var id = dt.rows(selectedRows[0][0]).data().toArray()[0].id;
+						window.location.href = '/tam-ung/sua/'+id;
+					}else{
+						alert('Bạn chưa chọn đề nghị tạm ứng nào');
+					}
+				}
+			},
+			{
 				text: 'Select none',
 				action: function(e, dt, node, config) {
 					dt.rows().deselect();
 				}
-			}	
-
+			}
 		],
 		"columns": [
 			{data: 'resp', name: 'resp', searchable: false, orderable: false},
@@ -75,8 +103,8 @@ $(function() {
 		],
 		"order": [[2, 'desc'], [7, 'asc']]
 	});
-
 	$('#myModal').on('show.bs.modal', function(e) {
+		console.log('Hello world');
 		var $modal = $(this);
 		$('#bill').val('');
 		$('input[name=reason]').val('');
@@ -88,6 +116,9 @@ $(function() {
 		$('input[name=cuoc]').val('');
 		$('input[name=nang]').val('');
 		$('input[name=ha]').val('');
+		$('input[name=loaihang]').val('');
+		$('input[name=tuyenduong]').val('');
+		$('input[name=khachhang]').val('');
 		$('input[name=hquan]').val('');
 		$('input[name=psinh]').val('');
 		$('#checkbct').prop('checked', false);
@@ -98,9 +129,7 @@ $(function() {
 			} else {
 				$('#input-hidden').removeClass('hidden');
 			}
-
 		});
-
 		$('input[name=ttien]').autoNumeric('init', {
 			aSep:'.',
 			aDec: ',',
@@ -154,6 +183,9 @@ $(function() {
 				khang: { required: true, },
 				ttien: { required: true, },
 				tghung: { required: true, },
+				loaihang: {required: true},
+				tuyenduong: {required: true},
+				khachhang: {required: true},
 			},
 			messages: {
 				reason: {
@@ -179,6 +211,15 @@ $(function() {
 				},
 				tghung: {
 					required: '<div class="text-danger"><em><small>Bạn chưa nhập thời gian hoàn ứng</small></em></div>'
+				},
+				loaihang: {
+					required: '<div class="text-danger"><em><small>Bạn chưa nhập loại hàng (nguyên cont hay rời)</small></em></div>'
+				},
+				tuyenduong: {
+					required: '<div class="text-danger"><em><small>Bạn chưa nhập tuyến đường</small></em></div>'
+				},
+				khachhang: {
+					required: '<div class="text-danger"><em><small>Bạn chưa nhập khách hàng</small></em></div>'
 				},
 			},
 		});

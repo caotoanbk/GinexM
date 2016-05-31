@@ -7,9 +7,9 @@ use Carbon\Carbon;
 
 class Dntung extends Model
 {
-	protected $fillable=['user_id', 'reason', 'bill', 'slc20', 'slc40', 'lcont', 'khang', 'ttien', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh'];
+	protected $fillable=['user_id', 'reason', 'bill', 'slc20', 'slc40', 'lcont', 'khang', 'ttien', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'date_done', 'loaihang', 'tuyenduong', 'khachhang'];
 
-	protected $dates=['created_at', 'updated_at', 'tghung'];
+	protected $dates=['created_at', 'updated_at', 'tghung', 'date_done'];
 
 	public function getTghungAttribute($date)
 	{

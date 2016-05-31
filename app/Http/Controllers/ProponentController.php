@@ -29,7 +29,7 @@ class ProponentController extends Controller
 	{
 		return view('user.proponent.tudhthanh_home');
 	}
-	public function storeYclhang(YclhangRequest $request)
+	public function storeYclhang(Request $request)
 	{
 		$input=$request->all();
 		$input['ttien']=str_replace('.','', $input['ttien']);
@@ -87,6 +87,7 @@ class ProponentController extends Controller
 		$cmua = $request->input('cmua');
 		$gvcVAT = $request->input('gvcVAT');
 		$cbcVAT = $request->input('cbcVAT');
+		$gvdchinh = $request->input('gvdchinh');
 		for ($i = 0; $i < count($nchay); $i++) {
 			$qtcont = new QTCont;
 			$qtcont->dntung_id = $id;
@@ -104,6 +105,7 @@ class ProponentController extends Controller
 			$qtcont->cmua = $this->convert($cmua[$i]);
 			$qtcont->gvcVAT = $this->convert($gvcVAT[$i]);
 			$qtcont->cbcVAT = $this->convert($cbcVAT[$i]);
+			$qtcont->gvdchinh = $this->convert($gvdchinh[$i]);
 			$qtcont->save();
 		}
 		//chi phi phat sinh
@@ -113,6 +115,7 @@ class ProponentController extends Controller
 		$nchi = $request->input('nchi');
 		$nphanh = $request->input('nphanh');
 		$ccho = $request->input('ccho');
+		$gchu = $request->input('gchu');
 		for ($i = 0; $i < count($ldo); $i++) {
 			$qtoan = new Quyettoan;
 			$qtoan->dntung_id = $id;
@@ -122,9 +125,10 @@ class ProponentController extends Controller
 			$qtoan->hdon = $hdon[$i];
 			$qtoan->nphanh = $nphanh[$i];
 			$qtoan->nchi = $nchi[$i];
+			$qtoan->gchu = $gchu[$i];
 			$qtoan->save();
 		}
-		return redirect('home');
+		return redirect('/');
 	}
 	public function qtoanData($id)
 	{
@@ -151,5 +155,30 @@ class ProponentController extends Controller
 		$qtconts = $dntung->qtconts()->get()->toArray();
 		$qtpsinh = $dntung->qtoans()->get()->toArray();
 		return view('user.proponent_qtoan', compact('dntung', 'qtconts', 'qtpsinh'));
+	}
+	public function xoaDntung($id)
+	{
+		$dntu = Dntung::findOrFail($id);
+		$dntu->delete();
+		return redirect('/');
+	}
+	public function capnhatDntung($id)
+	{
+		$dntu = Dntung::findOrFail($id);
+		return view('user.proponent.capnhat_dntu', compact('dntu', 'id'));
+	}
+	public function processUpdate_dntu($id, Request $request)
+	{
+		$dntu = Dntung::findOrFail($id);
+		$input = $request->all();
+		$input['ttien']=str_replace('.','', $input['ttien']);
+		$input['cuoc']=str_replace('.','', $input['cuoc']);
+		$input['nang']=str_replace('.','', $input['nang']);
+		$input['ha']=str_replace('.', '', $input['ha']);
+		$input['hquan']=str_replace('.', '', $input['hquan']);
+		$input['psinh']=str_replace('.', '', $input['psinh']);
+		$dntu->fill($input)->save();
+		\Session::flash('flas_message', 'Cập nhật đề nghị tạm ứng thành công!');
+		return redirect('\proponent\de-nghi-tam-ung');
 	}
 }

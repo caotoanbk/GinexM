@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Dntung;
+use Carbon\Carbon;
 
 class DirectorController extends Controller
 {
@@ -30,8 +31,9 @@ class DirectorController extends Controller
 	{
 		$dntu = Dntung::findOrFail($id);
 		$dntu->done=true;
+		$dntu->date_done = Carbon::now(); 
 		$dntu->save();
-		redirect('/');
+		return redirect('/');
 	}
 	public function tongketthang()
 	{

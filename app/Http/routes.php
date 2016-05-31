@@ -40,3 +40,8 @@ Route::get('/check-done', 'BieumauController@checkdone');
 Route::get('/quyet-toan-lam-hang/{id}', 'ProponentController@qtlhang');
 Route::get('/quyet-toan-lam-hang-secrectary/{id}', 'SecrectaryController@qtlhang');
 Route::get('/quyet-toan-lam-hang-director/{id}', 'DirectorController@qtlhang');
+Route::get('/tong-ket/hang-muc/data/{year}/{month}', 'DatatablesController@tongkethangmuc');
+Route::get('/tong-ket/booking/data/{year}/{month}', 'DatatablesController@tongketbooking');
+Route::get('/tam-ung/xoa/{id}', 'ProponentController@xoaDntung');
+Route::get('/tam-ung/sua/{id}', 'ProponentController@capnhatDntung');
+Route::patch('/dntu/cap-nhat/{id}', 'ProponentController@processUpdate_dntu');

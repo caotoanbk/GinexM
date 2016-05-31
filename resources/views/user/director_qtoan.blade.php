@@ -34,6 +34,7 @@ function format($value){
 		<th>Cước gửi</th>
 		<th>Cước bán</th>
 		<th>Giá vốn chưa VAT</th>
+		<th>Giá vốn điều chỉnh</th>
 		<th>Cước bán chưa VAT</th>
 	</tr>
 </thead>
@@ -54,6 +55,7 @@ function format($value){
 	<td>{{format($qtcont['cgui'])}}</td>
 	<td>{{format($qtcont['cmua'])}}</td>
 	<td>{{format($qtcont['gvcVAT'])}}</td>
+	<td>{{format($qtcont['gvdchinh'])}}</td>
 	<td>{{format($qtcont['cbcVAT'])}}</td>
 </tr>
 @endforeach

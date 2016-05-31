@@ -15,7 +15,7 @@ function format($value){
 </div>
 <div style="margin-left: 25px;">
 {!! Form::open(array('method' => 'post', 'class' => 'form-horizontal', 'files' => true, 'name' => 'content', 'id' => 'content1')) !!}
-<div><h4>CƯỚC PHÍ CÁC CONT</h4></div>
+<div><h4>THỐNG KẾ CÁC CONT</h4></div>
 <div>&nbsp;</div>
 <div style="overflow: auto;">
 <table class='table table-bordered' id="qttu_cont">
@@ -35,6 +35,7 @@ function format($value){
 		<th>Cước gửi</th>
 		<th>Cước bán</th>
 		<th>Giá vốn chưa VAT</th>
+		<th>Giá vốn điều chỉnh</th>
 		<th>Cước bán chưa VAT</th>
 	</tr>
 </thead>
@@ -56,6 +57,7 @@ function format($value){
 	<td>{{format($qtcont['cgui'])}}</td>
 	<td>{{format($qtcont['cmua'])}}</td>
 	<td>{{format($qtcont['gvcVAT'])}}</td>
+	<td>{{format($qtcont['gvdchinh'])}}</td>
 	<td>{{format($qtcont['cbcVAT'])}}</td>
 </tr>
 @endforeach
@@ -66,19 +68,20 @@ function format($value){
 <button id='them_cont' class="btn btn-warning btn-xs">Thêm</button>
 <div>&nbsp;</div>
 
-<div><h4>CƯỚC PHÁT SINH</h4></div>
+<div><h4>CÁC HẠNG MỤC THANH TOÁN</h4></div>
 <div>&nbsp;</div>
 <div style="overflow: auto;">
 <table class='table table-bordered' id="qttu_ps" >
 <thead>
 	<tr>
 		<th class="text-center">Xóa</th>
-		<th>Lý do chi</th>
+		<th>Hạng mục thanh toán</th>
 		<th>Số tiền</th>
 		<th>Hóa đơn</th>
 		<th>Nơi phát hành</th>
 		<th>Chi cho</th>
 		<th>Ngày chi</th>
+		<th>Ghi chú</th>
 	</tr>
 </thead>
 <tbody id='cppsinh'>
@@ -92,6 +95,7 @@ function format($value){
 	<td>{{$qtps['nphanh']}}</td>
 	<td>{{$qtps['chicho']}}</td>
 	<td>{{$qtps['nchi']}}</td>
+	<td>{{$qtps['gchu']}}</td>
 </tr>
 @endforeach
 @endif

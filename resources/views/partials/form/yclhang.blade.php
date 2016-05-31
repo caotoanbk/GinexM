@@ -17,6 +17,24 @@
 </div>
 </div>
 <div class='form-group'>
+{!! Form::label('khachhang', 'Khách hàng', ['class' => 'col-md-3 control-label']) !!}
+<div class='col-md-8'>
+{!! Form::text('khachhang', null, ['class' => 'form-control']) !!}
+</div>
+</div>
+<div class='form-group'>
+{!! Form::label('loaihang', 'Loại hàng', ['class' => 'col-md-3 control-label']) !!}
+<div class='col-md-8'>
+{!! Form::text('loaihang', null, ['class' => 'form-control']) !!}
+</div>
+</div>
+<div class='form-group'>
+{!! Form::label('tuyenduong', 'Tuyến đường', ['class' => 'col-md-3 control-label']) !!}
+<div class='col-md-8'>
+{!! Form::text('tuyenduong', null, ['class' => 'form-control']) !!}
+</div>
+</div>
+<div class='form-group'>
 {!! Form::label('slc20', 'Số lượng cont 20', ['class' => 'col-md-3 control-label']) !!}
 <div class='col-md-8'>
 {!! Form::number('slc20', null, ['class' => 'form-control']) !!}

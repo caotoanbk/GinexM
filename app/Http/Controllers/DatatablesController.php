@@ -8,6 +8,9 @@ use App\Http\Requests;
 use App\Dntung;
 use Datatables;
 use Carbon\Carbon;
+use App\Quyettoan;
+use App\QTCont;
+
 
 class DatatablesController extends Controller
 {
@@ -110,5 +113,27 @@ class DatatablesController extends Controller
 			return '<a href="/de_nghi_tam_ung/'.$my.'/'.$yclhang->id.'.xlsx'.'". class="btn btn-xs btn-primary">Tai File</a>';	
 		})->addColumn('status', function($yclhang){
 				return '<small class="text-success"><em><a class="text-success" href="/quyet-toan-lam-hang-secrectary/'.$yclhang->id.'">Đã hoàn thành</a></em></small>'; })->addColumn('check', function($yclhang){return '';})->addColumn('resp', function($yclhang){return '';})->make(true);
+	}
+	public function tongkethangmuc($year, $month)
+	{
+		if($month <10) 
+			$str_month='0'.strval($month);
+		else
+			$str_month = strval($month);
+		$str_year = strval($year);
+		$ym = $str_year.'-'.$str_month.'-';
+		$dulieus = Quyettoan::join('dntungs', 'quyettoans.dntung_id', '=', 'dntungs.id')->select(['quyettoans.nchi', 'quyettoans.ldo', 'dntungs.slc20', 'dntungs.slc40', 'dntungs.lcont', 'dntungs.khang', 'dntungs.bill', 'quyettoans.stien', 'quyettoans.hdon', 'quyettoans.nphanh', 'quyettoans.gchu', 'dntungs.date_done'])->where('dntungs.done', true)->where('dntungs.date_done', 'LIKE', $ym.'%');
+		return Datatables::of($dulieus)->addColumn('tongcont', function($dlieu){return $dlieu->slc20+$dlieu->slc40;})->addColumn('tienchuaVAT', function($dlieu){return round($dlieu->stien/1.1);})->addColumn('VAT', function($dulieu){return round($dulieu->stien/1.1*0.1);})->addColumn('qtoancty', function($dulieu){return $dulieu->stien;})->make(true);
+	}
+	public function tongketbooking($year, $month)
+	{
+		if($month <10) 
+			$str_month='0'.strval($month);
+		else
+			$str_month = strval($month);
+		$str_year = strval($year);
+		$ym = $str_year.'-'.$str_month.'-';
+		$dulieus = QTCont::join('dntungs', 'q_t_conts.dntung_id', '=', 'dntungs.id')->select(['dntungs.khang', 'q_t_conts.nxchay', 'q_t_conts.bsxe', 'dntungs.loaihang', 'dntungs.tuyenduong', 'dntungs.khachhang', 'q_t_conts.lxe', 'q_t_conts.scont', 'q_t_conts.ccont', 'q_t_conts.nxe', 'q_t_conts.lcont', 'dntungs.bill', 'q_t_conts.pnha', 'q_t_conts.khquan', 'q_t_conts.cxe', 'q_t_conts.cgui', 'q_t_conts.cmua', 'q_t_conts.gvcVAT', 'q_t_conts.cbcVAT', 'q_t_conts.gvdchinh'])->where('dntungs.done', true)->where('dntungs.date_done', 'LIKE', $ym.'%');
+		return Datatables::of($dulieus)->addColumn('pnhaVAT', function($dulieu){return round($dulieu->pnha*0.1);})->addColumn('VATgvon', function($dulieu){return round($dulieu->gvcVAT*0.1);})->addColumn('VATgvdchinh', function($dulieu){return round($dulieu->gvdchinh*0.1);})->addColumn('lngop1', function($dulieu){return ($dulieu->cbcVAT - $dulieu->gvcVAT);})->addColumn('lngop2', function($dulieu){return ($dulieu->cbcVAT -$dulieu->gvdchinh);})->addColumn('mschuyen', function($dulieu){return 'ma so chuyen';})->make(true);
 	}
 }
