@@ -12,7 +12,9 @@
 				<th>Ngày đề nghị</th>
 				<th>Số booking/bl</th>
 				<th>Lý do tạm ứng</th>
+				<th>Ngày đóng hàng</th>
 				<th>Số tiền</th>
+				<th>Số tiền tạm ứng thực tế</th>
 				<th>Xuất/Nhập</th>
 				<th>Cont 20</th>
 				<th>Cont 40</th>

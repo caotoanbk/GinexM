@@ -45,3 +45,17 @@ Route::get('/tong-ket/booking/data/{year}/{month}', 'DatatablesController@tongke
 Route::get('/tam-ung/xoa/{id}', 'ProponentController@xoaDntung');
 Route::get('/tam-ung/sua/{id}', 'ProponentController@capnhatDntung');
 Route::patch('/dntu/cap-nhat/{id}', 'ProponentController@processUpdate_dntu');
+Route::get('/secrectary/kiem-tra', 'SecrectaryController@kiemtra');
+Route::get('sendmail', function(){
+	$data = array(
+		'name' => 'Learning Laravel',
+	);
+	Mail::send('emails.welcom', $data, function($message){
+		$message->from('logistics@ginex.com.vn', 'Learning Laravel');
+		$message->to('tony.cao@ginex.com.vn')->subject('Learning Laravel test email');
+	});
+}); 
+Route::get('test', function()
+{
+    dd(Config::get('mail'));
+});

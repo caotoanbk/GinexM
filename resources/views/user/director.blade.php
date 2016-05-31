@@ -6,6 +6,7 @@
 		<table id='tung' class='table table-bordered table-condensed nowrap' cellspacing='0' width='100%'>
 			<thead>
 				<th>Ngày đề nghị</th>
+				<th>Người đề nghị</th>
 				<th>Booking/BL</th>
 				<th>Lý do tạm ứng</th>
 				<th>Số tiền</th>

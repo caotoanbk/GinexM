@@ -282,6 +282,99 @@
       left: 568px;
       top: 920px;
     }
+.gwd-p-zixo {
+      position: absolute;
+      width: 135px;
+      height: 43px;
+      font-family: 'Times New Roman';
+      color: rgb(0, 0, 0);
+      text-align: center;
+      font-size: 14px;
+      left: 61px;
+      top: 920px;
+    }
+	 .gwd-p-sgpd {
+      position: absolute;
+      width: 130px;
+      height: 47px;
+      font-family: 'Times New Roman';
+      text-align: center;
+      color: rgb(0, 0, 0);
+      font-size: 14px;
+      top: 920px;
+      left: 243px;
+    }
+	.gwd-p-kbzk {
+      position: absolute;
+      width: 177px;
+      height: 43px;
+      font-family: 'Times New Roman';
+      text-align: center;
+      color: rgb(0, 0, 0);
+      font-size: 14px;
+      top: 920px;
+      left: 405px;
+    }
+    .gwd-p-zh94 {
+      position: absolute;
+      height: 47px;
+      top: 920px;
+      font-size: 14px;
+      text-align: center;
+      left: 631px;
+      width: 140px;
+      transform-origin: -148.5px 21.5px 0px;
+    }
+	 .gwd-p-h5qs {
+      position: absolute;
+      width: 79.5px;
+      height: 20px;
+      left: 92px;
+      text-align: center;
+      top: 968px;
+    }
+    .gwd-p-129o {
+      position: absolute;
+      width: 86px;
+      height: 21px;
+      left: 260px;
+      text-align: center;
+      font-size: 13px;
+      font-style: italic;
+      font-weight: bold;
+      top: 968px;
+    }
+	  .gwd-p-1cqv {
+      position: absolute;
+      width: 85px;
+      height: 20px;
+      left: 444px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: bold;
+      font-style: italic;
+      top: 965px;
+    }
+    .gwd-p-15tp {
+      position: absolute;
+      width: 101.5px;
+      height: 21px;
+      left: 653px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: bold;
+      font-style: italic;
+      top: 965px;
+    }
+    .gwd-p-u16g {
+      position: absolute;
+      width: 714px;
+      height: 23px;
+      left: 28px;
+      top: 208px;
+      font-size: 14px;
+      text-align: left;
+    }
   </style>
 </head>
 
@@ -299,12 +392,23 @@
 	<br class="">Đề nghị tạm ứng số tiển:&nbsp;
 <?php 
 $t_tien = 0;
+$t_tien_ltron=0;
+$ktoan_ktra = true;
+$gdoc_duyet = true;
+$ptrach_ktra = true;
 foreach($dntung as $item){
 	$t_tien += $item->ttien;
+	$t_tien_ltron += $item->ttien_ltron; 
+	if($item->check ==false)
+		$ktoan_ktra = false;
+	if($item->approve ==false)
+		$gdoc_duyet = false;
 }
-echo number_format($t_tien, 0, '.', ','); ?>
+echo number_format($t_tien_ltron, 0, '.', ',');
+?>
  đ&nbsp;(Viết bằng chữ):&nbsp;&nbsp;
 <?php 
+ function vietbangchu($t_tien){
 	$number_to_word = ['không', 'một', 'hai', 'ba', 'bốn', 'năm', 'sáu', 'bảy', 'tám', 'chín'];
 	$str_number = str_split($t_tien);
 	$count = strlen($t_tien);
@@ -374,14 +478,18 @@ echo number_format($t_tien, 0, '.', ','); ?>
 						}
 					}
 				}
-?>{{ $ttien }}
+				return $ttien;
+}
+?>{{vietbangchu($t_tien_ltron)}} 
     <br class="">
     <br class="">
   </p>
+<p class="gwd-p-u16g">Lý do tạm ứng:&nbsp;<i>
+    &nbsp;&nbsp;&nbsp;@foreach ($dntung as $item) {{ $item->reason }}_Bill#{{$item->bill}}({{ number_format($item->ttien_ltron, 0, '.', ',') }} đ), @endforeach</i></p>
   <p class="gwd-p-bt0t"><span class="gwd-span-1tks gwd-span-5b27 gwd-span-2hk2 gwd-span-isul">Họ tên người nhận tiền</span><span class="gwd-span-ugkh">:</span><span class="gwd-span-1nn6">&nbsp;&nbsp;&nbsp;{{\Auth::user()->name}}&nbsp;&nbsp;&nbsp;<br class=""><span class="gwd-span-zd2p"><span class="gwd-span-rgkl"><span class="gwd-span-te0w">Lý do chi</span>:</span>
-    <span class="gwd-span-o7dq">&nbsp;&nbsp;&nbsp;{{$dntung->first()->reason}}</span>
-    <br class=""><span class="gwd-span-1xxr"><span class="gwd-span-ppe9"><span class="gwd-span-3e2h">Số tiền</span>:</span><span class="gwd-span-jl7y">&nbsp;&nbsp;&nbsp;{{number_format($t_tien, 0, '.', ',')}} đ&nbsp;(Viết bằng chữ):&nbsp;&nbsp;&nbsp;{{$ttien}}
-    <br class=""></span></span><span class="gwd-span-oisu">Kèm theo: .........................Chứng từ gốc:................................................................................................................................<br></span>
+    <span class="gwd-span-o7dq">&nbsp;&nbsp;&nbsp;@foreach ($dntung as $item) {{ $item->reason }}_Bill#{{$item->bill}}({{ number_format($item->ttien_ltron, 0, '.', ',') }} đ), @endforeach</span>
+    <br class=""><span class="gwd-span-1xxr"><span class="gwd-span-ppe9"><span class="gwd-span-3e2h">Số tiền</span>:</span><span class="gwd-span-jl7y">&nbsp;&nbsp;&nbsp;{{number_format($t_tien_ltron, 0, '.', ',')}} đ&nbsp;(Viết bằng chữ):&nbsp;&nbsp;&nbsp;{{vietbangchu($t_tien_ltron)}}
+    <br class=""></span></span><span class="gwd-span-oisu">Kèm theo: .........................Chứng từ gốc:..................................................................................................................<br></span>
     <br class="">
     <br class="">
     <br class="">
@@ -399,7 +507,7 @@ echo number_format($t_tien, 0, '.', ','); ?>
   <table style="" class='dntu'>
     <tbody style="">
       <tr>
-        <th colspan="2">Số chứng từ</th>
+        <th rowspan="2">Bill/Booking</th>
         <th colspan="2">Container</th>
         <th rowspan="2">Loại hình</th>
         <th rowspan="2">Cược</th>
@@ -410,15 +518,12 @@ echo number_format($t_tien, 0, '.', ','); ?>
         <th rowspan="2">Tổng</th>
       </tr>
       <tr>
-        <th>Bill</th>
-        <th>Booking</th>
         <th>20"</th>
         <th>40"</th>
       </tr>
 		@foreach($dntung as $item)
 		<tr>
 			<td>{{$item->bill}}</td>
-			<td>&nbsp;</td>
 			<td>{{$item->slc20}}</td>
 			<td>{{$item->slc40}}</td>
 			<td>{{$item->lcont}}</td>
@@ -431,8 +536,12 @@ echo number_format($t_tien, 0, '.', ','); ?>
 		</tr>
 		@endforeach
       <tr>
-        <th colspan="10">Tổng số tiền xin tạm ứng thực tế</th>
+        <th colspan="9">Tổng chi phí thực tế</th>
         <th>{{number_format($t_tien, 0, '.', ',')}}</th>
+      </tr>
+      <tr>
+        <th colspan="9">Tổng số tiền xin tạm ứng thực tế</th>
+        <th>{{number_format($t_tien_ltron, 0, '.', ',')}}</th>
       </tr>
     </tbody>
   </table>
@@ -443,12 +552,17 @@ echo number_format($t_tien, 0, '.', ','); ?>
   </tr>
 	@endforeach
   </table>
-  <p class="gwd-p-zixo">Giám đốc
-    <br class="">(Ký, họ tên)</p>
-  <p class="gwd-p-sgpd">Phụ trách bộ phận
-    <br class="">(Ký,  họ tên)</p>
-  <p class="gwd-p-kbzk">Người đề nghị tạm ứng
-    <br class="">(Ký, họ tên)</p>
+<p class="gwd-p-zixo">Giám đốc<br>
+    (Ký, họ tên)</p>
+  <p class="gwd-p-sgpd">Phụ trách bộ phận<br>
+    (Ký, họ tên)</p>
+  <p class="gwd-p-kbzk">Người đề nghị tạm ứng<br>
+    (Ký, họ tên)</p>
+  <p class="gwd-p-zh94">Người nhận tiền<br>
+    (Ký, họ tên)</p>
+  <p class="gwd-p-h5qs"><span style="font-size:13px;"><b><i>@if($gdoc_duyet)Đã duyệt @else Chưa duyệt @endif</i></b></span></p>
+  <p class="gwd-p-129o">@if($ktoan_ktra)Đã kiểm tra @else Chưa kiểm tra @endif</p>
+  <p class="gwd-p-1cqv">Đã ký</p>
+  <p class="gwd-p-15tp">Đã ký</p>
 </body>
-
 </html>

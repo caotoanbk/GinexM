@@ -9,6 +9,7 @@
 				<th></th>
 				<th></th>
 				<th>Ngày đề nghị</th>
+				<th>Người đề nghị</th>
 				<th>Số booking/bl</th>
 				<th>Lý do tạm ứng</th>
 				<th>Số tiền</th>

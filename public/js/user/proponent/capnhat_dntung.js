@@ -6,6 +6,13 @@ $(function(){
 			pSign: 's',
 			aPad: false,	
 		});
+		$('input[name=ttien_ltron]').autoNumeric('init', {
+			aSep:'.',
+			aDec: ',',
+			aSign: ' VND',
+			pSign: 's',
+			aPad: false,	
+		});
 		$('input[name=cuoc]').autoNumeric('init', {
 			aSep:'.',
 			aDec: ',',
@@ -50,12 +57,12 @@ $(function(){
 				slc40: { required: true, },
 				lcont: { required: true, },
 				khang: { required: true, },
+				ndonghang: {required: true, },
 				ttien: { required: true, },
 				tghung: { required: true, },
 				loaihang: {required: true},
 				tuyenduong: {required: true},
 				khachhang: {required: true},
-
 			},
 			messages: {
 				reason: {
@@ -75,6 +82,9 @@ $(function(){
 				},
 				khang: {
 					required: '<div class="text-danger"><em><small>Bạn chưa chọn kiểu hàng</small></em></div>'
+				},
+				ndonghang: {
+					required: '<div class="text-danger"><em><small>Bạn chưa nhập thời gian đóng hàng</small></em></div>'
 				},
 				ttien: {
 					required: '<div class="text-danger"><em><small>Bạn chưa nhập số tiền</small></em></div>'

@@ -296,6 +296,7 @@ class ComposerStaticInit72af72563967eb7684ef58de656d9e1f
         'AddGhichuColumToQtoansTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_24_105148_add_ghichu_colum_to_qtoans_table.php',
         'AddGvdchinhToQTContTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_26_141644_add_gvdchinh_to_QTCont_table.php',
         'AddLoaihangTuyenduongToDntungsTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_26_094846_add_loaihang_tuyenduong_to_dntungs_table.php',
+        'AddNdonghangTtienLtronToDntungsTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_31_090338_add_ndonghang_ttien_ltron_to_dntungs_table.php',
         'AddNoiPhatHanhColumnsToQuyettoanTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_19_160011_add_noi_phat_hanh_columns_to_quyettoan_table.php',
         'AddPhiChiTietToDntungsTable' => __DIR__ . '/../..' . '/database/migrations/2016_04_08_092411_add_phi_chi_tiet_to_dntungs_table.php',
         'AddStienToQuyetoanTable' => __DIR__ . '/../..' . '/database/migrations/2016_04_18_143330_add_stien_to_quyetoan_table.php',

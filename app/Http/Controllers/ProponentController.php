@@ -33,6 +33,7 @@ class ProponentController extends Controller
 	{
 		$input=$request->all();
 		$input['ttien']=str_replace('.','', $input['ttien']);
+		$input['ttien_ltron']=str_replace('.','', $input['ttien_ltron']);
 		$input['cuoc']=str_replace('.','', $input['cuoc']);
 		$input['nang']=str_replace('.','', $input['nang']);
 		$input['ha']=str_replace('.', '', $input['ha']);
@@ -170,6 +171,10 @@ class ProponentController extends Controller
 	public function processUpdate_dntu($id, Request $request)
 	{
 		$dntu = Dntung::findOrFail($id);
+		$dntu->check = false;
+		$dntu->approve = false;
+		$dntu->lamhang = false;
+		$dntu->done = false;
 		$input = $request->all();
 		$input['ttien']=str_replace('.','', $input['ttien']);
 		$input['cuoc']=str_replace('.','', $input['cuoc']);

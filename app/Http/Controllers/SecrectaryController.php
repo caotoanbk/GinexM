@@ -31,4 +31,16 @@ class SecrectaryController extends Controller
 	{
 		return view('user.secrectary.tudhthanh_home');
 	}
+	public function kiemtra(Request $request)
+	{
+		$id = $request->get('id');
+		if($id == null){
+			return 'null';
+		}else {
+			$dntung = \App\Dntung::findOrFail($id);
+			$dntung->check = true;
+			$dntung->save();
+			return 'Da kiem tra';
+		}
+	}
 }

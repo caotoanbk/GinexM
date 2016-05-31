@@ -7,13 +7,17 @@ use Carbon\Carbon;
 
 class Dntung extends Model
 {
-	protected $fillable=['user_id', 'reason', 'bill', 'slc20', 'slc40', 'lcont', 'khang', 'ttien', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'date_done', 'loaihang', 'tuyenduong', 'khachhang'];
+	protected $fillable=['user_id', 'reason', 'bill', 'slc20', 'slc40', 'lcont', 'khang', 'ttien', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'date_done', 'loaihang', 'tuyenduong', 'khachhang', 'ndonghang', 'ttien_ltron'];
 
-	protected $dates=['created_at', 'updated_at', 'tghung', 'date_done'];
+	protected $dates=['created_at', 'updated_at', 'tghung', 'date_done', 'ndonghang'];
 
 	public function getTghungAttribute($date)
 	{
-		return Carbon::parse($date)->format('d/m/Y');
+		return Carbon::parse($date)->format('Y-m-d');
+	}
+	public function getNdonghangAttribute($date)
+	{
+		return Carbon::parse($date)->format('Y-m-d');
 	}
 	public function user()
 	{
