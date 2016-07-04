@@ -5,3 +5,5 @@ Homestead.json
 *.js~
 /public/de_nghi_tam_ung
 *.*~
+/storage/framework/views/
+/storage/framework/sessions/

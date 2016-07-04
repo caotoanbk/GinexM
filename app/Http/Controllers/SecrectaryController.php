@@ -12,10 +12,10 @@ use App\QTCont;
 
 class SecrectaryController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
 	public function qtlhang($id)
 	{
 		$dntung = Dntung::findOrFail($id);
@@ -30,6 +30,14 @@ class SecrectaryController extends Controller
 	public function sec_tudhthanh_index()
 	{
 		return view('user.secrectary.tudhthanh_home');
+	}
+	public function sec_tucqtoan_index()
+	{
+		return view('user.secrectary.tucqtoan_home');
+	}
+	public function sec_tuclhang_index()
+	{
+		return view('user.secrectary.tuclhang_home');
 	}
 	public function kiemtra(Request $request)
 	{

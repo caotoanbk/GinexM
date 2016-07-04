@@ -16,6 +16,7 @@ return array(
     'AddLoaihangTuyenduongToDntungsTable' => $baseDir . '/database/migrations/2016_05_26_094846_add_loaihang_tuyenduong_to_dntungs_table.php',
     'AddNdonghangTtienLtronToDntungsTable' => $baseDir . '/database/migrations/2016_05_31_090338_add_ndonghang_ttien_ltron_to_dntungs_table.php',
     'AddNoiPhatHanhColumnsToQuyettoanTable' => $baseDir . '/database/migrations/2016_05_19_160011_add_noi_phat_hanh_columns_to_quyettoan_table.php',
+    'AddNyeucauNgiaohangNnhanhangToDntungsTable' => $baseDir . '/database/migrations/2016_06_02_095445_add_nyeucau_ngiaohang_nnhanhang_to_dntungs_table.php',
     'AddPhiChiTietToDntungsTable' => $baseDir . '/database/migrations/2016_04_08_092411_add_phi_chi_tiet_to_dntungs_table.php',
     'AddStienToQuyetoanTable' => $baseDir . '/database/migrations/2016_04_18_143330_add_stien_to_quyetoan_table.php',
     'AddTypeColumnToUsersTable' => $baseDir . '/database/migrations/2016_04_07_160119_add_type_column_to_users_table.php',

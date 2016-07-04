@@ -10,10 +10,10 @@ use Carbon\Carbon;
 
 class DirectorController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
 	public function duyet(Request $request)
 	{
 
@@ -65,5 +65,9 @@ class DirectorController extends Controller
 	public function direc_tudhthanh_index()
 	{
 		return view('user.director.tudhthanh_home');
+	}
+	public function direc_tuclhang_index()
+	{
+		return view('user.director.tuclhang_home');
 	}
 }

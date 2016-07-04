@@ -31,6 +31,8 @@ class HomeController extends Controller
 			return view('secrectary_home');
 		}else if ($identify == 2){
 			return view('director_home');
+		}else if($identify == 3){
+			return view('curator_home');
 		}
 		return 'Nguoi dung khong hop le';
     }

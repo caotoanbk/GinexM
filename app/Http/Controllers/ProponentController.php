@@ -10,14 +10,19 @@ use App\Yclhang;
 use App\Dntung;
 use App\Quyettoan;
 use App\QTCont;
+use Auth;
 
 class ProponentController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
+	public function khlhang_index()
+	{
+		return view('user.proponent.khlhang_home');
+	}
 	public function dntung_index()
 	{
 		return view('user.proponent.dntung_home');
@@ -42,8 +47,12 @@ class ProponentController extends Controller
 		$input['user_id']=\Auth::user()->id;	
 		$yc= new Dntung($input);
 		$yc->save();
+		$filebooking = $yc->id . '.' . $request->file('filebooking')->getClientOriginalExtension();
+		$request->file('filebooking')->move(base_path() . '/public/de_nghi_tam_ung/', $filebooking);
 		\Session::flash('flash_message', 'Dang thong tin yeu cau lam hang thanh cong');
-		return redirect('/proponent/de-nghi-tam-ung');
+		if(Auth::user()->type == 0)
+			return redirect('/proponent/de-nghi-tam-ung');
+		return redirect('/director/tam-ung-chua-duyet');
 
 	}
 
@@ -177,6 +186,7 @@ class ProponentController extends Controller
 		$dntu->done = false;
 		$input = $request->all();
 		$input['ttien']=str_replace('.','', $input['ttien']);
+		$input['ttien_ltron']=str_replace('.','', $input['ttien_ltron']);
 		$input['cuoc']=str_replace('.','', $input['cuoc']);
 		$input['nang']=str_replace('.','', $input['nang']);
 		$input['ha']=str_replace('.', '', $input['ha']);
@@ -184,6 +194,10 @@ class ProponentController extends Controller
 		$input['psinh']=str_replace('.', '', $input['psinh']);
 		$dntu->fill($input)->save();
 		\Session::flash('flas_message', 'Cập nhật đề nghị tạm ứng thành công!');
-		return redirect('\proponent\de-nghi-tam-ung');
+		return redirect('/');
+	}
+	public function tuclhang_index()
+	{
+		return view('user.proponent.tuclhang_home');
 	}
 }

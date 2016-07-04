@@ -7,17 +7,49 @@ use Carbon\Carbon;
 
 class Dntung extends Model
 {
-	protected $fillable=['user_id', 'reason', 'bill', 'slc20', 'slc40', 'lcont', 'khang', 'ttien', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'date_done', 'loaihang', 'tuyenduong', 'khachhang', 'ndonghang', 'ttien_ltron'];
+	protected $fillable=['user_id', 'reason', 'bill', 'slc20', 'slc40', 'lcont', 'khang', 'ttien', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'date_done', 'loaihang', 'tuyenduong', 'khachhang', 'ndonghang', 'ttien_ltron', 'nyeucau', 'ngiaohang', 'nnhanhang'];
 
-	protected $dates=['created_at', 'updated_at', 'tghung', 'date_done', 'ndonghang'];
+	protected $dates=['created_at', 'updated_at', 'tghung', 'date_done', 'ndonghang', 'ngiaohang', 'nnhanhang', 'nyeucau'];
 
 	public function getTghungAttribute($date)
 	{
-		return Carbon::parse($date)->format('Y-m-d');
+		$string_date = Carbon::parse($date)->format('Y-m-d');
+		if($string_date=="-0001-11-30"){
+			return '';
+		}else
+			return $string_date;
+	}
+	public function getNyeucauAttribute($date)
+	{
+		$string_date = Carbon::parse($date)->format('Y-m-d');
+		if($string_date=="-0001-11-30"){
+			return '';
+		}else
+			return $string_date;
 	}
 	public function getNdonghangAttribute($date)
 	{
-		return Carbon::parse($date)->format('Y-m-d');
+		$string_date = Carbon::parse($date)->format('Y-m-d');
+		if($string_date=="-0001-11-30"){
+			return '';
+		}else
+			return $string_date;
+	}
+	public function getNgiaohangAttribute($date)
+	{
+		$string_date = Carbon::parse($date)->format('Y-m-d');
+		if($string_date=="-0001-11-30"){
+			return '';
+		}else
+			return $string_date;
+	}
+	public function getNnhanhangAttribute($date)
+	{
+		$string_date = Carbon::parse($date)->format('Y-m-d');
+		if($string_date=="-0001-11-30"){
+			return '';
+		}else
+			return $string_date;
 	}
 	public function user()
 	{

@@ -24,11 +24,11 @@ $(function() {
 			targets:1 
 		}],
 		"serverSide": true,
-		"ajax": '/proponent/dntung/data',
+		"ajax": {'url':'/proponent/dntung/data', 'type': 'get', 'headers': { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }},
 		"dom": 'Bfrtip',
 		"buttons": [
 			{
-				text: 'Làm hàng',
+				text: 'Tam ung',
 				className: 'btn',	
 				action: function (e, dt, node, config){
 					$('#myModal').modal('show');
@@ -88,6 +88,10 @@ $(function() {
 			{data: 'created_at', name: 'created_at'},
 			{data: 'bill', name: 'bill'},
 			{data: 'reason', name: 'reason'},
+			{data: 'filebooking', name: 'filebooking', className: 'none', searchable: false, orderable: false},
+			{data: 'khachhang', name: 'khachhang', className: 'none'},
+			{data: 'loaihang', name: 'loaihang', className: 'none'},
+			{data: 'tuyenduong', name: 'tuyenduong', className: 'none'},
 			{data: 'ndonghang', name: 'ndonghang'},
 			{data: 'ttien', name: 'ttien', render: $.fn.dataTable.render.number(',','.',0,'', ' đ') },
 			{data: 'ttien_ltron', name: 'ttien_ltron', render: $.fn.dataTable.render.number(',','.',0,'', ' đ') },
@@ -96,6 +100,9 @@ $(function() {
 			{data: 'slc40', name: 'slc40', className: 'none'},
 			{data: 'lcont', name: 'lcont', className: 'none'},
 			{data: 'tghung', name: 'tghung'},
+			{data: 'nyeucau', name: 'nyeucau', className: 'none'},
+			{data: 'ngiaohang', name: 'ngiaohang', className: 'none'},
+			{data: 'nnhanhang', name: 'nnhanhang', className: 'none'},
 			{data: 'status', name: 'status',searchable: false, orderable: false},
 			{data: 'cuoc', name: 'cuoc', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none"  },
 			{data: 'nang', name: 'nang', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none" },
@@ -107,30 +114,6 @@ $(function() {
 	});
 	$('#myModal').on('show.bs.modal', function(e) {
 		var $modal = $(this);
-		$('#bill').val('');
-		$('input[name=reason]').val('');
-		$('input[name=slc20]').val('');
-		$('input[name=slc40]').val('');
-		$('select[name=lcont]').val('');
-		$('select[name=khang]').val('');
-		$('input[name=ttien]').val('');
-		$('input[name=cuoc]').val('0');
-		$('input[name=nang]').val('0');
-		$('input[name=ha]').val('0');
-		$('input[name=loaihang]').val('');
-		$('input[name=tuyenduong]').val('');
-		$('input[name=khachhang]').val('');
-		$('input[name=hquan]').val('0');
-		$('input[name=psinh]').val('0');
-		$('#checkbct').prop('checked', false);
-		$('#input-hidden').addClass('hidden');
-		$('#checkbct').click(function(){
-			if($(this).prop('checked') == false){
-				$('#input-hidden').addClass('hidden');
-			} else {
-				$('#input-hidden').removeClass('hidden');
-			}
-		});
 		$('input[name=ttien]').autoNumeric('init', {
 			aSep:'.',
 			aDec: ',',
@@ -179,6 +162,31 @@ $(function() {
 			aSign: ' VND',
 			pSign: 's',
 			aPad: false,	
+		});
+		$('#bill').val('');
+		$('input[name=reason]').val('');
+		$('input[name=slc20]').val('');
+		$('input[name=slc40]').val('');
+		$('select[name=lcont]').val('');
+		$('select[name=khang]').val('');
+		$('input[name=ttien]').val('');
+		$('input[name=ttien_ltron]').val('');
+		$('input[name=cuoc]').autoNumeric('set', 0);
+		$('input[name=nang]').autoNumeric('set', 0);
+		$('input[name=ha]').autoNumeric('set', 0);
+		$('input[name=loaihang]').val('');
+		$('input[name=tuyenduong]').val('');
+		$('input[name=khachhang]').val('');
+		$('input[name=hquan]').autoNumeric('set', 0);
+		$('input[name=psinh]').autoNumeric('set', 0);
+		$('#checkbct').prop('checked', false);
+		$('#input-hidden').addClass('hidden');
+		$('#checkbct').click(function(){
+			if($(this).prop('checked') == false){
+				$('#input-hidden').addClass('hidden');
+			} else {
+				$('#input-hidden').removeClass('hidden');
+			}
 		});
 		$('input[name=cuoc]').on('change', function(e){
 			var cuoc = parseInt($('input[name=cuoc]').autoNumeric('get'));
@@ -265,6 +273,35 @@ $(function() {
 			}
 			$('input[name=ttien_ltron]').autoNumeric('set', ttien_ltron);
 		});
+		$('select[name=khang]').change(function(e){
+			if($(this).val() == 'Xuất'){
+				$('#input-ngaynhanhang').removeClass('hidden');
+				$('#input-ngaynhanhang').removeClass('disabled');
+				$('#input-ngaygiaohang').addClass('hidden');
+				$('#input-ngaygiaohang').addClass('disabled');
+				$('input[name=ngiaohang]').attr('disabled', 'disabled');
+				$('input[name=nnhanhang]').removeAttr('disabled');
+			}else if(($(this).val() == 'Nhập') || ($(this).val() == 'Kinh doanh nội địa')){
+				$('#input-ngaygiaohang').removeClass('hidden');
+				$('#input-ngaygiaohang').removeClass('disabled');
+				$('#input-ngaynhanhang').addClass('hidden');
+				$('#input-ngaynhanhang').addClass('disabled');
+				$('input[name=nnhanhang]').attr('disabled', 'disabled');
+				$('input[name=ngiaohang]').removeAttr('disabled');
+			}else{
+				$('#input-ngaygiaohang').addClass('hidden');
+				$('#input-ngaygiaohang').addClass('disabled');
+				$('#input-ngaynhanhang').addClass('hidden');
+				$('#input-ngaynhanhang').addClass('disabled');
+				$('input[name=nnhanhang]').attr('disabled', 'disabled');
+				$('input[name=ngiaohang]').attr('disabled', 'disabled');
+			}
+		});
+		$('input[id=nyeucau]').datepicker({dateFormat: 'yy-mm-dd'});
+		$('input[id=ndonghang]').datepicker({dateFormat: 'yy-mm-dd'});
+		$('input[id=ngiaohang]').datepicker({dateFormat: 'yy-mm-dd'});
+		$('input[id=nnhanhang]').datepicker({dateFormat: 'yy-mm-dd'});
+		$('input[id=nhoanung]').datepicker({dateFormat: 'yy-mm-dd'});
 		//jquery validation
 		var validator = $('#content').validate({
 			rules: {

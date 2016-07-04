@@ -12,6 +12,10 @@
 				<th>Ngày đề nghị</th>
 				<th>Số booking/bl</th>
 				<th>Lý do tạm ứng</th>
+				<th>Booking file</th>
+				<th>Khach hang</th>
+				<th>Loai hang</th>
+				<th>Tuyen duong</th>
 				<th>Ngày đóng hàng</th>
 				<th>Số tiền</th>
 				<th>Số tiền tạm ứng thực tế</th>
@@ -20,6 +24,9 @@
 				<th>Cont 40</th>
 				<th>Loại cont</th>
 				<th>Thời gian hoàn ứng</th>
+				<th>Ngày khách hàng yêu cầu</th>
+				<th>Ngày giao hàng</th>
+				<th>Ngày nhận hàng</th>
 				<th>Tình trạng</th>
 				<th>Cược</th>
 				<th>Nâng</th>

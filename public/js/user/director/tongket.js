@@ -1,4 +1,5 @@
 $(function(){
+	$('input[name=month_tket]').datepicker({dateFormat: 'yy-mm'});
 	var validator = $('#tongkettamung').validate({
 		rules: {
 			month_tket: { required: true },

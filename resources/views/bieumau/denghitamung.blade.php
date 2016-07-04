@@ -331,7 +331,7 @@
       height: 20px;
       left: 92px;
       text-align: center;
-      top: 968px;
+      top: 961px;
     }
     .gwd-p-129o {
       position: absolute;
@@ -342,7 +342,7 @@
       font-size: 13px;
       font-style: italic;
       font-weight: bold;
-      top: 968px;
+      top: 965px;
     }
 	  .gwd-p-1cqv {
       position: absolute;
@@ -371,7 +371,7 @@
       width: 714px;
       height: 23px;
       left: 28px;
-      top: 208px;
+      top: 211px;
       font-size: 14px;
       text-align: left;
     }

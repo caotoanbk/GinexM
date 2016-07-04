@@ -7,7 +7,7 @@
 <input type="hidden" name="_token" value="{{ csrf_token() }}"
 >
 			<label for="month_tket">Tổng kết tạm ứng tháng: </label> 
-			<input type="month" class="form-control" name="month_tket">
+			<input type="text" class="form-control" name="month_tket">
 			<div>&nbsp;</div>
 			<input type="submit" name='tkthang' class="btn-primary form-control" value="Tổng kết">
 			</form>

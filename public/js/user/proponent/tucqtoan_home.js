@@ -24,7 +24,12 @@ $(function() {
 			targets:1 
 		}],
 		"serverSide": true,
-		"ajax": '/proponent/tucqtoan/data',
+		"ajax": {
+			url:'/proponent/tucqtoan/data',
+			error: function(error){
+				console.log(error);
+			}
+		},
 		"dom": 'Bfrtip',
 		"buttons": [
 			{
@@ -53,6 +58,10 @@ $(function() {
 			{data: 'created_at', name: 'created_at'},
 			{data: 'bill', name: 'bill'},
 			{data: 'reason', name: 'reason'},
+			{data: 'filebooking', name: 'filebooking', className: 'none', searchable: false, orderable: false},
+			{data: 'khachhang', name: 'khachhang', className: 'none'},
+			{data: 'loaihang', name: 'loaihang', className: 'none'},
+			{data: 'tuyenduong', name: 'tuyenduong', className: 'none'},
 			{data: 'ndonghang', name: 'ndonghang'},
 			{data: 'ttien', name: 'ttien', render: $.fn.dataTable.render.number(',','.',0,'', ' đ') },
 			{data: 'ttien_ltron', name: 'ttien_ltron', render: $.fn.dataTable.render.number(',','.',0,'', ' đ') },
@@ -61,6 +70,9 @@ $(function() {
 			{data: 'slc40', name: 'slc40', className: 'none'},
 			{data: 'lcont', name: 'lcont', className: 'none'},
 			{data: 'tghung', name: 'tghung'},
+			{data: 'nyeucau', name: 'nyeucau', className: 'none'},
+			{data: 'ngiaohang', name: 'ngiaohang', className: 'none'},
+			{data: 'nnhanhang', name: 'nnhanhang', className: 'none'},
 			{data: 'status', name: 'status',searchable: false, orderable: false},
 			{data: 'cuoc', name: 'cuoc', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none"  },
 			{data: 'nang', name: 'nang', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none" },

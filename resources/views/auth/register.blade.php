@@ -41,9 +41,10 @@
 							<label class="col-md-4 control-label">Type</label>
 							<div class="col-md-6">
 								<select name="type" class="form-control">
-									<option value=0>Doi logistics</option>
-									<option value=1>Thu ky</option>
-									<option value=2>Giam doc</option>
+									<option value=0>Đội Logistic</option>
+									<option value=1>Thư ký</option>
+									<option value=2>Giám đốc</option>
+									<option value=3>Phụ trách bộ phận</option>
 								</select>
 							</div>
 						</div>
