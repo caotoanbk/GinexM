@@ -1,4 +1,4 @@
-@include('partials.modal.yclhang')
+@include('partials.modal.khlhang')
 <div id='message' class='hidden'>&nbsp;</div>
 <section class='panel panel-primary'>
 	<div class='panel-heading text-center'>
@@ -9,11 +9,11 @@
 			<thead>
 				<th></th>
 				<th></th>
+				<th>Ngay len k/h</th>
 				<th>Loai hinh</th>
 				<th>Loai hang</th>
 				<th>Chu hang</th>
-				<th>Số bill</th>
-				<th>Số booking</th>
+				<th>Bill/booking</th>
 				<th>So to khai</th>
 				<th>So luong cont</th>
 				<th>So Cont 20</th>
@@ -23,7 +23,7 @@
 				<th>So Cont lanh</th>
 				<th>Hang tau</th>
 				<th>Tuyen duong</th>
-				<th>Ngày đóng hàng</th>
+				<th>Ngày đóng/do hàng</th>
 				<th>Nha xe</th>
 				<th>Booking file</th>
 				<th>Tình trạng</th>

@@ -1,138 +1,4 @@
 $(function(){
-		$('input[name=ttien]').autoNumeric('init', {
-			aSep:'.',
-			aDec: ',',
-			aSign: ' VND',
-			pSign: 's',
-			aPad: false,	
-		});
-		$('input[name=ttien_ltron]').autoNumeric('init', {
-			aSep:'.',
-			aDec: ',',
-			aSign: ' VND',
-			pSign: 's',
-			aPad: false,	
-		});
-		$('input[name=cuoc]').autoNumeric('init', {
-			aSep:'.',
-			aDec: ',',
-			aSign: ' VND',
-			pSign: 's',
-			aPad: false,	
-		});
-		$('input[name=nang]').autoNumeric('init', {
-			aSep:'.',
-			aDec: ',',
-			aSign: ' VND',
-			pSign: 's',
-			aPad: false,	
-		});
-		$('input[name=ha]').autoNumeric('init', {
-			aSep:'.',
-			aDec: ',',
-			aSign: ' VND',
-			pSign: 's',
-			aPad: false,	
-		});
-		$('input[name=hquan]').autoNumeric('init', {
-			aSep:'.',
-			aDec: ',',
-			aSign: ' VND',
-			pSign: 's',
-			aPad: false,	
-		});
-		$('input[name=psinh]').autoNumeric('init', {
-			aSep:'.',
-			aDec: ',',
-			aSign: ' VND',
-			pSign: 's',
-			aPad: false,	
-		});
-		$('input[name=cuoc]').on('change', function(e){
-			var cuoc = parseInt($('input[name=cuoc]').autoNumeric('get'));
-			var nang = parseInt($('input[name=nang]').autoNumeric('get'));
-			var ha = parseInt($('input[name=ha]').autoNumeric('get'));
-			var hquan = parseInt($('input[name=hquan]').autoNumeric('get'));
-			var psinh = parseInt($('input[name=psinh]').autoNumeric('get'));
-			var ttien = cuoc + nang + ha + hquan + psinh;
-			$('input[name=ttien]').autoNumeric('set', ttien);
-			var ttien_ltron;
-			var sodu = ttien%100000;
-			if(sodu == 0){
-				ttien_ltron = ttien;
-			}else{
-				ttien_ltron = ttien - sodu + 100000;
-			}
-			$('input[name=ttien_ltron]').autoNumeric('set', ttien_ltron);
-		});
-		$('input[name=nang]').on('change', function(e){
-			var cuoc = parseInt($('input[name=cuoc]').autoNumeric('get'));
-			var nang = parseInt($('input[name=nang]').autoNumeric('get'));
-			var ha = parseInt($('input[name=ha]').autoNumeric('get'));
-			var hquan = parseInt($('input[name=hquan]').autoNumeric('get'));
-			var psinh = parseInt($('input[name=psinh]').autoNumeric('get'));
-			var ttien = cuoc + nang + ha + hquan + psinh;
-			$('input[name=ttien]').autoNumeric('set', ttien);
-			var ttien_ltron;
-			var sodu = ttien%100000;
-			if(sodu == 0){
-				ttien_ltron = ttien;
-			}else{
-				ttien_ltron = ttien - sodu + 100000;
-			}
-			$('input[name=ttien_ltron]').autoNumeric('set', ttien_ltron);
-		});
-		$('input[name=ha]').on('change', function(e){
-			var cuoc = parseInt($('input[name=cuoc]').autoNumeric('get'));
-			var nang = parseInt($('input[name=nang]').autoNumeric('get'));
-			var ha = parseInt($('input[name=ha]').autoNumeric('get'));
-			var hquan = parseInt($('input[name=hquan]').autoNumeric('get'));
-			var psinh = parseInt($('input[name=psinh]').autoNumeric('get'));
-			var ttien = cuoc + nang + ha + hquan + psinh;
-			$('input[name=ttien]').autoNumeric('set', ttien);
-			var ttien_ltron;
-			var sodu = ttien%100000;
-			if(sodu == 0){
-				ttien_ltron = ttien;
-			}else{
-				ttien_ltron = ttien - sodu + 100000;
-			}
-			$('input[name=ttien_ltron]').autoNumeric('set', ttien_ltron);
-		});
-		$('input[name=hquan]').on('change', function(e){
-			var cuoc = parseInt($('input[name=cuoc]').autoNumeric('get'));
-			var nang = parseInt($('input[name=nang]').autoNumeric('get'));
-			var ha = parseInt($('input[name=ha]').autoNumeric('get'));
-			var hquan = parseInt($('input[name=hquan]').autoNumeric('get'));
-			var psinh = parseInt($('input[name=psinh]').autoNumeric('get'));
-			var ttien = cuoc + nang + ha + hquan + psinh;
-			$('input[name=ttien]').autoNumeric('set', ttien);
-			var ttien_ltron;
-			var sodu = ttien%100000;
-			if(sodu == 0){
-				ttien_ltron = ttien;
-			}else{
-				ttien_ltron = ttien - sodu + 100000;
-			}
-			$('input[name=ttien_ltron]').autoNumeric('set', ttien_ltron);
-		});
-		$('input[name=psinh]').on('change', function(e){
-			var cuoc = parseInt($('input[name=cuoc]').autoNumeric('get'));
-			var nang = parseInt($('input[name=nang]').autoNumeric('get'));
-			var ha = parseInt($('input[name=ha]').autoNumeric('get'));
-			var hquan = parseInt($('input[name=hquan]').autoNumeric('get'));
-			var psinh = parseInt($('input[name=psinh]').autoNumeric('get'));
-			var ttien = cuoc + nang + ha + hquan + psinh;
-			$('input[name=ttien]').autoNumeric('set', ttien);
-			var ttien_ltron;
-			var sodu = ttien%100000;
-			if(sodu == 0){
-				ttien_ltron = ttien;
-			}else{
-				ttien_ltron = ttien - sodu + 100000;
-			}
-			$('input[name=ttien_ltron]').autoNumeric('set', ttien_ltron);
-		});
 		$('input[id=nyeucau]').datepicker({dateFormat: 'yy-mm-dd'});
 		$('input[id=ndonghang]').datepicker({dateFormat: 'yy-mm-dd'});
 		$('input[id=ngiaohang]').datepicker({dateFormat: 'yy-mm-dd'});
@@ -148,11 +14,11 @@ $(function(){
 				lcont: { required: true, },
 				khang: { required: true, },
 				ndonghang: {required: true, },
-				ttien: { required: true, },
 				tghung: { required: true, },
 				loaihang: {required: true},
 				tuyenduong: {required: true},
 				khachhang: {required: true},
+				filebooking: {required: true},
 			},
 			messages: {
 				reason: {
@@ -191,7 +57,10 @@ $(function(){
 				khachhang: {
 					required: '<div class="text-danger"><em><small>Bạn chưa nhập khách hàng</small></em></div>'
 				},
+				filebooking: {
+					required: '<div class="text-danger"><em><small>Ban chua chon file</small></em></div>'
+				},
 			},
 		});
 		validator.resetForm();
-})
+});

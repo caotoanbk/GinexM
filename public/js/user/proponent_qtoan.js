@@ -4,59 +4,136 @@ $(function(){
 	$('form#content1').attr('action', '/quyet-toan/'+tuid);
 	$('#them_cont').click(function(e){
 		e.preventDefault();
-		$('tbody#qtoan_cont').append('<tr class="input_fields_wrap"><td class="text-danger text-center"><a href="#" id="remove_item" class="text-danger">&times;</a></td><td><input type="date" name="nchay[]"/></td><td><input type="text" name="bsxe[]" size="15"/></td><td><input type="text" name="lxe[]" size="15"/></td><td><input type="text" name="scont[]" size="15"/></td><td><input type="text" name="ccont[]" size="10"/></td><td><input type="text" name="lcont[]" size="15"/></td><td><input type="text" name="nxe[]" size="15"/></td><td><input type="text" name="pnha[]" size="15"/></td><td><input type="text" name="khquan[]" size="20"/></td><td><input type="text" name="cxe[]" size="15"/></td><td><input type="text" name="cgui[]" size="15"/></td><td><input type="text" name="cmua[]" size="15"/></td><td><input type="text" name="gvcVAT[]" size="15"/></td><td><input type="text" name="gvdchinh[]" size="15"/></td><td><input type="text" name="cbcVAT[]" size="20"/></td></tr>');
+		$('tbody#qtoan_cont').append('<tr class="input_fields_wrap"><td class="text-danger text-center"><a href="#" id="remove_item" class="text-danger">&times;</a></td><td><input type="date" name="nchay[]"/></td><td><input type="text" name="scont[]" size="15"/></td><td><input type="text" name="ccont[]" size="10"/></td><td><input type="text" name="lcont[]" size="15"/></td><td><input type="text" name="bainang[]" size="25" /></td><td><input type="text" name="baiha[]" size="25" /></td><td><input type="number" name="trongluong[]" /></td><td><input type="text" name="dieuxe[]" size="20" /></td><td><input type="text" name="lxe[]" size="15"/></td><td><input type="text" name="bsxe[]" size="15"/></td><td><input type="text" name="diadiemdongtrahang[]" size="25"/></td><td><input type="text" name="phinangchuaVAT[]" size="15"/></td><td><input type="text" name="VATphinang[]" size="15"/></td><td><input type="text" name="sohoadonnang[]" size="15"/></td><td><input type="date" name="nxuathoadonnang[]"/></td><td><input type="text" name="dvicaphoadonnang[]" size="15"/></td><td><input type="text" name="phihachuaVAT[]" size="15"/></td><td><input type="text" name="VATphiha[]" size="15"/></td><td><input type="text" name="sohoadonha[]" size="15"/></td><td><input type="date" name="nxuathoadonha[]"/></td><td><input type="text" name="dvicaphoadonha[]" size="15"/></td><td><input type="text" name="boctokhai[]" size="15"/></td><td><input type="text" name="hquantiepnhan[]" size="15"/></td><td><input type="text" name="hquangiamsat[]" size="15"/></td><td><input type="text" name="hquankiemhoa[]" size="15"/></td><td><input type="text" name="cuoccont[]" size="15"/></td><td><input type="text" name="llenhhangtau[]" size="15"/></td><td><input type="text" name="luucont[]" size="15"/></td><td><input type="text" name="luubai[]" size="15"/></td><td><input type="text" name="phivesinh[]" size="15"/></td><td><input type="text" name="phicatday[]" size="15"/></td><td><input type="text" name="boctem[]" size="15"/></td><td><input type="text" name="kddtvchuaVAT[]" size="30"/></td><td><input type="text" name="VATkddtv[]" size="30"/></td><td><input type="text" name="phingoaikddtv[]" size="30"/></td><td><input type="text" name="cackhoankhacchokhach[]" size="30"/></td><td><input type="text" name="tong[]" size="15"/></td><td><input type="text" name="ghichu[]" size="50"/></td></tr>');
 
 	
-		$('input[name="pnha[]"]').autoNumeric('init', {
+		$('input[name="phinangchuaVAT[]"]').autoNumeric('init', {
 			aSep:'.',
 			aDec: ',',
 			aSign: ' VND',
 			pSign: 's',
 			aPad: false,	
 		});
-		$('input[name="khquan[]"]').autoNumeric('init', {
+		$('input[name="VATphinang[]"]').autoNumeric('init', {
 			aSep:'.',
 			aDec: ',',
 			aSign: ' VND',
 			pSign: 's',
 			aPad: false,	
 		});
-		$('input[name="cxe[]"]').autoNumeric('init', {
+		$('input[name="phihachuaVAT[]"]').autoNumeric('init', {
 			aSep:'.',
 			aDec: ',',
 			aSign: ' VND',
 			pSign: 's',
 			aPad: false,	
 		});
-		$('input[name="cgui[]"]').autoNumeric('init', {
+		$('input[name="VATphiha[]"]').autoNumeric('init', {
 			aSep:'.',
 			aDec: ',',
 			aSign: ' VND',
 			pSign: 's',
 			aPad: false,	
 		});
-		$('input[name="cmua[]"]').autoNumeric('init', {
+		$('input[name="boctokhai[]"]').autoNumeric('init', {
 			aSep:'.',
 			aDec: ',',
 			aSign: ' VND',
 			pSign: 's',
 			aPad: false,	
 		});
-		$('input[name="gvcVAT[]"]').autoNumeric('init', {
+		$('input[name="hquantiepnhan[]"]').autoNumeric('init', {
 			aSep:'.',
 			aDec: ',',
 			aSign: ' VND',
 			pSign: 's',
 			aPad: false,	
 		});
-		$('input[name="cbcVAT[]"]').autoNumeric('init', {
+		$('input[name="hquangiamsat[]"]').autoNumeric('init', {
 			aSep:'.',
 			aDec: ',',
 			aSign: ' VND',
 			pSign: 's',
 			aPad: false,	
 		});
-		$('input[name="gvdchinh[]"]').autoNumeric('init', {
+		$('input[name="hquankiemhoa[]"]').autoNumeric('init', {
+			aSep:'.',
+			aDec: ',',
+			aSign: ' VND',
+			pSign: 's',
+			aPad: false,	
+		});
+		$('input[name="cuoccont[]"]').autoNumeric('init', {
+			aSep:'.',
+			aDec: ',',
+			aSign: ' VND',
+			pSign: 's',
+			aPad: false,	
+		});
+		$('input[name="llenhhangtau[]"]').autoNumeric('init', {
+			aSep:'.',
+			aDec: ',',
+			aSign: ' VND',
+			pSign: 's',
+			aPad: false,	
+		});
+		$('input[name="luucont[]"]').autoNumeric('init', {
+			aSep:'.',
+			aDec: ',',
+			aSign: ' VND',
+			pSign: 's',
+			aPad: false,	
+		});
+		$('input[name="luubai[]"]').autoNumeric('init', {
+			aSep:'.',
+			aDec: ',',
+			aSign: ' VND',
+			pSign: 's',
+			aPad: false,	
+		});
+		$('input[name="phivesinh[]"]').autoNumeric('init', {
+			aSep:'.',
+			aDec: ',',
+			aSign: ' VND',
+			pSign: 's',
+			aPad: false,	
+		});
+		$('input[name="phicatday[]"]').autoNumeric('init', {
+			aSep:'.',
+			aDec: ',',
+			aSign: ' VND',
+			pSign: 's',
+			aPad: false,	
+		});
+		$('input[name="boctem[]"]').autoNumeric('init', {
+			aSep:'.',
+			aDec: ',',
+			aSign: ' VND',
+			pSign: 's',
+			aPad: false,	
+		});
+		$('input[name="kddtvchuaVAT[]"]').autoNumeric('init', {
+			aSep:'.',
+			aDec: ',',
+			aSign: ' VND',
+			pSign: 's',
+			aPad: false,	
+		});
+		$('input[name="VATkddtv[]"]').autoNumeric('init', {
+			aSep:'.',
+			aDec: ',',
+			aSign: ' VND',
+			pSign: 's',
+			aPad: false,	
+		});
+		$('input[name="phingoaikddtv[]"]').autoNumeric('init', {
+			aSep:'.',
+			aDec: ',',
+			aSign: ' VND',
+			pSign: 's',
+			aPad: false,	
+		});
+		$('input[name="cackhoankhacchokhach[]"]').autoNumeric('init', {
 			aSep:'.',
 			aDec: ',',
 			aSign: ' VND',

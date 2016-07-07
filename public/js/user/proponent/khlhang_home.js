@@ -5,7 +5,7 @@ $(function() {
 		"processing": true,
 		"responsive": false ,
         "select": {
-            style:    'os',
+            style:    'single',
 			selector: 'td:first-child'
         },
 		"responsive": {
@@ -35,25 +35,18 @@ $(function() {
 				}
 			},
 			{
-				text: 'Chi tiet cont',
-				className: 'btn',	
-				action: function (e, dt, node, config){
-					$('#myModal').modal('show');
-				}
-			},
-			{
 				text: 'Xóa',
 				action: function(e, dt, node, config) {
 					var selectedRows = dt.rows( {selected: true}).toArray();
 				    var count = dt.rows( { selected: true } ).count();
 					if(count>0){
-					var r = confirm('Bạn muốn xóa đề nghị tạm ứng này?');
+					var r = confirm('Bạn muốn xóa ke hoach lam hang này?');
 					if(r == true){
 					var id = dt.rows(selectedRows[0][0]).data().toArray()[0].id;
 					window.location.href = '/tam-ung/xoa/'+id;
 					}
 					}else{
-						alert('Bạn chưa chọn đề nghị tạm ứng nào');
+						alert('Bạn chưa chọn ke hoach lam hang nào');
 					}
 				}
 			},
@@ -66,7 +59,7 @@ $(function() {
 						var id = dt.rows(selectedRows[0][0]).data().toArray()[0].id;
 						window.location.href = '/tam-ung/sua/'+id;
 					}else{
-						alert('Bạn chưa chọn đề nghị tạm ứng nào');
+						alert('Bạn chưa chọn ke hoach lam hang nào');
 					}
 				}
 			},
@@ -80,15 +73,74 @@ $(function() {
 		"columns": [
 			{data: 'resp', name: 'resp', searchable: false, orderable: false},
 			{data: 'check', name: 'check', searchable: false, orderable: false},
+			{data: 'created_at', name: 'created_at'},
+			{data: 'khang', name: 'khang'},
+			{data: 'loaihang', name: 'loaihang'},
+			{data: 'khachhang', name: 'khachhang'},
+			{data: 'bill', name: 'bill'},
+			{data: 'stokhai', name: 'stokhai'},
+			{data: 'slcont', name: 'slcont', className: 'none'},
+			{data: 'slc20', name: 'slc20', className: 'none'},
+			{data: 'slc40', name: 'slc40', className: 'none'},
+			{data: 'slchroi', name: 'slchroi', className: 'none'},
+			{data: 'slcnong', name: 'slcnong', className: 'none'},
+			{data: 'slclanh', name: 'slclanh', className: 'none'},
+			{data: 'hangtau', name: 'hangtau'},
+			{data: 'tuyenduong', name: 'tuyenduong'},
+			{data: 'ndonghang', name: 'ndonghang'},
+			{data: 'nhaxe', name: 'nhaxe', className: 'none'},
+			{data: 'filebooking', name: 'filebooking', className: 'none', searchable: false, orderable: false},
+			{data: 'status', name: 'status', searchable: false, orderable: false},
 		],
+		"order": [[2, 'desc']]
 	});
 	$('#myModal').on('show.bs.modal', function(e) {
 		var $modal = $(this);
+		$('#bill').val('');
+		$('input[name=reason]').val('');
+		$('input[name=slc20]').val('');
+		$('input[name=slc40]').val('');
+		$('select[name=lcont]').val('');
+		$('select[name=khang]').val('');
+		$('input[name=ttien]').val('');
+		$('input[name=ttien_ltron]').val('');
+		$('input[name=cuoc]').autoNumeric('set', 0);
+		$('input[name=nang]').autoNumeric('set', 0);
+		$('input[name=ha]').autoNumeric('set', 0);
+		$('input[name=loaihang]').val('');
+		$('input[name=tuyenduong]').val('');
+		$('input[name=khachhang]').val('');
+		$('input[name=hquan]').autoNumeric('set', 0);
+		$('input[name=psinh]').autoNumeric('set', 0);
 		$('input[id=nyeucau]').datepicker({dateFormat: 'yy-mm-dd'});
 		$('input[id=ndonghang]').datepicker({dateFormat: 'yy-mm-dd'});
 		$('input[id=ngiaohang]').datepicker({dateFormat: 'yy-mm-dd'});
 		$('input[id=nnhanhang]').datepicker({dateFormat: 'yy-mm-dd'});
 		$('input[id=nhoanung]').datepicker({dateFormat: 'yy-mm-dd'});
+		$('select[name=khang]').change(function(e){
+			if($(this).val() == 'Xuất'){
+				$('#input-ngaynhanhang').removeClass('hidden');
+				$('#input-ngaynhanhang').removeClass('disabled');
+				$('#input-ngaygiaohang').addClass('hidden');
+				$('#input-ngaygiaohang').addClass('disabled');
+				$('input[name=ngiaohang]').attr('disabled', 'disabled');
+				$('input[name=nnhanhang]').removeAttr('disabled');
+			}else if(($(this).val() == 'Nhập') || ($(this).val() == 'Kinh doanh nội địa')){
+				$('#input-ngaygiaohang').removeClass('hidden');
+				$('#input-ngaygiaohang').removeClass('disabled');
+				$('#input-ngaynhanhang').addClass('hidden');
+				$('#input-ngaynhanhang').addClass('disabled');
+				$('input[name=nnhanhang]').attr('disabled', 'disabled');
+				$('input[name=ngiaohang]').removeAttr('disabled');
+			}else{
+				$('#input-ngaygiaohang').addClass('hidden');
+				$('#input-ngaygiaohang').addClass('disabled');
+				$('#input-ngaynhanhang').addClass('hidden');
+				$('#input-ngaynhanhang').addClass('disabled');
+				$('input[name=nnhanhang]').attr('disabled', 'disabled');
+				$('input[name=ngiaohang]').attr('disabled', 'disabled');
+			}
+		});
 		//jquery validation
 		var validator = $('#content').validate({
 			rules: {

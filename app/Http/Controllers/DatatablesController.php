@@ -21,7 +21,7 @@ class DatatablesController extends Controller
 	}
 	public function khlhang_home()
 	{
-		$yclhangs = Dntung::select(['id', 'user_id', 'created_at', 'reason', 'bill', 'slc20','slc40', 'khang', 'ttien', 'lcont', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'check', 'approve', 'done', 'ndonghang', 'ttien_ltron', 'nyeucau', 'ngiaohang', 'nnhanhang', 'khachhang', 'tuyenduong', 'loaihang'])->where('done', false)->where('user_id', \Auth::user()->id);
+		$yclhangs = Dntung::select(['id', 'user_id', 'stokhai', 'slcont', 'slchroi', 'slcnong', 'slclanh', 'hangtau', 'nhaxe', 'created_at', 'bill', 'slc20','slc40', 'khang', 'lcont', 'check', 'approve', 'done', 'ndonghang', 'nyeucau', 'ngiaohang', 'nnhanhang', 'khachhang', 'tuyenduong', 'loaihang'])->where('done', false)->where('user_id', \Auth::user()->id);
 		return Datatables::of($yclhangs)->addColumn('filebooking', function($yclhang){
 			return '<a href="/de_nghi_tam_ung/'.$yclhang->id.'.pdf'.'". class="btn btn-xs btn-primary">View</a>';	
 		})->addColumn('status', function($yclhang){
@@ -34,15 +34,20 @@ class DatatablesController extends Controller
 	}
 	public function dntung_home()
 	{
-		$yclhangs = Dntung::select(['id', 'user_id', 'created_at', 'reason', 'bill', 'slc20','slc40', 'khang', 'ttien', 'lcont', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'check', 'approve', 'done', 'ndonghang', 'ttien_ltron', 'nyeucau', 'ngiaohang', 'nnhanhang', 'khachhang', 'tuyenduong', 'loaihang'])->where('approve', false)->where('user_id', \Auth::user()->id);
+		$yclhangs = Dntung::select(['id', 'user_id', 'created_at', 'reason', 'bill', 'slc20','slc40', 'khang', 'ttien', 'lcont', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'check', 'approve', 'done', 'ndonghang', 'ttien_ltron', 'nyeucau', 'ngiaohang', 'nnhanhang', 'khachhang', 'tuyenduong', 'loaihang'])->where('approve', true)->where('check', true)->where('done', false)->where('user_id', \Auth::user()->id);
 		return Datatables::of($yclhangs)->addColumn('filebooking', function($yclhang){
 			return '<a href="/de_nghi_tam_ung/'.$yclhang->id.'.pdf'.'". class="btn btn-xs btn-primary">View</a>';	
 		})->addColumn('status', function($yclhang){
-			$check=$yclhang->check;
-			if($check){
-				return '<small class="text-warning"><em>Giám đốc chưa duyệt</em></small>';
-			}
-			return '<small class="text-muted"><em>Kế toán chưa kiểm tra</em></small>';	
+			$ttien = $yclhang->ttien;
+			if($ttien > 0)
+				return '<small class="text-success"><em>Da yeu cau tam ung</em></small>';
+			else
+				return '<small class="text-warning"><em>Chua yeu cau tam ung</em></small>';
+			//$check=$yclhang->check;
+			//if($check){
+			//	return '<small class="text-warning"><em>Giám đốc chưa duyệt</em></small>';
+			//}
+			//return '<small class="text-muted"><em>Kế toán chưa kiểm tra</em></small>';	
 		})->addColumn('check', function($yclhang){return '';})->addColumn('resp', function($yclhang){return '';})->make(true);
 	}
 	public function tuclhang_home()

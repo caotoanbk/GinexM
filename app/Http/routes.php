@@ -34,6 +34,7 @@ Route::get('/director/tuclhang/data', 'DatatablesController@direc_tuclhang_home'
 Route::get('/curator/tam-ung-chua-kiem-tra', 'CuratorController@cur_tucktra_index');
 Route::post('/process/tongket', 'DirectorController@xulytongket');
 Route::post('/make-goods', 'ProponentController@storeYclhang');
+Route::get('/lam-hang/tam-ung/{id}', 'ProponentController@tamung');
 Route::get('/bieumau/phieuchi/{id}', 'BieumauController@phieuchi');
 Route::get('/bieumau/denghitamung', 'BieumauController@denghitamung');
 Route::get('/bieumau/phieuchi', 'BieumauController@phieuchi');
@@ -56,6 +57,7 @@ Route::get('/tong-ket/booking/data/{year}/{month}', 'DatatablesController@tongke
 Route::get('/tam-ung/xoa/{id}', 'ProponentController@xoaDntung');
 Route::get('/tam-ung/sua/{id}', 'ProponentController@capnhatDntung');
 Route::patch('/dntu/cap-nhat/{id}', 'ProponentController@processUpdate_dntu');
+Route::patch('/lam-hang/tam-ung/{id}', 'ProponentController@yeucautamung');
 Route::get('/secrectary/kiem-tra', 'SecrectaryController@kiemtra');
 Route::get('sendmail', function(){
 	$data = array(

@@ -37,13 +37,13 @@ class ProponentController extends Controller
 	public function storeYclhang(Request $request)
 	{
 		$input=$request->all();
-		$input['ttien']=str_replace('.','', $input['ttien']);
-		$input['ttien_ltron']=str_replace('.','', $input['ttien_ltron']);
-		$input['cuoc']=str_replace('.','', $input['cuoc']);
-		$input['nang']=str_replace('.','', $input['nang']);
-		$input['ha']=str_replace('.', '', $input['ha']);
-		$input['hquan']=str_replace('.', '', $input['hquan']);
-		$input['psinh']=str_replace('.', '', $input['psinh']);
+		//$input['ttien']=str_replace('.','', $input['ttien']);
+		//$input['ttien_ltron']=str_replace('.','', $input['ttien_ltron']);
+		//$input['cuoc']=str_replace('.','', $input['cuoc']);
+		//$input['nang']=str_replace('.','', $input['nang']);
+		//$input['ha']=str_replace('.', '', $input['ha']);
+		//$input['hquan']=str_replace('.', '', $input['hquan']);
+		//$input['psinh']=str_replace('.', '', $input['psinh']);
 		$input['user_id']=\Auth::user()->id;	
 		$yc= new Dntung($input);
 		$yc->save();
@@ -51,8 +51,14 @@ class ProponentController extends Controller
 		$request->file('filebooking')->move(base_path() . '/public/de_nghi_tam_ung/', $filebooking);
 		\Session::flash('flash_message', 'Dang thong tin yeu cau lam hang thanh cong');
 		if(Auth::user()->type == 0)
-			return redirect('/proponent/de-nghi-tam-ung');
+			return redirect('/proponent/ke-hoach-lam-hang');
 		return redirect('/director/tam-ung-chua-duyet');
+
+	}
+	public function tamung($id)
+	{
+		$dntu = Dntung::findOrFail($id);
+		return view('user.proponent.tamung', compact('dntu'));
 
 	}
 
@@ -177,6 +183,28 @@ class ProponentController extends Controller
 		$dntu = Dntung::findOrFail($id);
 		return view('user.proponent.capnhat_dntu', compact('dntu', 'id'));
 	}
+	public function yeucautamung($id, Request $request)
+	{
+		$dntu = Dntung::findOrFail($id);
+		$input = $request->all();
+		$input['ttien']=str_replace('.','', $input['ttien']);
+		$input['ttien_ltron']=str_replace('.','', $input['ttien_ltron']);
+		$input['cuoc']=str_replace('.','', $input['cuoc']);
+		$input['playlenh']=str_replace('.','', $input['playlenh']);
+		$input['nang']=str_replace('.','', $input['nang']);
+		$input['ha']=str_replace('.', '', $input['ha']);
+		$input['pbtokhai']=str_replace('.', '', $input['pbtokhai']);
+		$input['phqtiepnhan']=str_replace('.', '', $input['phqtiepnhan']);
+		$input['hquan']=str_replace('.', '', $input['hquan']);
+		$input['pitokhai']=str_replace('.', '', $input['pitokhai']);
+		$input['pkddongvat']=str_replace('.', '', $input['pkddongvat']);
+		$input['pkdthucvat']=str_replace('.', '', $input['pkdthucvat']);
+		$input['psinh']=str_replace('.', '', $input['psinh']);
+		$dntu->fill($input)->save();
+		\Session::flash('flas_message', 'Yeu cau tạm ứng thành công!');
+		return redirect('/proponent/de-nghi-tam-ung');
+
+	}
 	public function processUpdate_dntu($id, Request $request)
 	{
 		$dntu = Dntung::findOrFail($id);
@@ -185,14 +213,9 @@ class ProponentController extends Controller
 		$dntu->lamhang = false;
 		$dntu->done = false;
 		$input = $request->all();
-		$input['ttien']=str_replace('.','', $input['ttien']);
-		$input['ttien_ltron']=str_replace('.','', $input['ttien_ltron']);
-		$input['cuoc']=str_replace('.','', $input['cuoc']);
-		$input['nang']=str_replace('.','', $input['nang']);
-		$input['ha']=str_replace('.', '', $input['ha']);
-		$input['hquan']=str_replace('.', '', $input['hquan']);
-		$input['psinh']=str_replace('.', '', $input['psinh']);
 		$dntu->fill($input)->save();
+		$filebooking = $dntu->id . '.' . $request->file('filebooking')->getClientOriginalExtension();
+		$request->file('filebooking')->move(base_path() . '/public/de_nghi_tam_ung/', $filebooking);
 		\Session::flash('flas_message', 'Cập nhật đề nghị tạm ứng thành công!');
 		return redirect('/');
 	}

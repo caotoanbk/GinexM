@@ -23,20 +23,43 @@ function format($value){
 	<tr>
 		<th>Xóa</th>
 		<th>Ngày</th>
-		<th>Biển số xe</th>
-		<th>Loại xe</th>
 		<th>Số cont</th>
 		<th>Cỡ cont</th>
 		<th>Loại cont</th>
-		<th>Nhà xe</th>
-		<th>Phí nâng hạ</th>
-		<th>Kí hải quan giám sát</th>
-		<th>Cước xe</th>
-		<th>Cước gửi</th>
-		<th>Cước bán</th>
-		<th>Giá vốn chưa VAT</th>
-		<th>Giá vốn điều chỉnh</th>
-		<th>Cước bán chưa VAT</th>
+		<th>Bai nang hang/vo</th>
+		<th>Bai ha hang/vo</th>
+		<th>Trong luong (tan)</th>
+		<th>Dieu xe</th>
+		<th>Loại xe</th>
+		<th>Biển số xe</th>
+		<th>Dia diem dong tra hang</th>
+		<th>Phi nang chua VAT</th>
+		<th>VAT phi nang</th>
+		<th>So hoa don nang</th>
+		<th>Ngay xuat HD nang</th>
+		<th>Don vi cap HD nang</th>
+		<th>Phi ha chua VAT</th>
+		<th>VAT phi ha</th>
+		<th>So HD ha</th>
+		<th>Ngay xuat HD ha</th>
+		<th>Don vi cap HD ha</th>
+		<th>Boc to khai</th>
+		<th>HQ tiep nhan</th>
+		<th>HQ giam sat cang</th>
+		<th>HQ kiem hoa</th>
+		<th>Cuoc cont</th>
+		<th>Lay lenh hang tau</th>
+		<th>Luu Cont</th>
+		<th>Luu bai</th>
+		<th>Phi ve sinh</th>
+		<th>Phi cat day</th>
+		<th>Boc tem</th>
+		<th>Kiem dich dong/thuc vat chua VAT</th>
+		<th>VAT chi phi k/d dong/thuc vat</th>
+		<th>Chi phi ngoai cho k/d dong/thuc vat</th>
+		<th>Cac khoan ung khac cho khach</th>
+		<th>Tong</th>
+		<th>Ghi chu</th>
 	</tr>
 </thead>
 <tbody id='qtoan_cont'>

@@ -5,20 +5,11 @@
         <div class="col-md-12">
 <h3 class='col-md-8 col-md-offset-3'>CAP NHAT DE NGHI TAM UNG</h3>
 {!! Form::model($dntu, ['method' => 'PATCH','url' => ['/dntu/cap-nhat', $dntu->id], 'class' => 'form-horizontal', 'id' => 'content']) !!}
-<div class="form-group required">
-	{!! Form::label('bill', 'Booking/BL', array('class' => 'col-md-3 control-label')) !!}
-	<div class='col-md-8'>{!! Form::text('bill', null, array('class' => 'form-control', 'id' => 'bill'))!!}</div>
-</div>
-<div class='form-group required'>
-{!! Form::label('reason', 'Lý do tạm ứng', ['class' => 'col-md-3 control-label']) !!}
+
+<div id="khang" class='form-group required'>
+{!! Form::label('khang', 'Hình thức hàng', ['class' => 'col-md-3 control-label']) !!}
 <div class='col-md-8'>
-{!! Form::text('reason', null, ['class' => 'form-control']) !!}
-</div>
-</div>
-<div class='form-group'>
-{!! Form::label('khachhang', 'Khách hàng', ['class' => 'col-md-3 control-label']) !!}
-<div class='col-md-8'>
-{!! Form::text('khachhang', null, ['class' => 'form-control']) !!}
+{!! Form::select('khang', ['Xuất' => 'Xuất', 'Nhập' => 'Nhập', 'Kinh doanh nội địa' => 'Kinh doanh nội địa'], null, ['placeholder' => 'Chọn kiểu hàng', 'class' => 'form-control']) !!}
 </div>
 </div>
 <div class='form-group'>
@@ -27,14 +18,32 @@
 {!! Form::text('loaihang', null, ['class' => 'form-control']) !!}
 </div>
 </div>
-<div class='form-group required'>
-	{!! Form::label('ndonghang','Ngày đóng hàng', array('class' => 'col-md-3 control-label')) !!}
-	<div class='col-md-8'>{!! Form::text('ndonghang', $dntu->ndonghang, array('class' => 'form-control', 'id' => 'ndonghang'))!!}</div>
+<div class='form-group'>
+{!! Form::label('khachhang', 'Khách hàng', ['class' => 'col-md-3 control-label']) !!}
+<div class='col-md-8'>
+{!! Form::text('khachhang', null, ['class' => 'form-control']) !!}
+</div>
+</div>
+<div class="form-group required">
+	{!! Form::label('bill', 'Booking/Bill', array('class' => 'col-md-3 control-label')) !!}
+	<div class='col-md-8'>{!! Form::text('bill', null, array('class' => 'form-control', 'id' => 'bill'))!!}</div>
 </div>
 <div class='form-group'>
-{!! Form::label('tuyenduong', 'Tuyến đường', ['class' => 'col-md-3 control-label']) !!}
+{!! Form::label('stkhai', 'So to khai', ['class' => 'col-md-3 control-label']) !!}
 <div class='col-md-8'>
-{!! Form::text('tuyenduong', null, ['class' => 'form-control']) !!}
+{!! Form::text('stkhai', null, ['class' => 'form-control']) !!}
+</div>
+</div>
+<div class='form-group required'>
+{!! Form::label('lcont', 'Loại cont', ['class' => 'col-md-3 control-label']) !!}
+<div class='col-md-8'>
+{!! Form::select('lcont', ['Nóng' => 'Nóng', 'Lạnh' => 'Lạnh', 'nonglanh' => 'Nóng & Lạnh'], null, ['placeholder' => 'Chọn loại cont', 'class' => 'form-control']) !!}
+</div>
+</div>
+<div class='form-group'>
+{!! Form::label('slcont', 'Số lượng cont', ['class' => 'col-md-3 control-label']) !!}
+<div class='col-md-8'>
+{!! Form::number('slcont', null, ['class' => 'form-control']) !!}
 </div>
 </div>
 <div class='form-group'>
@@ -49,65 +58,65 @@
 {!! Form::number('slc40', null, ['class' => 'form-control']) !!}
 </div>
 </div>
-<div class='form-group required'>
-{!! Form::label('lcont', 'Loại cont', ['class' => 'col-md-3 control-label']) !!}
+<div class='form-group'>
+{!! Form::label('slchroi', 'Số lượng cont hang roi', ['class' => 'col-md-3 control-label']) !!}
 <div class='col-md-8'>
-{!! Form::select('lcont', ['Nóng' => 'Nóng', 'Lạnh' => 'Lạnh'], null, ['placeholder' => 'Chọn loại cont', 'class' => 'form-control']) !!}
+{!! Form::number('slchroi', null, ['class' => 'form-control']) !!}
 </div>
 </div>
-<div class='form-group required'>
-{!! Form::label('khang', 'Hình thức hàng', ['class' => 'col-md-3 control-label']) !!}
+<div class='form-group'>
+{!! Form::label('slcnong', 'Số lượng cont nong', ['class' => 'col-md-3 control-label']) !!}
 <div class='col-md-8'>
-{!! Form::select('khang', ['Xuất' => 'Xuất', 'Nhập' => 'Nhập'], null, ['placeholder' => 'Chọn kiểu hàng', 'class' => 'form-control']) !!}
+{!! Form::number('slcnong', null, ['class' => 'form-control']) !!}
 </div>
 </div>
 <div class='form-group'>
-{!! Form::label('cuoc', 'Cược', array('class' => 'col-md-3 control-label')) !!}
-<div class='col-md-8'>{!! Form::text('cuoc', null, array('class' => 'form-control')) !!}</div>
+{!! Form::label('slclanh', 'Số lượng cont lanh', ['class' => 'col-md-3 control-label']) !!}
+<div class='col-md-8'>
+{!! Form::number('slclanh', null, ['class' => 'form-control']) !!}
+</div>
 </div>
 <div class='form-group'>
-{!! Form::label('nang', 'Nâng', array('class' => 'col-md-3 control-label')) !!}
-<div class='col-md-8'>{!! Form::text('nang', null, array('class' => 'form-control')) !!}</div>
+{!! Form::label('nhaxe', 'Nha xe', ['class' => 'col-md-3 control-label']) !!}
+<div class='col-md-8'>
+{!! Form::text('nhaxe', null, ['class' => 'form-control']) !!}
+</div>
 </div>
 <div class='form-group'>
-{!! Form::label('ha', 'Hạ', array('class' => 'col-md-3 control-label')) !!}
-<div class='col-md-8'>{!! Form::text('ha', null, array('class' => 'form-control')) !!}</div>
+{!! Form::label('hangtau', 'Hang tau', ['class' => 'col-md-3 control-label']) !!}
+<div class='col-md-8'>
+{!! Form::text('hangtau', null, ['class' => 'form-control']) !!}
+</div>
 </div>
 <div class='form-group'>
-{!! Form::label('hquan', 'Kí HQ giám sát', array('class' => 'col-md-3 control-label')) !!}
-<div class='col-md-8'>{!! Form::text('hquan', null, array('class' => 'form-control')) !!}</div>
+{!! Form::label('tuyenduong', 'Tuyến đường', ['class' => 'col-md-3 control-label']) !!}
+<div class='col-md-8'>
+{!! Form::text('tuyenduong', null, ['class' => 'form-control']) !!}
 </div>
-<div class='form-group'>
-{!! Form::label('psinh', 'Phát sinh(nếu có)', array('class' => 'col-md-3 control-label')) !!}
-<div class='col-md-8'>{!! Form::text('psinh', null, array('class' => 'form-control')) !!}</div>
-</div>
-<div class='form-group'>
-{!! Form::label('ttien', 'Tổng', array('class' => 'col-md-3 control-label')) !!}
-<div class='col-md-8'>{!! Form::text('ttien', null, array('class' => 'form-control', 'readonly' => 'true')) !!}</div>
-</div>
-<div class='form-group'>
-{!! Form::label('ttien_ltron', 'Tổng tiền làm tròn', array('class' => 'col-md-3 control-label')) !!}
-<div class='col-md-8'>{!! Form::text('ttien_ltron', null, array('class' => 'form-control', 'readonly' => 'true')) !!}</div>
 </div>
 <div class='form-group required'>
-	{!! Form::label('tghung','Hoàn ứng', array('class' => 'col-md-3 control-label')) !!}
-	<div class='col-md-8'>{!! Form::text('tghung', null, array('class' => 'form-control', 'id' => 'nhoanung'))!!}</div>
+	{!! Form::label('nyeucau','Ngày yêu cầu', array('class' => 'col-md-3 control-label')) !!}
+	<div class='col-md-8'>{!! Form::text('nyeucau', \Carbon\Carbon::now()->format('Y-m-d'), array('class' => 'form-control', 'id' => 'nyeucau'))!!}</div>
 </div>
-<div class='form-group'>
-	{!! Form::label('nyeucau','Ngay yeu cau', array('class' => 'col-md-3 control-label')) !!}
-	<div class='col-md-8'>{!! Form::text('nyeucau', null, array('class' => 'form-control', 'id' => 'nyeucau'))!!}</div>
+<div class='form-group required'>
+	{!! Form::label('ndonghang','Ngày đóng hàng', array('class' => 'col-md-3 control-label')) !!}
+	<div class='col-md-8'>{!! Form::text('ndonghang', \Carbon\Carbon::now()->format('Y-m-d'), array('class' => 'form-control', 'id' => 'ndonghang'))!!}</div>
 </div>
-<div class='form-group'>
-	{!! Form::label('ngiaohang','Ngay giao hang', array('class' => 'col-md-3 control-label')) !!}
-	<div class='col-md-8'>{!! Form::text('ngiaohang', null, array('class' => 'form-control', 'id' => 'ngiaohang'))!!}</div>
+<div id="input-ngaygiaohang" class='form-group required hidden disabled'>
+	{!! Form::label('ngiaohang','Ngày giao hàng', array('class' => 'col-md-3 control-label')) !!}
+	<div class='col-md-8'>{!! Form::date('ngiaohang', \Carbon\Carbon::now(), array('class' => 'form-control'))!!}</div>
 </div>
-<div class='form-group'>
-	{!! Form::label('nnhanhang','Ngay nhan hang', array('class' => 'col-md-3 control-label')) !!}
-	<div class='col-md-8'>{!! Form::text('nnhanhang', null, array('class' => 'form-control', 'id' => 'nnhanhang'))!!}</div>
+<div id="input-ngaynhanhang" class='form-group required hidden disabled'>
+	{!! Form::label('nnhanhang','Ngày nhận hàng', array('class' => 'col-md-3 control-label')) !!}
+	<div class='col-md-8'>{!! Form::date('nnhanhang', \Carbon\Carbon::now(), array('class' => 'form-control'))!!}</div>
+</div>
+<div class='form-group required'>
+	{!! Form::label('filebooking','File Booking', array('class' => 'col-md-3 control-label')) !!}
+	<div class='col-md-8'>{!! Form::file('filebooking', null)!!}</div>
 </div>
 
 <div class="form-group"><div class="col-md-8 col-md-offset-3">
-		<button type="submit" class="btn btn-primary" id='dntung'>Cập Nhật</button> </div> </div>
+		<button type="submit" class="btn btn-primary" id='dntung'>Cap Nhat</button> </div> </div>
 {!! Form::close() !!}
         </div>
     </div>

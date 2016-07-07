@@ -1,4 +1,33 @@
-{!! Form::open(array('url' => '/tam-ung', 'method' => 'post', 'class' => 'form-horizontal', 'files' => true, 'name' => 'content', 'id' => 'content')) !!}
+@extends('layouts.app')
+@section('content')
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+<h3 class='col-md-8 col-md-offset-3'><u>DE NGHI TAM UNG</u></h3>
+<div class='form-group'>
+<div class='col-md-3 control-label' style="text-align: right;"><b>Loai hinh</b></div>
+<div class='col-md-8'>{{$dntu->khang}}</div>
+</div>
+<div class='form-group'>
+<div class='col-md-3 control-label' style="text-align: right;"><b>Loai hang</b></div>
+<div class='col-md-8'>{{$dntu->loaihang}}</div>
+</div>
+<div class='form-group'>
+<div class='col-md-3 control-label' style="text-align: right;"><b>Chu hang</b></div>
+<div class='col-md-8'>{{$dntu->khachhang}}</div>
+</div>
+<div class='form-group'>
+<div class='col-md-3 control-label' style="text-align: right;"><b>So bill/booking</b></div>
+<div class='col-md-8'>{{$dntu->bill}}</div>
+</div>
+<div class='col-md-12'>&nbsp;</div>
+{!! Form::model($dntu, ['method' => 'PATCH','url' => ['/lam-hang/tam-ung', $dntu->id], 'class' => 'form-horizontal', 'id' => 'content']) !!}
+<div class='form-group required'>
+{!! Form::label('reason', 'Lý do tạm ứng', ['class' => 'col-md-3 control-label']) !!}
+<div class='col-md-8'>
+{!! Form::text('reason', null, ['class' => 'form-control']) !!}
+</div>
+</div>
 <div class='form-group'>
 {!! Form::label('cuoc', 'Cược', array('class' => 'col-md-3 control-label')) !!}
 <div class='col-md-8'>{!! Form::text('cuoc', null, array('class' => 'form-control')) !!}</div>
@@ -55,7 +84,13 @@
 	{!! Form::label('tghung','Hoàn ứng', array('class' => 'col-md-3 control-label')) !!}
 	<div class='col-md-8'>{!! Form::text('tghung', \Carbon\Carbon::now()->format('Y-m-d'), array('class' => 'form-control', 'id' => 'nhoanung'))!!}</div>
 </div>
-
 <div class="form-group"><div class="col-md-8 col-md-offset-3">
-		<button type="submit" class="btn btn-primary" id='dntung'>Đề Nghị Tạm Ứng</button> </div> </div>
+		<button type="submit" class="btn btn-primary" id='dntung'>Yeu Cau Tam Ung</button> </div> </div>
 {!! Form::close() !!}
+        </div>
+    </div>
+</div>
+@endsection
+@section('javascript')
+<script type='text/javascript' src='/js/user/proponent/yeucautamung.js'></script>
+@endsection
