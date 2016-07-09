@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-12">
 <h3 class='col-md-8 col-md-offset-3'>CAP NHAT DE NGHI TAM UNG</h3>
-{!! Form::model($dntu, ['method' => 'PATCH','url' => ['/dntu/cap-nhat', $dntu->id], 'class' => 'form-horizontal', 'id' => 'content']) !!}
+{!! Form::model($dntu, ['method' => 'PATCH','url' => ['/dntu/cap-nhat', $dntu->id], 'files' => true, 'class' => 'form-horizontal', 'id' => 'content']) !!}
 
 <div id="khang" class='form-group required'>
 {!! Form::label('khang', 'Hình thức hàng', ['class' => 'col-md-3 control-label']) !!}
@@ -112,9 +112,8 @@
 </div>
 <div class='form-group required'>
 	{!! Form::label('filebooking','File Booking', array('class' => 'col-md-3 control-label')) !!}
-	<div class='col-md-8'>{!! Form::file('filebooking', null)!!}</div>
+	<div class='col-md-8'>{!! Form::file('filebooking')!!}</div>
 </div>
-
 <div class="form-group"><div class="col-md-8 col-md-offset-3">
 		<button type="submit" class="btn btn-primary" id='dntung'>Cap Nhat</button> </div> </div>
 {!! Form::close() !!}

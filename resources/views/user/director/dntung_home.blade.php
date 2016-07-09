@@ -3,11 +3,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-			@include('user.secrectary', ['title' => 'DE NGHI TAM UNG'])
+			@include('partials.modal.yclhang')
+			@include('user.director', ['title' => 'DE NGHI TAM UNG'])
         </div>
     </div>
 </div>
 @endsection
 @section('javascript')
-<script type='text/javascript' src='/js/user/secrectary/tuchthanh_home.js'></script>
+<script type='text/javascript' src='/js/user/director/dntung_home.js'></script>
 @endsection

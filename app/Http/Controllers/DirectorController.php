@@ -54,9 +54,27 @@ class DirectorController extends Controller
 		$qtpsinh = $dntung->qtoans()->get()->toArray();
 		return view('user.director_qtoan', compact('dntung', 'qtconts', 'qtpsinh'));
 	}
-	public function direc_tucduyet_index()
+	public function approveKHLH($id)
 	{
-		return view('user.director.tucduyet_home');
+		$khlh = Dntung::findOrFail($id);
+		$khlh->approve = true;
+		$khlh->save();
+		return "Approve success";
+	}
+	public function unapproveKHLH($id)
+	{
+		$khlh = Dntung::findOrFail($id);
+		$khlh->approve = false;
+		$khlh->save();
+		return "Unapprove success";
+	}
+	public function direc_khlhang_index()
+	{
+		return view('user.director.khlhang_home');
+	}
+	public function direc_dntung_index()
+	{
+		return view('user.director.dntung_home');
 	}
 	public function direc_tucqtoan_index()
 	{

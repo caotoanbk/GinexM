@@ -9,7 +9,6 @@ use App\Http\Controllers\Controller;
 use App\Dntung;
 use App\Qtoan;
 use App\QTCont;
-
 class SecrectaryController extends Controller
 {
 	public function __construct()
@@ -22,6 +21,10 @@ class SecrectaryController extends Controller
 		$qtconts = $dntung->qtconts()->get()->toArray();
 		$qtpsinh = $dntung->qtoans()->get()->toArray();
 		return view('user.secrectary_qtoan', compact('dntung', 'qtconts', 'qtpsinh'));
+	}
+	public function sec_khlhang_index()
+	{
+		return view('user.secrectary.khlhang_home');
 	}
 	public function sec_tuchthanh_index()
 	{
@@ -38,6 +41,21 @@ class SecrectaryController extends Controller
 	public function sec_tuclhang_index()
 	{
 		return view('user.secrectary.tuclhang_home');
+	}
+	public function checkKHLH($id)
+	{
+		$khlh = Dntung::findOrFail($id);
+		$khlh->check = true;
+		$khlh->save();
+		return 'Check Success';
+	}
+	public function uncheckKHLH($id)
+	{
+		$khlh = Dntung::findOrFail($id);
+		$khlh->check = false;
+		$khlh->save();
+		return 'Uncheck Success';
+
 	}
 	public function kiemtra(Request $request)
 	{

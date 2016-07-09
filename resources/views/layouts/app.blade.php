@@ -65,13 +65,15 @@
                     <li><a href="/proponent/tam-ung-da-hoan-thanh">Tạm ứng đã hoàn thành</a></li>
 						@endif
 						@if(Auth::user()->type == 1)
-                    <li><a href="/secrectary/tam-ung-chua-hoan-thanh">Tạm ứng chưa kiem tra</a></li>
+                    <li><a href="/secrectary/ke-hoach-lam-hang">Ke hoach lam hang</a></li>
+                    <li><a href="/secrectary/tam-ung-chua-hoan-thanh">De nghi tam ung</a></li>
                     <li><a href="/secrectary/tam-ung-chua-lam-hang">Tạm ứng chưa làm</a></li>
                     <li><a href="/secrectary/tam-ung-chua-quyet-toan">Tam ung chua quyet toan</a></li>
                     <li><a href="/secrectary/tam-ung-da-hoan-thanh">Tạm ứng đã hoàn thành</a></li>
 						@endif
 						@if(Auth::user()->type == 2)
-                    <li><a href="/director/tam-ung-chua-duyet">Tạm ứng chưa duyệt</a></li>
+                    <li><a href="/director/ke-hoach-lam-hang">Ke hoach lam hang</a></li>
+                    <li><a href="/director/de-nghi-tam-ung">De nghi tam ung</a></li>
                     <li><a href="/director/tam-ung-chua-lam-hang">Tạm ứng chưa làm</a></li>
                     <li><a href="/director/tam-ung-chua-quyet-toan">Tạm ứng chưa quyết toán</a></li>
                     <li><a href="/director/tam-ung-da-hoan-thanh">Tạm ứng đã hoàn thành</a></li>

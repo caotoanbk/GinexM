@@ -18,7 +18,8 @@ $(function() {
 			orderable: false, 
 			className: 'select-checkbox',
 			targets:0 
-		},{
+		},
+		{
 			className: 'control',
 			orderable: false,
 			targets:1 

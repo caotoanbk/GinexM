@@ -24,7 +24,7 @@ $(function() {
 			targets:1 
 		}],
 		"serverSide": true,
-		"ajax": {'url':'/proponent/khlhang/data', 'type': 'get', 'headers': { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }},
+		"ajax": {'url':'/director/khlhang/data', 'type': 'get', 'headers': { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }},
 		"dom": 'Bfrtip',
 		"buttons": [
 			{
@@ -32,22 +32,6 @@ $(function() {
 				className: 'btn',	
 				action: function (e, dt, node, config){
 					$('#myModal').modal('show');
-				}
-			},
-			{
-				text: 'Xóa',
-				action: function(e, dt, node, config) {
-					var selectedRows = dt.rows( {selected: true}).toArray();
-				    var count = dt.rows( { selected: true } ).count();
-					if(count>0){
-					var r = confirm('Bạn muốn xóa ke hoach lam hang này?');
-					if(r == true){
-					var id = dt.rows(selectedRows[0][0]).data().toArray()[0].id;
-					window.location.href = '/tam-ung/xoa/'+id;
-					}
-					}else{
-						alert('Bạn chưa chọn ke hoach lam hang nào');
-					}
 				}
 			},
 			{
@@ -64,16 +48,59 @@ $(function() {
 				}
 			},
 			{
-				text: 'Select none',
-				action: function(e, dt, node, config) {
-					dt.rows().deselect();
+				text: 'Da duyet',
+				className: 'btn',	
+				action: function (e, dt, node, config){
+					var selectedRows = dt.rows( {selected: true}).toArray();
+				    var count = dt.rows( { selected: true } ).count();
+					if(count>0){
+					var id = dt.rows(selectedRows[0][0]).data().toArray()[0].id;
+					$.ajax({
+						url: '/director/approve/'+ id,
+						method: 'get',
+						success: function(data){
+							dt.ajax.reload();
+							console.log(data);
+						},
+						error: function(data){
+							alert('error');
+						}
+					});
+					}else{
+						alert('Bạn chưa chọn ke hoach lam hang nào');
+					}
 				}
-			}
+			},
+			{
+				text: 'Huy duyet',
+				className: 'btn',	
+				action: function (e, dt, node, config){
+					var selectedRows = dt.rows( {selected: true}).toArray();
+				    var count = dt.rows( { selected: true } ).count();
+					if(count>0){
+					var id = dt.rows(selectedRows[0][0]).data().toArray()[0].id;
+					$.ajax({
+						url: '/director/unapprove/'+ id,
+						method: 'get',
+						success: function(data){
+							dt.ajax.reload();
+							console.log(data);
+						},
+						error: function(data){
+							alert('error');
+						}
+					});
+					}else{
+						alert('Bạn chưa chọn ke hoach lam hang nào');
+					}
+				}
+			},
 		],
 		"columns": [
 			{data: 'resp', name: 'resp', searchable: false, orderable: false},
 			{data: 'check', name: 'check', searchable: false, orderable: false},
-			{data: 'created_at', name: 'created_at'},
+			{data: 'name', name: 'name'},
+			{data: 'created_at', name: 'dntungs.created_at'},
 			{data: 'khang', name: 'khang'},
 			{data: 'loaihang', name: 'loaihang'},
 			{data: 'khachhang', name: 'khachhang'},
@@ -86,13 +113,13 @@ $(function() {
 			{data: 'slcnong', name: 'slcnong', className: 'none'},
 			{data: 'slclanh', name: 'slclanh', className: 'none'},
 			{data: 'hangtau', name: 'hangtau'},
-			{data: 'tuyenduong', name: 'tuyenduong'},
+			{data: 'tuyenduong', name: 'tuyenduong', className: 'none'},
 			{data: 'ndonghang', name: 'ndonghang'},
 			{data: 'nhaxe', name: 'nhaxe', className: 'none'},
 			{data: 'filebooking', name: 'filebooking', className: 'none', searchable: false, orderable: false},
 			{data: 'status', name: 'status', searchable: false, orderable: false},
 		],
-		"order": [[2, 'desc']]
+		"order": [[3, 'desc']]
 	});
 	$('#myModal').on('show.bs.modal', function(e) {
 		var $modal = $(this);

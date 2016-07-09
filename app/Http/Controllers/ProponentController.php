@@ -11,6 +11,7 @@ use App\Dntung;
 use App\Quyettoan;
 use App\QTCont;
 use Auth;
+use Carbon\Carbon;
 
 class ProponentController extends Controller
 {
@@ -52,7 +53,7 @@ class ProponentController extends Controller
 		\Session::flash('flash_message', 'Dang thong tin yeu cau lam hang thanh cong');
 		if(Auth::user()->type == 0)
 			return redirect('/proponent/ke-hoach-lam-hang');
-		return redirect('/director/tam-ung-chua-duyet');
+		return redirect('/director/ke-hoach-lam-hang');
 
 	}
 	public function tamung($id)
@@ -204,6 +205,10 @@ class ProponentController extends Controller
 		\Session::flash('flas_message', 'Yeu cau tạm ứng thành công!');
 		return redirect('/proponent/de-nghi-tam-ung');
 
+	}
+	public function testdate()
+	{
+		return Carbon::now();
 	}
 	public function processUpdate_dntu($id, Request $request)
 	{
