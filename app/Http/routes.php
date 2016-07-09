@@ -68,15 +68,17 @@ Route::get('/tam-ung/sua/{id}', 'ProponentController@capnhatDntung');
 Route::patch('/dntu/cap-nhat/{id}', 'ProponentController@processUpdate_dntu');
 Route::patch('/lam-hang/tam-ung/{id}', 'ProponentController@yeucautamung');
 Route::get('/secrectary/kiem-tra', 'SecrectaryController@kiemtra');
+Route::get('/data/khlhang/details/{id}', 'HomeController@chitietkhlh');
 Route::get('sendmail', function(){
 	$data = array(
-		'name' => 'Learning Laravel',
+		'noidung' => 'Learning Laravel',
 	);
 	Mail::send('emails.welcom', $data, function($message){
 		$message->from('logistics@ginex.com.vn', 'Learning Laravel');
 		$message->to('tony.cao@ginex.com.vn')->subject('Learning Laravel test email');
 	});
 }); 
+Route::post('/secrectary/sendemail', 'EmailController@sendEmailFromSecrectary'); 
 Route::get('test', function()
 {
     dd(Config::get('mail'));

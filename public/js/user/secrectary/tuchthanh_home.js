@@ -59,7 +59,7 @@ $(function() {
 			{data: 'tuyenduong', name: 'tuyenduong', className: 'none'},
 			{data: 'ttien', name: 'dntungs.ttien', render: $.fn.dataTable.render.number(',','.',0,'', ' đ') },
 			{data: 'ttien_ltron', name: 'dntungs.ttien_ltron', render: $.fn.dataTable.render.number(',','.',0,'', ' đ') },
-			{data: 'ndonghang', name: 'dntungs.ndonghang'},
+			{data: 'ndonghang', name: 'dntungs.ndonghang', className: 'none'},
 			{data: 'khang', name: 'dntungs.khang', className: 'none' },
 			{data: 'slc20', name: 'dntungs.slc20', className: 'none'},
 			{data: 'slc40', name: 'dntungs.slc40', className: 'none'},

@@ -48,6 +48,22 @@ $(function() {
 				}
 			},
 			{
+				text: 'Xóa',
+				action: function(e, dt, node, config) {
+					var selectedRows = dt.rows( {selected: true}).toArray();
+				    var count = dt.rows( { selected: true } ).count();
+					if(count>0){
+					var r = confirm('Bạn muốn xóa ke hoach lam hang này?');
+					if(r == true){
+					var id = dt.rows(selectedRows[0][0]).data().toArray()[0].id;
+					window.location.href = '/tam-ung/xoa/'+id;
+					}
+					}else{
+						alert('Bạn chưa chọn ke hoach lam hang nào');
+					}
+				}
+			},
+			{
 				text: 'Da duyet',
 				className: 'btn',	
 				action: function (e, dt, node, config){

@@ -40,4 +40,8 @@ class HomeController extends Controller
 	{
 		return view('user.proponent_dntung_index');
 	}
+	public function chitietkhlh($id)
+	{
+		return 'hello';
+	}
 }

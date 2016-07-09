@@ -75,6 +75,33 @@ $(function() {
 					}
 				}
 			},
+			{
+				text: 'Gui email yeu cau',
+				className: 'btn',	
+				action: function (e, dt, node, config){
+					var selectedRows = dt.rows( {selected: true}).toArray();
+				    var count = dt.rows( { selected: true } ).count();
+					if(count>0){
+					var id = dt.rows(selectedRows[0][0]).data().toArray()[0].id;
+					var booking, nyeucau;
+					$.ajax({
+						url: '/data/khlhang/details/'+id,
+						method: 'get',
+						success: function(data){
+							$('#emailmodal_booking').text("Hello world");
+							$('#emailmodal_nyeucau').text("Cao Van Toan");
+						},
+						error: function(data){
+							alert('error');
+						}
+					});
+					$('input[name=id]').val(id);
+					$('#myModalEmail').modal('show').draggable();
+					}else{
+						alert('Bạn chưa chọn ke hoach lam hang nào');
+					}
+				}
+			},
 		],
 		"columns": [
 			{data: 'resp', name: 'resp', searchable: false, orderable: false},

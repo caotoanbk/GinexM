@@ -28,12 +28,12 @@ class DatatablesController extends Controller
 			$check=$yclhang->check;
 			$approve = $yclhang->approve;
 			if(!$check){
-				return '<small class="text-muted"><em>Kế toán chưa kiểm tra</em></small>';	
+				return '<small class="text-muted"><em><b>Kế toán chưa kiểm tra<b></em></small>';	
 			}
 			if(!$approve){
-				return '<small class="text-warning"><em>Giám đốc chưa duyệt</em></small>';
+				return '<small class="text-warning"><em><b>Giám đốc chưa duyệt</b></em></small>';
 			}
-			if($check && $approve) return '<small class="text-success"><em>Everything OK</em></small>';
+			if($check && $approve) return '<small class="text-success"><em><b>Everything OK</b></em></small>';
 		})->addColumn('check', function($yclhang){return '';})->addColumn('resp', function($yclhang){return '';})->make(true);
 	}
 	public function dntung_home()
@@ -44,9 +44,9 @@ class DatatablesController extends Controller
 		})->addColumn('status', function($yclhang){
 			$ttien = $yclhang->ttien;
 			if($ttien > 0)
-				return '<small class="text-success"><em>Da yeu cau tam ung</em></small>';
+				return '<small class="text-success"><em><b>Da yeu cau tam ung</b></em></small>';
 			else
-				return '<small class="text-warning"><em>Chua yeu cau tam ung</em></small>';
+				return '<small class="text-warning"><em><b>Chua yeu cau tam ung</b></em></small>';
 			//$check=$yclhang->check;
 			//if($check){
 			//	return '<small class="text-warning"><em>Giám đốc chưa duyệt</em></small>';
@@ -65,11 +65,11 @@ class DatatablesController extends Controller
 			$difference = $ngaydonghang->diff($now)->days;
 			switch($difference){
 				case 0:
-					return '<span class="text-danger"><i>Hôm nay đóng hàng</i></span>';
+					return '<span class="text-danger"><i><b><small>Hôm nay đóng hàng<small></b></i></span>';
 				case 1:
-					return '<span class="text-primary"><i>Mai đóng hàng</i></span>';
+					return '<span class="text-primary"><i><b><small>Mai đóng hàng</small></b></i></span>';
 				default: 
-					return '<span class="text-primary"><i>Còn '.$difference.' ngày</i></span>';
+					return '<span class="text-primary"><i><b><small>Còn '.$difference.' ngày</small></b></i></span>';
 			}
 		})->addColumn('check', function($yclhang){return '';})->addColumn('resp', function($yclhang){return '';})->make(true);
 	}
@@ -81,9 +81,9 @@ class DatatablesController extends Controller
 			return '<a href="/de_nghi_tam_ung/'.$yclhang->id.'.pdf'.'". class="btn btn-xs btn-primary">View</a>';	
 		})->addColumn('status', function($yclhang){
 			if(Carbon::today()->gt(Carbon::createFromFormat('Y-m-d', $yclhang->tghung))){
-				return '<small class="text-danger"><em><a id="qhan" href="/quyet-toan-lam-hang/'.$yclhang->id.'">Qúa hạn quyết toán</a></em></small>';
+				return '<small class="text-danger"><em><a id="qhan" href="/quyet-toan-lam-hang/'.$yclhang->id.'"><small><b>Qúa hạn quyết toán</b></small></a></em></small>';
 			} else {
-				return '<small class="text-primary"><em><a href="/quyet-toan-lam-hang/'.$yclhang->id.'">Chưa quyết toán</a></em></small>';
+				return '<small class="text-primary"><em><a href="/quyet-toan-lam-hang/'.$yclhang->id.'"><b>Chưa quyết toán</b></a></em></small>';
 			}
 		})->addColumn('check', function($yclhang){return '';})->addColumn('resp', function($yclhang){return '';})->make(true);
 	}
@@ -94,7 +94,7 @@ class DatatablesController extends Controller
 			$my = date("Y/m");
 			return '<a href="/de_nghi_tam_ung/'.$yclhang->id.'.pdf'.'". class="btn btn-xs btn-primary">View</a>';	
 		})->addColumn('status', function($yclhang){
-			return '<small class="text-success"><em><a class="text-success" href="/quyet-toan-lam-hang-secrectary/'.$yclhang->id.'">Đã hoàn thành</a></em></small>';
+			return '<small class="text-success"><em><a class="text-success" href="/quyet-toan-lam-hang-secrectary/'.$yclhang->id.'"><b>Đã hoàn thành</b></a></em></small>';
 		})->addColumn('check', function($yclhang){return '';})->addColumn('resp', function($yclhang){return '';})->make(true);
 	}
 	public function sec_khlhang_home()
@@ -105,9 +105,9 @@ class DatatablesController extends Controller
 		})->addColumn('status', function($yclhang){
 			$check=$yclhang->check;
 			if($check){
-				return '<small class="text-success"><em>Da kiem tra</em></small>';
+				return '<small class="text-success"><em><b>Da kiem tra</b></em></small>';
 			}else{
-				return '<em><small class="text-warning">Chưa kiểm tra</small></em>';
+				return '<em><small class="text-warning"><b>Chưa kiểm tra</b></small></em>';
 			}
 
 		})->addColumn('check', function($yclhang){return '';})->addColumn('resp', function($yclhang){return '';})->make(true);
@@ -120,9 +120,9 @@ class DatatablesController extends Controller
 		})->addColumn('status', function($yclhang){
 			$ttien = $yclhang->ttien;
 			if($ttien > 0)
-				return '<em><small class="text-warning">Da yeu cau tam ung</small></em>';
+				return '<em><small class="text-success"><b>Da yeu cau tam ung</b></small></em>';
 			else
-				return '<em><small class="text-warning">Chua yeu cau tam ung</small></em>';
+				return '<em><small class="text-warning"><b>Chua yeu cau tam ung</b></small></em>';
 		})->addColumn('check', function($yclhang){return '';})->addColumn('resp', function($yclhang){return '';})->addColumn('ndenghi', function($yclhang){ return User::findOrFail($yclhang->user_id)->name;})->make(true);
 	}
 	public function sec_tuclhang_home()
@@ -136,11 +136,11 @@ class DatatablesController extends Controller
 			$difference = $ngaydonghang->diff($now)->days;
 			switch($difference){
 				case 0:
-					return '<span class="text-danger"><i>Hôm nay đóng hàng</i></span>';
+					return '<span class="text-danger"><i><small><b>Hôm nay đóng hàng</b></small></i></span>';
 				case 1:
-					return '<span class="text-primary"><i>Mai đóng hàng</i></span>';
+					return '<span class="text-primary"><i><small><b>Mai đóng hàng</b></small></i></span>';
 				default: 
-					return '<span class="text-primary"><i>Còn '.$difference.' ngày</i></span>';
+					return '<span class="text-primary"><i><small><b>Còn '.$difference.' ngày</b></small></i></span>';
 			}
 		})->addColumn('check', function($yclhang){return '';})->addColumn('resp', function($yclhang){return '';})->make(true);
 
@@ -154,7 +154,7 @@ class DatatablesController extends Controller
 			if(Carbon::today()->gt(Carbon::createFromFormat('Y-m-d', $yclhang->tghung))){
 				return '<small class="text-danger"><em><a id="qhan" href="/quyet-toan-lam-hang-secrectary/'.$yclhang->id.'">Qúa hạn quyết toán</a></em></small>';
 			} else {
-				return '<small class="text-primary"><em><a href="/quyet-toan-lam-hang-secrectary/'.$yclhang->id.'">Chưa quyết toán</a></em></small>';
+				return '<small class="text-primary"><em><a href="/quyet-toan-lam-hang-secrectary/'.$yclhang->id.'"><b>Chưa quyết toán</b></a></em></small>';
 			}
 		})->addColumn('check', function($yclhang){return '';})->addColumn('resp', function($yclhang){return '';})->make(true);
 	}
@@ -175,9 +175,9 @@ class DatatablesController extends Controller
 		})->addColumn('status', function($yclhang){
 			$approve=$yclhang->approve;
 			if($approve){
-				return '<small class="text-success"><em>Da duyet</em></small>';
+				return '<small class="text-success"><em><b>Da duyet</b></em></small>';
 			}else{
-				return '<em><small class="text-warning">Chưa duyet</small></em>';
+				return '<em><small class="text-warning"><b>Chưa duyet</b></small></em>';
 			}
 
 		})->addColumn('check', function($yclhang){return '';})->addColumn('resp', function($yclhang){return '';})->make(true);
@@ -190,9 +190,9 @@ class DatatablesController extends Controller
 		})->addColumn('status', function($yclhang){
 			$ttien = $yclhang->ttien;
 			if($ttien > 0){
-				return '<em><small class="text-success">Da yeu cau tam ung</small></em>';
+				return '<em><small class="text-success"><b>Da yeu cau tam ung</b></small></em>';
 			}else{
-				return '<em><small class="text-warning">Chưa yeu cau tam ung</small></em>';
+				return '<em><small class="text-warning"><b>Chưa yeu cau tam ung</b></small></em>';
 			}
 		})->addColumn('check', function($yclhang){return '';})->addColumn('resp', function($yclhang){return '';})->make(true);
 	}
@@ -205,9 +205,9 @@ class DatatablesController extends Controller
 			$tghung = Carbon::createFromFormat('Y-m-d', $yclhang->tghung);
 			if($tghung){
 				if(Carbon::today()->gt($tghung)){
-					return '<small class="text-danger"><em><a id="qhan" href="/quyet-toan-lam-hang-director/'.$yclhang->id.'">Qúa hạn quyết toán</a></em></small>';
+					return '<small class="text-danger"><em><a id="qhan" href="/quyet-toan-lam-hang-director/'.$yclhang->id.'"><b>Qúa hạn quyết toán</b></a></em></small>';
 				} else {
-					return '<small class="text-primary"><em><a href="/quyet-toan-lam-hang-director/'.$yclhang->id.'">Chưa quyết toán</a></em></small>';
+					return '<small class="text-primary"><em><a href="/quyet-toan-lam-hang-director/'.$yclhang->id.'"><b>Chưa quyết toán</b></a></em></small>';
 				}
 			}
 		})->addColumn('check', function($yclhang){return '';})->addColumn('resp', function($yclhang){return '';})->make(true);
@@ -218,7 +218,7 @@ class DatatablesController extends Controller
 		return Datatables::of($yclhangs)->addColumn('filebooking', function($yclhang){
 			return '<a href="/de_nghi_tam_ung/'.$yclhang->id.'.pdf'.'". class="btn btn-xs btn-primary">View</a>';	
 		})->addColumn('status', function($yclhang){
-				return '<small class="text-success"><em><a class="text-success" href="/quyet-toan-lam-hang-secrectary/'.$yclhang->id.'">Đã hoàn thành</a></em></small>'; })->addColumn('check', function($yclhang){return '';})->addColumn('resp', function($yclhang){return '';})->make(true);
+				return '<small class="text-success"><em><a class="text-success" href="/quyet-toan-lam-hang-secrectary/'.$yclhang->id.'"><b>Đã hoàn thành</b></a></em></small>'; })->addColumn('check', function($yclhang){return '';})->addColumn('resp', function($yclhang){return '';})->make(true);
 	}
 	public function direc_tuclhang_home()
 	{
@@ -231,11 +231,11 @@ class DatatablesController extends Controller
 			$difference = $ngaydonghang->diff($now)->days;
 			switch($difference){
 				case 0:
-					return '<span class="text-danger"><i>Hôm nay đóng hàng</i></span>';
+					return '<span class="text-danger"><i><small><b>Hôm nay đóng hàng</b></small></i></span>';
 				case 1:
-					return '<span class="text-primary"><i>Mai đóng hàng</i></span>';
+					return '<span class="text-primary"><i><small><b>Mai đóng hàng</b></small></i></span>';
 				default: 
-					return '<span class="text-primary"><i>Còn '.$difference.' ngày</i></span>';
+					return '<span class="text-primary"><i><small><b>Còn '.$difference.' ngày</b></small></i></span>';
 			}
 		})->addColumn('check', function($yclhang){return '';})->addColumn('resp', function($yclhang){return '';})->make(true);
 

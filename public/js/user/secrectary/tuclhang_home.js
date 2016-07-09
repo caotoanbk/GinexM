@@ -30,7 +30,7 @@ $(function() {
 		"columns": [
 			{data: 'resp', name: 'resp', searchable: false, orderable: false},
 			{data: 'check', name: 'check'},
-			{data: 'created_at', name: 'dntungs.created_at'},
+			{data: 'created_at', name: 'dntungs.created_at', className: 'none'},
 			{data: 'name', name: 'users.name'},
 			{data: 'bill', name: 'dntungs.bill'},
 			{data: 'reason', name: 'dntungs.reason'},
