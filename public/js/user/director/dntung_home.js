@@ -15,7 +15,7 @@ $(function() {
 		"dom": 'Bfrtip',
 		"buttons": [
 			{
-				text: 'Yeu cau tam ung',
+				text: 'Yêu cầu tạm ứng',
 				className: 'btn',	
 				action: function (e, dt, node, config){
 					var selectedRows = dt.rows( {selected: true}).toArray();

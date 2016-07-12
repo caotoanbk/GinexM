@@ -3,6 +3,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::auth();
+Route::get('/proponent/update-qtcont/{id}', 'ProponentController@updateQTCont');
 Route::get('/proponent/ke-hoach-lam-hang', 'ProponentController@khlhang_index');
 Route::get('/proponent/de-nghi-tam-ung', 'ProponentController@dntung_index');
 Route::get('/proponent/tam-ung-chua-lam-hang', 'ProponentController@tuclhang_index');
@@ -26,6 +27,18 @@ Route::get('/secrectary/tuclhang/data', 'DatatablesController@sec_tuclhang_home'
 Route::get('/secrectary/tucqtoan/data', 'DatatablesController@sec_tucqtoan_home');
 Route::get('/secrectary/check/{id}', 'SecrectaryController@checkKHLH');
 Route::get('/secrectary/uncheck/{id}', 'SecrectaryController@uncheckKHLH');
+Route::get('/curator/ke-hoach-lam-hang', 'CuratorController@cur_khlhang_index');
+Route::get('/curator/de-nghi-tam-ung', 'CuratorController@cur_dntung_index');
+Route::get('/curator/tam-ung-chua-lam-hang', 'CuratorController@cur_tuclhang_index');
+Route::get('/curator/tam-ung-chua-quyet-toan', 'CuratorController@cur_tucqtoan_index');
+Route::get('/curator/tam-ung-da-hoan-thanh', 'CuratorController@cur_tudhthanh_index');
+Route::get('/curator/khlhang/data', 'DatatablesController@cur_khlhang_home');
+Route::get('/curator/dntung/data', 'DatatablesController@cur_dntung_home');
+Route::get('/curator/tuclhang/data', 'DatatablesController@cur_tuclhang_home');
+Route::get('/curator/tucqtoan/data', 'DatatablesController@cur_tucqtoan_home');
+Route::get('/curator/tudhthanh/data', 'DatatablesController@cur_tudhthanh_home');
+Route::get('/curator/check/{id}', 'CuratorController@checkKHLH');
+Route::get('/curator/uncheck/{id}', 'CuratorController@uncheckKHLH');
 Route::get('/director/ke-hoach-lam-hang', 'DirectorController@direc_khlhang_index');
 Route::get('/director/de-nghi-tam-ung', 'DirectorController@direc_dntung_index');
 Route::get('/director/tam-ung-chua-quyet-toan', 'DirectorController@direc_tucqtoan_index');

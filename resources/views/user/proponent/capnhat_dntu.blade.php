@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-<h3 class='col-md-8 col-md-offset-3'>CAP NHAT DE NGHI TAM UNG</h3>
+<h3 class='col-md-8 col-md-offset-3'>CẬP NHẬT KẾ HOẠCH LÀM HÀNG</h3>
 {!! Form::model($dntu, ['method' => 'PATCH','url' => ['/dntu/cap-nhat', $dntu->id], 'files' => true, 'class' => 'form-horizontal', 'id' => 'content']) !!}
 
 <div id="khang" class='form-group required'>
@@ -29,7 +29,7 @@
 	<div class='col-md-8'>{!! Form::text('bill', null, array('class' => 'form-control', 'id' => 'bill'))!!}</div>
 </div>
 <div class='form-group'>
-{!! Form::label('stkhai', 'So to khai', ['class' => 'col-md-3 control-label']) !!}
+{!! Form::label('stkhai', 'Số tờ khai', ['class' => 'col-md-3 control-label']) !!}
 <div class='col-md-8'>
 {!! Form::text('stkhai', null, ['class' => 'form-control']) !!}
 </div>
@@ -41,7 +41,7 @@
 </div>
 </div>
 <div class='form-group'>
-{!! Form::label('slcont', 'Số lượng cont', ['class' => 'col-md-3 control-label']) !!}
+{!! Form::label('slcont', 'Tổng số cont', ['class' => 'col-md-3 control-label']) !!}
 <div class='col-md-8'>
 {!! Form::number('slcont', null, ['class' => 'form-control']) !!}
 </div>
@@ -77,13 +77,13 @@
 </div>
 </div>
 <div class='form-group'>
-{!! Form::label('nhaxe', 'Nha xe', ['class' => 'col-md-3 control-label']) !!}
+{!! Form::label('nhaxe', 'Nhà xe', ['class' => 'col-md-3 control-label']) !!}
 <div class='col-md-8'>
 {!! Form::text('nhaxe', null, ['class' => 'form-control']) !!}
 </div>
 </div>
 <div class='form-group'>
-{!! Form::label('hangtau', 'Hang tau', ['class' => 'col-md-3 control-label']) !!}
+{!! Form::label('hangtau', 'Hãng tàu', ['class' => 'col-md-3 control-label']) !!}
 <div class='col-md-8'>
 {!! Form::text('hangtau', null, ['class' => 'form-control']) !!}
 </div>
@@ -115,7 +115,9 @@
 	<div class='col-md-8'>{!! Form::file('filebooking')!!}</div>
 </div>
 <div class="form-group"><div class="col-md-8 col-md-offset-3">
-		<button type="submit" class="btn btn-primary" id='dntung'>Cap Nhat</button> </div> </div>
+		<button type="submit" class="btn btn-primary" id='dntung'>Cap Nhat</button>
+ </div>
+ </div>
 {!! Form::close() !!}
         </div>
     </div>

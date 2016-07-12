@@ -22,7 +22,7 @@
 	<div class='col-md-8'>{!! Form::text('bill', null, array('class' => 'form-control', 'id' => 'bill'))!!}</div>
 </div>
 <div class='form-group'>
-{!! Form::label('stkhai', 'So to khai', ['class' => 'col-md-3 control-label']) !!}
+{!! Form::label('stkhai', 'Số tờ khai', ['class' => 'col-md-3 control-label']) !!}
 <div class='col-md-8'>
 {!! Form::text('stkhai', null, ['class' => 'form-control']) !!}
 </div>
@@ -34,7 +34,7 @@
 </div>
 </div>
 <div class='form-group'>
-{!! Form::label('slcont', 'Số lượng cont', ['class' => 'col-md-3 control-label']) !!}
+{!! Form::label('slcont', 'Tổng số  cont', ['class' => 'col-md-3 control-label']) !!}
 <div class='col-md-8'>
 {!! Form::number('slcont', null, ['class' => 'form-control']) !!}
 </div>
@@ -52,31 +52,31 @@
 </div>
 </div>
 <div class='form-group'>
-{!! Form::label('slchroi', 'Số lượng cont hang roi', ['class' => 'col-md-3 control-label']) !!}
+{!! Form::label('slchroi', 'Số lượng hàng rời', ['class' => 'col-md-3 control-label']) !!}
 <div class='col-md-8'>
 {!! Form::number('slchroi', null, ['class' => 'form-control']) !!}
 </div>
 </div>
 <div class='form-group'>
-{!! Form::label('slcnong', 'Số lượng cont nong', ['class' => 'col-md-3 control-label']) !!}
+{!! Form::label('slcnong', 'Số lượng cont nóng', ['class' => 'col-md-3 control-label']) !!}
 <div class='col-md-8'>
 {!! Form::number('slcnong', null, ['class' => 'form-control']) !!}
 </div>
 </div>
 <div class='form-group'>
-{!! Form::label('slclanh', 'Số lượng cont lanh', ['class' => 'col-md-3 control-label']) !!}
+{!! Form::label('slclanh', 'Số lượng cont lạnh', ['class' => 'col-md-3 control-label']) !!}
 <div class='col-md-8'>
 {!! Form::number('slclanh', null, ['class' => 'form-control']) !!}
 </div>
 </div>
 <div class='form-group'>
-{!! Form::label('nhaxe', 'Nha xe', ['class' => 'col-md-3 control-label']) !!}
+{!! Form::label('nhaxe', 'Nhà xe', ['class' => 'col-md-3 control-label']) !!}
 <div class='col-md-8'>
 {!! Form::text('nhaxe', null, ['class' => 'form-control']) !!}
 </div>
 </div>
 <div class='form-group'>
-{!! Form::label('hangtau', 'Hang tau', ['class' => 'col-md-3 control-label']) !!}
+{!! Form::label('hangtau', 'Hãng tàu', ['class' => 'col-md-3 control-label']) !!}
 <div class='col-md-8'>
 {!! Form::text('hangtau', null, ['class' => 'form-control']) !!}
 </div>
@@ -109,5 +109,5 @@
 </div>
 
 <div class="form-group"><div class="col-md-8 col-md-offset-3">
-		<button type="submit" class="btn btn-primary" id='dntung'>Yeu Cau Lam Hang</button> </div> </div>
+		<button type="submit" class="btn btn-primary" id='dntung'>Yêu Cầu Làm Hàng</button> </div> </div>
 {!! Form::close() !!}

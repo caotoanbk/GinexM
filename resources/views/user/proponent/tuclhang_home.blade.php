@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-			@include('user.proponent', ['title' => 'TẠM ỨNG CHƯA LÀM HÀNG'])
+			@include('user.proponent', ['title' => 'KẾ HOẠCH ĐANG TRIỂN KHAI'])
         </div>
     </div>
 </div>

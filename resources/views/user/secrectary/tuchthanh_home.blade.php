@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-			@include('user.secrectary', ['title' => 'DE NGHI TAM UNG'])
+			@include('user.secrectary', ['title' => 'ĐỀ NGHỊ TẠM ỨNG'])
         </div>
     </div>
 </div>

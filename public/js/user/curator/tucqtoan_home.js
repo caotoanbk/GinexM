@@ -24,33 +24,15 @@ $(function() {
 				targets: 1
 			}],
 		"serverSide": true,
-		"ajax": '/secrectary/tuchthanh/data',
+		"ajax": '/curator/tucqtoan/data',
 		"dom": 'Bfrtip',
 		"buttons": [
-			{
-				text: 'In phiếu chi',
-				className: 'btn',
-				action: function(e, dt, node, config){
-					var selectedRows = dt.rows( {selected: true}).toArray();
-					var ids=[];
-					selectedRows[0].forEach(function(item){
-						ids.push(dt.rows(item).data().toArray()[0].id);
-					});
-					window.location.href = '/bieumau/phieuchi?arr=' + JSON.stringify(ids);
-				}
-			},
-			{
-				text: 'Select none',
-				action: function(e, dt, node, config){
-					dt.rows().deselect();
-				}
-			}
 		],
 		"columns": [
 			{data: 'resp', name: 'resp', searchable: false, orderable: false},
 			{data: 'check', name: 'check'},
 			{data: 'created_at', name: 'dntungs.created_at'},
-			{data: 'name', name: 'users.name'},
+			{data: 'name', name: 'name'},
 			{data: 'bill', name: 'dntungs.bill'},
 			{data: 'reason', name: 'dntungs.reason'},
 			{data: 'filebooking', name: 'filebooking', className: 'none', searchable: false, orderable: false},
@@ -59,7 +41,7 @@ $(function() {
 			{data: 'tuyenduong', name: 'tuyenduong', className: 'none'},
 			{data: 'ttien', name: 'dntungs.ttien', render: $.fn.dataTable.render.number(',','.',0,'', ' đ') },
 			{data: 'ttien_ltron', name: 'dntungs.ttien_ltron', render: $.fn.dataTable.render.number(',','.',0,'', ' đ') },
-			{data: 'ndonghang', name: 'dntungs.ndonghang', className: 'none'},
+			{data: 'ndonghang', name: 'dntungs.ndonghang'},
 			{data: 'khang', name: 'dntungs.khang', className: 'none' },
 			{data: 'slc20', name: 'dntungs.slc20', className: 'none'},
 			{data: 'slc40', name: 'dntungs.slc40', className: 'none'},
@@ -76,20 +58,5 @@ $(function() {
 			{data: 'psinh', name: 'dntungs.psinh', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none"},
 		],
 		"order": [[2, "desc"]]
-	});
-	
-	$('#tung').on('click', 'a.kiemtra',  function(e){
-		e.preventDefault();
-		var id = $(this).data('id');
-		$.ajax({
-			url: '/secrectary/kiem-tra?id='+id,
-			success: function(data){
-				$table.ajax.reload();
-				console.log(data);
-			},
-			error: function(data){
-				alert('Error');
-			}
-		});
 	});
 });

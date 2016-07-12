@@ -24,28 +24,9 @@ $(function() {
 				targets: 1
 			}],
 		"serverSide": true,
-		"ajax": '/secrectary/tuchthanh/data',
+		"ajax": '/curator/dntung/data',
 		"dom": 'Bfrtip',
-		"buttons": [
-			{
-				text: 'In phiếu chi',
-				className: 'btn',
-				action: function(e, dt, node, config){
-					var selectedRows = dt.rows( {selected: true}).toArray();
-					var ids=[];
-					selectedRows[0].forEach(function(item){
-						ids.push(dt.rows(item).data().toArray()[0].id);
-					});
-					window.location.href = '/bieumau/phieuchi?arr=' + JSON.stringify(ids);
-				}
-			},
-			{
-				text: 'Select none',
-				action: function(e, dt, node, config){
-					dt.rows().deselect();
-				}
-			}
-		],
+		"buttons": [ ],
 		"columns": [
 			{data: 'resp', name: 'resp', searchable: false, orderable: false},
 			{data: 'check', name: 'check'},
@@ -78,18 +59,4 @@ $(function() {
 		"order": [[2, "desc"]]
 	});
 	
-	$('#tung').on('click', 'a.kiemtra',  function(e){
-		e.preventDefault();
-		var id = $(this).data('id');
-		$.ajax({
-			url: '/secrectary/kiem-tra?id='+id,
-			success: function(data){
-				$table.ajax.reload();
-				console.log(data);
-			},
-			error: function(data){
-				alert('Error');
-			}
-		});
-	});
 });

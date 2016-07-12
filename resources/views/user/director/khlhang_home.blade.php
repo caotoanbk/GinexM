@@ -6,7 +6,7 @@
 	@endif
     <div class="row">
         <div class="col-md-12">
-			@include('user.director.khlhang_template', ['title' => 'KE HOACH LAM HANG'])
+			@include('user.director.khlhang_template', ['title' => 'KẾ HOẠCH LÀM HÀNG'])
         </div>
     </div>
 </div>

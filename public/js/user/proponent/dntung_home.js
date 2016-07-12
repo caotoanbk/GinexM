@@ -29,7 +29,7 @@ $(function() {
 		"dom": 'Bfrtip',
 		"buttons": [
 			{
-				text: 'Yeu cau tam ung',
+				text: 'Yêu cầu tạm ứng',
 				className: 'btn',	
 				action: function (e, dt, node, config){
 					var selectedRows = dt.rows( {selected: true}).toArray();
@@ -38,7 +38,7 @@ $(function() {
 					var id = dt.rows(selectedRows[0][0]).data().toArray()[0].id;
 					window.location.href = '/lam-hang/tam-ung/'+id;
 					}else{
-						alert('Bạn chưa chọn ke hoach lam hang nào');
+						alert('Bạn chưa chọn kế hoạch làm hàng nào!');
 					}
 					//$('#myModal').modal('show');
 				}
@@ -53,14 +53,14 @@ $(function() {
 						ids.push(dt.rows(item).data().toArray()[0].id);
 					});
 					if(ids.length == 0){
-						alert('Ban chua chon de nghi tam ung nao');
+						alert('Bạn chưa chọn kế hoạch làm hàng nào!');
 					}else{
 						window.location.href = '/bieumau/denghitamung?arr=' + JSON.stringify(ids);		
 					}
 				}
 			},
 			{
-				text: 'Chi tiet cac cont',
+				text: 'Thông tin các cont',
 				className: 'btn',
 				action: function(e, dt, node, config) {
 					var selectedRows = dt.rows( {selected: true}).toArray();
@@ -69,7 +69,7 @@ $(function() {
 					var id = dt.rows(selectedRows[0][0]).data().toArray()[0].id;
 					window.location.href = '/lam-hang/tam-ung/'+id;
 					}else{
-						alert('Bạn chưa chọn ke hoach lam hang nào');
+						alert('Bạn chưa chọn kế hoạch làm hàng nào!');
 					}
 				}
 			},
@@ -82,7 +82,7 @@ $(function() {
 						var id = dt.rows(selectedRows[0][0]).data().toArray()[0].id;
 						window.location.href = '/tam-ung/sua/'+id;
 					}else{
-						alert('Bạn chưa chọn ke hoach lam hang nào');
+						alert('Bạn chưa chọn kế hoạch làm hàng nào');
 					}
 				}
 			},
@@ -92,13 +92,13 @@ $(function() {
 					var selectedRows = dt.rows( {selected: true}).toArray();
 				    var count = dt.rows( { selected: true } ).count();
 					if(count>0){
-					var r = confirm('Bạn muốn xóa ke hoach lam hang này?');
+					var r = confirm('Bạn muốn xóa kế hoạch làm hàng này?');
 					if(r == true){
 					var id = dt.rows(selectedRows[0][0]).data().toArray()[0].id;
 					window.location.href = '/tam-ung/xoa/'+id;
 					}
 					}else{
-						alert('Bạn chưa chọn ke hoach lam hang nào');
+						alert('Bạn chưa chọn kế hoạch làm hàng nào');
 					}
 				}
 			},

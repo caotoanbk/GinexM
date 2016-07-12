@@ -91,38 +91,86 @@ class ProponentController extends Controller
 	public function qtcont($id, Request $request)
 	{
 		$nchay = $request->input('nchay');
-		$bsxe = $request->input('bsxe');
-		$lxe = $request->input('lxe');
 		$scont = $request->input('scont');
+		$sochi = $request->input('sochi');
 		$ccont = $request->input('ccont');
 		$lcont = $request->input('lcont');
-		$nxe = $request->input('nxe');
-		$pnha = $request->input('pnha');
-		$khquan = $request->input('khquan');
-		$cxe = $request->input('cxe');
-		$cgui = $request->input('cgui');
-		$cmua = $request->input('cmua');
-		$gvcVAT = $request->input('gvcVAT');
-		$cbcVAT = $request->input('cbcVAT');
-		$gvdchinh = $request->input('gvdchinh');
+		$bainang = $request->input('bainang');
+		$baiha = $request->input('baiha');
+		$trongluong = $request->input('trongluong');
+		$dieuxe = $request->input('dieuxe');
+		$lxe = $request->input('lxe');
+		$bsxe = $request->input('bsxe');
+		$diadiemdongtrahang = $request->input('diadiemdongtrahang');
+		$phinangchuaVAT = $request->input('phinangchuaVAT');
+		$VATphinang	= $request->input('VATphinang');
+		$sohoadonnang	= $request->input('sohoadonnang');
+		$nxuathoadonnang	= $request->input('nxuathoadonnang');
+		$dvicaphoadonnang	= $request->input('dvicaphoadonnang');
+		$phihachuaVAT = $request->input('phihachuaVAT');
+		$VATphiha	= $request->input('VATphiha');
+		$sohoadonha	= $request->input('sohoadonha');
+		$nxuathoadonha	= $request->input('nxuathoadonha');
+		$dvicaphoadonha	= $request->input('dvicaphoadonha');
+		$boctokhai	= $request->input('boctokhai');
+		$hquantiepnhan	= $request->input('hquantiepnhan');
+		$hquangiamsat = $request->input('hquangiamsat');
+		$hquankiemhoa = $request->input('hquankiemhoa');
+		$cuoccont = $request->input('cuoccont');
+		$llenhhangtau = $request->input('llenhhangtau');
+		$luucont = $request->input('luucont');
+		$luubai = $request->input('luubai');
+		$phivesinh = $request->input('phivesinh');
+		$phicatday = $request->input('phicatday');
+		$boctem = $request->input('boctem');
+		$kddtvchuaVAT= $request->input('kddtvchuaVAT');
+		$VATkddtv= $request->input('VATkddtv');
+		$phingoaikddtv= $request->input('phingoaikddtv');
+		$cackhoankhacchokhach=$request->input('cackhoankhacchokhach');
+		$tong=$request->input('tong');
+		$ghichu=$request->input('ghichu');
 		for ($i = 0; $i < count($nchay); $i++) {
 			$qtcont = new QTCont;
 			$qtcont->dntung_id = $id;
 			$qtcont->nxchay = $nchay[$i];
-			$qtcont->bsxe = $bsxe[$i];
-			$qtcont->lxe = $lxe[$i];
 			$qtcont->scont = $scont[$i];
+			$qtcont->sochi = $sochi[$i];
 			$qtcont->ccont = $ccont[$i];
 			$qtcont->lcont = $lcont[$i];
-			$qtcont->nxe = $nxe[$i];
-			$qtcont->pnha = $this->convert($pnha[$i]);
-			$qtcont->khquan = $this->convert($khquan[$i]);
-			$qtcont->cxe = $this->convert($cxe[$i]);
-			$qtcont->cgui = $this->convert($cgui[$i]);
-			$qtcont->cmua = $this->convert($cmua[$i]);
-			$qtcont->gvcVAT = $this->convert($gvcVAT[$i]);
-			$qtcont->cbcVAT = $this->convert($cbcVAT[$i]);
-			$qtcont->gvdchinh = $this->convert($gvdchinh[$i]);
+			$qtcont->bainang = $bainang[$i];
+			$qtcont->baiha = $baiha[$i];
+			$qtcont->trongluong = $trongluong[$i];
+			$qtcont->dieuxe = $dieuxe[$i];
+			$qtcont->lxe = $lxe[$i];
+			$qtcont->bsxe = $bsxe[$i];
+			$qtcont->diadiemdongtrahang = $diadiemdongtrahang[$i];
+			$qtcont->phinangchuaVAT = $this->convert($phinangchuaVAT[$i]);
+			$qtcont->VATphinang = $this->convert($VATphinang[$i]);
+			$qtcont->sohoadonnang = $sohoadonnang[$i];
+			$qtcont->nxuathoadonnang = $nxuathoadonnang[$i];
+			$qtcont->dvicaphoadonnang = $dvicaphoadonnang[$i];
+			$qtcont->phihachuaVAT = $this->convert($phihachuaVAT[$i]);
+			$qtcont->VATphiha = $this->convert($VATphiha[$i]);
+			$qtcont->sohoadonha = $sohoadonha[$i];
+			$qtcont->nxuathoadonha = $nxuathoadonha[$i];
+			$qtcont->dvicaphoadonha = $dvicaphoadonha[$i];
+			$qtcont->boctokhai = $this->convert($boctokhai[$i]);
+			$qtcont->hquantiepnhan = $this->convert($hquantiepnhan[$i]);
+			$qtcont->hquangiamsat = $this->convert($hquangiamsat[$i]);
+			$qtcont->hquankiemhoa = $this->convert($hquankiemhoa[$i]);
+			$qtcont->cuoccont = $this->convert($cuoccont[$i]);
+			$qtcont->llenhhangtau = $this->convert($llenhhangtau[$i]);
+			$qtcont->luucont = $this->convert($luucont[$i]);
+			$qtcont->luubai = $this->convert($luubai[$i]);
+			$qtcont->phivesinh = $this->convert($phivesinh[$i]);
+			$qtcont->phicatday = $this->convert($phicatday[$i]);
+			$qtcont->boctem = $this->convert($boctem[$i]);
+			$qtcont->kddtvchuaVAT = $this->convert($kddtvchuaVAT[$i]);
+			$qtcont->VATkddtv = $this->convert($VATkddtv[$i]);
+			$qtcont->phingoaikddtv = $this->convert($phingoaikddtv[$i]);
+			$qtcont->cackhoankhacchokhach = $this->convert($cackhoankhacchokhach[$i]);
+			$qtcont->tong = $this->convert($tong[$i]);
+			$qtcont->ghichu = $ghichu[$i];
 			$qtcont->save();
 		}
 		//chi phi phat sinh
@@ -146,6 +194,14 @@ class ProponentController extends Controller
 			$qtoan->save();
 		}
 		return redirect('/');
+	}
+	public function updateQTCont($id, Request $request)
+	{
+		$data = $request->all();
+		dd($data);
+		$qtcont = QTCont::findOrFail($id);
+		$qtcont->fill($datad)->save();
+		return $data;
 	}
 	public function qtoanData($id)
 	{

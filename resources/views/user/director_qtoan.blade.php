@@ -18,10 +18,10 @@ function format($value){
 <div><h4>CƯỚC PHÍ CÁC CONT</h4></div>
 <div>&nbsp;</div>
 <div style="overflow: auto;">
-<table class='table table-bordered' id="qttu_cont">
+<table class='table table-bordered' id="qttu_cont" style="width: 200em;">
 <thead>
 	<tr>
-		<th>Ngày</th>
+		<th style="width: 8em;">Ngày</th>
 		<th>Biển số xe</th>
 		<th>Loại xe</th>
 		<th>Số cont</th>

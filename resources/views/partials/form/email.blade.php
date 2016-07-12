@@ -1,15 +1,19 @@
 {!! Form::open(array('url' => '/secrectary/sendemail', 'method' => 'post', 'class' => 'form-horizontal', 'files' => true, 'name' => 'content', 'id' => 'content')) !!}
 	{!! Form::hidden('id') !!}
 	<div class='form-group'>
-		<label class="col-md-3 control-label">So booking</label>
+		<label class="col-md-3 control-label">Số bill/booking</label>
 		<div class='col-md-8' id="emailmodal_booking"></div>
 	</div>
 	<div class='form-group'>
-		<label class="col-md-3 control-label">Ngay khach yeu cau</label>
+		<label class="col-md-3 control-label">Ngày khách yêu cầu</label>
 		<div class='col-md-8' id='emailmodal_nyeucau'></div>
 	</div>
 	<div class='form-group'>
-	{!! Form::label('yeucauemail', 'Noi dung', ['class' => 'col-md-3 control-label']) !!}
+		<label class="col-md-3 control-label">Ngày đóng hàng</label>
+		<div class='col-md-8' id='emailmodal_ndonghang'></div>
+	</div>
+	<div class='form-group'>
+	{!! Form::label('yeucauemail', 'Nội dung', ['class' => 'col-md-3 control-label']) !!}
 	<div class='col-md-8'>
 	{!! Form::textarea('yeucauemail', null, ['class' => 'form-control']) !!}
 	</div>

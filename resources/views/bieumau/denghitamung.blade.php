@@ -394,13 +394,14 @@
 $t_tien = 0;
 $t_tien_ltron=0;
 $ktoan_ktra = true;
+$curator_check = true;
 $gdoc_duyet = true;
 $ptrach_ktra = true;
 foreach($dntung as $item){
 	$t_tien += $item->ttien;
 	$t_tien_ltron += $item->ttien_ltron; 
-	if($item->check ==false)
-		$ktoan_ktra = false;
+	if($item->curator_check ==false)
+		$curator_check = false;
 	if($item->approve ==false)
 		$gdoc_duyet = false;
 }
@@ -561,7 +562,7 @@ echo number_format($t_tien_ltron, 0, '.', ',');
   <p class="gwd-p-zh94">Người nhận tiền<br>
     (Ký, họ tên)</p>
   <p class="gwd-p-h5qs"><span style="font-size:13px;"><b><i>@if($gdoc_duyet)Đã duyệt @else Chưa duyệt @endif</i></b></span></p>
-  <p class="gwd-p-129o">@if($ktoan_ktra)Đã kiểm tra @else Chưa kiểm tra @endif</p>
+  <p class="gwd-p-129o">@if($curator_check)Đã kiểm tra @else Chưa kiểm tra @endif</p>
   <p class="gwd-p-1cqv">Đã ký</p>
   <p class="gwd-p-15tp">Đã ký</p>
 </body>

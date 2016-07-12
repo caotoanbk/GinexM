@@ -58,32 +58,33 @@
                 <ul class="nav navbar-nav">
 					@if(Auth::check())
 						@if(Auth::user()->type == 0)
-                    <li><a href="/proponent/ke-hoach-lam-hang">Ke hoach lam hang</a></li>
-                    <li><a href="/proponent/de-nghi-tam-ung">Đề nghị tạm ứng</a></li>
-                    <li><a href="/proponent/tam-ung-chua-lam-hang">Tạm ứng chưa làm</a></li>
-                    <li><a href="/proponent/tam-ung-chua-quyet-toan">Tạm ứng chưa quyết toán</a></li>
-                    <li><a href="/proponent/tam-ung-da-hoan-thanh">Tạm ứng đã hoàn thành</a></li>
+                    <li><a href="/proponent/ke-hoach-lam-hang">Kế Hoạch Làm Hàng</a></li>
+                    <li><a href="/proponent/de-nghi-tam-ung">Đề Nghị Tạm Ứng</a></li>
+                    <li><a href="/proponent/tam-ung-chua-lam-hang">K/H Đang Triển Khai</a></li>
+                    <li><a href="/proponent/tam-ung-chua-quyet-toan">T/Ư Chưa Quyết Toán</a></li>
+                    <li><a href="/proponent/tam-ung-da-hoan-thanh">T/Ư Đã Hoàn Thành</a></li>
 						@endif
 						@if(Auth::user()->type == 1)
-                    <li><a href="/secrectary/ke-hoach-lam-hang">Ke hoach lam hang</a></li>
-                    <li><a href="/secrectary/tam-ung-chua-hoan-thanh">De nghi tam ung</a></li>
-                    <li><a href="/secrectary/tam-ung-chua-lam-hang">Tạm ứng chưa làm</a></li>
-                    <li><a href="/secrectary/tam-ung-chua-quyet-toan">Tam ung chua quyet toan</a></li>
-                    <li><a href="/secrectary/tam-ung-da-hoan-thanh">Tạm ứng đã hoàn thành</a></li>
+                    <li><a href="/secrectary/ke-hoach-lam-hang">Kế Hoạch Làm Hàng</a></li>
+                    <li><a href="/secrectary/tam-ung-chua-hoan-thanh">Đề Nghị Tạm Ứng</a></li>
+                    <li><a href="/secrectary/tam-ung-chua-lam-hang">K/H Đang Triển Khai</a></li>
+                    <li><a href="/secrectary/tam-ung-chua-quyet-toan">T/Ư Chưa Quyết Toán</a></li>
+                    <li><a href="/secrectary/tam-ung-da-hoan-thanh">T/Ư Đã Hoàn Thành</a></li>
 						@endif
 						@if(Auth::user()->type == 2)
-                    <li><a href="/director/ke-hoach-lam-hang">Ke hoach lam hang</a></li>
-                    <li><a href="/director/de-nghi-tam-ung">De nghi tam ung</a></li>
-                    <li><a href="/director/tam-ung-chua-lam-hang">Tạm ứng chưa làm</a></li>
-                    <li><a href="/director/tam-ung-chua-quyet-toan">Tạm ứng chưa quyết toán</a></li>
-                    <li><a href="/director/tam-ung-da-hoan-thanh">Tạm ứng đã hoàn thành</a></li>
-					<li><a href="/director/tong-ket-tam-ung-thang">Tổng kết tạm ứng tháng</a></li>
+                    <li><a href="/director/ke-hoach-lam-hang">Kế Hoạch Làm Hàng</a></li>
+                    <li><a href="/director/de-nghi-tam-ung">Đề Nghị Tạm Ứng</a></li>
+                    <li><a href="/director/tam-ung-chua-lam-hang">Kế Hoạch Đang Triển Khai</a></li>
+                    <li><a href="/director/tam-ung-chua-quyet-toan">T/Ư Chưa Quyết Toán</a></li>
+                    <li><a href="/director/tam-ung-da-hoan-thanh">T/Ư Đã Hoàn Thành</a></li>
+					<li><a href="/director/tong-ket-tam-ung-thang">Tổng Kết T/Ư Tháng</a></li>
 						@endif
 						@if(Auth::user()->type == 3)
-                    <li><a href="/curator/tam-ung-chua-hoan-thanh">Tạm ứng chưa kiem tra</a></li>
-                    <li><a href="/curator/tam-ung-chua-lam-hang">Tạm ứng chưa làm</a></li>
-                    <li><a href="/curator/tam-ung-chua-quyet-toan">Tam ung chua quyet toan</a></li>
-                    <li><a href="/curator/tam-ung-da-hoan-thanh">Tạm ứng đã hoàn thành</a></li>
+                    <li><a href="/curator/ke-hoach-lam-hang">Kế Hoạch Làm Hàng</a></li>
+                    <li><a href="/curator/de-nghi-tam-ung">Đề Nghị Tạm Ứng</a></li>
+                    <li><a href="/curator/tam-ung-chua-lam-hang">K/H Đang Triển Khai</a></li>
+                    <li><a href="/curator/tam-ung-chua-quyet-toan">T/Ư Chưa Quyết Toán</a></li>
+                    <li><a href="/curator/tam-ung-da-hoan-thanh">T/Ư Đã Hoàn Thành</a></li>
 						@endif
 					@endif
                 </ul>

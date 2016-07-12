@@ -10,20 +10,20 @@
 				<th>Booking/BL</th>
 				<th>Lý do tạm ứng</th>
 				<th>Booking file</th>
-				<th>Khach hang</th>
-				<th>Loai hang</th>
-				<th>Tuyen duong</th>
-				<th>Số tiền</th>
-				<th>Số tiền tam ung thuc te</th>
+				<th>Chủ hàng</th>
+				<th>Tên hàng</th>
+				<th>Tuyến đường</th>
+				<th>Số tiền t/ứ</th>
+				<th>Số tiền t/ứ thuc te</th>
 				<th>Xuất/Nhâp</th>
-				<th>Cont 20</th>
-				<th>Cont 40</th>
+				<th>Số Cont 20</th>
+				<th>Số Cont 40</th>
 				<th>Loại cont</th>
-				<th>Ngay dong hang</th>
+				<th>Ngày đóng hàng</th>
 				<th>Thời gian hoàn ứng</th>
-				<th>Ngay yeu cau</th>
-				<th>Ngay giao hang</th>
-				<th>Ngay nhan hang</th>
+				<th>Ngay khách yêu cầu</th>
+				<th>Ngày giao hàng</th>
+				<th>Ngày nhận hàng</th>
 				<th>Tình trạng</th>
 				<th>Cươc</th>
 				<th>Nâng</th>

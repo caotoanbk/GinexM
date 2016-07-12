@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Dntung;
 
 class CuratorController extends Controller
 {
@@ -13,8 +14,38 @@ class CuratorController extends Controller
 	{
 		$this->middleware('auth');
 	}
-	public function cur_tucktra_index()
+	public function cur_khlhang_index()
 	{
-		return view('user.curator.tucktra_home');
+		return view('user.curator.khlhang_home');
+	}
+	public function cur_dntung_index()
+	{
+		return view('user.curator.dntung_home');
+	}
+	public function cur_tuclhang_index()
+	{
+		return view('user.curator.tuclhang_home');
+	}
+	public function cur_tucqtoan_index()
+	{
+		return view('user.curator.tucqtoan_home');
+	}
+	public function cur_tudhthanh_index()
+	{
+		return view('user.curator.tudhthanh_home');
+	}
+	public function checkKHLH($id)
+	{
+		$khlh = Dntung::findOrFail($id);
+		$khlh->curator_check = true;
+		$khlh->save();
+		return 'Curator check success';
+	}
+	public function uncheckKHLH($id)
+	{
+		$khlh = Dntung::findOrFail($id);
+		$khlh->curator_check = false;
+		$khlh->save();
+		return 'Curator uncheck success';
 	}
 }

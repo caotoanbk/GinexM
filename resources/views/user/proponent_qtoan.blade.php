@@ -18,48 +18,50 @@ function format($value){
 <div><h4>THỐNG KẾ CÁC CONT</h4></div>
 <div>&nbsp;</div>
 <div style="overflow: auto;">
-<table class='table table-bordered' id="qttu_cont">
+<table class='table table-bordered' id="qttu_cont" style="width: 500em;">
 <thead>
 	<tr>
-		<th>Xóa</th>
-		<th>Ngày</th>
+		<th style="width: 1em;">Xóa</th>
+		<th style="width: 1em;">Edit</th>
+		<th style="width: 8em;">Ngày</th>
 		<th>Số cont</th>
+		<th>So chi</th>
 		<th>Cỡ cont</th>
 		<th>Loại cont</th>
-		<th>Bai nang hang/vo</th>
-		<th>Bai ha hang/vo</th>
-		<th>Trong luong (tan)</th>
-		<th>Dieu xe</th>
+		<th>Bãi nâng hàng/vỏ</th>
+		<th>Bãi hạ hàng/vỏ</th>
+		<th>Trọng lượng (tấn)</th>
+		<th>Điều xe</th>
 		<th>Loại xe</th>
 		<th>Biển số xe</th>
-		<th>Dia diem dong tra hang</th>
-		<th>Phi nang chua VAT</th>
-		<th>VAT phi nang</th>
-		<th>So hoa don nang</th>
-		<th>Ngay xuat HD nang</th>
-		<th>Don vi cap HD nang</th>
-		<th>Phi ha chua VAT</th>
-		<th>VAT phi ha</th>
-		<th>So HD ha</th>
-		<th>Ngay xuat HD ha</th>
-		<th>Don vi cap HD ha</th>
-		<th>Boc to khai</th>
-		<th>HQ tiep nhan</th>
-		<th>HQ giam sat cang</th>
-		<th>HQ kiem hoa</th>
-		<th>Cuoc cont</th>
-		<th>Lay lenh hang tau</th>
-		<th>Luu Cont</th>
-		<th>Luu bai</th>
-		<th>Phi ve sinh</th>
-		<th>Phi cat day</th>
-		<th>Boc tem</th>
-		<th>Kiem dich dong/thuc vat chua VAT</th>
-		<th>VAT chi phi k/d dong/thuc vat</th>
-		<th>Chi phi ngoai cho k/d dong/thuc vat</th>
-		<th>Cac khoan ung khac cho khach</th>
-		<th>Tong</th>
-		<th>Ghi chu</th>
+		<th>Địa điểm đóng trả hàng</th>
+		<th>Phí nâng chưa VAT</th>
+		<th>VAT phí nâng</th>
+		<th>Số hóa đơn nâng</th>
+		<th>Ngày xuất HD nâng</th>
+		<th>Đơn vị cấp HD nâng</th>
+		<th>Phí hạ chưa VAT</th>
+		<th>VAT phí hạ</th>
+		<th>Số HD hạ</th>
+		<th>Ngày xuất HD hạ</th>
+		<th>Đơn vị cấp HD hạ</th>
+		<th>Bóc tờ khai</th>
+		<th>HQ tiếp nhận</th>
+		<th>HQ giám sát cảng</th>
+		<th>HQ kiểm hóa</th>
+		<th>Cược cont</th>
+		<th>Lấy lệnh hãng tàu</th>
+		<th>Lưu cont</th>
+		<th>Lưu bãi</th>
+		<th>Phí vệ sinh</th>
+		<th>Phí cắt dây</th>
+		<th>Bóc tem</th>
+		<th>Kiểm dịch đông/thực vật chưa VAT</th>
+		<th>VAT phí kiểm dịch đông/thực vật</th>
+		<th>Chi phí ngoài cho k/d động/thực vật</th>
+		<th>Các khoản ứng khác cho khách</th>
+		<th>Tổng</th>
+		<th>Ghi chú</th>
 	</tr>
 </thead>
 <tbody id='qtoan_cont'>
@@ -67,22 +69,95 @@ function format($value){
 @foreach($qtconts as $qtcont)
 <tr>
 	<td class="text-danger text-center"><a href="#" id="remove_item_ajax" data-id="{{$qtcont['id']}}" class="text-danger">&times;</a></td>
+	<td>
+          <a href="#" id="edit_item" data-id="{{$qtcont['id']}}"><span class="glyphicon glyphicon-pencil"></span></a>
+	</td>
 	<td>{{$qtcont['nxchay']}}</td>
-	<td>{{$qtcont['bsxe']}}</td>
-	<td>{{$qtcont['lxe']}}</td>
 	<td>{{$qtcont['scont']}}</td>
+	<td>{{$qtcont['sochi']}}</td>
 	<td>{{$qtcont['ccont']}}</td>
 	<td>{{$qtcont['lcont']}}</td>
-	<td>{{$qtcont['nxe']}}</td>
-	<td>{{format($qtcont['pnha'])}}</td>
-	<td>{{format($qtcont['khquan'])}}</td>
-	<td>{{format($qtcont['cxe'])}}</td>
-	<td>{{format($qtcont['cgui'])}}</td>
-	<td>{{format($qtcont['cmua'])}}</td>
-	<td>{{format($qtcont['gvcVAT'])}}</td>
-	<td>{{format($qtcont['gvdchinh'])}}</td>
-	<td>{{format($qtcont['cbcVAT'])}}</td>
+	<td>{{$qtcont['bainang']}}</td>
+	<td>{{$qtcont['baiha']}}</td>
+	<td>{{$qtcont['trongluong']}}</td>
+	<td>{{$qtcont['dieuxe']}}</td>
+	<td>{{$qtcont['lxe']}}</td>
+	<td>{{$qtcont['bsxe']}}</td>
+	<td>{{$qtcont['diadiemdongtrahang']}}</td>
+	<td>{{format($qtcont['phinangchuaVAT'])}}</td>
+	<td>{{format($qtcont['VATphinang'])}}</td>
+	<td>{{$qtcont['sohoadonnang']}}</td>
+	<td>{{$qtcont['nxuathoadonnang']}}</td>
+	<td>{{$qtcont['dvicaphoadonnang']}}</td>
+	<td>{{format($qtcont['phihachuaVAT'])}}</td>
+	<td>{{format($qtcont['VATphiha'])}}</td>
+	<td>{{$qtcont['sohoadonha']}}</td>
+	<td>{{$qtcont['nxuathoadonnang']}}</td>
+	<td>{{$qtcont['dvicaphoadonha']}}</td>
+	<td>{{format($qtcont['boctokhai'])}}</td>
+	<td>{{format($qtcont['hquantiepnhan'])}}</td>
+	<td>{{format($qtcont['hquangiamsat'])}}</td>
+	<td>{{format($qtcont['hquankiemhoa'])}}</td>
+	<td>{{format($qtcont['cuoccont'])}}</td>
+	<td>{{format($qtcont['llenhhangtau'])}}</td>
+	<td>{{format($qtcont['luucont'])}}</td>
+	<td>{{format($qtcont['luubai'])}}</td>
+	<td>{{format($qtcont['phivesinh'])}}</td>
+	<td>{{format($qtcont['phicatday'])}}</td>
+	<td>{{format($qtcont['boctem'])}}</td>
+	<td>{{format($qtcont['kddtvchuaVAT'])}}</td>
+	<td>{{format($qtcont['VATkddtv'])}}</td>
+	<td>{{format($qtcont['phingoaikddtv'])}}</td>
+	<td>{{format($qtcont['cackhoankhacchokhach'])}}</td>
+	<td>{{format($qtcont['tong'])}}</td>
+	<td>{{$qtcont['ghichu']}}</td>
 </tr>
+<tr class="hidden">
+	<td class="text-danger text-center"><a href="#" id="remove_item_ajax" data-id="{{$qtcont['id']}}" class="text-danger">&times;</a></td>
+	<td>
+          <a href="#" id="edit_item_ajax" data-id="{{$qtcont['id']}}"><span class="glyphicon glyphicon-pencil"></span></a>
+	</td>
+	<td>{{$qtcont['nxchay']}}</td>
+	<td>{{$qtcont['scont']}}</td>
+	<td>{{$qtcont['sochi']}}</td>
+	<td>{{$qtcont['ccont']}}</td>
+	<td>{{$qtcont['lcont']}}</td>
+	<td>{{$qtcont['bainang']}}</td>
+	<td>{{$qtcont['baiha']}}</td>
+	<td>{{$qtcont['trongluong']}}</td>
+	<td>{{$qtcont['dieuxe']}}</td>
+	<td>{{$qtcont['lxe']}}</td>
+	<td>{{$qtcont['bsxe']}}</td>
+	<td>{{$qtcont['diadiemdongtrahang']}}</td>
+	<td>{{format($qtcont['phinangchuaVAT'])}}</td>
+	<td>{{format($qtcont['VATphinang'])}}</td>
+	<td>{{$qtcont['sohoadonnang']}}</td>
+	<td>{{$qtcont['nxuathoadonnang']}}</td>
+	<td>{{$qtcont['dvicaphoadonnang']}}</td>
+	<td>{{format($qtcont['phihachuaVAT'])}}</td>
+	<td>{{format($qtcont['VATphiha'])}}</td>
+	<td>{{$qtcont['sohoadonha']}}</td>
+	<td>{{$qtcont['nxuathoadonnang']}}</td>
+	<td>{{$qtcont['dvicaphoadonha']}}</td>
+	<td>{{format($qtcont['boctokhai'])}}</td>
+	<td>{{format($qtcont['hquantiepnhan'])}}</td>
+	<td>{{format($qtcont['hquangiamsat'])}}</td>
+	<td>{{format($qtcont['hquankiemhoa'])}}</td>
+	<td>{{format($qtcont['cuoccont'])}}</td>
+	<td>{{format($qtcont['llenhhangtau'])}}</td>
+	<td>{{format($qtcont['luucont'])}}</td>
+	<td>{{format($qtcont['luubai'])}}</td>
+	<td>{{format($qtcont['phivesinh'])}}</td>
+	<td>{{format($qtcont['phicatday'])}}</td>
+	<td>{{format($qtcont['boctem'])}}</td>
+	<td>{{format($qtcont['kddtvchuaVAT'])}}</td>
+	<td>{{format($qtcont['VATkddtv'])}}</td>
+	<td>{{format($qtcont['phingoaikddtv'])}}</td>
+	<td>{{format($qtcont['cackhoankhacchokhach'])}}</td>
+	<td>{{format($qtcont['tong'])}}</td>
+	<td>{{$qtcont['ghichu']}}</td>
+</tr>
+
 @endforeach
 @endif
 </tbody>

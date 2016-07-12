@@ -9,23 +9,23 @@
 			<thead>
 				<th></th>
 				<th></th>
-				<th>Nguoi len k/h</th>
-				<th>Ngay len k/h</th>
-				<th>Loai hinh</th>
-				<th>Loai hang</th>
-				<th>Chu hang</th>
+				<th>Người lên k/h</th>
+				<th>Ngày lên k/h</th>
+				<th>Loại hình</th>
+				<th>Tên hàng</th>
+				<th>Chủ hàng</th>
 				<th>Bill/booking</th>
-				<th>So to khai</th>
-				<th>So luong cont</th>
-				<th>So Cont 20</th>
-				<th>So Cont 40</th>
-				<th>So cont hang roi</th>
-				<th>So Cont nong</th>
-				<th>So Cont lanh</th>
-				<th>Hang tau</th>
-				<th>Tuyen duong</th>
-				<th>Ngày đóng/do hàng</th>
-				<th>Nha xe</th>
+				<th>Số tờ khai</th>
+				<th>Tổng số cont</th>
+				<th>Số cont 20</th>
+				<th>Số cont 40</th>
+				<th>Số lượng hàng rời</th>
+				<th>Số cont nóng</th>
+				<th>Số cont lạnh</th>
+				<th>Hãng tàu</th>
+				<th>Tuyến đường</th>
+				<th>Ngày đóng/dỡ hàng</th>
+				<th>Nhà xe</th>
 				<th>Booking file</th>
 				<th>Tình trạng</th>
 			</thead>

@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-12">
 			@include('partials.modal.yclhang')
-			@include('user.director', ['title' => 'DE NGHI TAM UNG'])
+			@include('user.director', ['title' => 'ĐỀ NGHỊ TẠM ỨNG'])
         </div>
     </div>
 </div>

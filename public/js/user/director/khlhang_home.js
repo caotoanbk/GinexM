@@ -64,7 +64,7 @@ $(function() {
 				}
 			},
 			{
-				text: 'Da duyet',
+				text: 'Đã duyệt',
 				className: 'btn',	
 				action: function (e, dt, node, config){
 					var selectedRows = dt.rows( {selected: true}).toArray();
@@ -88,7 +88,7 @@ $(function() {
 				}
 			},
 			{
-				text: 'Huy duyet',
+				text: 'Hủy duyệt',
 				className: 'btn',	
 				action: function (e, dt, node, config){
 					var selectedRows = dt.rows( {selected: true}).toArray();
@@ -117,11 +117,11 @@ $(function() {
 			{data: 'check', name: 'check', searchable: false, orderable: false},
 			{data: 'name', name: 'name'},
 			{data: 'created_at', name: 'dntungs.created_at'},
-			{data: 'khang', name: 'khang'},
-			{data: 'loaihang', name: 'loaihang'},
-			{data: 'khachhang', name: 'khachhang'},
-			{data: 'bill', name: 'bill'},
-			{data: 'stokhai', name: 'stokhai'},
+			{data: 'khang', name: 'dntungs.khang'},
+			{data: 'loaihang', name: 'dntungs.loaihang'},
+			{data: 'khachhang', name: 'dntungs.khachhang'},
+			{data: 'bill', name: 'dntungs.bill'},
+			{data: 'stokhai', name: 'dntungs.stokhai'},
 			{data: 'slcont', name: 'slcont', className: 'none'},
 			{data: 'slc20', name: 'slc20', className: 'none'},
 			{data: 'slc40', name: 'slc40', className: 'none'},
