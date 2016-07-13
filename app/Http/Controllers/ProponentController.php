@@ -178,20 +178,30 @@ class ProponentController extends Controller
 		}
 		//chi phi phat sinh
 		$ldo = $request->input('ldo');
+		$dvtinh = $request->input('dvtinh');
+		$soluong = $request->input('soluong');
+		$dongia = $request->input('dongia');
 		$stien = $request->input('stien');
+		$VAT = $request->input('VAT');
+		$tong = $request->input('tong');
 		$hdon = $request->input('hdon');
-		$nchi = $request->input('nchi');
 		$nphanh = $request->input('nphanh');
 		$ccho = $request->input('ccho');
+		$nchi = $request->input('nchi');
 		$gchu = $request->input('gchu');
 		for ($i = 0; $i < count($ldo); $i++) {
 			$qtoan = new Quyettoan;
 			$qtoan->dntung_id = $id;
 			$qtoan->ldo = $ldo[$i];
-			$qtoan->chicho = $ccho[$i];
+			$qtoan->dvtinh = $dvtinh[$i];
+			$qtoan->soluong = $soluong[$i];
+			$qtoan->dongia = $this->convert($dongia[$i]);
 			$qtoan->stien = $this->convert($stien[$i]);
+			$qtoan->VAT = $this->convert($VAT[$i]);
+			$qtoan->tong = $this->convert($tong[$i]);
 			$qtoan->hdon = $hdon[$i];
 			$qtoan->nphanh = $nphanh[$i];
+			$qtoan->chicho = $ccho[$i];
 			$qtoan->nchi = $nchi[$i];
 			$qtoan->gchu = $gchu[$i];
 			$qtoan->save();

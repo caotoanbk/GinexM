@@ -8,12 +8,12 @@ function format($value){
 <div style="margin-left: 25px;">
 <h4 class="modal-title text-info" id="myModalLabel">QUYẾT TOÁN TẠM ỨNG</h4>
 <div><strong>Lý do tạm ứng &nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='ldtu' style="padding-left: 1.5em;">{{$dntung->reason}}</span></em></div>
-<div><strong>Loai hinh &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='ldtu' style="padding-left: 1.5em;">{{$dntung->khang}}</span></em></div>
-<div><strong>Khach hang &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='ldtu' style="padding-left: 1.5em;">{{$dntung->khachhang}}</span></em></div>
-<div><strong>So to khai &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='ldtu' style="padding-left: 1.5em;">{{$dntung->sotokhai}}</span></em></div>
+<div><strong>Loại hình &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='ldtu' style="padding-left: 1.5em;">{{$dntung->khang}}</span></em></div>
+<div><strong>Khách hàng &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='ldtu' style="padding-left: 1.5em;">{{$dntung->khachhang}}</span></em></div>
+<div><strong>Số tờ khai &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='ldtu' style="padding-left: 1.5em;">{{$dntung->sotokhai}}</span></em></div>
 <div><strong>Số booking &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='ldtu' style="padding-left: 1.5em;">{{$dntung->bill}}</span></em></div>
-<div><strong>Tuyen duong &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='ldtu' style="padding-left: 1.5em;">{{$dntung->tuyenduong}}</span></em></div>
-<div><strong>Nha xe &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='ldtu' style="padding-left: 1.5em;">{{$dntung->nhaxe}}</span></em></div>
+<div><strong>Tuyến đường &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='ldtu' style="padding-left: 1.5em;">{{$dntung->tuyenduong}}</span></em></div>
+<div><strong>Nhà xe &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='ldtu' style="padding-left: 1.5em;">{{$dntung->nhaxe}}</span></em></div>
 <div><strong>Số tiền tạm ứng &nbsp;:</strong> <em><span id='sttu' style='padding-left: 1.5em;'>{{format($dntung->ttien)}}</span></em></div>
 <div><strong>Ngày tạm ứng &nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='ntu' style='padding-left: 1.5em;'>{{$dntung->created_at}}</span></em></div>
 <div><strong>Số tiền còn lại &nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='stclai' style='padding-left: 1.5em;'></span></em></div>
@@ -127,17 +127,24 @@ function format($value){
 <button id='them_cont' class="btn btn-warning btn-xs">Thêm</button>
 <div>&nbsp;</div>
 
-<div><h4>CÁC HẠNG MỤC THANH TOÁN</h4></div>
+<div><h4>QUYẾT TOÁN GỬI KHÁCH HÀNG</h4></div>
 <div>&nbsp;</div>
 <div style="overflow: auto;">
-<table class='table table-bordered' id="qttu_ps" >
+<table class='table table-bordered' id="qttu_ps" style="width: 120em;">
 <thead>
 	<tr>
-		<th class="text-center">Xóa</th>
+		<th class="text-center" style="width: 1em;">Xóa</th>
+		<th class="text-center" style="width: 1em;">Edit</th>
+		<th style="width: 1em;">STT</th>
 		<th>Hạng mục thanh toán</th>
-		<th>Số tiền</th>
+		<th>ĐV tính</th>
+		<th>Số lượng</th>
+		<th>Đơn giá</th>
+		<th>Thành tiền</th>
+		<th>VAT</th>
+		<th>Tổng</th>
 		<th>Hóa đơn</th>
-		<th>Nơi phát hành</th>
+		<th>Noi phat hanh</th>
 		<th>Chi cho</th>
 		<th>Ngày chi</th>
 		<th>Ghi chú</th>
@@ -148,8 +155,15 @@ function format($value){
 @foreach($qtpsinh as $qtps)
 <tr>
 	<td class="text-danger text-center"><a href="#" id="remove_item_ajax" data-id="{{$qtps['id']}}" class="text-danger">&times;</a></td>
+	<td><a href="#" id="edit_item_guikh" data-id="{{$qtps['id']}}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+	<td>&nbsp;</td>
 	<td>{{$qtps['ldo']}}</td>
+	<td>{{$qtps['dvtinh']}}</td>
+	<td>{{$qtps['soluong']}}</td>
+	<td>{{format($qtps['dongia'])}}</td>
 	<td>{{format($qtps['stien'])}}</td>
+	<td>{{format($qtps['VAT'])}}</td>
+	<td>{{format($qtps['tong'])}}</td>
 	<td>{{$qtps['hdon']}}</td>
 	<td>{{$qtps['nphanh']}}</td>
 	<td>{{$qtps['chicho']}}</td>

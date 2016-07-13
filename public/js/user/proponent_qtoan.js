@@ -9,6 +9,13 @@ $(function(){
   };
 	}
 	  danhso();
+	function danhso_tableguikh(){
+	  var rows = $('table#qttu_ps').find('tbody').find('tr');
+	  for (var i = 0, len = rows.length; i < len; i++){
+		  $(rows[i]).children("td:nth-child(3)").html(i+1);
+  };
+	}
+	  danhso_tableguikh();
 	var url = location.href;
 	var tuid = url.split('/').pop();
 	$('form#content1').attr('action', '/quyet-toan/'+tuid);
@@ -160,7 +167,7 @@ $(function(){
 
 	$('#them_psinh').click(function(e){
 		e.preventDefault();
-		$('tbody#cppsinh').append('<tr><td class="text-danger text-center"><a href="#" id="remove_item" class="text-danger">&times;</a></td><td><input type="text" name="ldo[]" size="50"/></td><td><input type="text" name="stien[]" size="15"/></td><td><input type="text" name="hdon[]" size="15"/></td><td><input type="text" name="nphanh[]" size="15"/></td><td><input type="text" name="ccho[]" size="15"/></td><td><input type="date" name="nchi[]"/></td><td><input type="text" name="gchu[]" size="50"/></td></tr>');
+		$('tbody#cppsinh').append('<tr><td class="text-danger text-center"><a href="#" id="remove_item" class="text-danger">&times;</a></td><td></td><td></td><td><input type="text" name="ldo[]" size="50"/></td><td><input type="text" name="dvtinh[]" size="15"/></td><td><input type="number" name="soluong[]" size="10"/></td><td><input type="text" name="dongia[]" size="15"/></td><td><input type="text" name="stien[]" size="15"/></td><td><input type="text" name="VAT[]" size="15"/></td><td><input type="text" name="tong[]" size="15"/></td><td><input type="text" name="hdon[]" size="15"/></td><td><input type="text" name="nphanh[]" size="15"/></td><td><input type="text" name="ccho[]" size="15"/></td><td><input type="date" name="nchi[]"/></td><td><input type="text" name="gchu[]" size="50"/></td></tr>');
 		$('input[name="stien[]"]').autoNumeric('init', {
 			aSep:'.',
 			aDec: ',',
@@ -168,6 +175,7 @@ $(function(){
 			pSign: 's',
 			aPad: false,	
 		});
+		danhso_tableguikh();
 	});
 
 	$('#qttu_cont').on('click', 'a#remove_item', function(e){
@@ -703,6 +711,7 @@ $(function(){
 	$('#qttu_ps').on('click', 'a#remove_item', function(e){
 		e.preventDefault();
 		$(this).parent('td').parent('tr').remove();
+		danhso_tableguikh();
 	});
 	$('#qtoan_cont').on('click', 'a#remove_item_ajax', function(e){
 		e.preventDefault();
@@ -731,6 +740,7 @@ $(function(){
 			success: function(data){
 				console.log('Success');
 				$tempt.parent('td').parent('tr').remove();
+				danhso_tableguikh();
 			},
 			error: function(data){
 				console.log('Error');

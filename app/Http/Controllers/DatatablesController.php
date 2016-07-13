@@ -165,7 +165,7 @@ class DatatablesController extends Controller
 		return Datatables::of($yclhangs)->addColumn('filebooking', function($yclhang){
 			return '<a href="/de_nghi_tam_ung/'.$yclhang->id.'.pdf'.'". class="btn btn-xs btn-default">View</a>';	
 		})->addColumn('status', function($yclhang){
-				return '<small class="text-success"><em><a class="text-success" href="/quyet-toan-lam-hang-secrectary/'.$yclhang->id.'">Đã hoàn thành</a></em></small>';
+				return '<small class="text-success"><em><a class="text-success" href="/quyet-toan-lam-hang-secrectary/'.$yclhang->id.'"><b>Đã hoàn thành</b></a></em></small>';
 		})->addColumn('check', function($yclhang){return '';})->addColumn('resp', function($yclhang){return '';})->make(true);
 	}
 	public function cur_khlhang_home()
@@ -236,7 +236,7 @@ class DatatablesController extends Controller
 		return Datatables::of($yclhangs)->addColumn('filebooking', function($yclhang){
 			return '<a href="/de_nghi_tam_ung/'.$yclhang->id.'.pdf'.'". class="btn btn-xs btn-default">View</a>';	
 		})->addColumn('status', function($yclhang){
-				return '<small class="text-success"><em><a class="text-success" href="/quyet-toan-lam-hang-secrectary/'.$yclhang->id.'">Đã hoàn thành</a></em></small>';
+				return '<small class="text-success"><em><a class="text-success" href="/quyet-toan-lam-hang-secrectary/'.$yclhang->id.'"><b>Đã hoàn thành</b></a></em></small>';
 		})->addColumn('check', function($yclhang){return '';})->addColumn('resp', function($yclhang){return '';})->make(true);
 	}
 	public function direc_khlhang_home()
@@ -270,7 +270,7 @@ class DatatablesController extends Controller
 	}
 	public function direc_tucqtoan_home()
 	{
-		$yclhangs = Dntung::join('users', 'dntungs.user_id', '=', 'users.id')->select(['dntungs.id', 'dntungs.user_id', 'dntungs.created_at', 'dntungs.reason', 'dntungs.bill', 'dntungs.slc20','dntungs.slc40', 'dntungs.khang', 'dntungs.ttien', 'dntungs.lcont', 'dntungs.tghung', 'dntungs.cuoc', 'dntungs.nang', 'dntungs.ha', 'dntungs.hquan', 'dntungs.psinh', 'dntungs.check', 'dntungs.approve', 'dntungs.done', 'users.name', 'dntungs.ndonghang', 'dntungs.nyeucau', 'dntungs.ngiaohang', 'dntungs.nnhanhang', 'dntungs.ttien_ltron', 'dntungs.loaihang', 'dntungs.khachhang', 'dntungs.tuyenduong', 'dntungs.curator_check'])->where('curator_check', true)->where('approve', true)->where('done', false);
+		$yclhangs = Dntung::join('users', 'dntungs.user_id', '=', 'users.id')->select(['dntungs.id', 'dntungs.user_id', 'dntungs.created_at', 'dntungs.reason', 'dntungs.bill', 'dntungs.slc20','dntungs.slc40', 'dntungs.khang', 'dntungs.ttien', 'dntungs.lcont', 'dntungs.tghung', 'dntungs.cuoc', 'dntungs.nang', 'dntungs.ha', 'dntungs.hquan', 'dntungs.psinh', 'dntungs.check', 'dntungs.approve', 'dntungs.done', 'users.name', 'dntungs.ndonghang', 'dntungs.nyeucau', 'dntungs.ngiaohang', 'dntungs.nnhanhang', 'dntungs.ttien_ltron', 'dntungs.loaihang', 'dntungs.khachhang', 'dntungs.tuyenduong', 'dntungs.curator_check', 'dntungs.denghiquyettoan'])->where('curator_check', true)->where('approve', true)->where('done', false);
 		return Datatables::of($yclhangs)->addColumn('filebooking', function($yclhang){
 			return '<a href="/de_nghi_tam_ung/'.$yclhang->id.'.pdf'.'". class="btn btn-xs btn-primary">View</a>';	
 		})->addColumn('status', function($yclhang){
