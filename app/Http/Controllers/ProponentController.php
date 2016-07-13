@@ -90,6 +90,9 @@ class ProponentController extends Controller
 	}
 	public function qtcont($id, Request $request)
 	{
+		$dntu = Dntung::findOrFail($id);
+		$dntu->denghiquyettoan = false;
+		$dntu->save();
 		$nchay = $request->input('nchay');
 		$scont = $request->input('scont');
 		$sochi = $request->input('sochi');
@@ -193,15 +196,29 @@ class ProponentController extends Controller
 			$qtoan->gchu = $gchu[$i];
 			$qtoan->save();
 		}
-		return redirect('/');
+		return redirect('/quyet-toan-lam-hang/'.$id);
 	}
 	public function updateQTCont($id, Request $request)
 	{
 		$data = $request->all();
-		dd($data);
+		$input=$data['result'];
 		$qtcont = QTCont::findOrFail($id);
-		$qtcont->fill($datad)->save();
-		return $data;
+		$qtcont->fill($input)->save();
+		return $input;
+	}
+	public function denghiquyettoan($id)
+	{
+		$dntu = Dntung::findOrFail($id);
+		$dntu->denghiquyettoan = true;
+		$dntu->save();
+		return 'success';
+	}
+	public function huydenghiquyettoan($id)
+	{
+		$dntu = Dntung::findOrFail($id);
+		$dntu->denghiquyettoan = false;
+		$dntu->save();
+		return 'success';
 	}
 	public function qtoanData($id)
 	{

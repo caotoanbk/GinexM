@@ -43,8 +43,8 @@ class DirectorController extends Controller
 	{
 		$my = $request->input('month_tket');
 		$arr = explode('-', $my);
-		$month = intval($arr[1]);
-		$year = intval($arr[0]);
+		$month = $arr[1];
+		$year = $arr[0];
 		return view('user.director.tongket_tamung', compact('month', 'year'));
 	}
 	public function qtlhang($id)

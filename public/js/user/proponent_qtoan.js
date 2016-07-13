@@ -2,14 +2,19 @@ $(function(){
 	function myFormatCurrency (money) {
 		return	money.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.");
 	};
+	function danhso(){
+	  var rows = $('table#qttu_cont').find('tbody').find('tr');
+	  for (var i = 0, len = rows.length; i < len; i++){
+		  $(rows[i]).children("td:nth-child(1)").html(i+1);
+  };
+	}
+	  danhso();
 	var url = location.href;
 	var tuid = url.split('/').pop();
 	$('form#content1').attr('action', '/quyet-toan/'+tuid);
 	$('#them_cont').click(function(e){
 		e.preventDefault();
-		$('tbody#qtoan_cont').append('<tr class="input_fields_wrap"><td class="text-danger text-center"><a href="#" id="remove_item" class="text-danger">&times;</a></td>&nbsp;<td></td><td><input type="date" name="nchay[]"/></td><td><input type="text" name="scont[]" size="15"/></td><td><input type="text" name="sochi[]" size="15"/></td><td><input type="text" name="ccont[]" size="10"/></td><td><input type="text" name="lcont[]" size="15"/></td><td><input type="text" name="bainang[]" size="25" /></td><td><input type="text" name="baiha[]" size="25" /></td><td><input type="number" name="trongluong[]" /></td><td><input type="text" name="dieuxe[]" size="20" /></td><td><input type="text" name="lxe[]" size="15"/></td><td><input type="text" name="bsxe[]" size="15"/></td><td><input type="text" name="diadiemdongtrahang[]" size="25"/></td><td><input type="text" name="phinangchuaVAT[]" size="15"/></td><td><input type="text" name="VATphinang[]" size="15"/></td><td><input type="text" name="sohoadonnang[]" size="15"/></td><td><input type="date" name="nxuathoadonnang[]"/></td><td><input type="text" name="dvicaphoadonnang[]" size="15"/></td><td><input type="text" name="phihachuaVAT[]" size="15"/></td><td><input type="text" name="VATphiha[]" size="15"/></td><td><input type="text" name="sohoadonha[]" size="15"/></td><td><input type="date" name="nxuathoadonha[]"/></td><td><input type="text" name="dvicaphoadonha[]" size="15"/></td><td><input type="text" name="boctokhai[]" size="15"/></td><td><input type="text" name="hquantiepnhan[]" size="15"/></td><td><input type="text" name="hquangiamsat[]" size="15"/></td><td><input type="text" name="hquankiemhoa[]" size="15"/></td><td><input type="text" name="cuoccont[]" size="15"/></td><td><input type="text" name="llenhhangtau[]" size="15"/></td><td><input type="text" name="luucont[]" size="15"/></td><td><input type="text" name="luubai[]" size="15"/></td><td><input type="text" name="phivesinh[]" size="15"/></td><td><input type="text" name="phicatday[]" size="15"/></td><td><input type="text" name="boctem[]" size="15"/></td><td><input type="text" name="kddtvchuaVAT[]" size="30"/></td><td><input type="text" name="VATkddtv[]" size="30"/></td><td><input type="text" name="phingoaikddtv[]" size="30"/></td><td><input type="text" name="cackhoankhacchokhach[]" size="30"/></td><td><input type="text" name="tong[]" size="15"/></td><td><input type="text" name="ghichu[]" size="50"/></td></tr>');
-
-	
+		$('tbody#qtoan_cont').append('<tr class="input_fields_wrap"><td></td><td class="text-danger text-center"><a href="#" id="remove_item" class="text-danger">&times;</a></td>&nbsp;<td></td><td><input type="date" name="nchay[]"/></td><td><input type="text" name="scont[]" size="15"/></td><td><input type="text" name="sochi[]" size="15"/></td><td><input type="text" name="ccont[]" size="10"/></td><td><input type="text" name="lcont[]" size="15"/></td><td><input type="text" name="bainang[]" size="25" /></td><td><input type="text" name="baiha[]" size="25" /></td><td><input type="number" name="trongluong[]" /></td><td><input type="text" name="dieuxe[]" size="20" /></td><td><input type="text" name="lxe[]" size="15"/></td><td><input type="text" name="bsxe[]" size="15"/></td><td><input type="text" name="diadiemdongtrahang[]" size="25"/></td><td><input type="text" name="phinangchuaVAT[]" size="15"/></td><td><input type="text" name="VATphinang[]" size="15"/></td><td><input type="text" name="sohoadonnang[]" size="15"/></td><td><input type="date" name="nxuathoadonnang[]"/></td><td><input type="text" name="dvicaphoadonnang[]" size="15"/></td><td><input type="text" name="phihachuaVAT[]" size="15"/></td><td><input type="text" name="VATphiha[]" size="15"/></td><td><input type="text" name="sohoadonha[]" size="15"/></td><td><input type="date" name="nxuathoadonha[]"/></td><td><input type="text" name="dvicaphoadonha[]" size="15"/></td><td><input type="text" name="boctokhai[]" size="15"/></td><td><input type="text" name="hquantiepnhan[]" size="15"/></td><td><input type="text" name="hquangiamsat[]" size="15"/></td><td><input type="text" name="hquankiemhoa[]" size="15"/></td><td><input type="text" name="cuoccont[]" size="15"/></td><td><input type="text" name="llenhhangtau[]" size="15"/></td><td><input type="text" name="luucont[]" size="15"/></td><td><input type="text" name="luubai[]" size="15"/></td><td><input type="text" name="phivesinh[]" size="15"/></td><td><input type="text" name="phicatday[]" size="15"/></td><td><input type="text" name="boctem[]" size="15"/></td><td><input type="text" name="kddtvchuaVAT[]" size="30"/></td><td><input type="text" name="VATkddtv[]" size="30"/></td><td><input type="text" name="phingoaikddtv[]" size="30"/></td><td><input type="text" name="cackhoankhacchokhach[]" size="30"/></td><td><input type="text" name="tong[]" size="15"/></td><td><input type="text" name="ghichu[]" size="50"/></td></tr>');
 		$('input[name="phinangchuaVAT[]"]').autoNumeric('init', {
 			aSep:'.',
 			aDec: ',',
@@ -150,6 +155,7 @@ $(function(){
 			pSign: 's',
 			aPad: false,	
 		});
+			danhso();
 	});
 
 	$('#them_psinh').click(function(e){
@@ -167,52 +173,53 @@ $(function(){
 	$('#qttu_cont').on('click', 'a#remove_item', function(e){
 		e.preventDefault();
 		$(this).parent('td').parent('tr').remove();
+		danhso();
 	});
 	$('#qttu_cont').on('click', 'a#save_item', function(e){
 		e.preventDefault();
 		var par = $(this).parent('td').parent('tr');
-		var tdXoa = par.children("td:nth-child(1)");
+		var tdXoa = par.children("td:nth-child(2)");
 		var id = tdXoa.children("a").data('id');
-		var tdEditSave = par.children("td:nth-child(2)"); 
-		var tdNxechay = par.children("td:nth-child(3)");
-		var tdSocont = par.children("td:nth-child(4)");
-		var tdSochi = par.children("td:nth-child(5)");
-		var tdCocont = par.children("td:nth-child(6)");
-		var tdLoaicont = par.children("td:nth-child(7)");
-		var tdBainang = par.children("td:nth-child(8)");
-		var tdBaiha = par.children("td:nth-child(9)");
-		var tdTrongluong = par.children("td:nth-child(10)");
-		var tdDieuxe = par.children("td:nth-child(11)");
-		var tdLoaixe = par.children("td:nth-child(12)");
-		var tdBiensoxe = par.children("td:nth-child(13)");
-		var tdDiadiemdongtrahang = par.children("td:nth-child(14)");
-		var tdPhinangchuaVAT = par.children("td:nth-child(15)");
-		var tdVATphinang = par.children("td:nth-child(16)");
-		var tdSohoadonnang = par.children("td:nth-child(17)");
-		var tdNxuathoadonnang = par.children("td:nth-child(18)");
-		var tdDvicaphoadonnang = par.children("td:nth-child(19)");
-		var tdPhihachuaVAT = par.children("td:nth-child(20)");
-		var tdVATphiha = par.children("td:nth-child(21)");
-		var tdSohoadonha = par.children("td:nth-child(22)");
-		var tdNxuathoadonha = par.children("td:nth-child(23)");
-		var tdDvicaphoadonha = par.children("td:nth-child(24)");
-		var tdBoctokhai = par.children("td:nth-child(25)");
-		var tdHqtiepnhan = par.children("td:nth-child(26)");
-		var tdHqgiamsat = par.children("td:nth-child(27)");
-		var tdHqkiemhoa = par.children("td:nth-child(28)");
-		var tdCuoccont = par.children("td:nth-child(29)");
-		var tdLaylenhhangtau = par.children("td:nth-child(30)");
-		var tdLuucont = par.children("td:nth-child(31)");
-		var tdLuubai = par.children("td:nth-child(32)");
-		var tdPhivesinh = par.children("td:nth-child(33)");
-		var tdPhicatday = par.children("td:nth-child(34)");
-		var tdBoctem = par.children("td:nth-child(35)");
-		var tdKddtvchuaVAT = par.children("td:nth-child(36)");
-		var tdVATkddtv = par.children("td:nth-child(37)");
-		var tdPhingoaikddtv = par.children("td:nth-child(38)");
-		var tdKhoankhacchokhach = par.children("td:nth-child(39)");
-		var tdTong = par.children("td:nth-child(40)");
-		var tdGhichu = par.children("td:nth-child(41)");
+		var tdEditSave = par.children("td:nth-child(3)"); 
+		var tdNxechay = par.children("td:nth-child(4)");
+		var tdSocont = par.children("td:nth-child(5)");
+		var tdSochi = par.children("td:nth-child(6)");
+		var tdCocont = par.children("td:nth-child(7)");
+		var tdLoaicont = par.children("td:nth-child(8)");
+		var tdBainang = par.children("td:nth-child(9)");
+		var tdBaiha = par.children("td:nth-child(10)");
+		var tdTrongluong = par.children("td:nth-child(11)");
+		var tdDieuxe = par.children("td:nth-child(12)");
+		var tdLoaixe = par.children("td:nth-child(13)");
+		var tdBiensoxe = par.children("td:nth-child(14)");
+		var tdDiadiemdongtrahang = par.children("td:nth-child(15)");
+		var tdPhinangchuaVAT = par.children("td:nth-child(16)");
+		var tdVATphinang = par.children("td:nth-child(17)");
+		var tdSohoadonnang = par.children("td:nth-child(18)");
+		var tdNxuathoadonnang = par.children("td:nth-child(19)");
+		var tdDvicaphoadonnang = par.children("td:nth-child(20)");
+		var tdPhihachuaVAT = par.children("td:nth-child(21)");
+		var tdVATphiha = par.children("td:nth-child(22)");
+		var tdSohoadonha = par.children("td:nth-child(23)");
+		var tdNxuathoadonha = par.children("td:nth-child(24)");
+		var tdDvicaphoadonha = par.children("td:nth-child(25)");
+		var tdBoctokhai = par.children("td:nth-child(26)");
+		var tdHqtiepnhan = par.children("td:nth-child(27)");
+		var tdHqgiamsat = par.children("td:nth-child(28)");
+		var tdHqkiemhoa = par.children("td:nth-child(29)");
+		var tdCuoccont = par.children("td:nth-child(30)");
+		var tdLaylenhhangtau = par.children("td:nth-child(31)");
+		var tdLuucont = par.children("td:nth-child(32)");
+		var tdLuubai = par.children("td:nth-child(33)");
+		var tdPhivesinh = par.children("td:nth-child(34)");
+		var tdPhicatday = par.children("td:nth-child(35)");
+		var tdBoctem = par.children("td:nth-child(36)");
+		var tdKddtvchuaVAT = par.children("td:nth-child(37)");
+		var tdVATkddtv = par.children("td:nth-child(38)");
+		var tdPhingoaikddtv = par.children("td:nth-child(39)");
+		var tdKhoankhacchokhach = par.children("td:nth-child(40)");
+		var tdTong = par.children("td:nth-child(41)");
+		var tdGhichu = par.children("td:nth-child(42)");
 		tdEditSave.html("<a href='#' id='edit_item' data-id='"+id+"'><span class='glyphicon glyphicon-pencil'></span></a>");
 		var nxchay = tdNxechay.children("input[type=date]").val();
 		tdNxechay.html(tdNxechay.children("input[type=date]").val());
@@ -415,6 +422,7 @@ $(function(){
 		var data = {
 			nxchay: nxchay,
 			scont: scont,
+			sochi: sochi,
 			ccont: ccont,
 			lcont: lcont,
 			bainang: bainang,
@@ -468,48 +476,48 @@ $(function(){
 	$('#qttu_cont').on('click', 'a#edit_item', function(e){
 		e.preventDefault();
 		var par = $(this).parent('td').parent('tr');
-		var tdXoa = par.children("td:nth-child(1)");
+		var tdXoa = par.children("td:nth-child(2)");
 		var id = tdXoa.children("a").data('id');
-		var tdEditSave = par.children("td:nth-child(2)"); 
-		var tdNxechay = par.children("td:nth-child(3)");
-		var tdSocont = par.children("td:nth-child(4)");
-		var tdSochi = par.children("td:nth-child(5)");
-		var tdCocont = par.children("td:nth-child(6)");
-		var tdLoaicont = par.children("td:nth-child(7)");
-		var tdBainang = par.children("td:nth-child(8)");
-		var tdBaiha = par.children("td:nth-child(9)");
-		var tdTrongluong = par.children("td:nth-child(10)");
-		var tdDieuxe = par.children("td:nth-child(11)");
-		var tdLoaixe = par.children("td:nth-child(12)");
-		var tdBiensoxe = par.children("td:nth-child(13)");
-		var tdDiadiemdongtrahang = par.children("td:nth-child(14)");
-		var tdPhinangchuaVAT = par.children("td:nth-child(15)");
-		var tdVATphinang = par.children("td:nth-child(16)");
-		var tdSohoadonnang = par.children("td:nth-child(17)");
-		var tdNxuathoadonnang = par.children("td:nth-child(18)");
-		var tdDvicaphoadonnang = par.children("td:nth-child(19)");
-		var tdPhihachuaVAT = par.children("td:nth-child(20)");
-		var tdVATphiha = par.children("td:nth-child(21)");
-		var tdSohoadonha = par.children("td:nth-child(22)");
-		var tdNxuathoadonha = par.children("td:nth-child(23)");
-		var tdDvicaphoadonha = par.children("td:nth-child(24)");
-		var tdBoctokhai = par.children("td:nth-child(25)");
-		var tdHqtiepnhan = par.children("td:nth-child(26)");
-		var tdHqgiamsat = par.children("td:nth-child(27)");
-		var tdHqkiemhoa = par.children("td:nth-child(28)");
-		var tdCuoccont = par.children("td:nth-child(29)");
-		var tdLaylenhhangtau = par.children("td:nth-child(30)");
-		var tdLuucont = par.children("td:nth-child(31)");
-		var tdLuubai = par.children("td:nth-child(32)");
-		var tdPhivesinh = par.children("td:nth-child(33)");
-		var tdPhicatday = par.children("td:nth-child(34)");
-		var tdBoctem = par.children("td:nth-child(35)");
-		var tdKddtvchuaVAT = par.children("td:nth-child(36)");
-		var tdVATkddtv = par.children("td:nth-child(37)");
-		var tdPhingoaikddtv = par.children("td:nth-child(38)");
-		var tdKhoankhacchokhach = par.children("td:nth-child(39)");
-		var tdTong = par.children("td:nth-child(40)");
-		var tdGhichu = par.children("td:nth-child(41)");
+		var tdEditSave = par.children("td:nth-child(3)"); 
+		var tdNxechay = par.children("td:nth-child(4)");
+		var tdSocont = par.children("td:nth-child(5)");
+		var tdSochi = par.children("td:nth-child(6)");
+		var tdCocont = par.children("td:nth-child(7)");
+		var tdLoaicont = par.children("td:nth-child(8)");
+		var tdBainang = par.children("td:nth-child(9)");
+		var tdBaiha = par.children("td:nth-child(10)");
+		var tdTrongluong = par.children("td:nth-child(11)");
+		var tdDieuxe = par.children("td:nth-child(12)");
+		var tdLoaixe = par.children("td:nth-child(13)");
+		var tdBiensoxe = par.children("td:nth-child(14)");
+		var tdDiadiemdongtrahang = par.children("td:nth-child(15)");
+		var tdPhinangchuaVAT = par.children("td:nth-child(16)");
+		var tdVATphinang = par.children("td:nth-child(17)");
+		var tdSohoadonnang = par.children("td:nth-child(18)");
+		var tdNxuathoadonnang = par.children("td:nth-child(19)");
+		var tdDvicaphoadonnang = par.children("td:nth-child(20)");
+		var tdPhihachuaVAT = par.children("td:nth-child(21)");
+		var tdVATphiha = par.children("td:nth-child(22)");
+		var tdSohoadonha = par.children("td:nth-child(23)");
+		var tdNxuathoadonha = par.children("td:nth-child(24)");
+		var tdDvicaphoadonha = par.children("td:nth-child(25)");
+		var tdBoctokhai = par.children("td:nth-child(26)");
+		var tdHqtiepnhan = par.children("td:nth-child(27)");
+		var tdHqgiamsat = par.children("td:nth-child(28)");
+		var tdHqkiemhoa = par.children("td:nth-child(29)");
+		var tdCuoccont = par.children("td:nth-child(30)");
+		var tdLaylenhhangtau = par.children("td:nth-child(31)");
+		var tdLuucont = par.children("td:nth-child(32)");
+		var tdLuubai = par.children("td:nth-child(33)");
+		var tdPhivesinh = par.children("td:nth-child(34)");
+		var tdPhicatday = par.children("td:nth-child(35)");
+		var tdBoctem = par.children("td:nth-child(36)");
+		var tdKddtvchuaVAT = par.children("td:nth-child(37)");
+		var tdVATkddtv = par.children("td:nth-child(38)");
+		var tdPhingoaikddtv = par.children("td:nth-child(39)");
+		var tdKhoankhacchokhach = par.children("td:nth-child(40)");
+		var tdTong = par.children("td:nth-child(41)");
+		var tdGhichu = par.children("td:nth-child(42)");
 		tdEditSave.html("<a href='#' id='save_item' data-id='"+id+"'><span class='glyphicon glyphicon-ok text-success'></span></a>");
 		tdNxechay.html("<input type='date' value='"+tdNxechay.html()+"'/>");
 		tdSocont.html("<input type='text' size='15' value='"+tdSocont.html()+"'/>");
@@ -706,6 +714,7 @@ $(function(){
 			success: function(data){
 				console.log('Success');
 				$tempt.parent('td').parent('tr').remove();
+				danhso();
 			},
 			error: function(data){
 				console.log('Error');
@@ -727,5 +736,41 @@ $(function(){
 				console.log('Error');
 			}
 		});
+	});
+	$('#denghiquyettoan').on('click', function(e){
+		e.preventDefault();
+		var id = $(this).data('id');
+		$.ajax({
+			url: '/proponent/de-nghi-quyet-toan/'+id,
+			method: 'get',
+			success: function(data){
+				if(data=='success'){
+					alert('De nghi quyet toan thanh cong!');
+					window.location.reload();
+				}else{
+					alert('De nghi quyet toan khong thanh cong!');
+				}
+			},
+			error: function(data){
+			}
+		})
+	});
+	$('#huydenghiquyettoan').on('click', function(e){
+		e.preventDefault();
+		var id = $(this).data('id');
+		$.ajax({
+			url: '/proponent/huy-de-nghi-quyet-toan/'+id,
+			method: 'get',
+			success: function(data){
+				if(data=='success'){
+					alert('Huy de nghi quyet toan thanh cong!');
+					window.location.reload();
+				}else{
+					alert('Huy de nghi quyet toan khong thanh cong!');
+				}
+			},
+			error: function(data){
+			}
+		})
 	});
 });

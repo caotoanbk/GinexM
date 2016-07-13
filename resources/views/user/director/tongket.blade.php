@@ -4,8 +4,7 @@
     <div class="row">
         <div class="col-md-12">
 			<form id="tongkettamung" method="post" action="/process/tongket">
-<input type="hidden" name="_token" value="{{ csrf_token() }}"
->
+			<input type="hidden" name="_token" value="{{ csrf_token() }}" >
 			<label for="month_tket">Tổng kết tạm ứng tháng: </label> 
 			<input type="text" class="form-control" name="month_tket">
 			<div>&nbsp;</div>

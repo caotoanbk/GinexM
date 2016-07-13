@@ -75,15 +75,16 @@ class DatatablesController extends Controller
 	}
 	public function tucqtoan_home()
 	{
-		$yclhangs = Dntung::select(['id', 'user_id', 'created_at', 'reason', 'bill', 'slc20','slc40', 'khang', 'ttien', 'lcont', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'check', 'approve', 'done', 'ndonghang', 'ttien_ltron', 'nyeucau', 'ngiaohang', 'nnhanhang', 'loaihang', 'khachhang', 'tuyenduong', 'curator_check'])->where('user_id', \Auth::user()->id)->where('curator_check', true)->where('approve', true)->where('done', false);
+		$yclhangs = Dntung::select(['id', 'user_id', 'created_at', 'reason', 'bill', 'slc20','slc40', 'khang', 'ttien', 'lcont', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'check', 'approve', 'done', 'ndonghang', 'ttien_ltron', 'nyeucau', 'ngiaohang', 'nnhanhang', 'loaihang', 'khachhang', 'tuyenduong', 'curator_check', 'denghiquyettoan'])->where('user_id', \Auth::user()->id)->where('curator_check', true)->where('approve', true)->where('done', false);
 		return Datatables::of($yclhangs)->addColumn('filebooking', function($yclhang){
 			$my = date("Y/m");
 			return '<a href="/de_nghi_tam_ung/'.$yclhang->id.'.pdf'.'". class="btn btn-xs btn-primary">View</a>';	
 		})->addColumn('status', function($yclhang){
+			$denghiquyettoan = ($yclhang->denghiquyettoan?"(*)":"");
 			if(Carbon::today()->gt(Carbon::createFromFormat('Y-m-d', $yclhang->tghung))){
-				return '<small class="text-danger"><em><a id="qhan" href="/quyet-toan-lam-hang/'.$yclhang->id.'"><small><b>Qúa hạn quyết toán</b></small></a></em></small>';
+				return '<small class="text-danger"><em><a id="qhan" href="/quyet-toan-lam-hang/'.$yclhang->id.'"><small><b>Qúa hạn quyết toán '.$denghiquyettoan.'</b></small></a></em></small>';
 			} else {
-				return '<small class="text-primary"><em><a href="/quyet-toan-lam-hang/'.$yclhang->id.'"><b>Chưa quyết toán</b></a></em></small>';
+				return '<small class="text-primary"><em><a href="/quyet-toan-lam-hang/'.$yclhang->id.'"><b>Chưa quyết toán'.$denghiquyettoan.'</b></a></em></small>';
 			}
 		})->addColumn('check', function($yclhang){return '';})->addColumn('resp', function($yclhang){return '';})->make(true);
 	}
@@ -146,14 +147,15 @@ class DatatablesController extends Controller
 	}
 	public function sec_tucqtoan_home()
 	{
-		$yclhangs = Dntung::join('users', 'dntungs.user_id', '=', 'users.id')->select(['dntungs.id', 'dntungs.user_id', 'dntungs.created_at', 'dntungs.reason', 'dntungs.bill', 'dntungs.slc20','dntungs.slc40', 'dntungs.khang', 'dntungs.ttien', 'dntungs.ttien_ltron', 'dntungs.lcont', 'dntungs.tghung', 'dntungs.cuoc', 'dntungs.nang', 'dntungs.ha', 'dntungs.hquan', 'dntungs.psinh', 'dntungs.check', 'dntungs.approve', 'dntungs.done', 'users.name', 'dntungs.ndonghang', 'dntungs.nyeucau', 'dntungs.ngiaohang', 'dntungs.nnhanhang', 'dntungs.loaihang', 'dntungs.khachhang', 'dntungs.tuyenduong', 'dntungs.curator_check'])->where('curator_check', true)->where('approve', true)->where('done', false);
+		$yclhangs = Dntung::join('users', 'dntungs.user_id', '=', 'users.id')->select(['dntungs.id', 'dntungs.user_id', 'dntungs.created_at', 'dntungs.reason', 'dntungs.bill', 'dntungs.slc20','dntungs.slc40', 'dntungs.khang', 'dntungs.ttien', 'dntungs.ttien_ltron', 'dntungs.lcont', 'dntungs.tghung', 'dntungs.cuoc', 'dntungs.nang', 'dntungs.ha', 'dntungs.hquan', 'dntungs.psinh', 'dntungs.check', 'dntungs.approve', 'dntungs.done', 'users.name', 'dntungs.ndonghang', 'dntungs.nyeucau', 'dntungs.ngiaohang', 'dntungs.nnhanhang', 'dntungs.loaihang', 'dntungs.khachhang', 'dntungs.tuyenduong', 'dntungs.curator_check', 'dntungs.denghiquyettoan'])->where('curator_check', true)->where('approve', true)->where('done', false);
 		return Datatables::of($yclhangs)->addColumn('filebooking', function($yclhang){
 			return '<a href="/de_nghi_tam_ung/'.$yclhang->id.'.pdf'.'". class="btn btn-xs btn-primary">View</a>';	
 		})->addColumn('status', function($yclhang){
+			$denghiquyettoan = ($yclhang->denghiquyettoan?"(*)":"");
 			if(Carbon::today()->gt(Carbon::createFromFormat('Y-m-d', $yclhang->tghung))){
-				return '<small class="text-danger"><em><a id="qhan" href="/quyet-toan-lam-hang-secrectary/'.$yclhang->id.'">Qúa hạn quyết toán</a></em></small>';
+				return '<small class="text-danger"><em><b><a id="qhan" href="/quyet-toan-lam-hang-secrectary/'.$yclhang->id.'">Qúa hạn quyết toán '.$denghiquyettoan.'</a></b></em></small>';
 			} else {
-				return '<small class="text-primary"><em><a href="/quyet-toan-lam-hang-secrectary/'.$yclhang->id.'"><b>Chưa quyết toán</b></a></em></small>';
+				return '<small class="text-primary"><em><b><a href="/quyet-toan-lam-hang-secrectary/'.$yclhang->id.'"><b>Chưa quyết toán '.$denghiquyettoan.'</b></a></b></em></small>';
 			}
 		})->addColumn('check', function($yclhang){return '';})->addColumn('resp', function($yclhang){return '';})->make(true);
 	}
@@ -216,14 +218,15 @@ class DatatablesController extends Controller
 	}
 	public function cur_tucqtoan_home()
 	{
-		$yclhangs = Dntung::join('users', 'dntungs.user_id', '=', 'users.id')->select(['dntungs.id', 'dntungs.user_id', 'dntungs.created_at', 'dntungs.reason', 'dntungs.bill', 'dntungs.slc20','dntungs.slc40', 'dntungs.khang', 'dntungs.ttien', 'dntungs.ttien_ltron', 'dntungs.lcont', 'dntungs.tghung', 'dntungs.cuoc', 'dntungs.nang', 'dntungs.ha', 'dntungs.hquan', 'dntungs.psinh', 'dntungs.check', 'dntungs.approve', 'dntungs.done', 'users.name', 'dntungs.ndonghang', 'dntungs.nyeucau', 'dntungs.ngiaohang', 'dntungs.nnhanhang', 'dntungs.loaihang', 'dntungs.khachhang', 'dntungs.tuyenduong', 'dntungs.curator_check'])->where('curator_check', true)->where('approve', true)->where('done', false);
+		$yclhangs = Dntung::join('users', 'dntungs.user_id', '=', 'users.id')->select(['dntungs.id', 'dntungs.user_id', 'dntungs.created_at', 'dntungs.reason', 'dntungs.bill', 'dntungs.slc20','dntungs.slc40', 'dntungs.khang', 'dntungs.ttien', 'dntungs.ttien_ltron', 'dntungs.lcont', 'dntungs.tghung', 'dntungs.cuoc', 'dntungs.nang', 'dntungs.ha', 'dntungs.hquan', 'dntungs.psinh', 'dntungs.check', 'dntungs.approve', 'dntungs.done', 'users.name', 'dntungs.ndonghang', 'dntungs.nyeucau', 'dntungs.ngiaohang', 'dntungs.nnhanhang', 'dntungs.loaihang', 'dntungs.khachhang', 'dntungs.tuyenduong', 'dntungs.curator_check', 'dntungs.denghiquyettoan'])->where('curator_check', true)->where('approve', true)->where('done', false);
 		return Datatables::of($yclhangs)->addColumn('filebooking', function($yclhang){
 			return '<a href="/de_nghi_tam_ung/'.$yclhang->id.'.pdf'.'". class="btn btn-xs btn-primary">View</a>';	
 		})->addColumn('status', function($yclhang){
+			$denghiquyettoan = ($yclhang->denghiquyettoan?"(*)":"");
 			if(Carbon::today()->gt(Carbon::createFromFormat('Y-m-d', $yclhang->tghung))){
-				return '<small class="text-danger"><em><a id="qhan" href="/quyet-toan-lam-hang-secrectary/'.$yclhang->id.'">Qúa hạn quyết toán</a></em></small>';
+				return '<small class="text-danger"><em><b><a id="qhan" href="/quyet-toan-lam-hang-secrectary/'.$yclhang->id.'">Qúa hạn quyết toán '.$denghiquyettoan.'</a></b></em></small>';
 			} else {
-				return '<small class="text-primary"><em><a href="/quyet-toan-lam-hang-secrectary/'.$yclhang->id.'"><b>Chưa quyết toán</b></a></em></small>';
+				return '<small class="text-primary"><em><b><a href="/quyet-toan-lam-hang-secrectary/'.$yclhang->id.'"><b>Chưa quyết toán '.$denghiquyettoan.'</a></b></em></small>';
 			}
 		})->addColumn('check', function($yclhang){return '';})->addColumn('resp', function($yclhang){return '';})->make(true);
 	}
@@ -271,12 +274,13 @@ class DatatablesController extends Controller
 		return Datatables::of($yclhangs)->addColumn('filebooking', function($yclhang){
 			return '<a href="/de_nghi_tam_ung/'.$yclhang->id.'.pdf'.'". class="btn btn-xs btn-primary">View</a>';	
 		})->addColumn('status', function($yclhang){
+			$denghiquyettoan = ($yclhang->denghiquyettoan?"(*)":"");
 			$tghung = Carbon::createFromFormat('Y-m-d', $yclhang->tghung);
 			if($tghung){
 				if(Carbon::today()->gt($tghung)){
-					return '<small class="text-danger"><em><a id="qhan" href="/quyet-toan-lam-hang-director/'.$yclhang->id.'"><b>Qúa hạn quyết toán</b></a></em></small>';
+					return '<small class="text-danger"><em><a id="qhan" href="/quyet-toan-lam-hang-director/'.$yclhang->id.'"><b>Qúa hạn quyết toán '.$denghiquyettoan.'</b></a></em></small>';
 				} else {
-					return '<small class="text-primary"><em><a href="/quyet-toan-lam-hang-director/'.$yclhang->id.'"><b>Chưa quyết toán</b></a></em></small>';
+					return '<small class="text-primary"><em><a href="/quyet-toan-lam-hang-director/'.$yclhang->id.'"><b>Chưa quyết toán '.$denghiquyettoan.'</b></a></em></small>';
 				}
 			}
 		})->addColumn('check', function($yclhang){return '';})->addColumn('resp', function($yclhang){return '';})->make(true);

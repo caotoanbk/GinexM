@@ -7,7 +7,7 @@ use Carbon\Carbon;
 
 class Dntung extends Model
 {
-	protected $fillable=['user_id', 'reason', 'bill', 'slc20', 'slc40', 'lcont', 'khang', 'ttien', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'date_done', 'loaihang', 'tuyenduong', 'khachhang', 'ndonghang', 'ttien_ltron', 'nyeucau', 'ngiaohang', 'nnhanhang', 'nhaxe', 'stokhai', 'slcont', 'slchroi', 'slcnong', 'slclanh', 'hangtau', 'playlenh', 'pbtokhai', 'phqtiepnhan', 'pitokhai', 'pkddongvat', 'pkdthucvat'];
+	protected $fillable=['user_id', 'reason', 'bill', 'slc20', 'slc40', 'lcont', 'khang', 'ttien', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'date_done', 'loaihang', 'tuyenduong', 'khachhang', 'ndonghang', 'ttien_ltron', 'nyeucau', 'ngiaohang', 'nnhanhang', 'nhaxe', 'stokhai', 'slcont', 'slchroi', 'slcnong', 'slclanh', 'hangtau', 'playlenh', 'pbtokhai', 'phqtiepnhan', 'pitokhai', 'pkddongvat', 'pkdthucvat', 'denghiquyettoan', 'curator_check'];
 
 	protected $dates=['created_at', 'updated_at', 'tghung', 'date_done', 'ndonghang', 'ngiaohang', 'nnhanhang', 'nyeucau'];
 

@@ -8,7 +8,12 @@ function format($value){
 <div style="margin-left: 25px;">
 <h4 class="modal-title text-info" id="myModalLabel">QUYẾT TOÁN TẠM ỨNG</h4>
 <div><strong>Lý do tạm ứng &nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='ldtu' style="padding-left: 1.5em;">{{$dntung->reason}}</span></em></div>
+<div><strong>Loai hinh &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='ldtu' style="padding-left: 1.5em;">{{$dntung->khang}}</span></em></div>
+<div><strong>Khach hang &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='ldtu' style="padding-left: 1.5em;">{{$dntung->khachhang}}</span></em></div>
+<div><strong>So to khai &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='ldtu' style="padding-left: 1.5em;">{{$dntung->sotokhai}}</span></em></div>
 <div><strong>Số booking &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='ldtu' style="padding-left: 1.5em;">{{$dntung->bill}}</span></em></div>
+<div><strong>Tuyen duong &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='ldtu' style="padding-left: 1.5em;">{{$dntung->tuyenduong}}</span></em></div>
+<div><strong>Nha xe &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='ldtu' style="padding-left: 1.5em;">{{$dntung->nhaxe}}</span></em></div>
 <div><strong>Số tiền tạm ứng &nbsp;:</strong> <em><span id='sttu' style='padding-left: 1.5em;'>{{format($dntung->ttien)}}</span></em></div>
 <div><strong>Ngày tạm ứng &nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='ntu' style='padding-left: 1.5em;'>{{$dntung->created_at}}</span></em></div>
 <div><strong>Số tiền còn lại &nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='stclai' style='padding-left: 1.5em;'></span></em></div>
@@ -21,11 +26,12 @@ function format($value){
 <table class='table table-bordered' id="qttu_cont" style="width: 500em;">
 <thead>
 	<tr>
+		<th style="width: 1em;">STT</th>
 		<th style="width: 1em;">Xóa</th>
 		<th style="width: 1em;">Edit</th>
 		<th style="width: 8em;">Ngày</th>
 		<th>Số cont</th>
-		<th>So chi</th>
+		<th>Số chì</th>
 		<th>Cỡ cont</th>
 		<th>Loại cont</th>
 		<th>Bãi nâng hàng/vỏ</th>
@@ -68,6 +74,7 @@ function format($value){
 @if($qtconts)
 @foreach($qtconts as $qtcont)
 <tr>
+	<td>&nbsp;</td>
 	<td class="text-danger text-center"><a href="#" id="remove_item_ajax" data-id="{{$qtcont['id']}}" class="text-danger">&times;</a></td>
 	<td>
           <a href="#" id="edit_item" data-id="{{$qtcont['id']}}"><span class="glyphicon glyphicon-pencil"></span></a>
@@ -112,52 +119,6 @@ function format($value){
 	<td>{{format($qtcont['tong'])}}</td>
 	<td>{{$qtcont['ghichu']}}</td>
 </tr>
-<tr class="hidden">
-	<td class="text-danger text-center"><a href="#" id="remove_item_ajax" data-id="{{$qtcont['id']}}" class="text-danger">&times;</a></td>
-	<td>
-          <a href="#" id="edit_item_ajax" data-id="{{$qtcont['id']}}"><span class="glyphicon glyphicon-pencil"></span></a>
-	</td>
-	<td>{{$qtcont['nxchay']}}</td>
-	<td>{{$qtcont['scont']}}</td>
-	<td>{{$qtcont['sochi']}}</td>
-	<td>{{$qtcont['ccont']}}</td>
-	<td>{{$qtcont['lcont']}}</td>
-	<td>{{$qtcont['bainang']}}</td>
-	<td>{{$qtcont['baiha']}}</td>
-	<td>{{$qtcont['trongluong']}}</td>
-	<td>{{$qtcont['dieuxe']}}</td>
-	<td>{{$qtcont['lxe']}}</td>
-	<td>{{$qtcont['bsxe']}}</td>
-	<td>{{$qtcont['diadiemdongtrahang']}}</td>
-	<td>{{format($qtcont['phinangchuaVAT'])}}</td>
-	<td>{{format($qtcont['VATphinang'])}}</td>
-	<td>{{$qtcont['sohoadonnang']}}</td>
-	<td>{{$qtcont['nxuathoadonnang']}}</td>
-	<td>{{$qtcont['dvicaphoadonnang']}}</td>
-	<td>{{format($qtcont['phihachuaVAT'])}}</td>
-	<td>{{format($qtcont['VATphiha'])}}</td>
-	<td>{{$qtcont['sohoadonha']}}</td>
-	<td>{{$qtcont['nxuathoadonnang']}}</td>
-	<td>{{$qtcont['dvicaphoadonha']}}</td>
-	<td>{{format($qtcont['boctokhai'])}}</td>
-	<td>{{format($qtcont['hquantiepnhan'])}}</td>
-	<td>{{format($qtcont['hquangiamsat'])}}</td>
-	<td>{{format($qtcont['hquankiemhoa'])}}</td>
-	<td>{{format($qtcont['cuoccont'])}}</td>
-	<td>{{format($qtcont['llenhhangtau'])}}</td>
-	<td>{{format($qtcont['luucont'])}}</td>
-	<td>{{format($qtcont['luubai'])}}</td>
-	<td>{{format($qtcont['phivesinh'])}}</td>
-	<td>{{format($qtcont['phicatday'])}}</td>
-	<td>{{format($qtcont['boctem'])}}</td>
-	<td>{{format($qtcont['kddtvchuaVAT'])}}</td>
-	<td>{{format($qtcont['VATkddtv'])}}</td>
-	<td>{{format($qtcont['phingoaikddtv'])}}</td>
-	<td>{{format($qtcont['cackhoankhacchokhach'])}}</td>
-	<td>{{format($qtcont['tong'])}}</td>
-	<td>{{$qtcont['ghichu']}}</td>
-</tr>
-
 @endforeach
 @endif
 </tbody>
@@ -202,7 +163,7 @@ function format($value){
 </div>
 <button id='them_psinh' class="btn btn-warning btn-xs">Thêm</button>
 <div>&nbsp;</div>
-<div><button id='them' class="btn btn-primary">Quyết toán</button></div>
+<div><button id='them' type="submit" class="btn btn-sm btn-primary">Lưu</button>&nbsp;&nbsp;@if(!$dntung->denghiquyettoan)<a href="#" id = "denghiquyettoan" data-id ="{{$dntung->id}}" class="btn btn-sm btn-primary">Quyết Toán</a>@else<a href="#" id = "huydenghiquyettoan" data-id ="{{$dntung->id}}" class="btn btn-sm btn-primary">Hủy Đề Nghị Quyết Toán</a>@endif</div>
 {!! Form::close() !!}
 </div>
 @endsection

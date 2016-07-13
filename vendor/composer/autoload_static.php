@@ -294,6 +294,7 @@ class ComposerStaticInit72af72563967eb7684ef58de656d9e1f
         'AddChichoColumnToQuyetoansTable' => __DIR__ . '/../..' . '/database/migrations/2016_04_25_151628_add_chicho_column_to_quyetoans_table.php',
         'AddCuratorCheckColumnToDntungsTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_10_200013_add_curator_check_column_to_dntungs_table.php',
         'AddDataDoneToDntungsTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_26_092726_add_data_done_to_dntungs_table.php',
+        'AddDenghiquyettoanColumnToDntungsTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_12_200805_add_denghiquyettoan_column_to_dntungs_table.php',
         'AddGhichuColumToQtoansTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_24_105148_add_ghichu_colum_to_qtoans_table.php',
         'AddGvdchinhToQTContTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_26_141644_add_gvdchinh_to_QTCont_table.php',
         'AddLoaihangTuyenduongToDntungsTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_26_094846_add_loaihang_tuyenduong_to_dntungs_table.php',
