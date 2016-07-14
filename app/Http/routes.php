@@ -6,6 +6,7 @@ Route::auth();
 Route::get('/proponent/de-nghi-quyet-toan/{id}', 'ProponentController@denghiquyettoan');
 Route::get('/proponent/huy-de-nghi-quyet-toan/{id}', 'ProponentController@huydenghiquyettoan');
 Route::get('/proponent/update-qtcont/{id}', 'ProponentController@updateQTCont');
+Route::get('/proponent/update-qtguikh/{id}', 'ProponentController@updateQTKH');
 Route::get('/proponent/ke-hoach-lam-hang', 'ProponentController@khlhang_index');
 Route::get('/proponent/de-nghi-tam-ung', 'ProponentController@dntung_index');
 Route::get('/proponent/tam-ung-chua-lam-hang', 'ProponentController@tuclhang_index');

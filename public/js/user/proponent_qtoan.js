@@ -21,7 +21,7 @@ $(function(){
 	$('form#content1').attr('action', '/quyet-toan/'+tuid);
 	$('#them_cont').click(function(e){
 		e.preventDefault();
-		$('tbody#qtoan_cont').append('<tr class="input_fields_wrap"><td></td><td class="text-danger text-center"><a href="#" id="remove_item" class="text-danger">&times;</a></td>&nbsp;<td></td><td><input type="date" name="nchay[]"/></td><td><input type="text" name="scont[]" size="15"/></td><td><input type="text" name="sochi[]" size="15"/></td><td><input type="text" name="ccont[]" size="10"/></td><td><input type="text" name="lcont[]" size="15"/></td><td><input type="text" name="bainang[]" size="25" /></td><td><input type="text" name="baiha[]" size="25" /></td><td><input type="number" name="trongluong[]" /></td><td><input type="text" name="dieuxe[]" size="20" /></td><td><input type="text" name="lxe[]" size="15"/></td><td><input type="text" name="bsxe[]" size="15"/></td><td><input type="text" name="diadiemdongtrahang[]" size="25"/></td><td><input type="text" name="phinangchuaVAT[]" size="15"/></td><td><input type="text" name="VATphinang[]" size="15"/></td><td><input type="text" name="sohoadonnang[]" size="15"/></td><td><input type="date" name="nxuathoadonnang[]"/></td><td><input type="text" name="dvicaphoadonnang[]" size="15"/></td><td><input type="text" name="phihachuaVAT[]" size="15"/></td><td><input type="text" name="VATphiha[]" size="15"/></td><td><input type="text" name="sohoadonha[]" size="15"/></td><td><input type="date" name="nxuathoadonha[]"/></td><td><input type="text" name="dvicaphoadonha[]" size="15"/></td><td><input type="text" name="boctokhai[]" size="15"/></td><td><input type="text" name="hquantiepnhan[]" size="15"/></td><td><input type="text" name="hquangiamsat[]" size="15"/></td><td><input type="text" name="hquankiemhoa[]" size="15"/></td><td><input type="text" name="cuoccont[]" size="15"/></td><td><input type="text" name="llenhhangtau[]" size="15"/></td><td><input type="text" name="luucont[]" size="15"/></td><td><input type="text" name="luubai[]" size="15"/></td><td><input type="text" name="phivesinh[]" size="15"/></td><td><input type="text" name="phicatday[]" size="15"/></td><td><input type="text" name="boctem[]" size="15"/></td><td><input type="text" name="kddtvchuaVAT[]" size="30"/></td><td><input type="text" name="VATkddtv[]" size="30"/></td><td><input type="text" name="phingoaikddtv[]" size="30"/></td><td><input type="text" name="cackhoankhacchokhach[]" size="30"/></td><td><input type="text" name="tong[]" size="15"/></td><td><input type="text" name="ghichu[]" size="50"/></td></tr>');
+		$('tbody#qtoan_cont').append('<tr class="input_fields_wrap"><td></td><td class="text-danger text-center"><a href="#" id="remove_item" class="text-danger">&times;</a></td>&nbsp;<td></td><td><input type="date" name="nchay[]"/></td><td><input type="text" name="scont[]" size="15"/></td><td><input type="text" name="sochi[]" size="15"/></td><td><input type="text" name="ccont[]" size="10"/></td><td><input type="text" name="lcont[]" size="15"/></td><td><input type="text" name="bainang[]" size="25" /></td><td><input type="text" name="baiha[]" size="25" /></td><td><input type="number" name="trongluong[]" /></td><td><input type="text" name="dieuxe[]" size="20" /></td><td><input type="text" name="lxe[]" size="15"/></td><td><input type="text" name="bsxe[]" size="15"/></td><td><input type="text" name="diadiemdongtrahang[]" size="25"/></td><td><input type="text" name="phinangchuaVAT[]" size="15"/></td><td><input type="text" name="VATphinang[]" size="15"/></td><td><input type="text" name="sohoadonnang[]" size="15"/></td><td><input type="date" name="nxuathoadonnang[]"/></td><td><input type="text" name="dvicaphoadonnang[]" size="15"/></td><td><input type="text" name="phihachuaVAT[]" size="15"/></td><td><input type="text" name="VATphiha[]" size="15"/></td><td><input type="text" name="sohoadonha[]" size="15"/></td><td><input type="date" name="nxuathoadonha[]"/></td><td><input type="text" name="dvicaphoadonha[]" size="15"/></td><td><input type="text" name="boctokhai[]" size="15"/></td><td><input type="text" name="hquantiepnhan[]" size="15"/></td><td><input type="text" name="hquangiamsat[]" size="15"/></td><td><input type="text" name="hquankiemhoa[]" size="15"/></td><td><input type="text" name="cuoccont[]" size="15"/></td><td><input type="text" name="llenhhangtau[]" size="15"/></td><td><input type="text" name="luucont[]" size="15"/></td><td><input type="text" name="luubai[]" size="15"/></td><td><input type="text" name="phivesinh[]" size="15"/></td><td><input type="text" name="phicatday[]" size="15"/></td><td><input type="text" name="boctem[]" size="15"/></td><td><input type="text" name="kddtvchuaVAT[]" size="30"/></td><td><input type="text" name="VATkddtv[]" size="30"/></td><td><input type="text" name="phingoaikddtv[]" size="30"/></td><td><input type="text" name="cackhoankhacchokhach[]" size="30"/></td><td><input type="text" readonly="true" class="bg-primary" name="tong[]" size="15"/></td><td><input type="text" name="ghichu[]" size="50"/></td></tr>');
 		$('input[name="phinangchuaVAT[]"]').autoNumeric('init', {
 			aSep:'.',
 			aDec: ',',
@@ -155,6 +155,145 @@ $(function(){
 			pSign: 's',
 			aPad: false,	
 		});
+	  var rows_cont = $('table#qttu_cont').find('tbody').find('tr');
+	   $(rows_cont[rows_cont.length-1]).on('focus', 'input[name="tong[]"]', function(e){
+			var par = $(this).parent('td').parent('tr');
+			var tdPhinangchuaVAT = par.children("td:nth-child(16)");
+			var phinangchuaVAT=0;
+			if(tdPhinangchuaVAT.children("input[type=text]").val()==""){
+				phinangchuaVAT =0;
+			}else{
+				 phinangchuaVAT = parseInt(tdPhinangchuaVAT.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			var tdVATphinang = par.children("td:nth-child(17)");
+			var VATphinang=0;
+			if(tdVATphinang.children("input[type=text]").val()==""){
+				VATphinang =0;
+			}else{
+				 VATphinang= parseInt(tdVATphinang.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			var tdPhihachuaVAT = par.children("td:nth-child(21)");
+			var phihachuaVAT=0;
+			if(tdPhihachuaVAT.children("input[type=text]").val()==""){
+				phihachuaVAT =0;
+			}else{
+				 phihachuaVAT = parseInt(tdPhihachuaVAT.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			var tdVATphiha = par.children("td:nth-child(22)");
+			var VATphiha=0;
+			if(tdVATphiha.children("input[type=text]").val()==""){
+				VATphiha =0;
+			}else{
+				 VATphiha= parseInt(tdVATphiha.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			var tdBoctokhai = par.children("td:nth-child(26)");
+			var boctokhai=0;
+			if(tdBoctokhai.children("input[type=text]").val()==""){
+				boctokhai =0;
+			}else{
+				 boctokhai = parseInt(tdBoctokhai.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			var tdHqtiepnhan = par.children("td:nth-child(27)");
+			var hquantiepnhan=0;
+			if(tdHqtiepnhan.children("input[type=text]").val()==""){
+				hquantiepnhan =0;
+			}else{
+				 hquantiepnhan = parseInt(tdHqtiepnhan.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			var tdHqgiamsat = par.children("td:nth-child(28)");
+			var hquangiamsat=0;
+			if(tdHqgiamsat.children("input[type=text]").val()==""){
+				hquangiamsat =0;
+			}else{
+				 hquangiamsat = parseInt(tdHqgiamsat.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			var tdHqkiemhoa = par.children("td:nth-child(29)");
+			var hquankiemhoa=0;
+			if(tdHqkiemhoa.children("input[type=text]").val()==""){
+				hquankiemhoa =0;
+			}else{
+				 hquankiemhoa = parseInt(tdHqkiemhoa.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			var tdCuoccont = par.children("td:nth-child(30)");
+			var cuoccont=0;
+			if(tdCuoccont.children("input[type=text]").val()==""){
+				cuoccont =0;
+			}else{
+				 cuoccont= parseInt(tdCuoccont.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			var tdLaylenhhangtau = par.children("td:nth-child(31)");
+			var llenhhangtau=0;
+			if(tdLaylenhhangtau.children("input[type=text]").val()==""){
+				llenhhangtau =0;
+			}else{
+				 llenhhangtau = parseInt(tdLaylenhhangtau.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			var tdLuucont = par.children("td:nth-child(32)");
+			var luucont=0;
+			if(tdLuucont.children("input[type=text]").val()==""){
+				luucon =0;
+			}else{
+				 luucont = parseInt(tdLuucont.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			var tdLuubai = par.children("td:nth-child(33)");
+			var luubai=0;
+			if(tdLuubai.children("input[type=text]").val()==""){
+				luubai =0;
+			}else{
+				 luubai = parseInt(tdLuubai.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			var tdPhivesinh = par.children("td:nth-child(34)");
+			var phivesinh=0;
+			if(tdPhivesinh.children("input[type=text]").val()==""){
+				phivesinh =0;
+			}else{
+				 phivesinh = parseInt(tdPhivesinh.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			var tdPhicatday = par.children("td:nth-child(35)");
+			var phicatday=0;
+			if(tdPhicatday.children("input[type=text]").val()==""){
+				phicatday =0;
+			}else{
+				 phicatday = parseInt(tdPhicatday.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			var tdBoctem = par.children("td:nth-child(36)");
+			var boctem=0;
+			if(tdBoctem.children("input[type=text]").val()==""){
+				boctem =0;
+			}else{
+				 boctem = parseInt(tdBoctem.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			var tdKddtvchuaVAT = par.children("td:nth-child(37)");
+			var kddtvchuaVAT=0;
+			if(tdKddtvchuaVAT.children("input[type=text]").val()==""){
+				kddtvchuaVAT =0;
+			}else{
+				 kddtvchuaVAT = parseInt(tdKddtvchuaVAT.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			var tdVATkddtv = par.children("td:nth-child(38)");
+			var VATkddtv=0;
+			if(tdVATkddtv.children("input[type=text]").val()==""){
+				VATkddtv =0;
+			}else{
+				 VATkddtv = parseInt(tdVATkddtv.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			var tdPhingoaikddtv = par.children("td:nth-child(39)");
+			var phingoaikddtv=0;
+			if(tdPhingoaikddtv.children("input[type=text]").val()==""){
+				phingoaikddtv =0;
+			}else{
+				 phingoaikddtv = parseInt(tdPhingoaikddtv.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			var tdKhoankhacchokhach = par.children("td:nth-child(40)");
+			var khoankhacchokhach=0;
+			if(tdKhoankhacchokhach.children("input[type=text]").val()==""){
+				khoankhacchokhach =0;
+			}else{
+				 khoankhacchokhach = parseInt(tdKhoankhacchokhach.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			var tong = phinangchuaVAT + VATphinang + phihachuaVAT + VATphiha + boctokhai + hquantiepnhan + hquangiamsat + hquankiemhoa + cuoccont + llenhhangtau + luucont + luubai + phivesinh + phicatday +boctem + kddtvchuaVAT + VATkddtv + phingoaikddtv +  khoankhacchokhach;
+			$(this).val(tong.toString());
+	   });	
 		$('input[name="tong[]"]').autoNumeric('init', {
 			aSep:'.',
 			aDec: ',',
@@ -167,8 +306,61 @@ $(function(){
 
 	$('#them_psinh').click(function(e){
 		e.preventDefault();
-		$('tbody#cppsinh').append('<tr><td class="text-danger text-center"><a href="#" id="remove_item" class="text-danger">&times;</a></td><td></td><td></td><td><input type="text" name="ldo[]" size="50"/></td><td><input type="text" name="dvtinh[]" size="15"/></td><td><input type="number" name="soluong[]" size="10"/></td><td><input type="text" name="dongia[]" size="15"/></td><td><input type="text" name="stien[]" size="15"/></td><td><input type="text" name="VAT[]" size="15"/></td><td><input type="text" name="tong[]" size="15"/></td><td><input type="text" name="hdon[]" size="15"/></td><td><input type="text" name="nphanh[]" size="15"/></td><td><input type="text" name="ccho[]" size="15"/></td><td><input type="date" name="nchi[]"/></td><td><input type="text" name="gchu[]" size="50"/></td></tr>');
+		$('tbody#cppsinh').append('<tr><td class="text-danger text-center"><a href="#" id="remove_item" class="text-danger">&times;</a></td><td></td><td></td><td><input type="text" name="ldo[]" size="50"/></td><td><input type="text" name="dvtinh[]" size="15"/></td><td><input type="number" name="soluong[]" size="10"/></td><td><input type="text" name="dongia[]" size="15"/></td><td><input type="text" readonly="true" name="stien[]" size="15"/></td><td><input type="text" name="VAT[]" size="15"/></td><td><input type="text" readonly="true" name="tong[]" size="15"/></td><td><input type="text" name="hdon[]" size="15"/></td><td><input type="text" name="nphanh[]" size="15"/></td><td><input type="text" name="ccho[]" size="15"/></td><td><input type="date" name="nchi[]"/></td><td><input type="text" name="gchu[]" size="50"/></td></tr>');
+		$('input[name="dongia[]"]').autoNumeric('init', {
+			aSep:'.',
+			aDec: ',',
+			aSign: ' VND',
+			pSign: 's',
+			aPad: false,	
+		});
+		$('input[name="VAT[]"]').autoNumeric('init', {
+			aSep:'.',
+			aDec: ',',
+			aSign: ' VND',
+			pSign: 's',
+			aPad: false,	
+		});
+	  var rows = $('table#qttu_ps').find('tbody').find('tr');
+	   $(rows[rows.length-1]).on('focus', 'input[name="stien[]"]', function(e){
+		    var tdSoluong = $(rows[rows.length-1]).children("td:nth-child(6)");
+			var soluong = $(tdSoluong).children("input[type=number]").val();
+		    var tdDongia = $(rows[rows.length-1]).children("td:nth-child(7)");
+			var dongia;
+			if(tdDongia.children("input[type=text]").val()==""){
+				dongia =0;
+			}else{
+				 dongia = parseInt(tdDongia.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			$(this).val(dongia*soluong.toString());
+	   });	
 		$('input[name="stien[]"]').autoNumeric('init', {
+			aSep:'.',
+			aDec: ',',
+			aSign: ' VND',
+			pSign: 's',
+			aPad: false,	
+		});
+	   $(rows[rows.length-1]).on('focus', 'input[name="tong[]"]', function(e){
+		    var tdSoluong = $(rows[rows.length-1]).children("td:nth-child(6)");
+			var soluong = $(tdSoluong).children("input[type=number]").val();
+		    var tdDongia = $(rows[rows.length-1]).children("td:nth-child(7)");
+			var dongia;
+			if(tdDongia.children("input[type=text]").val()==""){
+				dongia =0;
+			}else{
+				 dongia = parseInt(tdDongia.children("input[type=text]").val().replace(/\./g, ''));
+			}
+		    var tdVAT = $(rows[rows.length-1]).children("td:nth-child(9)");
+			var VAT;
+			if(tdVAT.children("input[type=text]").val()==""){
+				VAT =0;
+			}else{
+				 VAT = parseInt(tdVAT.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			$(this).val((dongia*soluong+VAT).toString());
+	   });	
+		$('input[name="tong[]"]').autoNumeric('init', {
 			aSep:'.',
 			aDec: ',',
 			aSign: ' VND',
@@ -697,16 +889,283 @@ $(function(){
 			pSign: 's',
 			aPad: false,	
 		});
-		tdTong.html("<input type='text' name='tong' size='15' value='"+tdTong.html().replace(/\./g, '')+"'/>");
-		$('input[name=tong]').autoNumeric('init', {
+		tdTong.html("<input type='text' readonly='true' size='15' value='"+tdTong.html()+"' />");
+		$(tdTong).on('focus', 'input[type=text]', function(e){
+			var phinangchuaVAT, VATphinang, phihachuaVAT, VATphiha, boctokhai, hquantiepnhan, hquangiamsat, hquankiemhoa, cuoccont, llenhhangtau, luucont, luubai, phivesinh, phicatday, boctem, kddtvchuaVAT, VATkddtv, phingoaikddtv, cackhoankhacchokhach;
+			if(tdPhinangchuaVAT.children("input[type=text]").val()==""){
+				phinangchuaVAT =0;
+			}else{
+				 phinangchuaVAT = parseInt(tdPhinangchuaVAT.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			if(tdVATphinang.children("input[type=text]").val()==""){
+				VATphinang =0;
+			}else{
+				 VATphinang = parseInt(tdVATphinang.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			if(tdPhihachuaVAT.children("input[type=text]").val()==""){
+				phihachuaVAT =0;
+			}else{
+				 phihachuaVAT = parseInt(tdPhihachuaVAT.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			if(tdVATphiha.children("input[type=text]").val()==""){
+				VATphiha =0;
+			}else{
+				 VATphiha = parseInt(tdVATphiha.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			if(tdBoctokhai.children("input[type=text]").val()==""){
+				boctokhai =0;
+			}else{
+				 boctokhai = parseInt(tdBoctokhai.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			if(tdHqtiepnhan.children("input[type=text]").val()==""){
+				 hquantiepnhan =0;
+			}else{
+				 hquantiepnhan = parseInt(tdHqtiepnhan.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			if(tdHqgiamsat.children("input[type=text]").val()==""){
+				 hquangiamsat =0;
+			}else{
+				 hquangiamsat = parseInt(tdHqgiamsat.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			if(tdHqkiemhoa.children("input[type=text]").val()==""){
+				 hquankiemhoa =0;
+			}else{
+				 hquankiemhoa = parseInt(tdHqkiemhoa.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			if(tdCuoccont.children("input[type=text]").val()==""){
+				 cuoccont =0;
+			}else{
+				 cuoccont = parseInt(tdCuoccont.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			if(tdCuoccont.children("input[type=text]").val()==""){
+				 cuoccont =0;
+			}else{
+				 cuoccont = parseInt(tdCuoccont.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			if(tdLaylenhhangtau.children("input[type=text]").val()==""){
+				 llenhhangtau =0;
+			}else{
+				 llenhhangtau = parseInt(tdLaylenhhangtau.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			if(tdLuucont.children("input[type=text]").val()==""){
+				 luucont =0;
+			}else{
+				 luucont = parseInt(tdLuucont.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			if(tdLuubai.children("input[type=text]").val()==""){
+				 luubai =0;
+			}else{
+				 luubai = parseInt(tdLuubai.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			if(tdPhivesinh.children("input[type=text]").val()==""){
+				 phivesinh =0;
+			}else{
+				 phivesinh = parseInt(tdPhivesinh.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			if(tdPhicatday.children("input[type=text]").val()==""){
+				 phicatday =0;
+			}else{
+				 phicatday = parseInt(tdPhicatday.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			if(tdBoctem.children("input[type=text]").val()==""){
+				 boctem =0;
+			}else{
+				 boctem = parseInt(tdBoctem.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			if(tdKddtvchuaVAT.children("input[type=text]").val()==""){
+				 kddtvchuaVAT =0;
+			}else{
+				 kddtvchuaVAT= parseInt(tdKddtvchuaVAT.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			if(tdVATkddtv.children("input[type=text]").val()==""){
+				 VATkddtv =0;
+			}else{
+				 VATkddtv= parseInt(tdVATkddtv.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			if(tdPhingoaikddtv.children("input[type=text]").val()==""){
+				 phingoaikddtv =0;
+			}else{
+				 phingoaikddtv= parseInt(tdPhingoaikddtv.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			if(tdKhoankhacchokhach.children("input[type=text]").val()==""){
+				 cackhoankhacchokhach =0;
+			}else{
+				 cackhoankhacchokhach = parseInt(tdKhoankhacchokhach.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			var tong = phinangchuaVAT + VATphinang + phihachuaVAT + VATphiha + boctokhai +hquantiepnhan + hquangiamsat+ hquankiemhoa + cuoccont + llenhhangtau + luucont + luubai + phivesinh + phicatday + boctem + kddtvchuaVAT + VATkddtv + phingoaikddtv + cackhoankhacchokhach;
+			$(this).val(myFormatCurrency(tong));
+		});
+		tdGhichu.html("<input type='text' name='ghichu' value='"+tdGhichu.html()+"'/>");
+
+	});
+	$('#qttu_ps').on('click', 'a#save_item', function(e){
+		e.preventDefault();
+		var par = $(this).parent('td').parent('tr');
+		var tdXoa = par.children("td:nth-child(1)");
+		var id = tdXoa.children("a").data('id');
+		var tdEditSave = par.children("td:nth-child(2)");
+		var tdLdo = par.children("td:nth-child(4)");
+		var tdDvtinh = par.children("td:nth-child(5)");
+		var tdSoluong = par.children("td:nth-child(6)");
+		var tdDongia = par.children("td:nth-child(7)");
+		var tdStien = par.children("td:nth-child(8)");
+		var tdVAT = par.children("td:nth-child(9)");
+		var tdTong = par.children("td:nth-child(10)");
+		var tdHdon = par.children("td:nth-child(11)");
+		var tdNphanh = par.children("td:nth-child(12)");
+		var tdChicho = par.children("td:nth-child(13)");
+		var tdNchi = par.children("td:nth-child(14)");
+		var tdGhichu = par.children("td:nth-child(15)");
+		tdEditSave.html("<a href='#' id='edit_item' data-id='"+id+"'><span class='glyphicon glyphicon-pencil'></span></a>");
+		var ldo = tdLdo.children("input[type=text]").val();
+		tdLdo.html(tdLdo.children("input[type=text]").val());
+		var dvtinh = tdDvtinh.children("input[type=text]").val();
+		tdDvtinh.html(tdDvtinh.children("input[type=text]").val());
+		var soluong = tdSoluong.children("input[type=number]").val();
+		tdSoluong.html(tdSoluong.children("input[type=number]").val());
+		var dongia;
+		if(tdDongia.children("input[type=text]").val()==""){
+			dongia =0;
+			tdDongia.html(0);
+		}else{
+			 dongia = parseInt(tdDongia.children("input[type=text]").val().replace(/\./g, ''));
+			tdDongia.html(myFormatCurrency(parseInt(tdDongia.children("input[type=text]").val().replace(/\./g, ''))));
+		}
+		var stien;
+		if(tdStien.children("input[type=text]").val()==""){
+			stien =0;
+			tdStien.html(0);
+		}else{
+			 stien = parseInt(tdStien.children("input[type=text]").val().replace(/\./g, ''));
+			tdStien.html(myFormatCurrency(parseInt(tdStien.children("input[type=text]").val().replace(/\./g, ''))));
+		}
+		var VAT;
+		if(tdVAT.children("input[type=text]").val()==""){
+			VAT =0;
+			tdVAT.html(0);
+		}else{
+			 VAT = parseInt(tdVAT.children("input[type=text]").val().replace(/\./g, ''));
+			tdVAT.html(myFormatCurrency(parseInt(tdVAT.children("input[type=text]").val().replace(/\./g, ''))));
+		}
+		var tong;
+		if(tdTong.children("input[type=text]").val()==""){
+			tong =0;
+			tdTong.html(0);
+		}else{
+			 tong = parseInt(tdTong.children("input[type=text]").val().replace(/\./g, ''));
+			tdTong.html(myFormatCurrency(parseInt(tdTong.children("input[type=text]").val().replace(/\./g, ''))));
+		}
+		var hdon = tdHdon.children("input[type=text]").val();
+		tdHdon.html(tdHdon.children("input[type=text]").val());
+		var nphanh = tdNphanh.children("input[type=text]").val();
+		tdNphanh.html(tdNphanh.children("input[type=text]").val());
+		var chicho = tdChicho.children("input[type=text]").val();
+		tdChicho.html(tdChicho.children("input[type=text]").val());
+		var nchi = tdNchi.children("input[type=date]").val();
+		tdNchi.html(tdNchi.children("input[type=date]").val());
+		var gchu = tdGhichu.children("input[type=text]").val();
+		tdGhichu.html(tdGhichu.children("input[type=text]").val());
+		var data = {
+			ldo: ldo,
+			hdon: hdon,
+			nchi: nchi,
+			stien: stien,
+			chicho: chicho,
+			nphanh: nphanh,
+			gchu: gchu,
+			dvtinh: dvtinh,
+			soluong: soluong,
+			dongia: dongia,
+			VAT: VAT,
+			tong: tong
+		};
+		$.ajax({
+			type: 'get',
+			url: '/proponent/update-qtguikh/'+id,
+			data: {result: data},
+			success: function (data) {
+				console.log(data);
+			},
+			error: function(data) {
+				alert('error');
+			}
+		});
+	});
+	$('#qttu_ps').on('click', 'a#edit_item', function(e){
+		e.preventDefault();
+		var par = $(this).parent('td').parent('tr');
+		var tdXoa = par.children("td:nth-child(1)");
+		var id = tdXoa.children("a").data('id');
+		var tdEditSave = par.children("td:nth-child(2)");
+		var tdLdo = par.children("td:nth-child(4)");
+		var tdDvtinh = par.children("td:nth-child(5)");
+		var tdSoluong = par.children("td:nth-child(6)");
+		var tdDongia = par.children("td:nth-child(7)");
+		var tdStien = par.children("td:nth-child(8)");
+		var tdVAT = par.children("td:nth-child(9)");
+		var tdTong = par.children("td:nth-child(10)");
+		var tdHdon = par.children("td:nth-child(11)");
+		var tdNphanh = par.children("td:nth-child(12)");
+		var tdChicho = par.children("td:nth-child(13)");
+		var tdNchi = par.children("td:nth-child(14)");
+		var tdGhichu = par.children("td:nth-child(15)");
+		tdEditSave.html("<a href='#' id='save_item' data-id='"+id+"'><span class='glyphicon glyphicon-ok text-success'></span></a>");
+		tdLdo.html("<input type='text' size = '50' value='"+tdLdo.html()+"'/>");
+		tdDvtinh.html("<input type='text' size='15' value='"+tdDvtinh.html()+"'/>");
+		tdSoluong.html("<input type='number' size='10' value='"+tdSoluong.html()+"'/>");
+		tdDongia.html("<input type='text' name='dongia' size='15' value='"+tdDongia.html().replace(/\./g, '')+"'/>");
+		$('input[name=dongia').autoNumeric('init', {
 			aSep:'.',
 			aDec: ',',
 			aSign: ' VND',
 			pSign: 's',
 			aPad: false,	
 		});
-		tdGhichu.html("<input type='text' name='ghichu' value='"+tdGhichu.html()+"'/>");
-
+		tdStien.html("<input type='text' readonly='true' size='15' value='"+tdStien.html()+"' />");
+		$(tdStien).on('focus', 'input[type=text]', function (e) {
+			var soluong, dongia;
+			var soluong = tdSoluong.children("input[type=number]").val();
+			var dongia;
+			if(tdDongia.children("input[type=text]").val()==""){
+				dongia =0;
+			}else{
+				 dongia = parseInt(tdDongia.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			var stien = soluong*dongia
+			$(this).val(myFormatCurrency(stien));
+		});
+		tdVAT.html("<input type='text' name='VAT' size='15' value='"+tdVAT.html().replace(/\./g, '')+"'/>");
+		$('input[name=VAT').autoNumeric('init', {
+			aSep:'.',
+			aDec: ',',
+			aSign: ' VND',
+			pSign: 's',
+			aPad: false,	
+		});
+		tdTong.html("<input type='text' readonly='true' size='15' value='"+tdTong.html()+"' />");
+		$(tdTong).on('focus', 'input[type=text]', function (e) {
+			var soluong, dongia, VAT;
+			var soluong = tdSoluong.children("input[type=number]").val();
+			var dongia;
+			if(tdDongia.children("input[type=text]").val()==""){
+				dongia =0;
+			}else{
+				 dongia = parseInt(tdDongia.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			var VAT;
+			if(tdVAT.children("input[type=text]").val()==""){
+				VAT =0;
+			}else{
+				 VAT = parseInt(tdVAT.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			var tong = soluong*dongia + VAT;
+			$(this).val(myFormatCurrency(tong));
+		});
+		tdHdon.html("<input type='text' size='15' value='"+tdHdon.html()+"'/>");
+		tdNphanh.html("<input type='text' size='15' value='"+tdNphanh.html()+"'/>");
+		tdChicho.html("<input type='text' size='15' value='"+tdChicho.html()+"'/>");
+		tdNchi.html("<input type='date' size='15' value='"+tdNchi.html()+"'/>");
+		tdGhichu.html("<input type='text' size='15' value='"+tdGhichu.html()+"'/>");
 	});
 	$('#qttu_ps').on('click', 'a#remove_item', function(e){
 		e.preventDefault();

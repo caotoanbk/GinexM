@@ -216,6 +216,14 @@ class ProponentController extends Controller
 		$qtcont->fill($input)->save();
 		return $input;
 	}
+	public function updateQTKH($id, Request $request)
+	{
+		$data = $request->all();
+		$input=$data['result'];
+		$qt = Quyettoan::findOrFail($id);
+		$qt->fill($input)->save();
+		return $input;
+	}
 	public function denghiquyettoan($id)
 	{
 		$dntu = Dntung::findOrFail($id);

@@ -155,7 +155,7 @@ function format($value){
 @foreach($qtpsinh as $qtps)
 <tr>
 	<td class="text-danger text-center"><a href="#" id="remove_item_ajax" data-id="{{$qtps['id']}}" class="text-danger">&times;</a></td>
-	<td><a href="#" id="edit_item_guikh" data-id="{{$qtps['id']}}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+	<td><a href="#" id="edit_item" data-id="{{$qtps['id']}}"><span class="glyphicon glyphicon-pencil"></span></a></td>
 	<td>&nbsp;</td>
 	<td>{{$qtps['ldo']}}</td>
 	<td>{{$qtps['dvtinh']}}</td>
