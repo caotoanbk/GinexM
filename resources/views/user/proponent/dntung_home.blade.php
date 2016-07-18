@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
+<div class="container-fluid">
 	@if( Session::has('flash_message'))
 			<div class="alert alert-success fade in"><em>{{ Session::get('flash_message')}}</em></div>
 	@endif

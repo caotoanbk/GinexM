@@ -14,7 +14,7 @@
 
     <!-- Styles -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="/css/dataTables.bootstrap.min.css" rel="stylesheet"> 
     <link href="/css/bootstrap-datetimepicker.min.css" type="text/css" rel='stylesheet'>
     <link type="text/css" href="/css/jquery-confirm.min.css" rel="stylesheet"> 
     <link type="text/css" href="/css/buttons.bootstrap.min.css" rel="stylesheet"> 
@@ -63,6 +63,7 @@
                     <li><a href="/proponent/tam-ung-chua-lam-hang">K/H Đang Triển Khai</a></li>
                     <li><a href="/proponent/tam-ung-chua-quyet-toan">T/Ư Chưa Quyết Toán</a></li>
                     <li><a href="/proponent/tam-ung-da-hoan-thanh">T/Ư Đã Hoàn Thành</a></li>
+					<li><a href="/proponent/tong-ket-tam-ung-thang">Tổng Kết T/Ư Tháng</a></li>
 						@endif
 						@if(Auth::user()->type == 1)
                     <li><a href="/secrectary/ke-hoach-lam-hang">Kế Hoạch Làm Hàng</a></li>
@@ -70,6 +71,7 @@
                     <li><a href="/secrectary/tam-ung-chua-lam-hang">K/H Đang Triển Khai</a></li>
                     <li><a href="/secrectary/tam-ung-chua-quyet-toan">T/Ư Chưa Quyết Toán</a></li>
                     <li><a href="/secrectary/tam-ung-da-hoan-thanh">T/Ư Đã Hoàn Thành</a></li>
+					<li><a href="/secrectary/tong-ket-tam-ung-thang">Tổng Kết T/Ư Tháng</a></li>
 						@endif
 						@if(Auth::user()->type == 2)
                     <li><a href="/director/ke-hoach-lam-hang">Kế Hoạch Làm Hàng</a></li>
@@ -85,6 +87,7 @@
                     <li><a href="/curator/tam-ung-chua-lam-hang">K/H Đang Triển Khai</a></li>
                     <li><a href="/curator/tam-ung-chua-quyet-toan">T/Ư Chưa Quyết Toán</a></li>
                     <li><a href="/curator/tam-ung-da-hoan-thanh">T/Ư Đã Hoàn Thành</a></li>
+					<li><a href="/curator/tong-ket-tam-ung-thang">Tổng Kết T/Ư Tháng</a></li>
 						@endif
 					@endif
                 </ul>

@@ -75,7 +75,7 @@ class DatatablesController extends Controller
 	}
 	public function tucqtoan_home()
 	{
-		$yclhangs = Dntung::select(['id', 'user_id', 'created_at', 'reason', 'bill', 'slc20','slc40', 'khang', 'ttien', 'lcont', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'check', 'approve', 'done', 'ndonghang', 'ttien_ltron', 'nyeucau', 'ngiaohang', 'nnhanhang', 'loaihang', 'khachhang', 'tuyenduong', 'curator_check', 'denghiquyettoan'])->where('user_id', \Auth::user()->id)->where('curator_check', true)->where('approve', true)->where('done', false);
+		$yclhangs = Dntung::select(['id', 'user_id', 'created_at', 'reason', 'bill', 'slc20','slc40', 'khang', 'ttien', 'lcont', 'tghung', 'cuoc', 'nang', 'ha', 'hquan', 'psinh', 'check', 'approve', 'done', 'ndonghang', 'ttien_ltron', 'nyeucau', 'ngiaohang', 'nnhanhang', 'loaihang', 'khachhang', 'tuyenduong', 'curator_check', 'denghiquyettoan'])->where('user_id', \Auth::user()->id)->where('curator_check', true)->where('approve', true)->where('done', false)->where('ttien_ltron', '>', 0);
 		return Datatables::of($yclhangs)->addColumn('filebooking', function($yclhang){
 			$my = date("Y/m");
 			return '<a href="/de_nghi_tam_ung/'.$yclhang->id.'.pdf'.'". class="btn btn-xs btn-primary">View</a>';	
@@ -147,7 +147,7 @@ class DatatablesController extends Controller
 	}
 	public function sec_tucqtoan_home()
 	{
-		$yclhangs = Dntung::join('users', 'dntungs.user_id', '=', 'users.id')->select(['dntungs.id', 'dntungs.user_id', 'dntungs.created_at', 'dntungs.reason', 'dntungs.bill', 'dntungs.slc20','dntungs.slc40', 'dntungs.khang', 'dntungs.ttien', 'dntungs.ttien_ltron', 'dntungs.lcont', 'dntungs.tghung', 'dntungs.cuoc', 'dntungs.nang', 'dntungs.ha', 'dntungs.hquan', 'dntungs.psinh', 'dntungs.check', 'dntungs.approve', 'dntungs.done', 'users.name', 'dntungs.ndonghang', 'dntungs.nyeucau', 'dntungs.ngiaohang', 'dntungs.nnhanhang', 'dntungs.loaihang', 'dntungs.khachhang', 'dntungs.tuyenduong', 'dntungs.curator_check', 'dntungs.denghiquyettoan'])->where('curator_check', true)->where('approve', true)->where('done', false);
+		$yclhangs = Dntung::join('users', 'dntungs.user_id', '=', 'users.id')->select(['dntungs.id', 'dntungs.user_id', 'dntungs.created_at', 'dntungs.reason', 'dntungs.bill', 'dntungs.slc20','dntungs.slc40', 'dntungs.khang', 'dntungs.ttien', 'dntungs.ttien_ltron', 'dntungs.lcont', 'dntungs.tghung', 'dntungs.cuoc', 'dntungs.nang', 'dntungs.ha', 'dntungs.hquan', 'dntungs.psinh', 'dntungs.check', 'dntungs.approve', 'dntungs.done', 'users.name', 'dntungs.ndonghang', 'dntungs.nyeucau', 'dntungs.ngiaohang', 'dntungs.nnhanhang', 'dntungs.loaihang', 'dntungs.khachhang', 'dntungs.tuyenduong', 'dntungs.curator_check', 'dntungs.denghiquyettoan'])->where('curator_check', true)->where('approve', true)->where('dntungs.ttien_ltron', '>', 0)->where('done', false);
 		return Datatables::of($yclhangs)->addColumn('filebooking', function($yclhang){
 			return '<a href="/de_nghi_tam_ung/'.$yclhang->id.'.pdf'.'". class="btn btn-xs btn-primary">View</a>';	
 		})->addColumn('status', function($yclhang){
@@ -218,7 +218,7 @@ class DatatablesController extends Controller
 	}
 	public function cur_tucqtoan_home()
 	{
-		$yclhangs = Dntung::join('users', 'dntungs.user_id', '=', 'users.id')->select(['dntungs.id', 'dntungs.user_id', 'dntungs.created_at', 'dntungs.reason', 'dntungs.bill', 'dntungs.slc20','dntungs.slc40', 'dntungs.khang', 'dntungs.ttien', 'dntungs.ttien_ltron', 'dntungs.lcont', 'dntungs.tghung', 'dntungs.cuoc', 'dntungs.nang', 'dntungs.ha', 'dntungs.hquan', 'dntungs.psinh', 'dntungs.check', 'dntungs.approve', 'dntungs.done', 'users.name', 'dntungs.ndonghang', 'dntungs.nyeucau', 'dntungs.ngiaohang', 'dntungs.nnhanhang', 'dntungs.loaihang', 'dntungs.khachhang', 'dntungs.tuyenduong', 'dntungs.curator_check', 'dntungs.denghiquyettoan'])->where('curator_check', true)->where('approve', true)->where('done', false);
+		$yclhangs = Dntung::join('users', 'dntungs.user_id', '=', 'users.id')->select(['dntungs.id', 'dntungs.user_id', 'dntungs.created_at', 'dntungs.reason', 'dntungs.bill', 'dntungs.slc20','dntungs.slc40', 'dntungs.khang', 'dntungs.ttien', 'dntungs.ttien_ltron', 'dntungs.lcont', 'dntungs.tghung', 'dntungs.cuoc', 'dntungs.nang', 'dntungs.ha', 'dntungs.hquan', 'dntungs.psinh', 'dntungs.check', 'dntungs.approve', 'dntungs.done', 'users.name', 'dntungs.ndonghang', 'dntungs.nyeucau', 'dntungs.ngiaohang', 'dntungs.nnhanhang', 'dntungs.loaihang', 'dntungs.khachhang', 'dntungs.tuyenduong', 'dntungs.curator_check', 'dntungs.denghiquyettoan'])->where('curator_check', true)->where('approve', true)->where('done', false)->where('dntungs.ttien', '>', 0);
 		return Datatables::of($yclhangs)->addColumn('filebooking', function($yclhang){
 			return '<a href="/de_nghi_tam_ung/'.$yclhang->id.'.pdf'.'". class="btn btn-xs btn-primary">View</a>';	
 		})->addColumn('status', function($yclhang){
@@ -270,7 +270,7 @@ class DatatablesController extends Controller
 	}
 	public function direc_tucqtoan_home()
 	{
-		$yclhangs = Dntung::join('users', 'dntungs.user_id', '=', 'users.id')->select(['dntungs.id', 'dntungs.user_id', 'dntungs.created_at', 'dntungs.reason', 'dntungs.bill', 'dntungs.slc20','dntungs.slc40', 'dntungs.khang', 'dntungs.ttien', 'dntungs.lcont', 'dntungs.tghung', 'dntungs.cuoc', 'dntungs.nang', 'dntungs.ha', 'dntungs.hquan', 'dntungs.psinh', 'dntungs.check', 'dntungs.approve', 'dntungs.done', 'users.name', 'dntungs.ndonghang', 'dntungs.nyeucau', 'dntungs.ngiaohang', 'dntungs.nnhanhang', 'dntungs.ttien_ltron', 'dntungs.loaihang', 'dntungs.khachhang', 'dntungs.tuyenduong', 'dntungs.curator_check', 'dntungs.denghiquyettoan'])->where('curator_check', true)->where('approve', true)->where('done', false);
+		$yclhangs = Dntung::join('users', 'dntungs.user_id', '=', 'users.id')->select(['dntungs.id', 'dntungs.user_id', 'dntungs.created_at', 'dntungs.reason', 'dntungs.bill', 'dntungs.slc20','dntungs.slc40', 'dntungs.khang', 'dntungs.ttien', 'dntungs.lcont', 'dntungs.tghung', 'dntungs.cuoc', 'dntungs.nang', 'dntungs.ha', 'dntungs.hquan', 'dntungs.psinh', 'dntungs.check', 'dntungs.approve', 'dntungs.done', 'users.name', 'dntungs.ndonghang', 'dntungs.nyeucau', 'dntungs.ngiaohang', 'dntungs.nnhanhang', 'dntungs.ttien_ltron', 'dntungs.loaihang', 'dntungs.khachhang', 'dntungs.tuyenduong', 'dntungs.curator_check', 'dntungs.denghiquyettoan'])->where('curator_check', true)->where('approve', true)->where('dntungs.ttien_ltron', '>', 0)->where('done', false);
 		return Datatables::of($yclhangs)->addColumn('filebooking', function($yclhang){
 			return '<a href="/de_nghi_tam_ung/'.$yclhang->id.'.pdf'.'". class="btn btn-xs btn-primary">View</a>';	
 		})->addColumn('status', function($yclhang){
@@ -318,15 +318,31 @@ class DatatablesController extends Controller
 		$str_month = strval($month);
 		$str_year = strval($year);
 		$ym = $str_year.'-'.$str_month.'-';
-		$dulieus = Quyettoan::join('dntungs', 'quyettoans.dntung_id', '=', 'dntungs.id')->select(['quyettoans.nchi', 'quyettoans.ldo', 'dntungs.slc20', 'dntungs.slc40', 'dntungs.lcont', 'dntungs.khang', 'dntungs.bill', 'quyettoans.stien', 'quyettoans.hdon', 'quyettoans.nphanh', 'quyettoans.gchu', 'dntungs.date_done'])->where('dntungs.done', true)->where('dntungs.date_done', 'LIKE', $ym.'%');
-		return Datatables::of($dulieus)->addColumn('tongcont', function($dlieu){return $dlieu->slc20+$dlieu->slc40;})->addColumn('tienchuaVAT', function($dlieu){return round($dlieu->stien/1.1);})->addColumn('VAT', function($dulieu){return round($dulieu->stien/1.1*0.1);})->addColumn('qtoancty', function($dulieu){return $dulieu->stien;})->make(true);
+		$dulieus = Quyettoan::join('dntungs', 'quyettoans.dntung_id', '=', 'dntungs.id')->select(['dntungs.bill', 'quyettoans.ldo', 'quyettoans.dvtinh', 'quyettoans.soluong', 'quyettoans.dongia', 'quyettoans.stien', 'quyettoans.VAT', 'quyettoans.tong', 'quyettoans.gchu'])->where('dntungs.done', true)->where('dntungs.date_done', 'LIKE', $ym.'%');
+		return Datatables::of($dulieus)->addColumn('STT', function($dlieu){ return '';})->make(true);
 	}
 	public function tongketbooking($year, $month)
 	{
 		$str_month = strval($month);
 		$str_year = strval($year);
 		$ym = $str_year.'-'.$str_month.'-';
-		$dulieus = QTCont::join('dntungs', 'q_t_conts.dntung_id', '=', 'dntungs.id')->select(['dntungs.khang', 'q_t_conts.nxchay', 'q_t_conts.bsxe', 'dntungs.loaihang', 'dntungs.tuyenduong', 'dntungs.khachhang', 'q_t_conts.lxe', 'q_t_conts.scont', 'q_t_conts.ccont', 'q_t_conts.nxe', 'q_t_conts.lcont', 'dntungs.bill', 'q_t_conts.pnha', 'q_t_conts.khquan', 'q_t_conts.cxe', 'q_t_conts.cgui', 'q_t_conts.cmua', 'q_t_conts.gvcVAT', 'q_t_conts.cbcVAT', 'q_t_conts.gvdchinh'])->where('dntungs.done', true)->where('dntungs.date_done', 'LIKE', $ym.'%');
-		return Datatables::of($dulieus)->addColumn('pnhaVAT', function($dulieu){return round($dulieu->pnha*0.1);})->addColumn('VATgvon', function($dulieu){return round($dulieu->gvcVAT*0.1);})->addColumn('VATgvdchinh', function($dulieu){return round($dulieu->gvdchinh*0.1);})->addColumn('lngop1', function($dulieu){return ($dulieu->cbcVAT - $dulieu->gvcVAT);})->addColumn('lngop2', function($dulieu){return ($dulieu->cbcVAT -$dulieu->gvdchinh);})->addColumn('mschuyen', function($dulieu){return 'ma so chuyen';})->make(true);
+		$dulieus = QTCont::join('dntungs', 'q_t_conts.dntung_id', '=', 'dntungs.id')->select(['dntungs.user_id', 'dntungs.khang', 'dntungs.khachhang', 'dntungs.stokhai','dntungs.bill', 'q_t_conts.scont', 'q_t_conts.sochi', 'q_t_conts.ccont', 'q_t_conts.lcont', 'dntungs.hangtau',  'q_t_conts.bainang', 'q_t_conts.baiha', 'q_t_conts.trongluong', 'dntungs.nyeucau', 'dntungs.ndonghang', 'dntungs.ngiaohang', 'dntungs.nnhanhang', 'q_t_conts.dieuxe', 'q_t_conts.bsxe', 'q_t_conts.diadiemdongtrahang', 'dntungs.tuyenduong', 'q_t_conts.phinangchuaVAT', 'q_t_conts.VATphinang', 'q_t_conts.sohoadonnang', 'q_t_conts.nxuathoadonnang', 'q_t_conts.dvicaphoadonnang', 'q_t_conts.phihachuaVAT', 'q_t_conts.VATphiha', 'q_t_conts.sohoadonha', 'q_t_conts.nxuathoadonha', 'q_t_conts.dvicaphoadonha', 'q_t_conts.boctokhai', 'q_t_conts.hquantiepnhan', 'q_t_conts.hquangiamsat', 'q_t_conts.hquankiemhoa', 'q_t_conts.cuoccont', 'q_t_conts.llenhhangtau', 'q_t_conts.luucont', 'q_t_conts.luubai', 'q_t_conts.phivesinh', 'q_t_conts.phicatday', 'q_t_conts.boctem', 'q_t_conts.kddtvchuaVAT', 'q_t_conts.VATkddtv', 'q_t_conts.phingoaikddtv', 'q_t_conts.cackhoankhacchokhach', 'q_t_conts.tong', 'q_t_conts.ghichu'])->where('dntungs.done', true)->where('dntungs.date_done', 'LIKE', $ym.'%');
+		return Datatables::of($dulieus)->addColumn('ngaydonghang', function($dlieu){if($dlieu->khang=='Xuất') {return $dlieu->ndonghang;}else{return '';} })->addColumn('ngaydohang', function($dlieu){if($dlieu->khang=='Xuất') {return '';}else{return $dlieu->ndonghang;} })->addColumn('pnhaVAT', function($dulieu){return round($dulieu->pnha*0.1);})->addColumn('VATgvon', function($dulieu){return round($dulieu->gvcVAT*0.1);})->addColumn('VATgvdchinh', function($dulieu){return round($dulieu->gvdchinh*0.1);})->addColumn('lngop1', function($dulieu){return ($dulieu->cbcVAT - $dulieu->gvcVAT);})->addColumn('lngop2', function($dulieu){return ($dulieu->cbcVAT -$dulieu->gvdchinh);})->addColumn('mschuyen', function($dulieu){return '';})->addColumn('PIC', function($dlieu){ return User::findOrFail($dlieu->user_id)->name;})->make(true);
+	}
+	public function tongkethangmuc_proponent($year, $month)
+	{
+		$str_month = strval($month);
+		$str_year = strval($year);
+		$ym = $str_year.'-'.$str_month.'-';
+		$dulieus = Quyettoan::join('dntungs', 'quyettoans.dntung_id', '=', 'dntungs.id')->select(['dntungs.user_id', 'dntungs.bill', 'dntungs.khachhang', 'quyettoans.ldo', 'quyettoans.dvtinh', 'quyettoans.soluong', 'quyettoans.dongia', 'quyettoans.stien', 'quyettoans.VAT', 'quyettoans.tong', 'quyettoans.gchu'])->where('user_id', '=', \Auth::user()->id)->where('dntungs.done', true)->where('dntungs.date_done', 'LIKE', $ym.'%');
+		return Datatables::of($dulieus)->addColumn('STT', function($dlieu){ return '';})->make(true);
+	}
+	public function tongketbooking_proponent($year, $month)
+	{
+		$str_month = strval($month);
+		$str_year = strval($year);
+		$ym = $str_year.'-'.$str_month.'-';
+		$dulieus = QTCont::join('dntungs', 'q_t_conts.dntung_id', '=', 'dntungs.id')->select(['dntungs.user_id', 'dntungs.khang', 'dntungs.khachhang', 'dntungs.stokhai','dntungs.bill', 'q_t_conts.scont', 'q_t_conts.sochi', 'q_t_conts.ccont', 'q_t_conts.lcont', 'dntungs.hangtau',  'q_t_conts.bainang', 'q_t_conts.baiha', 'q_t_conts.trongluong', 'dntungs.nyeucau', 'dntungs.ndonghang', 'dntungs.ngiaohang', 'dntungs.nnhanhang', 'q_t_conts.dieuxe', 'q_t_conts.bsxe', 'q_t_conts.diadiemdongtrahang', 'dntungs.tuyenduong', 'q_t_conts.phinangchuaVAT', 'q_t_conts.VATphinang', 'q_t_conts.sohoadonnang', 'q_t_conts.nxuathoadonnang', 'q_t_conts.dvicaphoadonnang', 'q_t_conts.phihachuaVAT', 'q_t_conts.VATphiha', 'q_t_conts.sohoadonha', 'q_t_conts.nxuathoadonha', 'q_t_conts.dvicaphoadonha', 'q_t_conts.boctokhai', 'q_t_conts.hquantiepnhan', 'q_t_conts.hquangiamsat', 'q_t_conts.hquankiemhoa', 'q_t_conts.cuoccont', 'q_t_conts.llenhhangtau', 'q_t_conts.luucont', 'q_t_conts.luubai', 'q_t_conts.phivesinh', 'q_t_conts.phicatday', 'q_t_conts.boctem', 'q_t_conts.kddtvchuaVAT', 'q_t_conts.VATkddtv', 'q_t_conts.phingoaikddtv', 'q_t_conts.cackhoankhacchokhach', 'q_t_conts.tong', 'q_t_conts.ghichu'])->where('user_id', '=', \Auth::user()->id)->where('dntungs.done', true)->where('dntungs.date_done', 'LIKE', $ym.'%');
+		return Datatables::of($dulieus)->addColumn('ngaydonghang', function($dlieu){if($dlieu->khang=='Xuất') {return $dlieu->ndonghang;}else{return '';} })->addColumn('ngaydohang', function($dlieu){if($dlieu->khang=='Xuất') {return '';}else{return $dlieu->ndonghang;} })->addColumn('pnhaVAT', function($dulieu){return round($dulieu->pnha*0.1);})->addColumn('VATgvon', function($dulieu){return round($dulieu->gvcVAT*0.1);})->addColumn('VATgvdchinh', function($dulieu){return round($dulieu->gvdchinh*0.1);})->addColumn('lngop1', function($dulieu){return ($dulieu->cbcVAT - $dulieu->gvcVAT);})->addColumn('lngop2', function($dulieu){return ($dulieu->cbcVAT -$dulieu->gvdchinh);})->addColumn('mschuyen', function($dulieu){return '';})->addColumn('PIC', function($dlieu){ return User::findOrFail($dlieu->user_id)->name;})->make(true);
 	}
 }

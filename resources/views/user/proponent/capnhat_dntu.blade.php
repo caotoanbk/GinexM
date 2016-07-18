@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
 <h3 class='col-md-8 col-md-offset-3'>CẬP NHẬT KẾ HOẠCH LÀM HÀNG</h3>
@@ -29,9 +29,9 @@
 	<div class='col-md-8'>{!! Form::text('bill', null, array('class' => 'form-control', 'id' => 'bill'))!!}</div>
 </div>
 <div class='form-group'>
-{!! Form::label('stkhai', 'Số tờ khai', ['class' => 'col-md-3 control-label']) !!}
+{!! Form::label('stokhai', 'Số tờ khai', ['class' => 'col-md-3 control-label']) !!}
 <div class='col-md-8'>
-{!! Form::text('stkhai', null, ['class' => 'form-control']) !!}
+{!! Form::text('stokhai', null, ['class' => 'form-control']) !!}
 </div>
 </div>
 <div class='form-group required'>
@@ -96,19 +96,19 @@
 </div>
 <div class='form-group required'>
 	{!! Form::label('nyeucau','Ngày yêu cầu', array('class' => 'col-md-3 control-label')) !!}
-	<div class='col-md-8'>{!! Form::text('nyeucau', \Carbon\Carbon::now()->format('Y-m-d'), array('class' => 'form-control', 'id' => 'nyeucau'))!!}</div>
+	<div class='col-md-8'>{!! Form::text('nyeucau', null, array('class' => 'form-control', 'id' => 'nyeucau'))!!}</div>
 </div>
 <div class='form-group required'>
 	{!! Form::label('ndonghang','Ngày đóng hàng', array('class' => 'col-md-3 control-label')) !!}
-	<div class='col-md-8'>{!! Form::text('ndonghang', \Carbon\Carbon::now()->format('Y-m-d'), array('class' => 'form-control', 'id' => 'ndonghang'))!!}</div>
+	<div class='col-md-8'>{!! Form::text('ndonghang', null, array('class' => 'form-control', 'id' => 'ndonghang'))!!}</div>
 </div>
 <div id="input-ngaygiaohang" class='form-group required hidden disabled'>
 	{!! Form::label('ngiaohang','Ngày giao hàng', array('class' => 'col-md-3 control-label')) !!}
-	<div class='col-md-8'>{!! Form::date('ngiaohang', \Carbon\Carbon::now(), array('class' => 'form-control'))!!}</div>
+	<div class='col-md-8'>{!! Form::date('ngiaohang', null, array('class' => 'form-control'))!!}</div>
 </div>
 <div id="input-ngaynhanhang" class='form-group required hidden disabled'>
 	{!! Form::label('nnhanhang','Ngày nhận hàng', array('class' => 'col-md-3 control-label')) !!}
-	<div class='col-md-8'>{!! Form::date('nnhanhang', \Carbon\Carbon::now(), array('class' => 'form-control'))!!}</div>
+	<div class='col-md-8'>{!! Form::date('nnhanhang', null, array('class' => 'form-control'))!!}</div>
 </div>
 <div class='form-group required'>
 	{!! Form::label('filebooking','File Booking', array('class' => 'col-md-3 control-label')) !!}

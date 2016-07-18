@@ -7,14 +7,7 @@ $(function(){
 		},
 		"responsive": true,
 		"serverSide": true,
-		"ajax": {
-			"url": '/tong-ket/booking/data/'+year+'/'+month,
-			"type": 'get',
-			"data": {
-				'firstname': 'Cao',
-				'lastname': 'toan',
-			},
-		},
+		"ajax": '/proponent/tong-ket/booking/data/'+year+'/'+month,
 		"dom": 'Bfrtip',
 		"buttons": ['excel'],
 		columns: [
@@ -37,7 +30,6 @@ $(function(){
 			{data: 'ngaydohang', name: 'ngaydohang', searchable: false, orderable: false},
 			{data: 'ngiaohang', name: 'dntungs.ngiaohang'},
 			{data: 'nnhanhang', name: 'dntungs.nnhanhang'},
-			{data: 'PIC', name: 'PIC', searchable: false, orderable: false},
 			{data: 'dieuxe', name: 'q_t_conts.dieuxe'},
 			{data: 'bsxe', name: 'q_t_conts.bsxe'},
 			{data: 'diadiemdongtrahang', name: 'q_t_conts.diadiemdongtrahang'},
@@ -92,15 +84,13 @@ $(function(){
 		},
 		"responsive": true,
 		"serverSide": true,
-		"ajax": {
-			"url":'/tong-ket/hang-muc/data/'+year+'/'+month,
-			"type": "GET"
-		},
+		"ajax": '/proponent/tong-ket/hang-muc/data/'+year+'/'+month,
 		"dom": 'Bfrtip',
 		"buttons": ['excel'],
 		columns: [
 			{data: 'STT', name: 'STT', searchable: false, orderable: false, render: function(data, type, row, meta) { var ix = meta.row + 1; return ix;}},
 			{data: 'bill', name: 'dntungs.bill'},
+			{data: 'khachhang', name: 'dntungs.khachhang'},
 			{data: 'ldo', name: 'quyettoans.ldo'},
 			{data: 'dvtinh', name: 'quyettoans.dvtinh'},
 			{data: 'soluong', name: 'quyettoans.soluong'},

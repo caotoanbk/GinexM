@@ -14,6 +14,10 @@ class CuratorController extends Controller
 	{
 		$this->middleware('auth');
 	}
+	public function tongketthang()
+	{
+		return view('user.director.tongket'); 
+	}
 	public function cur_khlhang_index()
 	{
 		return view('user.curator.khlhang_home');

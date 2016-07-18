@@ -511,6 +511,7 @@ echo number_format($t_tien_ltron, 0, '.', ',');
         <th rowspan="2">Bill/Booking</th>
         <th colspan="2">Container</th>
         <th rowspan="2">Loại hình</th>
+        <th rowspan="2">Phí lấy lệnh</th>
         <th rowspan="2">Cược</th>
         <th rowspan="2">Nâng</th>
         <th rowspan="2">Hạ</th>
@@ -528,6 +529,7 @@ echo number_format($t_tien_ltron, 0, '.', ',');
 			<td>{{$item->slc20}}</td>
 			<td>{{$item->slc40}}</td>
 			<td>{{$item->lcont}}</td>
+			<td>{{number_format($item->playlenh, 0, '.', ',')}}</td>
 			<td>{{number_format($item->cuoc, 0, '.', ',')}}</td>
 			<td>{{number_format($item->nang, 0, '.', ',')}}</td>
 			<td>{{number_format($item->ha, 0, '.', ',')}}</td>
@@ -537,11 +539,11 @@ echo number_format($t_tien_ltron, 0, '.', ',');
 		</tr>
 		@endforeach
       <tr>
-        <th colspan="9">Tổng chi phí thực tế</th>
+        <th colspan="10">Tổng chi phí thực tế</th>
         <th>{{number_format($t_tien, 0, '.', ',')}}</th>
       </tr>
       <tr>
-        <th colspan="9">Tổng số tiền xin tạm ứng thực tế</th>
+        <th colspan="10">Tổng số tiền xin tạm ứng thực tế</th>
         <th>{{number_format($t_tien_ltron, 0, '.', ',')}}</th>
       </tr>
     </tbody>

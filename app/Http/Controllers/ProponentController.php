@@ -12,6 +12,7 @@ use App\Quyettoan;
 use App\QTCont;
 use Auth;
 use Carbon\Carbon;
+use DB;
 
 class ProponentController extends Controller
 {
@@ -19,6 +20,28 @@ class ProponentController extends Controller
 	public function __construct()
 	{
 		$this->middleware('auth');
+	}
+	public function checkexistbill(Request $request)
+	{
+		$bill = $request->get('bill');
+		$dntu = DB::table('dntungs')->where('bill', '=', $bill)->get();
+		if($dntu){
+			return 'false';
+		}else{
+			return 'true';
+		}
+	}
+	public function tongketthang()
+	{
+		return view('user.proponent.tongket');
+	}
+	public function xulytongket(Request $request)
+	{
+		$my = $request->input('month_tket');
+		$arr = explode('-', $my);
+		$month = $arr[1];
+		$year = $arr[0];
+		return view('user.proponent.tongket_tamung', compact('month', 'year'));
 	}
 	public function khlhang_index()
 	{
@@ -183,7 +206,7 @@ class ProponentController extends Controller
 		$dongia = $request->input('dongia');
 		$stien = $request->input('stien');
 		$VAT = $request->input('VAT');
-		$tong = $request->input('tong');
+		$tong_ps = $request->input('tong_ps');
 		$hdon = $request->input('hdon');
 		$nphanh = $request->input('nphanh');
 		$ccho = $request->input('ccho');
@@ -198,7 +221,7 @@ class ProponentController extends Controller
 			$qtoan->dongia = $this->convert($dongia[$i]);
 			$qtoan->stien = $this->convert($stien[$i]);
 			$qtoan->VAT = $this->convert($VAT[$i]);
-			$qtoan->tong = $this->convert($tong[$i]);
+			$qtoan->tong = $this->convert($tong_ps[$i]);
 			$qtoan->hdon = $hdon[$i];
 			$qtoan->nphanh = $nphanh[$i];
 			$qtoan->chicho = $ccho[$i];

@@ -306,7 +306,7 @@ $(function(){
 
 	$('#them_psinh').click(function(e){
 		e.preventDefault();
-		$('tbody#cppsinh').append('<tr><td class="text-danger text-center"><a href="#" id="remove_item" class="text-danger">&times;</a></td><td></td><td></td><td><input type="text" name="ldo[]" size="50"/></td><td><input type="text" name="dvtinh[]" size="15"/></td><td><input type="number" name="soluong[]" size="10"/></td><td><input type="text" name="dongia[]" size="15"/></td><td><input type="text" readonly="true" name="stien[]" size="15"/></td><td><input type="text" name="VAT[]" size="15"/></td><td><input type="text" readonly="true" name="tong[]" size="15"/></td><td><input type="text" name="hdon[]" size="15"/></td><td><input type="text" name="nphanh[]" size="15"/></td><td><input type="text" name="ccho[]" size="15"/></td><td><input type="date" name="nchi[]"/></td><td><input type="text" name="gchu[]" size="50"/></td></tr>');
+		$('tbody#cppsinh').append('<tr><td class="text-danger text-center"><a href="#" id="remove_item" class="text-danger">&times;</a></td><td></td><td></td><td><input type="text" name="ldo[]" size="50"/></td><td><input type="text" name="dvtinh[]" size="15"/></td><td><input type="number" name="soluong[]" size="10"/></td><td><input type="text" name="dongia[]" size="15"/></td><td><input type="text" readonly="true" name="stien[]" size="15"/></td><td><input type="text" name="VAT[]" size="15"/></td><td><input type="text" readonly="true" name="tong_ps[]" size="15"/></td><td><input type="text" name="hdon[]" size="15"/></td><td><input type="text" name="nphanh[]" size="15"/></td><td><input type="text" name="ccho[]" size="15"/></td><td><input type="date" name="nchi[]"/></td><td><input type="text" name="gchu[]" size="50"/></td></tr>');
 		$('input[name="dongia[]"]').autoNumeric('init', {
 			aSep:'.',
 			aDec: ',',
@@ -341,7 +341,7 @@ $(function(){
 			pSign: 's',
 			aPad: false,	
 		});
-	   $(rows[rows.length-1]).on('focus', 'input[name="tong[]"]', function(e){
+	   $(rows[rows.length-1]).on('focus', 'input[name="tong_ps[]"]', function(e){
 		    var tdSoluong = $(rows[rows.length-1]).children("td:nth-child(6)");
 			var soluong = $(tdSoluong).children("input[type=number]").val();
 		    var tdDongia = $(rows[rows.length-1]).children("td:nth-child(7)");
@@ -360,7 +360,7 @@ $(function(){
 			}
 			$(this).val((dongia*soluong+VAT).toString());
 	   });	
-		$('input[name="tong[]"]').autoNumeric('init', {
+		$('input[name="tong_ps[]"]').autoNumeric('init', {
 			aSep:'.',
 			aDec: ',',
 			aSign: ' VND',

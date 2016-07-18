@@ -79,14 +79,14 @@ $(function() {
 			{data: 'khachhang', name: 'khachhang'},
 			{data: 'bill', name: 'bill'},
 			{data: 'stokhai', name: 'stokhai'},
-			{data: 'slcont', name: 'slcont', className: 'none'},
+			{data: 'slcont', name: 'slcont'},
 			{data: 'slc20', name: 'slc20', className: 'none'},
 			{data: 'slc40', name: 'slc40', className: 'none'},
-			{data: 'slchroi', name: 'slchroi', className: 'none'},
+			{data: 'slchroi', name: 'slchroi', className: 'all'},
 			{data: 'slcnong', name: 'slcnong', className: 'none'},
 			{data: 'slclanh', name: 'slclanh', className: 'none'},
 			{data: 'hangtau', name: 'hangtau'},
-			{data: 'tuyenduong', name: 'tuyenduong'},
+			{data: 'tuyenduong', name: 'tuyenduong', className: 'none'},
 			{data: 'ndonghang', name: 'ndonghang'},
 			{data: 'nhaxe', name: 'nhaxe', className: 'none'},
 			{data: 'filebooking', name: 'filebooking', className: 'none', searchable: false, orderable: false},
@@ -144,7 +144,18 @@ $(function() {
 		//jquery validation
 		var validator = $('#content').validate({
 			rules: {
-				bill: { required: true, },
+				bill: {
+					required: true, 
+					remote: {
+						url: '/check-exist-bill',
+						type: 'get',
+						data: {
+							bill: function() {
+								return $('#bill').val();
+							}
+						}
+					}
+				},
 				slc20: { required: true, },
 				slc40: { required: true, },
 				lcont: { required: true, },
@@ -156,7 +167,8 @@ $(function() {
 			},
 			messages: {
 				bill: {
-					required: '<div class="text-danger"><em><small>Bạn chưa nhập số chứng từ</small></em></div>'
+					required: '<div class="text-danger"><em><small>Bạn chưa nhập số bill or booking</small></em></div>',
+					remote: '<div class="text-danger"><em><small>Bill hay Booking nay da ton tai.</small></em></div>' 
 				},
 				slc20: {
 					required: '<div class="text-danger"><em><small>Bạn chưa nhập số lượng cont 20</small></em></div>'

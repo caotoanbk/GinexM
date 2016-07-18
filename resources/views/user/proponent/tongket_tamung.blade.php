@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
 			<section class='panel panel-primary'>
@@ -29,7 +29,6 @@
 							<th>Ngày dỡ hàng (nhập, NĐ)</th>
 							<th>Ngày giao hàng</th>
 							<th>Ngày nhận hàng</th>
-							<th>PIC</th>
 							<th>Điều xe</th>
 							<th>Biển số xe</th>
 							<th>Địa điểm đóng trả hàng</th>
@@ -76,6 +75,7 @@
 						<thead>
 							<th>STT</th>
 							<th>Bill/Booking</th>
+							<th>Khách hàng</th>
 							<th>Nội dung</th>
 							<th>ĐV tính</th>
 							<th>Số lượng</th>
@@ -97,5 +97,5 @@
 var month = "<?= $month?>";
 var year = "<?= $year?>";
 </script>
-<script type='text/javascript' src='/js/user/director/tktudata.js'></script>
+<script type='text/javascript' src='/js/user/proponent/tktudata.js'></script>
 @endsection

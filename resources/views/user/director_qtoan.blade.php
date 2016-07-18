@@ -14,9 +14,17 @@ function format($value){
 <div><strong>Số booking &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='ldtu' style="padding-left: 1.5em;">{{$dntung->bill}}</span></em></div>
 <div><strong>Tuyen duong &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='ldtu' style="padding-left: 1.5em;">{{$dntung->tuyenduong}}</span></em></div>
 <div><strong>Nha xe &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='ldtu' style="padding-left: 1.5em;">{{$dntung->nhaxe}}</span></em></div>
-<div><strong>Số tiền tạm ứng &nbsp;:</strong> <em><span id='sttu' style='padding-left: 1.5em;'>{{format($dntung->ttien)}}</span></em></div>
 <div><strong>Ngày tạm ứng &nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='ntu' style='padding-left: 1.5em;'>{{$dntung->created_at}}</span></em></div>
-<div><strong>Số tiền còn lại &nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='stclai' style='padding-left: 1.5em;'></span></em></div>
+<div><strong>Số tiền tạm ứng &nbsp;:</strong> <em><span id='sttu' style='padding-left: 1.5em;'>{{format($dntung->ttien_ltron)}}</span></em></div>
+<?php
+$stdachi = 0;
+$ttien_ltron = $dntung->ttien_ltron;
+foreach ($qtconts as $qtcont)
+{
+	$stdachi += $qtcont['tong'];	
+}
+?>
+<div><strong>Số tiền còn lại &nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='stclai' style='padding-left: 1.5em;'>{{format($ttien_ltron - $stdachi)}}</span></em></div>
 </div>
 <div style="margin-left: 25px;">
 {!! Form::open(array('method' => 'post', 'class' => 'form-horizontal', 'files' => true, 'name' => 'content', 'id' => 'content1')) !!}
@@ -26,6 +34,7 @@ function format($value){
 <table class='table table-bordered' id="qttu_cont" style="width: 450em;">
 <thead>
 	<tr>
+		<th style="width: 1em;">STT</th>
 		<th style="width: 8em;">Ngày</th>
 		<th>Số cont</th>
 		<th>Số chì</th>
@@ -71,6 +80,7 @@ function format($value){
 @if($qtconts)
 @foreach($qtconts as $qtcont)
 <tr>
+	<td>&nbsp;</td>
 	<td>{{$qtcont['nxchay']}}</td>
 	<td>{{$qtcont['scont']}}</td>
 	<td>{{$qtcont['sochi']}}</td>
@@ -118,30 +128,44 @@ function format($value){
 </div>
 <div>&nbsp;</div>
 
-<div><h4>CƯỚC PHÁT SINH</h4></div>
+<div><h4>THONG KE GUI KHACH HANG</h4></div>
 <div>&nbsp;</div>
 <div style="overflow: auto;">
 <table class='table table-bordered' id="qttu_ps" >
 <thead>
 	<tr>
-		<th>Lý do chi</th>
-		<th>Số tiền</th>
+		<th style="width: 1em;">STT</th>
+		<th>Hạng mục thanh toán</th>
+		<th>ĐV tính</th>
+		<th>Số lượng</th>
+		<th>Đơn giá</th>
+		<th>Thành tiền</th>
+		<th>VAT</th>
+		<th>Tổng</th>
 		<th>Hóa đơn</th>
-		<th>Nơi phát hành</th>
+		<th>Noi phat hanh</th>
 		<th>Chi cho</th>
 		<th>Ngày chi</th>
+		<th>Ghi chú</th>
 	</tr>
 </thead>
 <tbody id='cppsinh'>
 @if($qtpsinh)
 @foreach($qtpsinh as $qtps)
 <tr>
+	<td>&nbsp;</td>
 	<td>{{$qtps['ldo']}}</td>
+	<td>{{$qtps['dvtinh']}}</td>
+	<td>{{$qtps['soluong']}}</td>
+	<td>{{format($qtps['dongia'])}}</td>
 	<td>{{format($qtps['stien'])}}</td>
+	<td>{{format($qtps['VAT'])}}</td>
+	<td>{{format($qtps['tong'])}}</td>
 	<td>{{$qtps['hdon']}}</td>
 	<td>{{$qtps['nphanh']}}</td>
 	<td>{{$qtps['chicho']}}</td>
 	<td>{{$qtps['nchi']}}</td>
+	<td>{{$qtps['gchu']}}</td>
 </tr>
 @endforeach
 @endif

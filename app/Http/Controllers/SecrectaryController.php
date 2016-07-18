@@ -22,6 +22,10 @@ class SecrectaryController extends Controller
 		$qtpsinh = $dntung->qtoans()->get()->toArray();
 		return view('user.secrectary_qtoan', compact('dntung', 'qtconts', 'qtpsinh'));
 	}
+	public function tongketthang()
+	{
+		return view('user.director.tongket'); 
+	}
 	public function sec_khlhang_index()
 	{
 		return view('user.secrectary.khlhang_home');

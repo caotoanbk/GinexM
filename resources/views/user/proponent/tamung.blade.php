@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
 <h3 class='col-md-8 col-md-offset-3'><u>ĐỀ NGHỊ TẠM ỨNG</u></h3>
@@ -82,7 +82,7 @@
 </div>
 <div class='form-group required'>
 	{!! Form::label('tghung','Hoàn ứng', array('class' => 'col-md-3 control-label')) !!}
-	<div class='col-md-8'>{!! Form::text('tghung', \Carbon\Carbon::now()->format('Y-m-d'), array('class' => 'form-control', 'id' => 'nhoanung'))!!}</div>
+	<div class='col-md-8'>{!! Form::text('tghung', null, array('class' => 'form-control', 'id' => 'nhoanung'))!!}</div>
 </div>
 <div class="form-group"><div class="col-md-8 col-md-offset-3">
 		<button type="submit" class="btn btn-primary" id='dntung'>Yêu Cầu Tạm Ứng</button> </div> </div>

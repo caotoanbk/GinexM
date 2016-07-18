@@ -24,7 +24,7 @@
 <div class='form-group'>
 {!! Form::label('stkhai', 'Số tờ khai', ['class' => 'col-md-3 control-label']) !!}
 <div class='col-md-8'>
-{!! Form::text('stkhai', null, ['class' => 'form-control']) !!}
+{!! Form::text('stokhai', null, ['class' => 'form-control']) !!}
 </div>
 </div>
 <div class='form-group required'>
@@ -97,11 +97,11 @@
 </div>
 <div id="input-ngaygiaohang" class='form-group required hidden disabled'>
 	{!! Form::label('ngiaohang','Ngày giao hàng', array('class' => 'col-md-3 control-label')) !!}
-	<div class='col-md-8'>{!! Form::date('ngiaohang', \Carbon\Carbon::now(), array('class' => 'form-control'))!!}</div>
+	<div class='col-md-8'>{!! Form::text('ngiaohang', \Carbon\Carbon::now()->format('Y-m-d'), array('class' => 'form-control', 'id' => 'ngiaohang'))!!}</div>
 </div>
 <div id="input-ngaynhanhang" class='form-group required hidden disabled'>
 	{!! Form::label('nnhanhang','Ngày nhận hàng', array('class' => 'col-md-3 control-label')) !!}
-	<div class='col-md-8'>{!! Form::date('nnhanhang', \Carbon\Carbon::now(), array('class' => 'form-control'))!!}</div>
+	<div class='col-md-8'>{!! Form::text('nnhanhang', \Carbon\Carbon::now()->format('Y-m-d'), array('class' => 'form-control', 'id' => 'nnhanhang'))!!}</div>
 </div>
 <div class='form-group required'>
 	{!! Form::label('filebooking','File Booking', array('class' => 'col-md-3 control-label')) !!}
