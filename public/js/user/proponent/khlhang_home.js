@@ -6,7 +6,7 @@ $(function() {
 		"responsive": false ,
         "select": {
             style:    'single',
-			selector: 'td:first-child'
+			selector: 'tr'
         },
 		"responsive": {
 			details: {
@@ -77,20 +77,22 @@ $(function() {
 			{data: 'khang', name: 'khang'},
 			{data: 'loaihang', name: 'loaihang'},
 			{data: 'khachhang', name: 'khachhang'},
-			{data: 'bill', name: 'bill'},
+			{data: 'bill', name: 'bill', className: 'all'},
 			{data: 'stokhai', name: 'stokhai'},
-			{data: 'slcont', name: 'slcont'},
+			{data: 'slcont', name: 'slcont', className: 'desktop'},
 			{data: 'slc20', name: 'slc20', className: 'none'},
 			{data: 'slc40', name: 'slc40', className: 'none'},
-			{data: 'slchroi', name: 'slchroi', className: 'all'},
+			{data: 'slchroi', name: 'slchroi', className: 'none'},
 			{data: 'slcnong', name: 'slcnong', className: 'none'},
 			{data: 'slclanh', name: 'slclanh', className: 'none'},
-			{data: 'hangtau', name: 'hangtau'},
+			{data: 'hangtau', name: 'hangtau', className: 'none'},
 			{data: 'tuyenduong', name: 'tuyenduong', className: 'none'},
-			{data: 'ndonghang', name: 'ndonghang'},
+			{data: 'nyeucau', name: 'nyeucau', className: 'none'},
+			{data: 'ndonghang', name: 'ndonghang', className: 'desktop'},
+			{data: 'ngiaohang', name: 'ngiaohang', className: 'desktop'},
 			{data: 'nhaxe', name: 'nhaxe', className: 'none'},
 			{data: 'filebooking', name: 'filebooking', className: 'none', searchable: false, orderable: false},
-			{data: 'status', name: 'status', searchable: false, orderable: false},
+			{data: 'status', name: 'status', searchable: false, orderable: false, className: 'desktop'},
 		],
 		"order": [[2, 'desc']]
 	});
@@ -117,30 +119,6 @@ $(function() {
 		$('input[id=ngiaohang]').datepicker({dateFormat: 'yy-mm-dd'});
 		$('input[id=nnhanhang]').datepicker({dateFormat: 'yy-mm-dd'});
 		$('input[id=nhoanung]').datepicker({dateFormat: 'yy-mm-dd'});
-		$('select[name=khang]').change(function(e){
-			if($(this).val() == 'Xuất'){
-				$('#input-ngaynhanhang').removeClass('hidden');
-				$('#input-ngaynhanhang').removeClass('disabled');
-				$('#input-ngaygiaohang').addClass('hidden');
-				$('#input-ngaygiaohang').addClass('disabled');
-				$('input[name=ngiaohang]').attr('disabled', 'disabled');
-				$('input[name=nnhanhang]').removeAttr('disabled');
-			}else if(($(this).val() == 'Nhập') || ($(this).val() == 'Kinh doanh nội địa')){
-				$('#input-ngaygiaohang').removeClass('hidden');
-				$('#input-ngaygiaohang').removeClass('disabled');
-				$('#input-ngaynhanhang').addClass('hidden');
-				$('#input-ngaynhanhang').addClass('disabled');
-				$('input[name=nnhanhang]').attr('disabled', 'disabled');
-				$('input[name=ngiaohang]').removeAttr('disabled');
-			}else{
-				$('#input-ngaygiaohang').addClass('hidden');
-				$('#input-ngaygiaohang').addClass('disabled');
-				$('#input-ngaynhanhang').addClass('hidden');
-				$('#input-ngaynhanhang').addClass('disabled');
-				$('input[name=nnhanhang]').attr('disabled', 'disabled');
-				$('input[name=ngiaohang]').attr('disabled', 'disabled');
-			}
-		});
 		//jquery validation
 		var validator = $('#content').validate({
 			rules: {
@@ -164,6 +142,9 @@ $(function() {
 				loaihang: {required: true},
 				tuyenduong: {required: true},
 				khachhang: {required: true},
+				ngiaohang: {required: true},
+				ndonghang: {required: true},
+				nyeucau: {required: true},
 			},
 			messages: {
 				bill: {
@@ -186,13 +167,22 @@ $(function() {
 					required: '<div class="text-danger"><em><small>Bạn chưa nhập thời gian hoàn ứng</small></em></div>'
 				},
 				loaihang: {
-					required: '<div class="text-danger"><em><small>Bạn chưa nhập loại hàng (nguyên cont hay rời)</small></em></div>'
+					required: '<div class="text-danger"><em><small>Bạn chưa nhập ten hàng</small></em></div>'
 				},
 				tuyenduong: {
 					required: '<div class="text-danger"><em><small>Bạn chưa nhập tuyến đường</small></em></div>'
 				},
 				khachhang: {
 					required: '<div class="text-danger"><em><small>Bạn chưa nhập khách hàng</small></em></div>'
+				},
+				nyeucau: {
+					required: '<div class="text-danger"><em><small>Ban chua nhap ngay khach yeu cau</small></em></div>'
+				},
+				ndonghang: {
+					required: '<div class="text-danger"><em><small>Ban chua nhap ngay dong/do hang</small></em></div>'
+				},
+				ngiaohang: {
+					required: '<div class="text-danger"><em><small>Ban chua nhap ngay giao/nhan hang</small></em></div>'
 				},
 			},
 		});

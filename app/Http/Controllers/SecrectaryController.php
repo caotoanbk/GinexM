@@ -59,7 +59,20 @@ class SecrectaryController extends Controller
 		$khlh->check = false;
 		$khlh->save();
 		return 'Uncheck Success';
-
+	}
+	public function checkTU($id)
+	{
+		$khlh = Dntung::findOrFail($id);
+		$khlh->secrectary_check_tu = true;
+		$khlh->save();
+		return 'Check tam ung Success';
+	}
+	public function uncheckTU($id)
+	{
+		$khlh = Dntung::findOrFail($id);
+		$khlh->secrectary_check_tu = false;
+		$khlh->save();
+		return 'Uncheck  tam ung Success';
 	}
 	public function kiemtra(Request $request)
 	{

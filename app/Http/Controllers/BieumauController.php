@@ -101,4 +101,10 @@ class BieumauController extends Controller
 		}
 		return 'ok';
 	}
+	public function mauquyettoan($id)
+	{
+		$dntung = Dntung::findOrFail($id);
+		$qtoans = $dntung->qtoans()->get()->toArray();
+		return view('bieumau.mauquyettoan', compact('dntung', 'qtoans'));
+	}
 }

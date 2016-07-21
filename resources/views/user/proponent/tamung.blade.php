@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="container-fluid">
+<div class="container">
     <div class="row">
         <div class="col-md-12">
 <h3 class='col-md-8 col-md-offset-3'><u>ĐỀ NGHỊ TẠM ỨNG</u></h3>

@@ -6,7 +6,7 @@ $(function() {
 		"responsive": false ,
         "select": {
             style:    'single',
-			selector: 'td:first-child'
+			selector: 'tr'
         },
 		"responsive": {
 			details: {
@@ -111,16 +111,45 @@ $(function() {
 					}
 				}
 			},
+			{
+				text: 'Gửi email yêu cầu',
+				className: 'btn',	
+				action: function (e, dt, node, config){
+					var selectedRows = dt.rows( {selected: true}).toArray();
+				    var count = dt.rows( { selected: true } ).count();
+					if(count>0){
+					var id = dt.rows(selectedRows[0][0]).data().toArray()[0].id;
+					var booking, nyeucau;
+					$('#emailmodal_booking').text('');
+					$('textarea[name=yeucauemail]').val('');
+					$.ajax({
+						url: '/data/khlhang/details/'+id,
+						method: 'get',
+						success: function(data){
+							console.log(data);
+							$('#emailmodal_booking').text(data.bill);
+						},
+						error: function(data){
+							alert('error');
+						}
+					});
+					$('input[name=id]').val(id);
+					$('#myModalEmail').modal('show').draggable();
+					}else{
+						alert('Bạn chưa chọn ke hoach lam hang nào');
+					}
+				}
+			},
 		],
 		"columns": [
 			{data: 'resp', name: 'resp', searchable: false, orderable: false},
 			{data: 'check', name: 'check', searchable: false, orderable: false},
-			{data: 'name', name: 'name'},
+			{data: 'name', name: 'name', className: 'desktop'},
 			{data: 'created_at', name: 'dntungs.created_at'},
-			{data: 'khang', name: 'dntungs.khang'},
-			{data: 'loaihang', name: 'dntungs.loaihang'},
-			{data: 'khachhang', name: 'dntungs.khachhang'},
-			{data: 'bill', name: 'dntungs.bill'},
+			{data: 'khang', name: 'dntungs.khang', className: 'desktop'},
+			{data: 'loaihang', name: 'dntungs.loaihang', className: 'desktop'},
+			{data: 'khachhang', name: 'dntungs.khachhang', className: 'desktop'},
+			{data: 'bill', name: 'dntungs.bill', className: 'all'},
 			{data: 'stokhai', name: 'dntungs.stokhai'},
 			{data: 'slcont', name: 'slcont', className: 'none'},
 			{data: 'slc20', name: 'slc20', className: 'none'},
@@ -130,10 +159,12 @@ $(function() {
 			{data: 'slclanh', name: 'slclanh', className: 'none'},
 			{data: 'hangtau', name: 'hangtau'},
 			{data: 'tuyenduong', name: 'tuyenduong', className: 'none'},
-			{data: 'ndonghang', name: 'ndonghang'},
+			{data: 'nyeucau', name: 'dntungs.nyeucau', className: 'none'},
+			{data: 'ndonghang', name: 'dntungs.ndonghang', className: 'desktop'},
+			{data: 'ngiaohang', name: 'dntungs.ngiaohang', className: 'desktop'},
 			{data: 'nhaxe', name: 'nhaxe', className: 'none'},
 			{data: 'filebooking', name: 'filebooking', className: 'none', searchable: false, orderable: false},
-			{data: 'status', name: 'status', searchable: false, orderable: false},
+			{data: 'status', name: 'status', searchable: false, orderable: false, className: 'desktop'},
 		],
 		"order": [[3, 'desc']]
 	});

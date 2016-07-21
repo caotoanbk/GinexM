@@ -23,6 +23,7 @@ class DirectorController extends Controller
 		}else{
 			$dntung = \App\Dntung::findOrFail($id);
 			$dntung->approve = true;
+			$dntung->director_cancel_check  = false;
 			$dntung->save();
 			return 'Success';
 		}
@@ -58,6 +59,7 @@ class DirectorController extends Controller
 	{
 		$khlh = Dntung::findOrFail($id);
 		$khlh->approve = true;
+		$khlh->director_cancel_check = false;
 		$khlh->save();
 		return "Approve success";
 	}
@@ -65,8 +67,25 @@ class DirectorController extends Controller
 	{
 		$khlh = Dntung::findOrFail($id);
 		$khlh->approve = false;
+		$khlh->director_cancel_check = true;
 		$khlh->save();
 		return "Unapprove success";
+	}
+	public function checkTU($id)
+	{
+		$khlh = Dntung::findOrFail($id);
+		$khlh->director_cancel_check = false;
+		$khlh->director_check_tu = true;
+		$khlh->save();
+		return "check tam ung success";
+	}
+	public function uncheckTU($id)
+	{
+		$khlh = Dntung::findOrFail($id);
+		$khlh->director_check_tu = false;
+		$khlh->secrectary_check_tu = false;
+		$khlh->save();
+		return "Uncheck tam ung success";
 	}
 	public function direc_khlhang_index()
 	{

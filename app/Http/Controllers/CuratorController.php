@@ -42,6 +42,7 @@ class CuratorController extends Controller
 	{
 		$khlh = Dntung::findOrFail($id);
 		$khlh->curator_check = true;
+		$khlh->curator_cancel_check = false;
 		$khlh->save();
 		return 'Curator check success';
 	}
@@ -49,7 +50,25 @@ class CuratorController extends Controller
 	{
 		$khlh = Dntung::findOrFail($id);
 		$khlh->curator_check = false;
+		$khlh->approve = false;
+		$khlh->curator_cancel_check = true;
 		$khlh->save();
 		return 'Curator uncheck success';
+	}
+	public function checkTU($id)
+	{
+		$khlh = Dntung::findOrFail($id);
+		$khlh->curator_check_tu = true;
+		$khlh->save();
+		return 'Curator check tu success';
+	}
+	public function uncheckTU($id)
+	{
+		$khlh = Dntung::findOrFail($id);
+		$khlh->curator_check_tu = false;
+		$khlh->director_check_tu = false;
+		$khlh->secrectary_check_tu = false;
+		$khlh->save();
+		return 'Curator uncheck tu success';
 	}
 }

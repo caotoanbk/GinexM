@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="container-fluid">
+<div class="container">
     <div class="row">
         <div class="col-md-12">
 			<form id="tongkettamung" method="post" action="/proponent/process/tongket">

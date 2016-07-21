@@ -29,10 +29,16 @@
 				<th>Ngày nhận hàng</th>
 				<th>Tình trạng</th>
 				<th>Cược</th>
+				<th>Phí lấy lênhj</th>
 				<th>Nâng</th>
 				<th>Hạ</th>
+				<th>Phí bóc tờ khai</th>
+				<th>Phí HQ tiếp nhận</th>
 				<th>Ký HQ giám sát</th>
-				<th>Phát sinh (nếu có)</th>
+				<th>Phí in tờ khai, mã vạch, đổi lệnh</th>
+				<th>Phí kiểm dịch động vật</th>
+				<th>Phí kiểm dịch thực vật</th>
+				<th>Phát sinh</th>
 			</thead>
 		</table>
 	</div>

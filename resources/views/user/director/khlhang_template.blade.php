@@ -1,4 +1,5 @@
 @include('partials.modal.khlhang')
+@include('partials.modal.email')
 <div id='message' class='hidden'>&nbsp;</div>
 <section class='panel panel-primary'>
 	<div class='panel-heading text-center'>
@@ -24,7 +25,9 @@
 				<th>Số cont lạnh</th>
 				<th>Hãng tàu</th>
 				<th>Tuyến đường</th>
+				<th>Ngày khach y/c</th>
 				<th>Ngày đóng/dỡ hàng</th>
+				<th>Ngày giao/nhan hàng</th>
 				<th>Nhà xe</th>
 				<th>Booking file</th>
 				<th>Tình trạng</th>

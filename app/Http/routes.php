@@ -3,6 +3,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::auth();
+Route::get('/home', function(){
+	return redirect('/');
+});
 Route::get('/check-exist-bill', 'ProponentController@checkexistbill');
 Route::get('/proponent/de-nghi-quyet-toan/{id}', 'ProponentController@denghiquyettoan');
 Route::get('/proponent/huy-de-nghi-quyet-toan/{id}', 'ProponentController@huydenghiquyettoan');
@@ -46,6 +49,8 @@ Route::get('/curator/tucqtoan/data', 'DatatablesController@cur_tucqtoan_home');
 Route::get('/curator/tudhthanh/data', 'DatatablesController@cur_tudhthanh_home');
 Route::get('/curator/check/{id}', 'CuratorController@checkKHLH');
 Route::get('/curator/uncheck/{id}', 'CuratorController@uncheckKHLH');
+Route::get('/curator/check-tu/{id}', 'CuratorController@checkTU');
+Route::get('/curator/uncheck-tu/{id}', 'CuratorController@uncheckTU');
 Route::get('/director/ke-hoach-lam-hang', 'DirectorController@direc_khlhang_index');
 Route::get('/director/de-nghi-tam-ung', 'DirectorController@direc_dntung_index');
 Route::get('/director/tam-ung-chua-quyet-toan', 'DirectorController@direc_tucqtoan_index');
@@ -59,9 +64,14 @@ Route::get('/director/tam-ung-chua-lam-hang', 'DirectorController@direc_tuclhang
 Route::get('/director/tuclhang/data', 'DatatablesController@direc_tuclhang_home');
 Route::get('/director/approve/{id}', 'DirectorController@approveKHLH');
 Route::get('/director/unapprove/{id}', 'DirectorController@unapproveKHLH');
+Route::get('/director/check-tu/{id}', 'DirectorController@checkTU');
+Route::get('/director/uncheck-tu/{id}', 'DirectorController@uncheckTU');
+Route::get('/secrectary/check-tu/{id}', 'SecrectaryController@checkTU');
+Route::get('/secrectary/uncheck-tu/{id}', 'SecrectaryController@uncheckTU');
 Route::get('/curator/tam-ung-chua-kiem-tra', 'CuratorController@cur_tucktra_index');
 Route::post('/process/tongket', 'DirectorController@xulytongket');
 Route::post('/proponent/process/tongket', 'ProponentController@xulytongket');
+Route::get('/proponent/get-secrectary-check-tu/{id}', 'ProponentController@getsecrectarychecktu');
 Route::post('/make-goods', 'ProponentController@storeYclhang');
 Route::get('/lam-hang/tam-ung/{id}', 'ProponentController@tamung');
 Route::get('/bieumau/phieuchi/{id}', 'BieumauController@phieuchi');
@@ -69,6 +79,7 @@ Route::get('/bieumau/denghitamung', 'BieumauController@denghitamung');
 Route::get('/bieumau/phieuchi', 'BieumauController@phieuchi');
 Route::get('/bieumau/phieuthu', 'BieumauController@phieuthu');
 Route::get('/bieumau/thanhtoantamung', 'BieumauController@thanhtoantamung');
+Route::get('/bieumau/mau-quyet-toan/{id}', 'BieumauController@mauquyettoan');
 Route::get('/secrectary/data', 'DatatablesController@secrectaryData');
 Route::get('/director/data', 'DatatablesController@directorData');
 Route::get('/director/duyet', 'DirectorController@duyet');
@@ -92,7 +103,7 @@ Route::patch('/dntu/cap-nhat/{id}', 'ProponentController@processUpdate_dntu');
 Route::patch('/lam-hang/tam-ung/{id}', 'ProponentController@yeucautamung');
 Route::get('/secrectary/kiem-tra', 'SecrectaryController@kiemtra');
 Route::get('/data/khlhang/details/{id}', 'HomeController@chitietkhlh');
-Route::get('sendmail', function(){
+Route::get('sendmailtest', function(){
 	$data = array(
 		'noidung' => 'Learning Laravel',
 	);
@@ -101,7 +112,7 @@ Route::get('sendmail', function(){
 		$message->to('tony.cao@ginex.com.vn')->subject('Learning Laravel test email');
 	});
 }); 
-Route::post('/secrectary/sendemail', 'EmailController@sendEmailFromSecrectary'); 
+Route::post('/sendemail', 'EmailController@sendEmail'); 
 Route::get('test', function()
 {
     dd(Config::get('mail'));

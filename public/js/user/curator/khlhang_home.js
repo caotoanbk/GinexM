@@ -6,7 +6,7 @@ $(function() {
 		"responsive": false ,
         "select": {
             style:    'single',
-			selector: 'td:first-child'
+			selector: 'tr'
         },
 		"responsive": {
 			details: {
@@ -84,12 +84,14 @@ $(function() {
 					if(count>0){
 					var id = dt.rows(selectedRows[0][0]).data().toArray()[0].id;
 					var booking, nyeucau;
+					$('#emailmodal_booking').text('');
+					$('textarea[name=yeucauemail]').val('');
 					$.ajax({
 						url: '/data/khlhang/details/'+id,
 						method: 'get',
 						success: function(data){
-							$('#emailmodal_booking').text("Hello world");
-							$('#emailmodal_nyeucau').text("Cao Van Toan");
+							console.log(data);
+							$('#emailmodal_booking').text(data.bill);
 						},
 						error: function(data){
 							alert('error');
@@ -106,14 +108,14 @@ $(function() {
 		"columns": [
 			{data: 'resp', name: 'resp', searchable: false, orderable: false},
 			{data: 'check', name: 'check', searchable: false, orderable: false},
-			{data: 'name', name: 'name'},
+			{data: 'name', name: 'name', className: 'desktop'},
 			{data: 'created_at', name: 'dntungs.created_at'},
 			{data: 'khang', name: 'khang'},
 			{data: 'loaihang', name: 'loaihang'},
 			{data: 'khachhang', name: 'khachhang'},
-			{data: 'bill', name: 'bill'},
+			{data: 'bill', name: 'bill', className: 'all'},
 			{data: 'stokhai', name: 'stokhai'},
-			{data: 'slcont', name: 'slcont', className: 'none'},
+			{data: 'slcont', name: 'slcont', className: 'desktop'},
 			{data: 'slc20', name: 'slc20', className: 'none'},
 			{data: 'slc40', name: 'slc40', className: 'none'},
 			{data: 'slchroi', name: 'slchroi', className: 'none'},
@@ -121,10 +123,12 @@ $(function() {
 			{data: 'slclanh', name: 'slclanh', className: 'none'},
 			{data: 'hangtau', name: 'hangtau'},
 			{data: 'tuyenduong', name: 'tuyenduong', className: 'none'},
-			{data: 'ndonghang', name: 'ndonghang'},
+			{data: 'nyeucau', name: 'dntungs.nyeucau', className: 'none'},
+			{data: 'ndonghang', name: 'ndonghang', className: 'desktop'},
+			{data: 'ngiaohang', name: 'ngiaohang', className: 'desktop'},
 			{data: 'nhaxe', name: 'nhaxe', className: 'none'},
 			{data: 'filebooking', name: 'filebooking', className: 'none', searchable: false, orderable: false},
-			{data: 'status', name: 'status', searchable: false, orderable: false},
+			{data: 'status', name: 'status', searchable: false, orderable: false, className: 'desktop'},
 		],
 		"order": [[3, 'desc']]
 	});

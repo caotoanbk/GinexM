@@ -19,9 +19,9 @@ function format($value){
 <?php
 $stdachi = 0;
 $ttien_ltron = $dntung->ttien_ltron;
-foreach ($qtconts as $qtcont)
+foreach ($qtpsinh as $qt)
 {
-	$stdachi += $qtcont['tong'];	
+	$stdachi += $qt['tong'];	
 }
 ?>
 <div><strong>Số tiền còn lại &nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='stclai' style='padding-left: 1.5em;'>{{format($ttien_ltron - $stdachi)}}</span></em></div>
@@ -71,6 +71,7 @@ foreach ($qtconts as $qtcont)
 		<th>VAT phí kiểm dịch đông/thực vật</th>
 		<th>Chi phí ngoài cho k/d động/thực vật</th>
 		<th>Các khoản ứng khác cho khách</th>
+		<th>Phát sinh</th>
 		<th>Tổng</th>
 		<th>Ghi chú</th>
 	</tr>
@@ -117,6 +118,7 @@ foreach ($qtconts as $qtcont)
 	<td>{{format($qtcont['VATkddtv'])}}</td>
 	<td>{{format($qtcont['phingoaikddtv'])}}</td>
 	<td>{{format($qtcont['cackhoankhacchokhach'])}}</td>
+	<td>{{format($qtcont['phatsinh'])}}</td>
 	<td>{{format($qtcont['tong'])}}</td>
 	<td>{{$qtcont['ghichu']}}</td>
 </tr>

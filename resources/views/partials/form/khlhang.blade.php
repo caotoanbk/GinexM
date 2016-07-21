@@ -17,6 +17,12 @@
 {!! Form::text('khachhang', null, ['class' => 'form-control']) !!}
 </div>
 </div>
+<div class='form-group'>
+{!! Form::label('partnership', 'Partnership', ['class' => 'col-md-3 control-label']) !!}
+<div class='col-md-8'>
+{!! Form::text('partnership', null, ['class' => 'form-control']) !!}
+</div>
+</div>
 <div class="form-group required">
 	{!! Form::label('bill', 'Booking/Bill', array('class' => 'col-md-3 control-label')) !!}
 	<div class='col-md-8'>{!! Form::text('bill', null, array('class' => 'form-control', 'id' => 'bill'))!!}</div>
@@ -52,7 +58,7 @@
 </div>
 </div>
 <div class='form-group'>
-{!! Form::label('slchroi', 'Số lượng hàng rời', ['class' => 'col-md-3 control-label']) !!}
+{!! Form::label('slchroi', 'Số lượng hàng rời(ton)', ['class' => 'col-md-3 control-label']) !!}
 <div class='col-md-8'>
 {!! Form::number('slchroi', null, ['class' => 'form-control']) !!}
 </div>
@@ -95,15 +101,11 @@
 	{!! Form::label('ndonghang','Ngày đóng hàng', array('class' => 'col-md-3 control-label')) !!}
 	<div class='col-md-8'>{!! Form::text('ndonghang', \Carbon\Carbon::now()->format('Y-m-d'), array('class' => 'form-control', 'id' => 'ndonghang'))!!}</div>
 </div>
-<div id="input-ngaygiaohang" class='form-group required hidden disabled'>
-	{!! Form::label('ngiaohang','Ngày giao hàng', array('class' => 'col-md-3 control-label')) !!}
+<div class='form-group required'>
+	{!! Form::label('ngiaohang','Ngày giao/nhan hàng', array('class' => 'col-md-3 control-label')) !!}
 	<div class='col-md-8'>{!! Form::text('ngiaohang', \Carbon\Carbon::now()->format('Y-m-d'), array('class' => 'form-control', 'id' => 'ngiaohang'))!!}</div>
 </div>
-<div id="input-ngaynhanhang" class='form-group required hidden disabled'>
-	{!! Form::label('nnhanhang','Ngày nhận hàng', array('class' => 'col-md-3 control-label')) !!}
-	<div class='col-md-8'>{!! Form::text('nnhanhang', \Carbon\Carbon::now()->format('Y-m-d'), array('class' => 'form-control', 'id' => 'nnhanhang'))!!}</div>
-</div>
-<div class='form-group required'>
+<div class='form-group'>
 	{!! Form::label('filebooking','File Booking', array('class' => 'col-md-3 control-label')) !!}
 	<div class='col-md-8'>{!! Form::file('filebooking', null)!!}</div>
 </div>

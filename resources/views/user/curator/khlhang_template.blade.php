@@ -24,7 +24,9 @@
 				<th>So cont lạnh</th>
 				<th>Hãng tàu</th>
 				<th>Tuyến đường</th>
+				<th>Ngày khach y/c</th>
 				<th>Ngày đóng/dỡ hàng</th>
+				<th>Ngày giao/nhan hàng</th>
 				<th>Nhà xe</th>
 				<th>Booking file</th>
 				<th>Tình trạng</th>

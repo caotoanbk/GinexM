@@ -6,7 +6,7 @@ $(function() {
 		"processing": true,
 		"select": {
 			style: 'os',
-			selector: 'td:first-child'
+			selector: 'tr'
 		},
 		"responsive": {
 			details: {
@@ -27,6 +27,83 @@ $(function() {
 		"ajax": '/secrectary/tuchthanh/data',
 		"dom": 'Bfrtip',
 		"buttons": [
+				{
+				text: 'Đã kiểm tra t/ư',
+				className: 'btn',	
+				action: function (e, dt, node, config){
+					var selectedRows = dt.rows( {selected: true}).toArray();
+				    var count = dt.rows( { selected: true } ).count();
+					if(count>0){
+					var id = dt.rows(selectedRows[0][0]).data().toArray()[0].id;
+					$.ajax({
+						url: '/secrectary/check-tu/'+ id,
+						method: 'get',
+						success: function(data){
+							dt.ajax.reload();
+							console.log(data);
+						},
+						error: function(data){
+							alert('error');
+						}
+					});
+					}else{
+						alert('Bạn chưa chọn ke hoach lam hang nào');
+					}
+				}
+			},
+			{
+				text: 'Hủy kiểm tra t/ư',
+				className: 'btn',	
+				action: function (e, dt, node, config){
+					var selectedRows = dt.rows( {selected: true}).toArray();
+				    var count = dt.rows( { selected: true } ).count();
+					if(count>0){
+					var id = dt.rows(selectedRows[0][0]).data().toArray()[0].id;
+					$.ajax({
+						url: '/secrectary/uncheck-tu/'+ id,
+						method: 'get',
+						success: function(data){
+							dt.ajax.reload();
+							console.log(data);
+						},
+						error: function(data){
+							alert('error');
+						}
+					});
+					}else{
+						alert('Bạn chưa chọn ke hoach lam hang nào');
+					}
+				}
+			},
+			{
+				text: 'Gửi email yêu cầu',
+				className: 'btn',	
+				action: function (e, dt, node, config){
+					var selectedRows = dt.rows( {selected: true}).toArray();
+				    var count = dt.rows( { selected: true } ).count();
+					if(count>0){
+					var id = dt.rows(selectedRows[0][0]).data().toArray()[0].id;
+					var booking, nyeucau;
+					$('#emailmodal_booking').text('');
+					$('textarea[name=yeucauemail]').val('');
+					$.ajax({
+						url: '/data/khlhang/details/'+id,
+						method: 'get',
+						success: function(data){
+							console.log(data);
+							$('#emailmodal_booking').text(data.bill);
+						},
+						error: function(data){
+							alert('error');
+						}
+					});
+					$('input[name=id]').val(id);
+					$('#myModalEmail').modal('show').draggable();
+					}else{
+						alert('Bạn chưa chọn ke hoach lam hang nào');
+					}
+				}
+			},
 			{
 				text: 'In phiếu chi',
 				className: 'btn',
@@ -52,7 +129,7 @@ $(function() {
 			{data: 'created_at', name: 'dntungs.created_at'},
 			{data: 'name', name: 'users.name'},
 			{data: 'bill', name: 'dntungs.bill'},
-			{data: 'reason', name: 'dntungs.reason'},
+			{data: 'reason', name: 'dntungs.reason', className: 'none'},
 			{data: 'filebooking', name: 'filebooking', className: 'none', searchable: false, orderable: false},
 			{data: 'khachhang', name: 'khachhang', className: 'none'},
 			{data: 'loaihang', name: 'loaihang', className: 'none'},
@@ -68,11 +145,17 @@ $(function() {
 			{data: 'nyeucau', name: 'dntungs.nyeucau', className: 'none'},
 			{data: 'ngiaohang', name: 'dntungs.ngiaohang', className: 'none'},
 			{data: 'nnhanhang', name: 'dntungs.nnhanhang', className: 'none'},
-			{data: 'status', name: 'status', searchable: false, orderable: false},
+			{data: 'status', name: 'status', searchable: false, orderable: false, className: 'desktop'},
 			{data: 'cuoc', name: 'dntungs.cuoc', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none"  },
+			{data: 'playlenh', name: 'dntungs.playlenh', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none"  },
 			{data: 'nang', name: 'dntungs.nang', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none" },
 			{data: 'ha', name: 'dntungs.ha', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none" },
+			{data: 'pbtokhai', name: 'dntungs.pbtokhai', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none" },
+			{data: 'phqtiepnhan', name: 'dntungs.phqtiepnhan', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none" },
 			{data: 'hquan', name: 'dntungs.hquan', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none"},
+			{data: 'pitokhai', name: 'dntungs.pitokhai', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none"},
+			{data: 'pkddongvat', name: 'dntungs.pkddongvat', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none"},
+			{data: 'pkdthucvat', name: 'dntungs.pkdthucvat', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none"},
 			{data: 'psinh', name: 'dntungs.psinh', render: $.fn.dataTable.render.number(',','.',0,'', ' đ'), className: "none"},
 		],
 		"order": [[2, "desc"]]

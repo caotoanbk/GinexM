@@ -69,10 +69,15 @@ class ProponentController extends Controller
 		//$input['hquan']=str_replace('.', '', $input['hquan']);
 		//$input['psinh']=str_replace('.', '', $input['psinh']);
 		$input['user_id']=\Auth::user()->id;	
+		if($request->file('filebooking')){
+			$input['file_extension'] = $request->file('filebooking')->getClientOriginalExtension();
+		}
 		$yc= new Dntung($input);
 		$yc->save();
-		$filebooking = $yc->id . '.' . $request->file('filebooking')->getClientOriginalExtension();
-		$request->file('filebooking')->move(base_path() . '/public/de_nghi_tam_ung/', $filebooking);
+		if($request->file('filebooking')){
+			$filebooking = $yc->id . '.' . $request->file('filebooking')->getClientOriginalExtension();
+			$request->file('filebooking')->move(base_path() . '/public/de_nghi_tam_ung/', $filebooking);
+		}
 		\Session::flash('flash_message', 'Dang thong tin yeu cau lam hang thanh cong');
 		if(Auth::user()->type == 0)
 			return redirect('/proponent/ke-hoach-lam-hang');
@@ -153,6 +158,7 @@ class ProponentController extends Controller
 		$VATkddtv= $request->input('VATkddtv');
 		$phingoaikddtv= $request->input('phingoaikddtv');
 		$cackhoankhacchokhach=$request->input('cackhoankhacchokhach');
+		$phatsinh=$request->input('phatsinh');
 		$tong=$request->input('tong');
 		$ghichu=$request->input('ghichu');
 		for ($i = 0; $i < count($nchay); $i++) {
@@ -195,6 +201,7 @@ class ProponentController extends Controller
 			$qtcont->VATkddtv = $this->convert($VATkddtv[$i]);
 			$qtcont->phingoaikddtv = $this->convert($phingoaikddtv[$i]);
 			$qtcont->cackhoankhacchokhach = $this->convert($cackhoankhacchokhach[$i]);
+			$qtcont->phatsinh = $this->convert($phatsinh[$i]);
 			$qtcont->tong = $this->convert($tong[$i]);
 			$qtcont->ghichu = $ghichu[$i];
 			$qtcont->save();
@@ -274,6 +281,11 @@ class ProponentController extends Controller
 		$qtoan = $dntung->qtoans->find($qtid);
 		$qtoan->delete();
 	}
+	public function getsecrectarychecktu($id)
+	{
+		$dntu = Dntung::findOrFail($id);
+		return $dntu->secrectary_check_tu;
+	}
 	public function deleteQtoancont($tuid, $qtcid)
 	{
 		$dntung = Dntung::findOrFail($tuid);
@@ -327,14 +339,19 @@ class ProponentController extends Controller
 	public function processUpdate_dntu($id, Request $request)
 	{
 		$dntu = Dntung::findOrFail($id);
-		$dntu->check = false;
-		$dntu->approve = false;
-		$dntu->lamhang = false;
+		//$dntu->check = false;
+		//$dntu->approve = false;
+		//$dntu->lamhang = false;
 		$dntu->done = false;
 		$input = $request->all();
+		if($request->file('filebooking')){
+			$input['file_extension'] = $request->file('filebooking')->getClientOriginalExtension();
+		}
 		$dntu->fill($input)->save();
-		$filebooking = $dntu->id . '.' . $request->file('filebooking')->getClientOriginalExtension();
-		$request->file('filebooking')->move(base_path() . '/public/de_nghi_tam_ung/', $filebooking);
+		if($request->file('filebooking')){
+			$filebooking = $dntu->id . '.' . $request->file('filebooking')->getClientOriginalExtension();
+			$request->file('filebooking')->move(base_path() . '/public/de_nghi_tam_ung/', $filebooking);
+		}
 		\Session::flash('flas_message', 'Cập nhật đề nghị tạm ứng thành công!');
 		return redirect('/');
 	}

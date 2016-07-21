@@ -6,7 +6,7 @@ $(function() {
 		"responsive": false ,
         "select": {
             style:    'single',
-			selector: 'td:first-child'
+			selector: 'tr'
         },
 		"responsive": {
 			details: {
@@ -30,14 +30,14 @@ $(function() {
 		"columns": [
 			{data: 'resp', name: 'resp', searchable: false, orderable: false},
 			{data: 'check', name: 'check', searchable: false, orderable: false},
-			{data: 'name', name: 'name'},
+			{data: 'name', name: 'name', className: 'desktop'},
 			{data: 'created_at', name: 'dntungs.created_at'},
-			{data: 'khang', name: 'khang'},
-			{data: 'loaihang', name: 'loaihang'},
-			{data: 'khachhang', name: 'khachhang'},
-			{data: 'bill', name: 'bill'},
+			{data: 'khang', name: 'khang', className: 'desktop'},
+			{data: 'loaihang', name: 'loaihang', className: 'desktop'},
+			{data: 'khachhang', name: 'khachhang', className: 'desktop'},
+			{data: 'bill', name: 'bill', className: 'all'},
 			{data: 'stokhai', name: 'stokhai'},
-			{data: 'slcont', name: 'slcont', className: 'none'},
+			{data: 'slcont', name: 'slcont', className: 'none', className: 'desktop'},
 			{data: 'slc20', name: 'slc20', className: 'none'},
 			{data: 'slc40', name: 'slc40', className: 'none'},
 			{data: 'slchroi', name: 'slchroi', className: 'none'},
@@ -45,10 +45,12 @@ $(function() {
 			{data: 'slclanh', name: 'slclanh', className: 'none'},
 			{data: 'hangtau', name: 'hangtau'},
 			{data: 'tuyenduong', name: 'tuyenduong', className: 'none'},
-			{data: 'ndonghang', name: 'ndonghang'},
+			{data: 'nyeucau', name: 'dntungs.nyeucau', className: 'none'},
+			{data: 'ndonghang', name: 'dntungs.ndonghang', className: 'desktop'},
+			{data: 'ngiaohang', name: 'dntungs.ngiaohang', className: 'desktop'},
 			{data: 'nhaxe', name: 'nhaxe', className: 'none'},
 			{data: 'filebooking', name: 'filebooking', className: 'none', searchable: false, orderable: false},
-			{data: 'status', name: 'status', searchable: false, orderable: false},
+			{data: 'status', name: 'status', searchable: false, orderable: false, className: 'all'},
 		],
 		"order": [[3, 'desc']]
 	});

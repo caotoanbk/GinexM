@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="container-fluid">
+<div class="container">
     <div class="row">
         <div class="col-md-12">
 <h3 class='col-md-8 col-md-offset-3'>CẬP NHẬT KẾ HOẠCH LÀM HÀNG</h3>
@@ -102,15 +102,11 @@
 	{!! Form::label('ndonghang','Ngày đóng hàng', array('class' => 'col-md-3 control-label')) !!}
 	<div class='col-md-8'>{!! Form::text('ndonghang', null, array('class' => 'form-control', 'id' => 'ndonghang'))!!}</div>
 </div>
-<div id="input-ngaygiaohang" class='form-group required hidden disabled'>
-	{!! Form::label('ngiaohang','Ngày giao hàng', array('class' => 'col-md-3 control-label')) !!}
-	<div class='col-md-8'>{!! Form::date('ngiaohang', null, array('class' => 'form-control'))!!}</div>
-</div>
-<div id="input-ngaynhanhang" class='form-group required hidden disabled'>
-	{!! Form::label('nnhanhang','Ngày nhận hàng', array('class' => 'col-md-3 control-label')) !!}
-	<div class='col-md-8'>{!! Form::date('nnhanhang', null, array('class' => 'form-control'))!!}</div>
-</div>
 <div class='form-group required'>
+	{!! Form::label('ngiaohang','Ngày giao hàng', array('class' => 'col-md-3 control-label')) !!}
+	<div class='col-md-8'>{!! Form::text('ngiaohang', null, array('class' => 'form-control', 'id' => 'ngiaohang'))!!}</div>
+</div>
+<div class='form-group'>
 	{!! Form::label('filebooking','File Booking', array('class' => 'col-md-3 control-label')) !!}
 	<div class='col-md-8'>{!! Form::file('filebooking')!!}</div>
 </div>

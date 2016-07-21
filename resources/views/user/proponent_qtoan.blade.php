@@ -19,9 +19,9 @@ function format($value){
 <?php
 $stdachi = 0;
 $ttien_ltron = $dntung->ttien_ltron;
-foreach ($qtconts as $qtcont)
+foreach ($qtpsinh as $qt)
 {
-	$stdachi += $qtcont['tong'];	
+	$stdachi += $qt['tong'];	
 }
 ?>
 <div><strong>Số tiền còn lại &nbsp;&nbsp;&nbsp;&nbsp;: </strong><em><span id='stclai' style='padding-left: 1.5em;'>{{format($ttien_ltron - $stdachi)}}</span></em></div>
@@ -74,6 +74,7 @@ foreach ($qtconts as $qtcont)
 		<th>VAT phí kiểm dịch đông/thực vật</th>
 		<th>Chi phí ngoài cho k/d động/thực vật</th>
 		<th>Các khoản ứng khác cho khách</th>
+		<th>Phát sinh</th>
 		<th>Tổng</th>
 		<th>Ghi chú</th>
 	</tr>
@@ -124,6 +125,7 @@ foreach ($qtconts as $qtcont)
 	<td>{{format($qtcont['VATkddtv'])}}</td>
 	<td>{{format($qtcont['phingoaikddtv'])}}</td>
 	<td>{{format($qtcont['cackhoankhacchokhach'])}}</td>
+	<td>{{format($qtcont['phatsinh'])}}</td>
 	<td>{{format($qtcont['tong'])}}</td>
 	<td>{{$qtcont['ghichu']}}</td>
 </tr>
@@ -185,7 +187,7 @@ foreach ($qtconts as $qtcont)
 </div>
 <button id='them_psinh' class="btn btn-warning btn-xs">Thêm</button>
 <div>&nbsp;</div>
-<div><button id='them' type="submit" class="btn btn-sm btn-primary">Lưu</button>&nbsp;&nbsp;@if(!$dntung->denghiquyettoan)<a href="#" id = "denghiquyettoan" data-id ="{{$dntung->id}}" class="btn btn-sm btn-primary">Quyết Toán</a>@else<a href="#" id = "huydenghiquyettoan" data-id ="{{$dntung->id}}" class="btn btn-sm btn-primary">Hủy Đề Nghị Quyết Toán</a>@endif</div>
+<div><button id='them' type="submit" class="btn btn-sm btn-primary">Lưu</button>&nbsp;&nbsp;@if(!$dntung->denghiquyettoan)<a href="#" id = "denghiquyettoan" data-id ="{{$dntung->id}}" class="btn btn-sm btn-primary">Quyết Toán</a>@else<a href="#" id = "huydenghiquyettoan" data-id ="{{$dntung->id}}" class="btn btn-sm btn-primary">Hủy Đề Nghị Quyết Toán</a>@endif&nbsp;&nbsp;<a href="/bieumau/mau-quyet-toan/{{$dntung->id}}" class="btn btn-sm btn-success">Mau Quyet Toan</a></div>
 {!! Form::close() !!}
 </div>
 @endsection

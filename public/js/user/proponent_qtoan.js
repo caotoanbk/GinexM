@@ -21,7 +21,7 @@ $(function(){
 	$('form#content1').attr('action', '/quyet-toan/'+tuid);
 	$('#them_cont').click(function(e){
 		e.preventDefault();
-		$('tbody#qtoan_cont').append('<tr class="input_fields_wrap"><td></td><td class="text-danger text-center"><a href="#" id="remove_item" class="text-danger">&times;</a></td>&nbsp;<td></td><td><input type="date" name="nchay[]"/></td><td><input type="text" name="scont[]" size="15"/></td><td><input type="text" name="sochi[]" size="15"/></td><td><input type="text" name="ccont[]" size="10"/></td><td><input type="text" name="lcont[]" size="15"/></td><td><input type="text" name="bainang[]" size="25" /></td><td><input type="text" name="baiha[]" size="25" /></td><td><input type="number" name="trongluong[]" /></td><td><input type="text" name="dieuxe[]" size="20" /></td><td><input type="text" name="lxe[]" size="15"/></td><td><input type="text" name="bsxe[]" size="15"/></td><td><input type="text" name="diadiemdongtrahang[]" size="25"/></td><td><input type="text" name="phinangchuaVAT[]" size="15"/></td><td><input type="text" name="VATphinang[]" size="15"/></td><td><input type="text" name="sohoadonnang[]" size="15"/></td><td><input type="date" name="nxuathoadonnang[]"/></td><td><input type="text" name="dvicaphoadonnang[]" size="15"/></td><td><input type="text" name="phihachuaVAT[]" size="15"/></td><td><input type="text" name="VATphiha[]" size="15"/></td><td><input type="text" name="sohoadonha[]" size="15"/></td><td><input type="date" name="nxuathoadonha[]"/></td><td><input type="text" name="dvicaphoadonha[]" size="15"/></td><td><input type="text" name="boctokhai[]" size="15"/></td><td><input type="text" name="hquantiepnhan[]" size="15"/></td><td><input type="text" name="hquangiamsat[]" size="15"/></td><td><input type="text" name="hquankiemhoa[]" size="15"/></td><td><input type="text" name="cuoccont[]" size="15"/></td><td><input type="text" name="llenhhangtau[]" size="15"/></td><td><input type="text" name="luucont[]" size="15"/></td><td><input type="text" name="luubai[]" size="15"/></td><td><input type="text" name="phivesinh[]" size="15"/></td><td><input type="text" name="phicatday[]" size="15"/></td><td><input type="text" name="boctem[]" size="15"/></td><td><input type="text" name="kddtvchuaVAT[]" size="30"/></td><td><input type="text" name="VATkddtv[]" size="30"/></td><td><input type="text" name="phingoaikddtv[]" size="30"/></td><td><input type="text" name="cackhoankhacchokhach[]" size="30"/></td><td><input type="text" readonly="true" class="bg-primary" name="tong[]" size="15"/></td><td><input type="text" name="ghichu[]" size="50"/></td></tr>');
+		$('tbody#qtoan_cont').append('<tr class="input_fields_wrap"><td></td><td class="text-danger text-center"><a href="#" id="remove_item" class="text-danger">&times;</a></td>&nbsp;<td></td><td><input type="date" name="nchay[]"/></td><td><input type="text" name="scont[]" size="15"/></td><td><input type="text" name="sochi[]" size="15"/></td><td><input type="text" name="ccont[]" size="10"/></td><td><input type="text" name="lcont[]" size="15"/></td><td><input type="text" name="bainang[]" size="25" /></td><td><input type="text" name="baiha[]" size="25" /></td><td><input type="number" name="trongluong[]" /></td><td><input type="text" name="dieuxe[]" size="20" /></td><td><input type="text" name="lxe[]" size="15"/></td><td><input type="text" name="bsxe[]" size="15"/></td><td><input type="text" name="diadiemdongtrahang[]" size="25"/></td><td><input type="text" name="phinangchuaVAT[]" size="15"/></td><td><input type="text" name="VATphinang[]" size="15"/></td><td><input type="text" name="sohoadonnang[]" size="15"/></td><td><input type="date" name="nxuathoadonnang[]"/></td><td><input type="text" name="dvicaphoadonnang[]" size="15"/></td><td><input type="text" name="phihachuaVAT[]" size="15"/></td><td><input type="text" name="VATphiha[]" size="15"/></td><td><input type="text" name="sohoadonha[]" size="15"/></td><td><input type="date" name="nxuathoadonha[]"/></td><td><input type="text" name="dvicaphoadonha[]" size="15"/></td><td><input type="text" name="boctokhai[]" size="15"/></td><td><input type="text" name="hquantiepnhan[]" size="15"/></td><td><input type="text" name="hquangiamsat[]" size="15"/></td><td><input type="text" name="hquankiemhoa[]" size="15"/></td><td><input type="text" name="cuoccont[]" size="15"/></td><td><input type="text" name="llenhhangtau[]" size="15"/></td><td><input type="text" name="luucont[]" size="15"/></td><td><input type="text" name="luubai[]" size="15"/></td><td><input type="text" name="phivesinh[]" size="15"/></td><td><input type="text" name="phicatday[]" size="15"/></td><td><input type="text" name="boctem[]" size="15"/></td><td><input type="text" name="kddtvchuaVAT[]" size="30"/></td><td><input type="text" name="VATkddtv[]" size="30"/></td><td><input type="text" name="phingoaikddtv[]" size="30"/></td><td><input type="text" name="cackhoankhacchokhach[]" size="30"/></td><td><input type="text" name="phatsinh[]" size="15"/></td><td><input type="text" readonly="true" class="bg-primary" name="tong[]" size="15"/></td><td><input type="text" name="ghichu[]" size="50"/></td></tr>');
 		$('input[name="phinangchuaVAT[]"]').autoNumeric('init', {
 			aSep:'.',
 			aDec: ',',
@@ -149,6 +149,20 @@ $(function(){
 			aPad: false,	
 		});
 		$('input[name="cackhoankhacchokhach[]"]').autoNumeric('init', {
+			aSep:'.',
+			aDec: ',',
+			aSign: ' VND',
+			pSign: 's',
+			aPad: false,	
+		});
+		$('input[name="phatsinh[]"]').autoNumeric('init', {
+			aSep:'.',
+			aDec: ',',
+			aSign: ' VND',
+			pSign: 's',
+			aPad: false,	
+		});
+		$('input[name="tong"]').autoNumeric('init', {
 			aSep:'.',
 			aDec: ',',
 			aSign: ' VND',
@@ -291,7 +305,14 @@ $(function(){
 			}else{
 				 khoankhacchokhach = parseInt(tdKhoankhacchokhach.children("input[type=text]").val().replace(/\./g, ''));
 			}
-			var tong = phinangchuaVAT + VATphinang + phihachuaVAT + VATphiha + boctokhai + hquantiepnhan + hquangiamsat + hquankiemhoa + cuoccont + llenhhangtau + luucont + luubai + phivesinh + phicatday +boctem + kddtvchuaVAT + VATkddtv + phingoaikddtv +  khoankhacchokhach;
+			var tdPhatsinh = par.children("td:nth-child(41)");
+			var phatsinh=0;
+			if(tdPhatsinh.children("input[type=text]").val()==""){
+				phatsinh =0;
+			}else{
+				 phatsinh = parseInt(tdPhatsinh.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			var tong = phinangchuaVAT + VATphinang + phihachuaVAT + VATphiha + boctokhai + hquantiepnhan + hquangiamsat + hquankiemhoa + cuoccont + llenhhangtau + luucont + luubai + phivesinh + phicatday +boctem + kddtvchuaVAT + VATkddtv + phingoaikddtv +  khoankhacchokhach + phatsinh;
 			$(this).val(tong.toString());
 	   });	
 		$('input[name="tong[]"]').autoNumeric('init', {
@@ -418,8 +439,9 @@ $(function(){
 		var tdVATkddtv = par.children("td:nth-child(38)");
 		var tdPhingoaikddtv = par.children("td:nth-child(39)");
 		var tdKhoankhacchokhach = par.children("td:nth-child(40)");
-		var tdTong = par.children("td:nth-child(41)");
-		var tdGhichu = par.children("td:nth-child(42)");
+		var tdPhatsinh = par.children("td:nth-child(41)");
+		var tdTong = par.children("td:nth-child(42)");
+		var tdGhichu = par.children("td:nth-child(43)");
 		tdEditSave.html("<a href='#' id='edit_item' data-id='"+id+"'><span class='glyphicon glyphicon-pencil'></span></a>");
 		var nxchay = tdNxechay.children("input[type=date]").val();
 		tdNxechay.html(tdNxechay.children("input[type=date]").val());
@@ -609,6 +631,14 @@ $(function(){
 		 cackhoankhacchokhach = parseInt(tdKhoankhacchokhach.children("input[type=text]").val().replace(/\./g, ''));
 		tdKhoankhacchokhach.html(myFormatCurrency(parseInt(tdKhoankhacchokhach.children("input[type=text]").val().replace(/\./g, ''))));
 		}
+		var phatsinh;
+		if(tdPhatsinh.children("input[type=text]").val()==""){
+			phatsinh = 0;
+			tdPhatsinh.html(0);
+		}else{
+		 phatsinh = parseInt(tdPhatsinh.children("input[type=text]").val().replace(/\./g, ''));
+		tdPhatsinh.html(myFormatCurrency(parseInt(tdPhatsinh.children("input[type=text]").val().replace(/\./g, ''))));
+		}
 		var tong;
 		if(tdTong.children("input[type=text]").val()==""){
 			tong = 0;
@@ -657,6 +687,7 @@ $(function(){
 			VATkddtv: VATkddtv,
 			phingoaikddtv: phingoaikddtv,
 			cackhoankhacchokhach: cackhoankhacchokhach,
+			phatsinh: phatsinh,
 			tong: tong,
 			ghichu: ghichu
 		};
@@ -716,8 +747,9 @@ $(function(){
 		var tdVATkddtv = par.children("td:nth-child(38)");
 		var tdPhingoaikddtv = par.children("td:nth-child(39)");
 		var tdKhoankhacchokhach = par.children("td:nth-child(40)");
-		var tdTong = par.children("td:nth-child(41)");
-		var tdGhichu = par.children("td:nth-child(42)");
+		var tdPhatsinh = par.children("td:nth-child(41)");
+		var tdTong = par.children("td:nth-child(42)");
+		var tdGhichu = par.children("td:nth-child(43)");
 		tdEditSave.html("<a href='#' id='save_item' data-id='"+id+"'><span class='glyphicon glyphicon-ok text-success'></span></a>");
 		tdNxechay.html("<input type='date' value='"+tdNxechay.html()+"'/>");
 		tdSocont.html("<input type='text' size='15' value='"+tdSocont.html()+"'/>");
@@ -889,9 +921,17 @@ $(function(){
 			pSign: 's',
 			aPad: false,	
 		});
+		tdPhatsinh.html("<input type='text' name='phatsinh' size='15' value='"+tdPhatsinh.html().replace(/\./g, '')+"'/>");
+		$('input[name=phatsinh]').autoNumeric('init', {
+			aSep:'.',
+			aDec: ',',
+			aSign: ' VND',
+			pSign: 's',
+			aPad: false,	
+		});
 		tdTong.html("<input type='text' readonly='true' size='15' value='"+tdTong.html()+"' />");
 		$(tdTong).on('focus', 'input[type=text]', function(e){
-			var phinangchuaVAT, VATphinang, phihachuaVAT, VATphiha, boctokhai, hquantiepnhan, hquangiamsat, hquankiemhoa, cuoccont, llenhhangtau, luucont, luubai, phivesinh, phicatday, boctem, kddtvchuaVAT, VATkddtv, phingoaikddtv, cackhoankhacchokhach;
+			var phinangchuaVAT, VATphinang, phihachuaVAT, VATphiha, boctokhai, hquantiepnhan, hquangiamsat, hquankiemhoa, cuoccont, llenhhangtau, luucont, luubai, phivesinh, phicatday, boctem, kddtvchuaVAT, VATkddtv, phingoaikddtv, cackhoankhacchokhach, phatsinh;
 			if(tdPhinangchuaVAT.children("input[type=text]").val()==""){
 				phinangchuaVAT =0;
 			}else{
@@ -992,7 +1032,12 @@ $(function(){
 			}else{
 				 cackhoankhacchokhach = parseInt(tdKhoankhacchokhach.children("input[type=text]").val().replace(/\./g, ''));
 			}
-			var tong = phinangchuaVAT + VATphinang + phihachuaVAT + VATphiha + boctokhai +hquantiepnhan + hquangiamsat+ hquankiemhoa + cuoccont + llenhhangtau + luucont + luubai + phivesinh + phicatday + boctem + kddtvchuaVAT + VATkddtv + phingoaikddtv + cackhoankhacchokhach;
+			if(tdPhatsinh.children("input[type=text]").val()==""){
+				 phatsinh =0;
+			}else{
+				 phatsinh = parseInt(tdPhatsinh.children("input[type=text]").val().replace(/\./g, ''));
+			}
+			var tong = phinangchuaVAT + VATphinang + phihachuaVAT + VATphiha + boctokhai +hquantiepnhan + hquangiamsat+ hquankiemhoa + cuoccont + llenhhangtau + luucont + luubai + phivesinh + phicatday + boctem + kddtvchuaVAT + VATkddtv + phingoaikddtv + cackhoankhacchokhach + phatsinh;
 			$(this).val(myFormatCurrency(tong));
 		});
 		tdGhichu.html("<input type='text' name='ghichu' value='"+tdGhichu.html()+"'/>");

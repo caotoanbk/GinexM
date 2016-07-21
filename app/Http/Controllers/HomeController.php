@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Dntung;
 
 class HomeController extends Controller
 {
@@ -42,6 +43,7 @@ class HomeController extends Controller
 	}
 	public function chitietkhlh($id)
 	{
-		return 'hello';
+		$dntu = Dntung::findOrFail($id);
+		return $dntu;
 	}
 }

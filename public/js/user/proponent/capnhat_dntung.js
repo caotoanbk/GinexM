@@ -7,23 +7,17 @@ $(function(){
 		//jquery validation
 		var validator = $('#content').validate({
 			rules: {
-				reason: { required: true, },
 				bill: { required: true, },
-				slc20: { required: true, },
-				slc40: { required: true, },
 				lcont: { required: true, },
 				khang: { required: true, },
 				ndonghang: {required: true, },
 				tghung: { required: true, },
 				loaihang: {required: true},
-				tuyenduong: {required: true},
 				khachhang: {required: true},
-				filebooking: {required: true},
+				nyeucau: {required: true},
+				ngiaohang: {required: true},
 			},
 			messages: {
-				reason: {
-					required: '<div class="text-danger"><em><small>Bạn chưa nhập lý do tạm ứng</small></em></div>'
-				},
 				bill: {
 					required: '<div class="text-danger"><em><small>Bạn chưa nhập số chứng từ</small></em></div>'
 				},
@@ -39,14 +33,20 @@ $(function(){
 				khang: {
 					required: '<div class="text-danger"><em><small>Bạn chưa chọn kiểu hàng</small></em></div>'
 				},
-				ndonghang: {
-					required: '<div class="text-danger"><em><small>Bạn chưa nhập thời gian đóng hàng</small></em></div>'
-				},
 				ttien: {
 					required: '<div class="text-danger"><em><small>Bạn chưa nhập số tiền</small></em></div>'
 				},
 				tghung: {
 					required: '<div class="text-danger"><em><small>Bạn chưa nhập thời gian hoàn ứng</small></em></div>'
+				},
+				nyeucau: {
+					required: '<div class="text-danger"><em><small>Bạn chưa nhập ngay khach yeu cau</small></em></div>'
+				},
+				ndonghang: {
+					required: '<div class="text-danger"><em><small>Bạn chưa nhập thời gian dong/do hang</small></em></div>'
+				},
+				ngiaohang: {
+					required: '<div class="text-danger"><em><small>Bạn chưa nhập thời gian giao/nhan hang</small></em></div>'
 				},
 				loaihang: {
 					required: '<div class="text-danger"><em><small>Bạn chưa nhập loại hàng (nguyên cont hay rời)</small></em></div>'
@@ -56,9 +56,6 @@ $(function(){
 				},
 				khachhang: {
 					required: '<div class="text-danger"><em><small>Bạn chưa nhập khách hàng</small></em></div>'
-				},
-				filebooking: {
-					required: '<div class="text-danger"><em><small>Ban chua chon file</small></em></div>'
 				},
 			},
 		});
