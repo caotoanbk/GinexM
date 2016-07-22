@@ -186,7 +186,13 @@
 <body>
   <p class="gwd-p-1ht4">Ngày {{date('d')}} tháng {{date('m')}} năm {{date('Y')}}</p>
   <p class="gwd-p-199v">QUYẾT TOÁN CHI PHÍ LÀM HÀNG</p>
-  <p class="gwd-p-12ye">Khách hàng:&nbsp;{{$dntung->khachhang}}</p><span class="gwd-span-1cwa">Loại cont&nbsp;&nbsp;&nbsp;:</span><span class="gwd-span-9y6w">Phiếu chi:</span><span class="gwd-span-19ve">Loại hàng&nbsp;&nbsp;:&nbsp;{{$dntung->loaihang}}</span>
+	<?php 
+		$phieuchi = $dntung->created_at;
+		$day=substr($phieuchi,0, 2);
+		$month=substr($phieuchi,3, 2);
+		$year=substr($phieuchi,8, 2);
+	?>
+  <p class="gwd-p-12ye">Khách hàng:&nbsp;{{$dntung->khachhang}}</p><span class="gwd-span-1cwa">Loại cont&nbsp;&nbsp;&nbsp;:&nbsp;@if($dntung->slc20){{$dntung->slc20}}*20, @endif @if($dntung->slc40){{$dntung->slc40}}*40 @endif {{$dntung->lcont}}</span><span class="gwd-span-9y6w">Phiếu chi:&nbsp;{{$year}}{{$month}}{{$day}}:{{number_format($dntung->ttien_ltron, 0, '.', ',')}}</span><span class="gwd-span-19ve">Loại hàng&nbsp;&nbsp;:&nbsp;{{$dntung->loaihang}}</span>
   <p class="gwd-p-ht0b">Bill&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;{{$dntung->bill}}</p>
   <table class="quyettoan">
     <thead>
@@ -235,33 +241,57 @@
 		<td>{{number_format($qt['stien'], 0, '.', ',')}}</td>
 		<td>{{number_format($qt['VAT'], 0, '.', ',')}}</td>
 		<td>{{number_format($qt['tong'], 0, '.', ',')}}</td>
-		<td>@if($qt['hdon']) HD:{{$qt['hdon']}}@else Khong co hoa don @endif</td>
+		<?php 
+		if($qt['gchu']){
+			$gachchan = '_';
+		}else{
+			$gachchan = '';
+		}
+		?>
+		<td>@if($qt['hdon']) HD{{$gachchan}}{{$qt['gchu']}}:{{$qt['hdon']}} @else Khong co hoa don @endif</td>
       </tr>
 	@endforeach
     </tbody>
     <tfoot>
       <tr>
-        <th colspan="4"><i>Tổng chi phí thực tế:</i>
-        </th>
-        <th colspan="5"><i>{{number_format($stdachi, 0, '.', ',')}}</i>
-        </th>
+        <th colspan="4"><i>Tổng chi phí thực tế:</i> </th>
+		<th style="border-right: none">&nbsp;</th>
+		<th style="border-right: none; border-left: none;">&nbsp;</th>
+		<th style="border-right: none; border-left: none;">&nbsp;</th>
+        <th style="border-right: none; border-left: none"><i>{{number_format($stdachi, 0, '.', ',')}}</i></th>
+		<th style="border-left: none">&nbsp;</th>
       </tr>
       <tr>
         <th colspan="4">Trong đó: tổng chi phí không có hóa đơn</th>
-        <th colspan="5">{{number_format($stkhdon, 0, '.', ',')}}</th>
+		<th style="border-right: none">&nbsp;</th>
+		<th style="border-right: none; border-left: none;">&nbsp;</th>
+		<th style="border-right: none; border-left: none;">&nbsp;</th>
+        <th style="border-right: none; border-left: none;">{{number_format($stkhdon, 0, '.', ',')}}</th>
+		<th style="border-left: none">&nbsp;</th>
       </tr>
       <tr>
         <th colspan="4">Số tiền tạm ứng:</th>
-        <th colspan="3" style="text-align: right;">{{number_format($dntung->ttien_ltron, 0, '.', ',')}}</th>
-        <th colspan="2" style="text-align: left; padding-left:0.5em;">Phiếu chi:</th>
+		<th style="border-right: none">&nbsp;</th>
+		<th style="border-right: none; border-left: none;">&nbsp;</th>
+		<th style="border-right: none; border-left: none;">&nbsp;</th>
+        <th style="border-left: none">{{number_format($dntung->ttien_ltron, 0, '.', ',')}}</th>
+        <th style="text-align: left;">Phiếu chi:&nbsp;{{number_format($dntung->ttien_ltron, 0, '.', ',')}}</th>
       </tr>
       <tr>
         <th colspan="4">Hoàn trả về c.ty</th>
-        <th colspan="5">@if($difference>=0) {{number_format($difference, 0, '.', ',')}}@endif</th>
+		<th style="border-right: none">&nbsp;</th>
+		<th style="border-right: none; border-left: none;">&nbsp;</th>
+		<th style="border-right: none; border-left: none;">&nbsp;</th>
+        <th style="border-right: none; border-left: none;">@if($difference>=0) {{number_format($difference, 0, '.', ',')}}@endif</th>
+		<th style="border-left: none">&nbsp;</th>
       </tr>
       <tr>
         <th colspan="4">Tiền thiếu (nhận từ công ty)</th>
-        <th colspan="5">@if($difference<0) {{number_format(-1*$difference, 0, '.', ',')}}@endif</th>
+		<th style="border-right: none">&nbsp;</th>
+		<th style="border-right: none; border-left: none;">&nbsp;</th>
+		<th style="border-right: none; border-left: none;">&nbsp;</th>
+        <th style="border-right: none; border-left: none;">@if($difference<0) {{number_format(-1*$difference, 0, '.', ',')}}@endif</th>
+		<th style="border-left: none">&nbsp;</th>
       </tr>
     </tfoot>
   </table>
